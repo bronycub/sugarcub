@@ -1,0 +1,160 @@
+/*****************************************
+ * Page structure
+ *
+ * Footer is fixed to the bottom if room,
+ * else it scrolls out of screen normaly
+ ****************************************/
+html, body {
+	height: 100%;
+}
+
+#content {
+	min-height: 100%;
+	padding-top: 70px; 
+	padding-bottom: 180px;
+	position: relative;
+} 
+
+@media(max-width:992px) {
+	#content {
+		padding-bottom: 284px;
+	}
+}
+
+footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}
+
+/*****************************************
+ * Colors & Theme stuff
+ ****************************************/
+/*
+ * Header
+ */
+.navbar-inverse {
+	background-color: #5C2040;
+	background-image: none;
+}
+
+/*
+ * Footer
+ */
+footer {
+	color: #fff;
+	background: #5C2040;
+	padding: 15px 0;
+}
+footer a {
+	color: #DD4814;
+}
+footer a:hover {
+	color: #fff;
+}
+
+/*
+ * Texts
+ */
+.text-primary {
+	color: #DD4814;
+}
+
+.label-info {
+	background-color: #772953;
+}
+
+.navbar-inverse .navbar-brand {
+	color: #FFF;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #FFF;
+}
+
+a {
+	color: #DD4814;
+	text-decoration: none;
+}
+
+.btn-primary {
+	color: #FFF;
+	background-color: #DD4814;
+	border-color: #DD4814;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+  color: #ffffff;
+  background-color: #b83c11;
+  border-color: #a5360f;
+}
+
+/*
+ * Button
+ */
+.btn-lg, .btn-group-lg > .btn {
+	padding: 14px 16px;
+}
+
+/*
+ * Home Quotes
+ */
+.blockquotes {
+  position: relative;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.quotes {
+  position: absolute;
+  margin-left:auto;
+  margin-right:auto;
+  width:100%;
+  display: none;
+  color: #c25098;
+  font-size: 17.5px;
+}
+
+/*
+ * Img Tumbnail
+ */
+.img-thumbnail {
+	width: 42px;
+	height: 42px;
+}
+
+/*
+ * Well
+ */
+.well {
+	color: black;
+}
+
+/*
+ * Image Actu
+ */
+#image_actu {
+    width: 100px;
+    height: 100px;
+    float: left;
+    margin-right: 10px;
+    padding: 2px;
+    border: 2px solid #929191;
+    border-radius: 15px;
+    box-shadow: 1px 1px 3px #929191;
+}
+
+/*
+ * Use all available space
+ */
+.full-height {
+	height: 100%;
+}
+.min-size {
+	min-height: 500px !important;
+}
