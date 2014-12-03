@@ -1,9 +1,9 @@
 from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
-    url(r'^$',        'lists.views.home', name = 'home'),
-    url(r'^agenda$',  'lists.views.home', name = 'agenda'),
-    url(r'^map$',     'lists.views.home', name = 'map'),
-    url(r'^friends$', 'lists.views.home', name = 'friends'),
+    url(r'^$',        'core.views.home',    name = 'home'),
+    url(r'^agenda$',  'core.views.home',    name = 'agenda'),
+    url(r'^map$',     'core.views.map',     name = 'map'),
+    url(r'^friends$', 'core.views.friends', name = 'friends'),
 )
 
