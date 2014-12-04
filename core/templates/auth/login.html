@@ -3,17 +3,18 @@
 {% load bootstrap3 %}
 
 {% block body %}
+	{{ block.super }}
 
 	<div class="container">
 		<div class="row">
-			<div class="col-sd-12">
+			<div class="col-sm-12">
 				{% if form.errors %}
 					<p>Your username and password didn't match. Please try again.</p>
 				{% endif %}
 
-				<form method="post" action="{% url 'django.contrib.auth.views.login' %}">
+				<form class="form-horizontal" method="post" action="{% url 'django.contrib.auth.views.login' %}">
 					{% csrf_token %}
-					{% bootstrap_form form layout='inline' %}
+					{% bootstrap_form form %}
 					{% buttons %}
 						<button type="submit" class="btn btn-primary">{% bootstrap_icon star %}Se connecter</button>
 					{% endbuttons %}
