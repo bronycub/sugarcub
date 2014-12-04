@@ -1,4 +1,5 @@
-from   django.shortcuts import render
+from   django.shortcuts import render, redirect
+from   django.contrib   import auth
 import urllib.request
 import re
 
@@ -12,11 +13,11 @@ def home(request):
 		'irc': irc,
 	})
 
-def agenda(request):
-    return render(request, 'agenda.html')
+	def agenda(request):
+		return render(request, 'agenda.html')
 
 def map(request):
-    return render(request, 'map.html')
+	return render(request, 'map.html')
 
 def friends(request):
-    return render(request, 'friends.html')
+	return render(request, 'friends.html')

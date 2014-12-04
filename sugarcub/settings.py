@@ -14,7 +14,6 @@ from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
@@ -32,6 +31,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+	'bootstrap3',
+	'django.contrib.admindocs',
+	#'django_admin_bootstrapped.bootstrap3',
+	#'django_admin_bootstrapped',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -52,12 +55,17 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+	'django.contrib.admindocs.middleware.XViewMiddleware',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
 	'core.processors.custom_fields',
 	'core.processors.humanitarian_actions',
 	'django.core.context_processors.request',
+)
+
+TEMPLATE_DIRS = (
+	os.path.join(BASE_DIR, 'core', 'templates'),
 )
 
 ROOT_URLCONF = 'sugarcub.urls'
@@ -94,7 +102,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# Auth configuration
+
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/login'
+LOGOUT_URL = '/logout'
+
 ## Per Association Custom
 
-ASSOCIATION_NAME = 'BronyCUB'
+ASSOCIATION_NAME = 'SugarCUB'
 
