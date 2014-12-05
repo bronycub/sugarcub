@@ -1,5 +1,6 @@
 from   django.shortcuts import render, redirect
 from   django.contrib   import auth
+from   .models          import Friend, Profile
 import urllib.request
 import re
 
@@ -13,11 +14,31 @@ def home(request):
 		'irc': irc,
 	})
 
-	def agenda(request):
-		return render(request, 'agenda.html')
+def members(request):
+	return render(request, 'members.html', {
+		'profiles': Profile.objects.all(),
+	})
+
+def agenda(request):
+	return render(request, 'agenda.html')
 
 def map(request):
-	return render(request, 'map.html')
+	return render(request, 'map.html', {
+		'fillPage': True,
+		'profiles': Profile.objects.all(),
+	})
 
 def friends(request):
-	return render(request, 'friends.html')
+	friends     = Friend.objects.all()
+
+	if friends.count() > 2:
+		friendWidth = 4
+	elif friends.count() == 2:
+		friendWidth = 6
+	else:
+		friendWidth = 12
+
+	return render(request, 'friends.html', {
+		'friends': friends,
+		'friendWidth': friendWidth,
+	})
