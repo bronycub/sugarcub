@@ -4,13 +4,14 @@ from django.contrib.auth.models import User
 class Profile(models.Model):
 	''' Represent extra data about a User '''
 	
-	bio               = models.TextField()
-	gravatar          = models.CharField(max_length = 32)
-	phone             = models.IntegerField()
-	birthday          = models.DateField()
-	address           = models.TextField()
-	addressLongitude  = models.FloatField()
-	addressLontatidue = models.FloatField()
+	bio              = models.TextField()
+	gravatar         = models.CharField(blank = True, max_length = 32)
+	avatar           = models.ImageField(blank = True, null = True)
+	phone            = models.IntegerField()
+	birthday         = models.DateField()
+	address          = models.TextField()
+	addressLongitude = models.FloatField(blank = True, null = True)
+	addressLatitude  = models.FloatField(blank = True, null = True)
 
 	user              = models.OneToOneField(User)
 
@@ -56,6 +57,7 @@ class Friend(models.Model):
 
 	name        = models.CharField(max_length = 32)
 	description = models.TextField()
+	image       = models.ImageField(blank = True, null = True)
 	url         = models.URLField()
 
 	def __unicode__(self):

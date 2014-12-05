@@ -1,2 +1,6 @@
 Django==1.7.1
+Pillow==2.6.1
+django-bootstrap3==5.0.3
+docutils==0.12
+mock==1.0.1
 selenium==2.44.0
