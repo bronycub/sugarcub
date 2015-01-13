@@ -32,20 +32,14 @@
 
 {% block sidebar %}
 
-<div id="content-related">
-
-{% regroup tags|dictsort:"library" by library as tag_libraries %}
-{% for library in tag_libraries %}
-<div class="module">
-    <h2>{% firstof library.grouper _("Built-in tags") %}</h2>
-    <ul>
-    {% for tag in library.list|dictsort:"name" %}
-        <li><a href="#{{ library.grouper|default:"built_in" }}-{{ tag.name }}">{{ tag.name }}</a></li>
-    {% endfor %}
-    </ul>
-</div>
-{% endfor %}
-
-</div>
+	{% regroup tags|dictsort:"library" by library as tag_libraries %}
+	{% for library in tag_libraries %}
+		<h2>{% firstof library.grouper _("Built-in tags") %}</h2>
+		<ul class="nav">
+		{% for tag in library.list|dictsort:"name" %}
+			<li><a href="#{{ library.grouper|default:"built_in" }}-{{ tag.name }}">{{ tag.name }}</a></li>
+		{% endfor %}
+		</ul>
+	{% endfor %}
 
 {% endblock %}

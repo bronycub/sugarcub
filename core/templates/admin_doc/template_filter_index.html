@@ -31,21 +31,15 @@
 {% endblock %}
 
 {% block sidebar %}
-
-<div id="content-related">
-
-{% regroup filters|dictsort:"library" by library as filter_libraries %}
-{% for library in filter_libraries %}
-<div class="module">
-    <h2>{% firstof library.grouper _("Built-in filters") %}</h2>
-    <ul>
-    {% for filter in library.list|dictsort:"name" %}
-        <li><a href="#{{ library.grouper|default:"built_in" }}-{{ filter.name }}">{{ filter.name }}</a></li>
-    {% endfor %}
-    </ul>
-</div>
-{% endfor %}
-
-</div>
-
+	{% regroup filters|dictsort:"library" by library as filter_libraries %}
+	{% for library in filter_libraries %}
+	<div >
+		<h2>{% firstof library.grouper _("Built-in filters") %}</h2>
+		<ul class="nav">
+		{% for filter in library.list|dictsort:"name" %}
+			<li><a href="#{{ library.grouper|default:"built_in" }}-{{ filter.name }}">{{ filter.name }}</a></li>
+		{% endfor %}
+		</ul>
+	</div>
+	{% endfor %}
 {% endblock %}
