@@ -13,10 +13,10 @@ class Profile(models.Model):
 	addressLongitude = models.FloatField(blank = True, null = True)
 	addressLatitude  = models.FloatField(blank = True, null = True)
 
-	user              = models.OneToOneField(User)
+	user             = models.OneToOneField(User)
 
 	def __unicode__(self):
-		return user.username
+		return self.user.username
 
 class Pony(models.Model):
 	''' List of ponies with little quotes to display in the user's description '''

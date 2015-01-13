@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load bootstrap3 %}
+
+{% block body %}
+	{{ block.super }}
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				{% if form.errors %}
+					<p>Your username and password didn't match. Please try again.</p>
+				{% endif %}
+
+				<form class="form-horizontal" method="post" action="{% url 'core:signup' %}">
+					{% csrf_token %}
+					{% bootstrap_form form %}
+					{% buttons %}
+						<button type="submit" class="btn btn-primary">{% bootstrap_icon star %}Se connecter</button>
+					{% endbuttons %}
+				</form>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
