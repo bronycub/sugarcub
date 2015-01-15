@@ -112,3 +112,6 @@ LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/login'
 LOGOUT_URL = '/logout'
 
+## Per Association Custom
+
+from custom-settings import *
