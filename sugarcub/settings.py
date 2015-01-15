@@ -114,4 +114,5 @@ LOGOUT_URL = '/logout'
 
 ## Per Association Custom
 
-from custom-settings import *
+from sugarcub.custom_settings import *
+
