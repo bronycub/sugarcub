@@ -1,6 +1,7 @@
 from   django.shortcuts               import render, redirect
 from   django.contrib                 import auth
 from   django.contrib.auth.decorators import login_required
+from   django.contrib.auth            import authenticate
 from   .models                        import Friend, Profile
 from   .forms                         import SignupForm
 import urllib.request
@@ -53,7 +54,7 @@ def signup(request):
 		form = SignupForm(data = request.POST)
 		if form.is_valid():
 			form.save()
-			user = authenticate(username=username, password=password)
+			user = authenticate(username=request.POST.get('username'), password=request.POST.get('password'))
 			if user is not None:
 				if user.is_active:
 					login(request, user)
