@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-15 07:37+0000\n"
+"POT-Creation-Date: 2015-01-15 08:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: core/templates/admin/500.html:4
 msgid "Server error (500)"
@@ -604,4 +603,8 @@ msgstr ""
 
 #: core/templates/admin_doc/view_index.html:47
 msgid "Empty namespace"
+msgstr ""
+
+#: core/templates/auth/login.html:13
+msgid "Your username and password didn't match. Please try again."
 msgstr ""
