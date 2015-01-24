@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-15 08:27+0000\n"
+"POT-Creation-Date: 2015-01-24 14:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -334,7 +334,7 @@ msgstr ""
 #: core/templates/admin_doc/template_filter_index.html:6
 #: core/templates/admin_doc/template_tag_index.html:6
 #: core/templates/admin_doc/view_detail.html:5
-#: core/templates/admin_doc/view_index.html:6
+#: core/templates/admin_doc/view_index.html:6 core/templates/base.html:62
 msgid "Documentation"
 msgstr ""
 
@@ -565,8 +565,10 @@ msgid "View: %(name)s"
 msgstr ""
 
 #: core/templates/admin_doc/view_detail.html:20
+#, fuzzy
+#| msgid "Contact us :"
 msgid "Context:"
-msgstr ""
+msgstr "Contactez-nous"
 
 #: core/templates/admin_doc/view_detail.html:25
 msgid "Templates:"
@@ -606,6 +608,106 @@ msgstr ""
 msgid "Empty namespace"
 msgstr ""
 
-#: core/templates/auth/login.html:13
-msgid "Your username and password didn't match. Please try again."
+#: core/templates/auth/login.html:16 core/templates/base.html:68
+msgid "Login"
+msgstr "Connexion"
+
+#: core/templates/auth/signup.html:16 core/templates/base.html:69
+msgid "Signup"
+msgstr "Nous rejoindre ?"
+
+#: core/templates/auth/signup_success.html:12
+msgid "You signed up successfully ! Welcome !"
+msgstr "Inscription réussie ! Bienvenue !"
+
+#: core/templates/base.html:41
+msgid "Members"
+msgstr "Membres"
+
+#: core/templates/base.html:42
+msgid "Agenda"
+msgstr "Agenda"
+
+#: core/templates/base.html:44
+msgid "Map"
+msgstr "Carte"
+
+#: core/templates/base.html:45
+msgid "Friends"
+msgstr "Amis"
+
+#: core/templates/base.html:48
+msgid "Tchat"
+msgstr "Tchat"
+
+#: core/templates/base.html:49
+msgid "Visio"
+msgstr "Visio"
+
+#: core/templates/base.html:59
+msgid "Profile"
+msgstr "Profil"
+
+#: core/templates/base.html:61
+msgid "Admin"
+msgstr "Admin"
+
+#: core/templates/base.html:64
+msgid "Logout"
+msgstr "Déconnexion"
+
+#: core/templates/base.html:91
+msgid "Contact us :"
+msgstr "Contactez-nous :"
+
+#: core/templates/base.html:97
+msgid "Next humanitarian action :"
+msgstr "Prochaine action humanitaire :"
+
+#: core/templates/base.html:102
+msgid "No humanitarian action scheduled at the moment. /)"
+msgstr "Aucune action humanitaire prévue pour le moment. /)"
+
+#: core/templates/friends.html:29
+msgid "No friends at the moment ..."
+msgstr "Aucun amis pour le moment ..."
+
+#: core/templates/home.html:23
+msgid "BronyCUB, Qu'est-ce que c'est ?"
 msgstr ""
+
+#: core/templates/home.html:26
+msgid ""
+"BronyCUB est un collectif de Bronies de la <strong>C</strong>ommunauté "
+"<strong>U</strong>rbaine de <strong>B</strong>ordeaux en Gironde."
+msgstr ""
+
+#: core/templates/home.html:28
+msgid ""
+"Ce collectif a pour ambition de réunir les fans pour organiser diverses "
+"rencontres."
+msgstr ""
+
+#: core/templates/home.html:39
+msgid "Plus d'info ..."
+msgstr ""
+
+#: core/templates/home.html:42
+msgid "Un Brony ? Ça ce mange ? Kécéssé ?"
+msgstr ""
+
+#: core/templates/home.html:45
+msgid "Sérieusement ... Pourquoi ?"
+msgstr ""
+
+#: core/templates/home.html:50
+msgid "Fermer"
+msgstr ""
+
+#: core/templates/home.html:59
+msgid "Nous rejoindre"
+msgstr ""
+
+#: core/templates/members.html:18
+msgid "No members registered yet ..."
+msgstr "Aucun membres inscrits pour le moment ..."

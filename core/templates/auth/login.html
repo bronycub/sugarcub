@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% load bootstrap3 %}
+{% load i18n %}
 
 {% block body %}
 	{{ block.super }}
@@ -12,7 +13,7 @@
 					{% csrf_token %}
 					{% bootstrap_form form %}
 					{% buttons %}
-						<button type="submit" class="btn btn-primary">{% bootstrap_icon star %}Se connecter</button>
+						<button type="submit" class="btn btn-primary">{% bootstrap_icon star %}{% trans 'Login' %}</button>
 					{% endbuttons %}
 				</form>
 			</div>

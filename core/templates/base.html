@@ -1,12 +1,14 @@
 {% load static %}
 {% load url from future %}
+{% load i18n %}
+
 <!doctype html>
 <html lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
 	<head>
 		{% block head %}
 			<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<title>{{ association_name }} | {% block title %}{% endblock %}</title>
+			<title>{{ collective_name }} | {% block title %}{% endblock %}</title>
 			<link rel="shortcut icon" type="image/png" href="{% static 'ressources/logo/favicon_bronycub.png' %}" />
 			{% block stylesheets %}
 				<link rel="stylesheet" type="text/css" media="screen" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
@@ -27,7 +29,7 @@
 			<header class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 				<div class="container-fluid">
 					<div class="navbar-header">
-						<a href="{% url 'core:home' %}" class="navbar-brand">{{ association_name }}</a>
+						<a href="{% url 'core:home' %}" class="navbar-brand">{{ collective_name }}</a>
 						<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
@@ -36,15 +38,15 @@
 					</div>
 					<div class="navbar-collapse collapse" id="navbar-main">
 						<ul class="nav navbar-nav">
-							<li><a href="{% url 'core:members' %}"><i class="fa fa-user fa-1x"></i>&nbsp;Membres</a></li>
-							<li><a href="{# url '' #}"><i class="fa fa-calendar fa-1x"></i>&nbsp;Agenda</a></li>
-							<li><a href="{# url '' #}https://plus.google.com/photos/+Heuz%C3%A9Florent/albums/5919043632414199089?authkey=CJOh4YWuw6_rVA" target="_blank"><i class="fa fa-picture-o fa-1x"></i>&nbsp;Medias</a></li>
-							<li><a href="{% url 'core:map' %}"><i class="fa fa-map-marker fa-1x"></i>&nbsp;Carte</a></li>
-							<li><a href="{% url 'core:friends' %}"><i class="fa fa-heart fa-1x"></i>&nbsp;Nos amis</a></li>
+							<li><a href="{% url 'core:members' %}"><i class="fa fa-user fa-1x"></i>&nbsp;{% trans 'Members' %}</a></li>
+							<li><a href="{# url '' #}"><i class="fa fa-calendar fa-1x"></i>&nbsp;{% trans 'Agenda' %}</a></li>
+							<li><a href="{# url '' #}https://plus.google.com/photos/+Heuz%C3%A9Florent/albums/5919043632414199089?authkey=CJOh4YWuw6_rVA" target="_blank"><i class="fa fa-picture-o fa-1x"></i>&nbsp;{% trans Medias %}</a></li>
+							<li><a href="{% url 'core:map' %}"><i class="fa fa-map-marker fa-1x"></i>&nbsp;{% trans 'Map' %}</a></li>
+							<li><a href="{% url 'core:friends' %}"><i class="fa fa-heart fa-1x"></i>&nbsp;{% trans 'Friends' %}</a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="https://kiwiirc.com/client?settings=3ebf3eb7a40c2b03f47b918eb2f7087a" target="_blank"><i class="fa fa-comment fa-1x"></i>&nbsp;Tchat</a></li>
-							<li><a href="https://vroom.im/bronycub" target="_blank"><i class="fa fa-video-camera fa-1x"></i>&nbsp;Visio</a></li>
+							<li><a href="https://kiwiirc.com/client?settings=3ebf3eb7a40c2b03f47b918eb2f7087a" target="_blank"><i class="fa fa-comment fa-1x"></i>&nbsp;{% trans 'Tchat' %}</a></li>
+							<li><a href="https://vroom.im/bronycub" target="_blank"><i class="fa fa-video-camera fa-1x"></i>&nbsp;{% trans 'Visio' %}</a></li>
 							{% if user.is_authenticated %}
 								<li role="presentation" class="dropdown">
 									<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
@@ -54,17 +56,17 @@
 
 									</a>
 									<ul class="dropdown-menu" role="menu">
-										<li><a href="{# url '' #}" class=""></i><i class="fa fa-user fa-1x"></i>&nbsp;Profile</a></li>
+										<li><a href="{# url '' #}" class=""></i><i class="fa fa-user fa-1x"></i>&nbsp;{% trans 'Profile' %}</a></li>
 										{% if user.is_staff %}
-											<li><a href="{% url 'admin:index' %}" class=""><i class="glyphicon glyphicon-cog"></i>&nbsp;Admin</a></li>
-											<li><a href="{% url 'django-admindocs-docroot' %}" class=""><i class="glyphicon glyphicon-file"></i>&nbsp;Documentation</a></li>
+											<li><a href="{% url 'admin:index' %}" class=""><i class="glyphicon glyphicon-cog"></i>&nbsp;{% trans 'Admin' %}</a></li>
+											<li><a href="{% url 'django-admindocs-docroot' %}" class=""><i class="glyphicon glyphicon-file"></i>&nbsp;{% trans 'Documentation' %}</a></li>
 										{% endif %}
-										<li><a href="{% url 'core:logout' %}"><i class="fa fa-sign-out fa-1x"></i>&nbsp;Me Déconnecter</a></li>
+										<li><a href="{% url 'core:logout' %}"><i class="fa fa-sign-out fa-1x"></i>&nbsp;{% trans 'Logout' %}</a></li>
 									</ul>
 								</li>
 							{% else %}
-								<li><a href="{% url 'core:login' %}"><!-- data-toggle="modal" data-target="#LoginForm"--><i class="fa fa-sign-in fa-1x"></i>&nbsp;Se Connecter</a></li>
-								<li><a href="{% url 'core:signup' %}"><i class="fa fa-plus fa-1x"></i>&nbsp;Nous rejoindre ?</a></li>
+								<li><a href="{% url 'core:login' %}"><!-- data-toggle="modal" data-target="#LoginForm"--><i class="fa fa-sign-in fa-1x"></i>&nbsp;{% trans 'Login' %}</a></li>
+								<li><a href="{% url 'core:signup' %}"><i class="fa fa-plus fa-1x"></i>&nbsp;{% trans 'Signup' %}</a></li>
 							{% endif %}
 						</ul>
 					</div>
@@ -86,18 +88,18 @@
 					<div class="row">
 						<div class="col-md-3 col-md-offset-1">
 							<h4>
-								<i class="fa fa-envelope"></i>&nbsp;&nbsp;Contactez-nous :
+								<i class="fa fa-envelope"></i>&nbsp;&nbsp;{% trans 'Contact us :' %}
 								<img src="{% static 'img/derpy.gif' %}" width="50px"/>
 							</h4>
 							<a class="btn btn-primary btn-lg" href="mailto:bronycub@googlegroups.com">bronycub@googlegroups.com</a>
 						</div>
 						<div class="col-md-5 col-md-offset-2">
-							<h4><i class="fa fa-heart"></i>&nbsp;&nbsp;Prochaine action humanitaire :</h4>
+							<h4><i class="fa fa-heart"></i>&nbsp;&nbsp;{% trans 'Next humanitarian action :' %}</h4>
 							<div class="well">
 								{% if next_humanitarian_action %}
 									{{ next_humanitarian_action.when }}
 								{% else %}
-									Aucune action n'est prévue pour le moment /)
+								{% trans 'No humanitarian action scheduled at the moment. /)' %}
 								{% endif %}
 							</div>
 						</div>

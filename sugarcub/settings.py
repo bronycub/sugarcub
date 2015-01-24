@@ -86,7 +86,7 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
-LANGUAGE_CODE = 'fr'
+LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 
@@ -109,7 +109,7 @@ LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/login'
 LOGOUT_URL = '/logout'
 
-## Per Association Custom
+## Per Collective Custom
 
 from sugarcub.custom_settings import *
 

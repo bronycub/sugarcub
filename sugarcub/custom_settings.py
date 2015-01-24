@@ -1,7 +1,7 @@
 
 """
-Per association settings
+Per collective settings
 """
 
-ASSOCIATION_NAME = 'SugarCUB'
+COLLECTIVE_NAME = 'SugarCUB'
 

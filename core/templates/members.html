@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load i18n %}
+
 {% block body %}
 	{{ block.super }}
 
@@ -13,7 +15,7 @@
 		{% endif %}
 	{% empty %}
 		<div class="row">
-			<p>Oh oh ! Il n'y a pas de membre inscrit… :(</p>
+			<p>{% trans 'No members registered yet ...' %}</p>
 		</div>
 	{% endfor %}
 	</div>

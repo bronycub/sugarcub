@@ -53,7 +53,7 @@ class Quote(models.Model):
 		return self.quote
 
 class Friend(models.Model):
-	''' List of other associations shown as your friends '''
+	''' List of other collectives shown as your friends '''
 
 	name        = models.CharField(max_length = 32)
 	description = models.TextField()
@@ -64,7 +64,7 @@ class Friend(models.Model):
 		return self.title
 
 class Event(models.Model):
-	''' List of events the association has planned '''
+	''' List of events the collective has planned '''
 
 	title = models.CharField(max_length = 64)
 	host  = models.CharField(max_length = 64)
