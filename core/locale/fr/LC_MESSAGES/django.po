@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-24 14:16+0000\n"
+"POT-Creation-Date: 2015-01-24 17:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,136 +18,119 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: core/templates/admin/500.html:4
+#: core/templates/admin-old/500.html:4
 msgid "Server error (500)"
 msgstr ""
 
-#: core/templates/admin/500.html:7
+#: core/templates/admin-old/500.html:7
 msgid "Server Error <em>(500)</em>"
 msgstr ""
 
-#: core/templates/admin/500.html:8
+#: core/templates/admin-old/500.html:8
 msgid ""
 "There's been an error. It's been reported to the site administrators via "
 "email and should be fixed shortly. Thanks for your patience."
 msgstr ""
 
-#: core/templates/admin/actions.html:4
+#: core/templates/admin-old/actions.html:4
 msgid "Run the selected action"
 msgstr ""
 
-#: core/templates/admin/actions.html:4
+#: core/templates/admin-old/actions.html:4
 msgid "Go"
 msgstr ""
 
-#: core/templates/admin/actions.html:11
+#: core/templates/admin-old/actions.html:11
 msgid "Click here to select the objects across all pages"
 msgstr ""
 
-#: core/templates/admin/actions.html:11
+#: core/templates/admin-old/actions.html:11
 #, python-format
 msgid "Select all %(total_count)s %(module_name)s"
 msgstr ""
 
-#: core/templates/admin/actions.html:13
+#: core/templates/admin-old/actions.html:13
 msgid "Clear selection"
 msgstr ""
 
-#: core/templates/admin/auth/user/add_form.html:6
+#: core/templates/admin-old/auth/user/add_form.html:6
 msgid ""
 "First, enter a username and password. Then, you'll be able to edit more user "
 "options."
 msgstr ""
 
-#: core/templates/admin/auth/user/add_form.html:8
+#: core/templates/admin-old/auth/user/add_form.html:8
 msgid "Enter a username and password."
 msgstr ""
 
-#: core/templates/admin/auth/user/change_password.html:15
-#: core/templates/admin/auth/user/change_password.html:48
+#: core/templates/admin-old/auth/user/change_password.html:16
+#: core/templates/admin-old/auth/user/change_password.html:29
 msgid "Change password"
 msgstr ""
 
-#: core/templates/admin/auth/user/change_password.html:24
-#: core/templates/admin/change_form.html:44
-#: core/templates/admin/change_list.html:64 core/templates/admin/login.html:17
-msgid "Please correct the error below."
-msgstr ""
-
-#: core/templates/admin/auth/user/change_password.html:24
-#: core/templates/admin/change_form.html:44
-#: core/templates/admin/change_list.html:64 core/templates/admin/login.html:17
-msgid "Please correct the errors below."
-msgstr ""
-
-#: core/templates/admin/auth/user/change_password.html:28
+#: core/templates/admin-old/auth/user/change_password.html:25
 #, python-format
 msgid "Enter a new password for the user <strong>%(username)s</strong>."
 msgstr ""
 
-#: core/templates/admin/auth/user/change_password.html:35
-msgid "Password"
-msgstr ""
-
-#: core/templates/admin/auth/user/change_password.html:41
-msgid "Password (again)"
-msgstr ""
-
-#: core/templates/admin/auth/user/change_password.html:42
-msgid "Enter the same password as above, for verification."
-msgstr ""
-
-#: core/templates/admin/base.html:21
+#: core/templates/admin-old/base.html:21
 msgid "Home"
 msgstr ""
 
-#: core/templates/admin/base_site.html:3
-msgid "Django site admin"
-msgstr ""
-
-#: core/templates/admin/change_form.html:19 core/templates/admin/index.html:33
+#: core/templates/admin-old/change_form.html:20
+#: core/templates/admin-old/index.html:33
 msgid "Add"
 msgstr ""
 
-#: core/templates/admin/change_form.html:30
-#: core/templates/admin/object_history.html:8
+#: core/templates/admin-old/change_form.html:31
+#: core/templates/admin-old/object_history.html:8
 msgid "History"
 msgstr ""
 
-#: core/templates/admin/change_form.html:32
-#: core/templates/admin/edit_inline/stacked.html:9
-#: core/templates/admin/edit_inline/tabular.html:30
+#: core/templates/admin-old/change_form.html:33
+#: core/templates/admin-old/edit_inline/stacked.html:9
+#: core/templates/admin-old/edit_inline/tabular.html:30
 msgid "View on site"
 msgstr ""
 
-#: core/templates/admin/change_list.html:55
+#: core/templates/admin-old/change_list.html:55
 #, python-format
 msgid "Add %(name)s"
 msgstr ""
 
-#: core/templates/admin/change_list.html:75
+#: core/templates/admin-old/change_list.html:64
+#: core/templates/admin-old/login.html:17
+msgid "Please correct the error below."
+msgstr ""
+
+#: core/templates/admin-old/change_list.html:64
+#: core/templates/admin-old/login.html:17
+msgid "Please correct the errors below."
+msgstr ""
+
+#: core/templates/admin-old/change_list.html:75
 msgid "Filter"
 msgstr ""
 
-#: core/templates/admin/change_list_results.html:17
+#: core/templates/admin-old/change_list_results.html:17
 msgid "Remove from sorting"
 msgstr ""
 
-#: core/templates/admin/change_list_results.html:18
+#: core/templates/admin-old/change_list_results.html:18
 #, python-format
 msgid "Sorting priority: %(priority_number)s"
 msgstr ""
 
-#: core/templates/admin/change_list_results.html:19
+#: core/templates/admin-old/change_list_results.html:19
 msgid "Toggle sorting"
 msgstr ""
 
-#: core/templates/admin/delete_confirmation.html:10
-#: core/templates/admin/submit_line.html:6
+#: core/templates/admin-old/delete_confirmation.html:10
+#: core/templates/admin-old/submit_line.html:6
 msgid "Delete"
 msgstr ""
 
-#: core/templates/admin/delete_confirmation.html:16
+#: core/templates/admin-old/delete_confirmation.html:16
 #, python-format
 msgid ""
 "Deleting the %(object_name)s '%(escaped_object)s' would result in deleting "
@@ -155,30 +138,30 @@ msgid ""
 "following types of objects:"
 msgstr ""
 
-#: core/templates/admin/delete_confirmation.html:24
+#: core/templates/admin-old/delete_confirmation.html:24
 #, python-format
 msgid ""
 "Deleting the %(object_name)s '%(escaped_object)s' would require deleting the "
 "following protected related objects:"
 msgstr ""
 
-#: core/templates/admin/delete_confirmation.html:32
+#: core/templates/admin-old/delete_confirmation.html:32
 #, python-format
 msgid ""
 "Are you sure you want to delete the %(object_name)s \"%(escaped_object)s\"? "
 "All of the following related items will be deleted:"
 msgstr ""
 
-#: core/templates/admin/delete_confirmation.html:37
-#: core/templates/admin/delete_selected_confirmation.html:42
+#: core/templates/admin-old/delete_confirmation.html:37
+#: core/templates/admin-old/delete_selected_confirmation.html:42
 msgid "Yes, I'm sure"
 msgstr ""
 
-#: core/templates/admin/delete_selected_confirmation.html:9
+#: core/templates/admin-old/delete_selected_confirmation.html:9
 msgid "Delete multiple objects"
 msgstr ""
 
-#: core/templates/admin/delete_selected_confirmation.html:15
+#: core/templates/admin-old/delete_selected_confirmation.html:15
 #, python-format
 msgid ""
 "Deleting the selected %(objects_name)s would result in deleting related "
@@ -186,140 +169,140 @@ msgid ""
 "types of objects:"
 msgstr ""
 
-#: core/templates/admin/delete_selected_confirmation.html:23
+#: core/templates/admin-old/delete_selected_confirmation.html:23
 #, python-format
 msgid ""
 "Deleting the selected %(objects_name)s would require deleting the following "
 "protected related objects:"
 msgstr ""
 
-#: core/templates/admin/delete_selected_confirmation.html:31
+#: core/templates/admin-old/delete_selected_confirmation.html:31
 #, python-format
 msgid ""
 "Are you sure you want to delete the selected %(objects_name)s? All of the "
 "following objects and their related items will be deleted:"
 msgstr ""
 
-#: core/templates/admin/edit_inline/stacked.html:26
-#: core/templates/admin/edit_inline/tabular.html:78
+#: core/templates/admin-old/edit_inline/stacked.html:26
+#: core/templates/admin-old/edit_inline/tabular.html:78
 msgid "Remove"
 msgstr ""
 
-#: core/templates/admin/edit_inline/stacked.html:27
-#: core/templates/admin/edit_inline/tabular.html:77
+#: core/templates/admin-old/edit_inline/stacked.html:27
+#: core/templates/admin-old/edit_inline/tabular.html:77
 #, python-format
 msgid "Add another %(verbose_name)s"
 msgstr ""
 
-#: core/templates/admin/edit_inline/tabular.html:17
+#: core/templates/admin-old/edit_inline/tabular.html:17
 msgid "Delete?"
 msgstr ""
 
-#: core/templates/admin/filter.html:2
+#: core/templates/admin-old/filter.html:2
 #, python-format
 msgid " By %(filter_title)s "
 msgstr ""
 
-#: core/templates/admin/index.html:19
+#: core/templates/admin-old/index.html:19
 #, python-format
 msgid "Models in the %(name)s application"
 msgstr ""
 
-#: core/templates/admin/index.html:44
+#: core/templates/admin-old/index.html:44
 msgid "Change"
 msgstr ""
 
-#: core/templates/admin/index.html:55
+#: core/templates/admin-old/index.html:55
 msgid "You don't have permission to edit anything."
 msgstr ""
 
-#: core/templates/admin/index.html:62
+#: core/templates/admin-old/index.html:62
 msgid "Recent Actions"
 msgstr ""
 
-#: core/templates/admin/index.html:63
+#: core/templates/admin-old/index.html:63
 msgid "My Actions"
 msgstr ""
 
-#: core/templates/admin/index.html:67
+#: core/templates/admin-old/index.html:67
 msgid "None available"
 msgstr ""
 
-#: core/templates/admin/index.html:91
+#: core/templates/admin-old/index.html:91
 msgid "Unknown content"
 msgstr ""
 
-#: core/templates/admin/invalid_setup.html:9
+#: core/templates/admin-old/invalid_setup.html:9
 msgid ""
 "Something's wrong with your database installation. Make sure the appropriate "
 "database tables have been created, and make sure the database is readable by "
 "the appropriate user."
 msgstr ""
 
-#: core/templates/admin/login.html:37
+#: core/templates/admin-old/login.html:37
 msgid "Password:"
 msgstr ""
 
-#: core/templates/admin/login.html:43
+#: core/templates/admin-old/login.html:43
 msgid "Forgotten your password or username?"
 msgstr ""
 
-#: core/templates/admin/login.html:47
+#: core/templates/admin-old/login.html:47
 msgid "Log in"
 msgstr ""
 
-#: core/templates/admin/object_history.html:19
+#: core/templates/admin-old/object_history.html:19
 msgid "Date/time"
 msgstr ""
 
-#: core/templates/admin/object_history.html:20
+#: core/templates/admin-old/object_history.html:20
 msgid "User"
 msgstr ""
 
-#: core/templates/admin/object_history.html:21
+#: core/templates/admin-old/object_history.html:21
 msgid "Action"
 msgstr ""
 
-#: core/templates/admin/object_history.html:35
+#: core/templates/admin-old/object_history.html:35
 msgid ""
 "This object doesn't have a change history. It probably wasn't added via this "
 "admin site."
 msgstr ""
 
-#: core/templates/admin/pagination.html:10
+#: core/templates/admin-old/pagination.html:10
 msgid "Show all"
 msgstr ""
 
-#: core/templates/admin/pagination.html:11
-#: core/templates/admin/submit_line.html:3
+#: core/templates/admin-old/pagination.html:11
+#: core/templates/admin-old/submit_line.html:3
 msgid "Save"
 msgstr ""
 
-#: core/templates/admin/search_form.html:7
+#: core/templates/admin-old/search_form.html:7
 msgid "Search"
 msgstr ""
 
-#: core/templates/admin/search_form.html:9
+#: core/templates/admin-old/search_form.html:9
 #, python-format
 msgid "%(counter)s result"
 msgid_plural "%(counter)s results"
 msgstr[0] ""
 msgstr[1] ""
 
-#: core/templates/admin/search_form.html:9
+#: core/templates/admin-old/search_form.html:9
 #, python-format
 msgid "%(full_result_count)s total"
 msgstr ""
 
-#: core/templates/admin/submit_line.html:8
+#: core/templates/admin-old/submit_line.html:8
 msgid "Save as new"
 msgstr ""
 
-#: core/templates/admin/submit_line.html:9
+#: core/templates/admin-old/submit_line.html:9
 msgid "Save and add another"
 msgstr ""
 
-#: core/templates/admin/submit_line.html:10
+#: core/templates/admin-old/submit_line.html:10
 msgid "Save and continue editing"
 msgstr ""
 
@@ -627,6 +610,10 @@ msgstr "Membres"
 #: core/templates/base.html:42
 msgid "Agenda"
 msgstr "Agenda"
+
+#: core/templates/base.html:43
+msgid "Medias"
+msgstr "Médias"
 
 #: core/templates/base.html:44
 msgid "Map"
