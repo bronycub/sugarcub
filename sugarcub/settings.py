@@ -32,6 +32,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = (
 	'bootstrap3',
+	'django_admin_bootstrapped.bootstrap3',
+	'django_admin_bootstrapped',
 	'django.contrib.admindocs',
 	'django.contrib.admin',
 	'django.contrib.auth',
@@ -108,6 +110,10 @@ MEDIA_ROOT  = os.path.join(BASE_DIR, '../media')
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/login'
 LOGOUT_URL = '/logout'
+
+# Admin
+
+DAB_FIELD_RENDERER = 'django_admin_bootstrapped.renderers.BootstrapFieldRenderer'
 
 ## Per Collective Custom
 
