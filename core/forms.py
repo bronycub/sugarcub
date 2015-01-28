@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms  import UserCreationForm
 from multiform                  import MultiModelForm
 from .models                    import Profile
+from collections                import OrderedDict
 
 class SignupProfileForm(forms.ModelForm):
 
@@ -11,10 +12,10 @@ class SignupProfileForm(forms.ModelForm):
 		fields = ['bio', 'gravatar', 'avatar', 'phone', 'birthday', 'address']
 
 class SignupForm(MultiModelForm):
-    base_forms = {
-        'profile': SignupProfileForm,
-        'user':    UserCreationForm,
-    }
+    base_forms = [
+        ('user',    UserCreationForm),
+        ('profile', SignupProfileForm),
+    ]
 
     def dispatch_init_instance(self, name, instance):
         if name == 'profile':
