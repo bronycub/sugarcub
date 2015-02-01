@@ -9,11 +9,11 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12">
-				<form class="form-horizontal" method="post" action="{% url 'core:login' %}">
+				<form class="form-horizontal" method="post" action="{% url 'users:signup' %}">
 					{% csrf_token %}
 					{% bootstrap_form form %}
 					{% buttons %}
-						<button type="submit" class="btn btn-primary">{% bootstrap_icon star %}{% trans 'Login' %}</button>
+						<button type="submit" class="btn btn-primary">{% bootstrap_icon star %}{% trans 'Signup' %}</button>
 					{% endbuttons %}
 				</form>
 			</div>

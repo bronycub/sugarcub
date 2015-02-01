@@ -45,6 +45,7 @@ INSTALLED_APPS = (
 	'sugarcub',
 	'core',
 	'users',
+	'back_office',
 	'bbbff',
 )
 
@@ -67,7 +68,8 @@ TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
 )
 
 TEMPLATE_DIRS = (
-	os.path.join(BASE_DIR, 'core', 'templates'),
+	os.path.join(BASE_DIR, 'core',        'templates'),
+	os.path.join(BASE_DIR, 'back_office', 'templates'),
 )
 
 ROOT_URLCONF = 'sugarcub.urls'

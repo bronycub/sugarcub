@@ -38,7 +38,7 @@
 					</div>
 					<div class="navbar-collapse collapse" id="navbar-main">
 						<ul class="nav navbar-nav">
-							<li><a href="{% url 'core:members' %}"><i class="fa fa-user fa-1x"></i>&nbsp;{% trans 'Members' %}</a></li>
+							<li><a href="{% url 'users:members' %}"><i class="fa fa-user fa-1x"></i>&nbsp;{% trans 'Members' %}</a></li>
 							<li><a href="{# url '' #}"><i class="fa fa-calendar fa-1x"></i>&nbsp;{% trans 'Agenda' %}</a></li>
 							<li><a href="{# url '' #}" target="_blank"><i class="fa fa-picture-o fa-1x"></i>&nbsp;{% trans 'Medias' %}</a></li>
 							<li><a href="{% url 'core:map' %}"><i class="fa fa-map-marker fa-1x"></i>&nbsp;{% trans 'Map' %}</a></li>
@@ -61,12 +61,12 @@
 											<li><a href="{% url 'admin:index' %}" class=""><i class="glyphicon glyphicon-cog"></i>&nbsp;{% trans 'Admin' %}</a></li>
 											<li><a href="{% url 'django-admindocs-docroot' %}" class=""><i class="glyphicon glyphicon-file"></i>&nbsp;{% trans 'Documentation' %}</a></li>
 										{% endif %}
-										<li><a href="{% url 'core:logout' %}"><i class="fa fa-sign-out fa-1x"></i>&nbsp;{% trans 'Logout' %}</a></li>
+										<li><a href="{% url 'users:logout' %}"><i class="fa fa-sign-out fa-1x"></i>&nbsp;{% trans 'Logout' %}</a></li>
 									</ul>
 								</li>
 							{% else %}
-								<li><a href="{% url 'core:login' %}"><!-- data-toggle="modal" data-target="#LoginForm"--><i class="fa fa-sign-in fa-1x"></i>&nbsp;{% trans 'Login' %}</a></li>
-								<li><a href="{% url 'core:signup' %}"><i class="fa fa-plus fa-1x"></i>&nbsp;{% trans 'Signup' %}</a></li>
+								<li><a href="{% url 'users:login' %}"><!-- data-toggle="modal" data-target="#LoginForm"--><i class="fa fa-sign-in fa-1x"></i>&nbsp;{% trans 'Login' %}</a></li>
+								<li><a href="{% url 'users:signup' %}"><i class="fa fa-plus fa-1x"></i>&nbsp;{% trans 'Signup' %}</a></li>
 							{% endif %}
 						</ul>
 					</div>
