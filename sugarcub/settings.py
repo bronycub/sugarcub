@@ -30,7 +30,13 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = (
+PROJECT_APPS = (
+	'core',
+	'users',
+	'bbbff',
+)
+
+DEPENDENCIES_APPS = (
 	'bootstrap3',
 	'django_admin_bootstrapped.bootstrap3',
 	'django_admin_bootstrapped',
@@ -42,12 +48,12 @@ INSTALLED_APPS = (
 	'django.contrib.messages',
 	'django.contrib.staticfiles',
 	'multiform',
-	'sugarcub',
-	'core',
-	'users',
-	'back_office',
-	'bbbff',
 )
+
+DEV_DEPENDENCIES_APPS = (
+)
+
+INSTALLED_APPS = PROJECT_APPS + ('sugarcub',) + DEPENDENCIES_APPS
 
 MIDDLEWARE_CLASSES = (
 	'django.contrib.sessions.middleware.SessionMiddleware',
@@ -116,6 +122,8 @@ LOGOUT_URL = '/logout'
 # Admin
 
 DAB_FIELD_RENDERER = 'django_admin_bootstrapped.renderers.BootstrapFieldRenderer'
+
+# Tests
 
 ## Per Collective Custom
 
