@@ -6,26 +6,26 @@ from .models                    import Profile
 
 class ProfileForm(forms.ModelForm):
 
-	class Meta:
-		model  = Profile
-		fields = ['bio', 'gravatar', 'avatar', 'phone', 'birthday', 'address']
+    class Meta:
+        model  = Profile
+        fields = ['bio', 'gravatar', 'avatar', 'phone', 'birthday', 'address']
 
 class SignupForm(MultiModelForm):
-	base_forms = [
-			('user',    UserCreationForm),
-			('profile', ProfileForm)
-	]   
+    base_forms = [
+            ('user',    UserCreationForm),
+            ('profile', ProfileForm)
+    ]   
 
-	def dispatch_init_instance(self, name, instance):
-		if name == 'profile':
-			return instance
-		return super(SignupForm, self).dispatch_init_instance(name, instance)
+    def dispatch_init_instance(self, name, instance):
+        if name == 'profile':
+            return instance
+        return super(SignupForm, self).dispatch_init_instance(name, instance)
 
-	def save(self, commit=True):
-		"""Save both forms and attach the user to the profile."""
-		instances = super(SignupForm, self).save(commit=False)
-		instances['user'].save()
-		instances['profile'].user = instances['user']
-		instances['profile'].save()
-		return instances
+    def save(self, commit=True):
+        """Save both forms and attach the user to the profile."""
+        instances = super(SignupForm, self).save(commit=False)
+        instances['user'].save()
+        instances['profile'].user = instances['user']
+        instances['profile'].save()
+        return instances
 
