@@ -1,5 +1,5 @@
 from selenium                       import webdriver
-from .base                          import FunctionalTest
+from functional_tests.base          import FunctionalTest
 from selenium.webdriver.common.keys import Keys
 from time                           import sleep
 

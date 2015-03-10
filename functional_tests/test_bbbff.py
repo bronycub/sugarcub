@@ -1,5 +1,5 @@
-from selenium import webdriver
-from .base    import FunctionalTest
+from selenium              import webdriver
+from functional_tests.base import FunctionalTest
 
 class BbbffTest(FunctionalTest):
     '''Test BBBFF functionalitites'''

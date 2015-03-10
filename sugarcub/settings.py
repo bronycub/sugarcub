@@ -132,4 +132,3 @@ DAB_FIELD_RENDERER = 'django_admin_bootstrapped.renderers.BootstrapFieldRenderer
 ## Per Collective Custom
 
 from sugarcub.custom_settings import *
-
