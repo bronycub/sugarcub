@@ -7,3 +7,6 @@ db.sqlite3
 
 # I10N
 *.mo
+
+# Code coverage
+.coverage

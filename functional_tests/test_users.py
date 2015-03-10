@@ -1,12 +1,22 @@
-from model_mommy                import mommy
-from django.contrib.auth.models import User
-from django.core.urlresolvers   import reverse
-from django_webtest             import WebTest
+from   model_mommy                import mommy
+from   django.contrib.auth.models import User
+from   django.core.urlresolvers   import reverse
+from   django_webtest             import WebTest
+from   users.models               import Profile
+import datetime
 
 class AccountTest(WebTest):
 
     def setUp(self):
-        user = mommy.make(User, username='user_test')
+        user    = mommy.make(User, username = 'user_test')
+        profile = mommy.make(Profile,
+            bio      = 'bio_test',
+            gravatar = 'gravatar_test',
+            phone    = '0123456789',
+            birthday = datetime.date(1970, 1, 1),
+            address  = 'address_test',
+            user     = user,
+        )
         user.set_password('password_test')
         user.save()
 
@@ -42,19 +52,19 @@ class AccountTest(WebTest):
         assert page.html.select('.has-error')
 
         # You can submit a correct form and create your account
-        page.form['user-username'] = 'user_signup_test'
-        page.form['user-password1'] = 'password_test'
-        page.form['user-password2'] = 'password_test'
-        page.form['profile-bio'] = 'test'
+        page.form['user-username']    = 'user_signup_test'
+        page.form['user-password1']   = 'password_test'
+        page.form['user-password2']   = 'password_test'
+        page.form['profile-bio']      = 'test'
         page.form['profile-gravatar'] = 'test'
-        page.form['profile-phone'] = '0123456789'
+        page.form['profile-phone']    = '0123456789'
         page.form['profile-birthday'] = '01/01/1970'
-        page.form['profile-address'] = 'test'
-        # TODO fill form with valid data
+        page.form['profile-address']  = 'test'
         page = page.form.submit().follow()
 
-        # You're then redirected to the welcome page
+        # You're then redirected to the welcome page and you're logged in
         assert reverse('users:signup_success') in page.request.url 
+        assert 'user_signup_test' in page
 
     def test_login_signup_only_not_logged(self):
         '''Test that the links to the login and signup pages are only present if you\'re not logged'''
@@ -80,6 +90,17 @@ class AccountTest(WebTest):
 
     def test_edit_profile(self):
         'Test that you can edit your profile'
+        page = self.app.get(reverse('users:profile'), user = 'user_test')
+
+        # Current data are displayed
+        assert 'user_test'     in page
+        assert 'bio_test'      in page
+        assert 'gravatar_test' in page
+        assert '0123456789'    in page
+        assert '01/01/1970'    in page
+        assert 'address_test'  in page
+
+        # You can update your data
         self.fail('TODO : Write the functionalities and tests')
 
 
