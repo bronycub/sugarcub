@@ -15,8 +15,6 @@
                 <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/bootstrap.min.css' %}">
                 <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/sugarcub.css' %}">
                 <link rel="stylesheet" type="text/css" media="screen" href="{% static 'zocial/zocial.css' %}">
-                <link rel="stylesheet" type="text/css" media="screen" href="{% static 'calendar/css/smoothness/jquery-ui-1.8.23.custom.css' %}" />
-                <link rel="stylesheet" type="text/css" media="screen" href="{% static 'calendar/css/calendar.css' %}" />
                 {% block extrastyle %}{% endblock %}
             {% endblock %}
             {% block blockbots %}{% endblock %}
@@ -56,7 +54,7 @@
 
                                     </a>
                                     <ul class="dropdown-menu" role="menu">
-                                        <li><a href="{# url '' #}" class=""></i><i class="fa fa-user fa-1x"></i>&nbsp;{% trans 'Profile' %}</a></li>
+                                        <li><a href="{% url 'users:profile' %}" class=""></i><i class="fa fa-user fa-1x"></i>&nbsp;{% trans 'Profile' %}</a></li>
                                         {% if user.is_staff %}
                                             <li><a href="{% url 'admin:index' %}" class=""><i class="glyphicon glyphicon-cog"></i>&nbsp;{% trans 'Admin' %}</a></li>
                                             <li><a href="{% url 'django-admindocs-docroot' %}" class=""><i class="glyphicon glyphicon-file"></i>&nbsp;{% trans 'Documentation' %}</a></li>
@@ -97,9 +95,12 @@
                             <h4><i class="fa fa-heart"></i>&nbsp;&nbsp;{% trans 'Next humanitarian action :' %}</h4>
                             <div class="well">
                                 {% if next_humanitarian_action %}
-                                    {{ next_humanitarian_action.when }}
+                                    <a href="{{ next_humanitarian_action.link }}">
+                                        <strong>{{ next_humanitarian_action.title }}</strong>
+                                        {% blocktrans with host=next_humanitarian_action.host when=next_humanitarian_action.when|date where=next_humanitarian_action.where %}Hosted by {{ host }}, {{ where }}, {{ when }}{% endblocktrans %}
+                                    </a>
                                 {% else %}
-                                {% trans 'No humanitarian action scheduled at the moment. /)' %}
+                                    {% trans 'No humanitarian action scheduled at the moment. /)' %}
                                 {% endif %}
                             </div>
                         </div>
@@ -109,11 +110,8 @@
         </div>
 
         {% block javascripts %}
-            <script type="application/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-            <script type="application/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
+            <script type="application/javascript" src="{% static 'js/jquery-1.11.2.min.js' %}"></script>
             <script type="application/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
-            <script type="application/javascript" src="{% static 'calendar/js/jquery-ui-1.8.23.custom.min.js' %}"></script>
-            <script type="application/javascript" src="{% static 'calendar/js/calendar.min.js' %}"></script>
             <script type="application/javascript" src="{% static 'js/jquery.expander.js' %}"></script>
             <script type="application/javascript" src="{% static 'js/expender.js' %}"></script>
             <script type="application/javascript" src="{% static 'js/konami.js' %}"></script>

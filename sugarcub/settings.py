@@ -37,6 +37,7 @@ PROJECT_APPS = (
 )
 
 DEPENDENCIES_APPS = (
+    'stdimage',
     'bootstrap3',
     'django_admin_bootstrapped.bootstrap3',
     'django_admin_bootstrapped',
@@ -74,8 +75,8 @@ TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
 )
 
 TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, 'core',        'templates'),
-    os.path.join(BASE_DIR, 'back_office', 'templates'),
+    os.path.join(BASE_DIR, 'core',  'templates'),
+    os.path.join(BASE_DIR, 'admin', 'templates'),
 )
 
 ROOT_URLCONF = 'sugarcub.urls'
@@ -110,14 +111,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL  = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, '../static')
-MEDIA_ROOT  = os.path.join(BASE_DIR, '../media')
+STATIC_ROOT = os.path.join(BASE_DIR, '..', 'static')
+
+# Media
+MEDIA_URL  = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, '..', 'media')
 
 # Auth configuration
 
 LOGIN_REDIRECT_URL = '/'
-LOGIN_URL = '/login'
-LOGOUT_URL = '/logout'
+LOGIN_URL          = '/login'
+LOGOUT_URL         = '/logout'
 
 # Admin
 

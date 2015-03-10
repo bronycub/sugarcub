@@ -1,8 +1,6 @@
-from   django.shortcuts               import render, redirect
-from   django.contrib                 import auth
-from   django.contrib.auth.decorators import login_required
-from   django.contrib.auth            import authenticate
-from   .models                        import Friend
+from   django.shortcuts import render, redirect
+from   .models          import Friend, Quote
+from   users.models     import Profile
 import urllib.request
 import re
 
@@ -17,6 +15,7 @@ def home(request):
 
     return render(request, 'home.html', {
         'irc': irc,
+        'quotes': Quote.objects.all,
     })
 
 def agenda(request):
@@ -29,7 +28,7 @@ def map(request):
     })
 
 def friends(request):
-    friends     = Friend.objects.all()
+    friends = Friend.objects.all()
 
     if friends.count() > 2:
         friendWidth = 4
@@ -39,6 +38,6 @@ def friends(request):
         friendWidth = 12
 
     return render(request, 'friends.html', {
-        'friends': friends,
+        'friends':     friends,
         'friendWidth': friendWidth,
     })
