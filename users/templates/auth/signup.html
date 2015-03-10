@@ -9,7 +9,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <form class="form-horizontal" method="post" action="{% url 'users:signup' %}">
+                <form enctype="multipart/form-data" class="form-horizontal" method="post" action="{% url 'users:signup' %}">
                     {% csrf_token %}
                     {% bootstrap_form form %}
                     {% buttons %}

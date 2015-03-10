@@ -8,7 +8,7 @@
     <div class="container">
     {% for profile in profiles %}
         <div class="row">
-            {% include 'users/one-user.html' with profile=profile %}
+            {% include 'members/one-user.html' with profile=profile %}
         </div>
         {% if not forloop.last %}
             <br />

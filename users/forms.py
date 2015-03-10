@@ -12,8 +12,8 @@ class ProfileForm(forms.ModelForm):
 
 class SignupForm(MultiModelForm):
     base_forms = [
-            ('user',    UserCreationForm),
-            ('profile', ProfileForm)
+        ('user',    UserCreationForm),
+        ('profile', ProfileForm),
     ]   
 
     def dispatch_init_instance(self, name, instance):

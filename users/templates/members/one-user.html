@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-sm-2" align="center">
             {% if profile.avatar %}
-                {{ profile.avatar }}
+                <img src="{{ profile.avatar.avatar.url }}">
             {% elif profile.gravatar %}
                 <img src="http://fr.gravatar.com/avatar/{{ profile.gravatar }}?s=100" alt="" class="img-rounded img-responsive">
             {% else %}
@@ -57,7 +57,7 @@
             <br /><br />
             {% for pony in profile.pony_set.all %}
                 <div class="col-sm-4">
-                    <img src="{% url 'img/ponies/'|add:pony.pony|add:'.png' %}" class="img-thumbnail"/>&nbsp;&nbsp;&nbsp;<span class='label label-info'>{{ pony.message }}</span>
+                    <img src="{% static 'img/ponies/'|add:pony.pony|add:'.png' %}" class="img-thumbnail"/>&nbsp;&nbsp;&nbsp;<span class='label label-info'>{{ pony.message }}</span>
                 </div>
                 {% if not forloop.last %}&nbsp;&nbsp;{% endif %}
             {% endfor %}

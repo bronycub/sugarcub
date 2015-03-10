@@ -1,22 +1,33 @@
 from django.db                  import models
 from django.contrib.auth.models import User
+from stdimage.models            import StdImageField
+from stdimage.utils             import UploadToUUID
+from django.core.validators     import RegexValidator
 
 class Profile(models.Model):
     ''' Represent extra data about a User '''
+
+    user             = models.OneToOneField(User)
     
     bio              = models.TextField()
     gravatar         = models.CharField(blank = True, max_length = 32)
-    avatar           = models.ImageField(blank = True, null = True)
-    phone            = models.IntegerField()
+    avatar           = StdImageField(blank = True, null = True,
+                            variations = {'avatar': (100, 100)},
+                            upload_to  = UploadToUUID(path = 'avatars'),
+                        )
+    phone_regex      = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
+    phone            = models.CharField(validators=[phone_regex], max_length=15, blank=True)
     birthday         = models.DateField()
     address          = models.TextField()
     addressLongitude = models.FloatField(blank = True, null = True)
     addressLatitude  = models.FloatField(blank = True, null = True)
 
-    user             = models.OneToOneField(User)
-
     def __unicode__(self):
-        return self.user.username
+        try:
+            return self.user.username
+        except:
+            return 'Profile unlinked to any User'
+
 
 class Pony(models.Model):
     ''' List of ponies with little quotes to display in the user's description '''
@@ -33,6 +44,7 @@ class Pony(models.Model):
 
     class Meta:
         verbose_name_plural = "ponies"
+
 
 class Url(models.Model):
     ''' List of urls in the user's description '''
