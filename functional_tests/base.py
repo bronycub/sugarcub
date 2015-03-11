@@ -1,7 +1,9 @@
-import sys
+import sys, os
 from   selenium                           import webdriver
 from   selenium.webdriver.common.keys     import Keys
 from   django.contrib.staticfiles.testing import StaticLiveServerTestCase
+from   unittest.result                    import TestResult
+from   datetime                           import datetime
 
 class FunctionalTest(StaticLiveServerTestCase):
 
@@ -23,3 +25,59 @@ class FunctionalTest(StaticLiveServerTestCase):
 
         if self.server_url == self.live_server_url:
             super().tearDownClass()
+
+    def run(self, result=None):
+        override = ScreenshotTaker(result, self.browser)
+        super().run(result)
+        override.release()
+
+class ScreenshotTaker:
+
+    def __init__(self, result, webdriver):
+        self._result = result
+        self._webdriver = webdriver
+
+        if self._result != None:
+            self._old_addFailure           = result.addFailure
+            self._old_addError             = result.addError
+            self._old_addUnexpectedSuccess = result.addUnexpectedSuccess
+
+            self._result.addFailure           = self.addFailure
+            self._result.addError             = self.addError
+            self._result.addUnexpectedSuccess = self.addUnexpectedSuccess
+
+    def release(self):
+        if self._result != None:
+            self._result.addFailure           = self._old_addFailure
+            self._result.addError             = self._old_addError
+            self._result.addUnexpectedSuccess = self._old_addUnexpectedSuccess
+
+    def addFailure(self, test, err):
+        self._take_screenshot(test)
+        if self._result != None:
+            self._old_addFailure(test, err)
+
+    def addError(self, test, err):
+        self._take_screenshot(test)
+        if self._result != None:
+            self._old_addError(test, err)
+
+    def addUnexpectedSuccess(self, test):
+        self._take_screenshot(test)
+        if self._result != None:
+            self._old_addUnexpectedSuccess(test, err)
+
+    def _take_screenshot(self, test):
+        filename = os.path.join(
+            os.getenv('SELENIUM_SCREENSHOTS_PATH', '/tmp/'),
+            self._test_start_time.__str__()
+        )
+        os.makedirs(filename, exist_ok=True)
+        filename = os.path.join(filename, test.__str__() + '.png')
+
+        try:
+            self._webdriver.save_screenshot(filename)
+        except:
+            print('Failed to save the screenshot: ' + filename)
+
+    _test_start_time = datetime.now()
