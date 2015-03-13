@@ -9,14 +9,17 @@ class Profile(models.Model):
 
     user             = models.OneToOneField(User)
     
+    email            = models.EmailField()
+    firstname        = models.CharField(max_length = 32)
+    lastname         = models.CharField(max_length = 32)
+    email            = models.EmailField()
     bio              = models.TextField()
-    gravatar         = models.CharField(blank = True, max_length = 32)
     avatar           = StdImageField(blank = True, null = True,
-                            variations = {'avatar': (100, 100)},
+                            variations = {'avatar': (100, 100), 'small': (50, 50)},
                             upload_to  = UploadToUUID(path = 'avatars'),
                         )
     phone_regex      = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
-    phone            = models.CharField(validators=[phone_regex], max_length=15, blank=True)
+    phone            = models.CharField(validators=[phone_regex], max_length=15)
     birthday         = models.DateField()
     address          = models.TextField()
     addressLongitude = models.FloatField(blank = True, null = True)

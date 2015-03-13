@@ -8,7 +8,7 @@ class ProfileForm(forms.ModelForm):
 
     class Meta:
         model  = Profile
-        fields = ['bio', 'gravatar', 'avatar', 'phone', 'birthday', 'address']
+        exclude = ['user', 'addressLatitude', 'addressLongitude']
 
 class SignupForm(MultiModelForm):
     base_forms = [
