@@ -26,10 +26,7 @@ class Profile(models.Model):
     addressLatitude  = models.FloatField(blank = True, null = True)
 
     def __unicode__(self):
-        try:
-            return self.user.username
-        except:
-            return 'Profile unlinked to any User'
+        return self.user.username
 
 
 class Pony(models.Model):
