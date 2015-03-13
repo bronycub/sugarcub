@@ -68,10 +68,11 @@ class ScreenshotTaker:
             self._old_addUnexpectedSuccess(test, err)
 
     def _take_screenshot(self, test):
-        filename = os.path.join(
-            os.getenv('SELENIUM_SCREENSHOTS_PATH', '/tmp/'),
-            self._test_start_time.__str__()
-        )
+        filename = os.getenv('SELENIUM_SCREENSHOTS_PATH', '')
+        if filename == '':
+            return
+
+        filename = os.path.join(filename, self._test_start_time.__str__())
         os.makedirs(filename, exist_ok=True)
         filename = os.path.join(filename, test.__str__() + '.png')
 
