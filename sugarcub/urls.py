@@ -7,6 +7,6 @@ urlpatterns = patterns('',
 
     url(r'^bbbff/',    include('bbbff.urls')),
 
-	url(r'^',          include('core.urls', namespace='core')),
+    url(r'^',          include('core.urls', namespace='core')),
 )
 

@@ -31,43 +31,43 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-	'bootstrap3',
-	'django_admin_bootstrapped.bootstrap3',
-	'django_admin_bootstrapped',
-	'django.contrib.admindocs',
-	'django.contrib.admin',
-	'django.contrib.auth',
-	'django.contrib.contenttypes',
-	'django.contrib.sessions',
-	'django.contrib.messages',
-	'django.contrib.staticfiles',
-	'multiform',
-	'sugarcub',
-	'core',
-	'users',
-	'bbbff',
+    'bootstrap3',
+    'django_admin_bootstrapped.bootstrap3',
+    'django_admin_bootstrapped',
+    'django.contrib.admindocs',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'multiform',
+    'sugarcub',
+    'core',
+    'users',
+    'bbbff',
 )
 
 MIDDLEWARE_CLASSES = (
-	'django.contrib.sessions.middleware.SessionMiddleware',
-	'django.middleware.locale.LocaleMiddleware',
-	'django.middleware.common.CommonMiddleware',
-	'django.middleware.csrf.CsrfViewMiddleware',
-	'django.contrib.auth.middleware.AuthenticationMiddleware',
-	'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
-	'django.contrib.messages.middleware.MessageMiddleware',
-	'django.middleware.clickjacking.XFrameOptionsMiddleware',
-	'django.contrib.admindocs.middleware.XViewMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.admindocs.middleware.XViewMiddleware',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
-	'core.processors.custom_fields',
-	'core.processors.humanitarian_actions',
-	'django.core.context_processors.request',
+    'core.processors.custom_fields',
+    'core.processors.humanitarian_actions',
+    'django.core.context_processors.request',
 )
 
 TEMPLATE_DIRS = (
-	os.path.join(BASE_DIR, 'core', 'templates'),
+    os.path.join(BASE_DIR, 'core', 'templates'),
 )
 
 ROOT_URLCONF = 'sugarcub.urls'
@@ -79,10 +79,10 @@ WSGI_APPLICATION = 'sugarcub.wsgi.application'
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 DATABASES = {
-	'default': {
-		'ENGINE': 'django.db.backends.sqlite3',
-		'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-	}
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
 }
 
 # Internationalization

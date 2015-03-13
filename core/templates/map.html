@@ -3,56 +3,56 @@
 {% load static %}
 
 {% block stylesheets %}
-	{{ block.super }}
-	<link rel="stylesheet" href="{% static 'leaflet/leaflet.css' %}" />
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'leaflet/leaflet.css' %}" />
 {% endblock %}
 
 {% block body %}
-	{{ block.super }}
-	<div class="container-fluid full-height">
-		<div class="row full-height">
-			<div class="col-sm-12 full-height">
-				<div id="map" class="full-height"></div>
-			</div>
-		</div>
-	</div>
+    {{ block.super }}
+    <div class="container-fluid full-height">
+        <div class="row full-height">
+            <div class="col-sm-12 full-height">
+                <div id="map" class="full-height"></div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block javascripts %}
-	{{ block.super }}
-	<script src="{% static 'leaflet/leaflet.js' %}"></script>
-	<script>
-		$(document).ready(function() {
-			var map = L.map('map').setView([44.836517, -0.583233], 13);
+    {{ block.super }}
+    <script src="{% static 'leaflet/leaflet.js' %}"></script>
+    <script>
+        $(document).ready(function() {
+            var map = L.map('map').setView([44.836517, -0.583233], 13);
 
-			L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
-				maxZoom: 18,
-				attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-					'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-					'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-				id: 'examples.map-i875mjb7'
-			}).addTo(map);
+            L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
+                maxZoom: 18,
+                attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+                    '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                    'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+                id: 'examples.map-i875mjb7'
+            }).addTo(map);
 
-			{% for profile in profiles %}
-				var customIcon = L.icon({
-					iconUrl: {% if profile.gravatar %}
-								 'http://fr.gravatar.com/avatar/{{ profile.gravatar }}?s=80',
-							 {% else %}
-								 {# set rand = random(2)+1 #}
-								 '{% static 'ressources/logo/berry_punch_1.png' %}',
-							 {% endif %}
-					iconSize: [80, 80],
-					iconAnchor: [40, 80],
-					popupAnchor: [0, -80]
-				});
-				L.marker(
-					[{{ profile.addressLatitude }}, {{profile.addressLongitude }}],{
-						icon: customIcon
-					}
-				).addTo(map).bindPopup("{{ profile.user.username }}").openPopup();
-			{% endfor %}
+            {% for profile in profiles %}
+                var customIcon = L.icon({
+                    iconUrl: {% if profile.gravatar %}
+                                 'http://fr.gravatar.com/avatar/{{ profile.gravatar }}?s=80',
+                             {% else %}
+                                 {# set rand = random(2)+1 #}
+                                 '{% static 'ressources/logo/berry_punch_1.png' %}',
+                             {% endif %}
+                    iconSize: [80, 80],
+                    iconAnchor: [40, 80],
+                    popupAnchor: [0, -80]
+                });
+                L.marker(
+                    [{{ profile.addressLatitude }}, {{profile.addressLongitude }}],{
+                        icon: customIcon
+                    }
+                ).addTo(map).bindPopup("{{ profile.user.username }}").openPopup();
+            {% endfor %}
 
-			var popup = L.popup();
-		});
-	</script>
+            var popup = L.popup();
+        });
+    </script>
 {% endblock %}
