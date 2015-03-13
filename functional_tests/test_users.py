@@ -4,18 +4,21 @@ from   django.core.urlresolvers   import reverse
 from   django_webtest             import WebTest
 from   users.models               import Profile
 import datetime
+import unittest
 
 class AccountTest(WebTest):
 
     def setUp(self):
         user    = mommy.make(User, username = 'user_test')
         profile = mommy.make(Profile,
-            bio      = 'bio_test',
-            gravatar = 'gravatar_test',
-            phone    = '0123456789',
-            birthday = datetime.date(1970, 1, 1),
-            address  = 'address_test',
-            user     = user,
+            firstname = 'first_test',
+            lastname  = 'last_test',
+            email     = 'email_test',
+            bio       = 'bio_test',
+            phone     = '0123456789',
+            birthday  = datetime.date(1970, 1, 1),
+            address   = 'address_test',
+            user      = user,
         )
         user.set_password('password_test')
         user.save()
@@ -52,14 +55,16 @@ class AccountTest(WebTest):
         assert page.html.select('.has-error')
 
         # You can submit a correct form and create your account
-        page.form['user-username']    = 'user_signup_test'
-        page.form['user-password1']   = 'password_test'
-        page.form['user-password2']   = 'password_test'
-        page.form['profile-bio']      = 'test'
-        page.form['profile-gravatar'] = 'test'
-        page.form['profile-phone']    = '0123456789'
-        page.form['profile-birthday'] = '01/01/1970'
-        page.form['profile-address']  = 'test'
+        page.form['user-username']     = 'user_signup_test'
+        page.form['user-password1']    = 'password_test'
+        page.form['user-password2']    = 'password_test'
+        page.form['profile-firstname'] = 'first_test'
+        page.form['profile-lastname']  = 'last_test'
+        page.form['profile-email']     = 'fluttershy@equestria.pn'
+        page.form['profile-bio']       = 'test'
+        page.form['profile-phone']     = '0123456789'
+        page.form['profile-birthday']  = '01/01/1970'
+        page.form['profile-address']   = 'test'
         page = page.form.submit().follow()
 
         # You're then redirected to the welcome page and you're logged in
@@ -88,17 +93,20 @@ class AccountTest(WebTest):
         page = self.app.get(reverse('core:home'), user='user_test')
         assert page.html(href = reverse('users:profile'))
 
+    @unittest.skipIf(True, 'not implemented')
     def test_edit_profile(self):
         'Test that you can edit your profile'
         page = self.app.get(reverse('users:profile'), user = 'user_test')
 
         # Current data are displayed
-        assert 'user_test'     in page
-        assert 'bio_test'      in page
-        assert 'gravatar_test' in page
-        assert '0123456789'    in page
-        assert '01/01/1970'    in page
-        assert 'address_test'  in page
+        assert 'first_test'   in page
+        assert 'last_test'    in page
+        assert 'email_test'   in page
+        assert 'user_test'    in page
+        assert 'bio_test'     in page
+        assert '0123456789'   in page
+        assert '01/01/1970'   in page
+        assert 'address_test' in page
 
         # You can update your data
         self.fail('TODO : Write the functionalities and tests')
@@ -107,21 +115,25 @@ class AccountTest(WebTest):
 class MembersTest(WebTest):
     '''Test the functionalitites related to the members page'''
 
+    @unittest.skipIf(True, 'not implemented')
     def test_shows_members(self):
         '''Test that the page shows all members with their informations'''
 
         self.fail('TODO : Write the functionalities and tests')
 
+    @unittest.skipIf(True, 'not implemented')
     def test_shows_only_public_not_logged(self):
         '''Test that not logged users can only see informations defined as public'''
 
         self.fail('TODO : Write the functionalities and tests')
 
+    @unittest.skipIf(True, 'not implemented')
     def test_shows_all_logged(self):
         '''Test that logged users can see all informations'''
 
         self.fail('TODO : Write the functionalities and tests')
 
+    @unittest.skipIf(True, 'not implemented')
     def test_can_search_list(self):
         '''Test that you can search for particular members by role, skills or hobies'''
 
