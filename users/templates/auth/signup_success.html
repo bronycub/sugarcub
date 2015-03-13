@@ -2,19 +2,21 @@
 
 {% load i18n %}
 
-{% block body %}
-	{{ block.super }}
+{% block title %}{% trans 'Account created' %}{% endblock %}
 
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-12 text-center">
-				<div class="alert alert-dismissable alert-success"><button type="button" class="close" data-dismiss="alert">×</button>
-					<h3>{% trans 'You signed up successfully ! Welcome !' %}</h3>
-					<iframe width="853" height="480" src="//www.youtube.com/embed/KgOAo_u187A?autoplay=1" frameborder="0" allowfullscreen></iframe>
-				</div>
-			</div>
-		</div>
-	</div>
+{% block body %}
+    {{ block.super }}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <div class="alert alert-dismissable alert-success"><button type="button" class="close" data-dismiss="alert">×</button>
+                    <h3>{% trans 'You signed up successfully ! Welcome !' %}</h3>
+                    <iframe width="853" height="480" src="//www.youtube.com/embed/KgOAo_u187A?autoplay=1" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
 

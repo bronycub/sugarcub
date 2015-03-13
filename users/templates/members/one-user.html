@@ -2,65 +2,99 @@
 
 {% load i18n %}
 
-<div class="container list-group-item">
-    <div class="row">
-        <div class="col-sm-2" align="center">
-            {% if profile.avatar %}
-                <img src="{{ profile.avatar.avatar.url }}">
-            {% elif profile.gravatar %}
-                <img src="http://fr.gravatar.com/avatar/{{ profile.gravatar }}?s=100" alt="" class="img-rounded img-responsive">
-            {% else %}
-                <img src="{% static 'ressources/logo/icon_bronycub.png' %}" alt="" class="img-rounded img-responsive">
-            {% endif %}
-        </div>
-        <div class="col-sm-10">
-            <div class="col-sm-12">
-                <h3>{{ profile.user.username }}</h3>
-                {% if profile.lastname or profile.firstname %}
-                    <div class="col-sm-6">
-                        <p>
-                            {% if profile.lastname %} {{ profile.lastname }} {% endif %}
-                            {% if profile.firstname %} {{ profile.firstname }} {% endif %}
-                        </p>
-                    </div>
+<div class="col-sm-4">
+    <div class="thumbnail">
+        <span>
+            <img class="img-rounded img-avatar" src="
+                {% if profile.avatar %}
+                    {{ profile.avatar.avatar.url }}
+                {% else %}
+                    {% static 'ressources/logo/icon_bronycub.png' %}
                 {% endif %}
-                {% if profile.birthday %}
-                    <div class="col-sm-6">
-                        <p>{{ profile.birthday }} </p>
-                    </div>
-                {% endif %}
-                {% if profile.phone %}
-                    <div class="col-sm-6">
-                        <p>{{ profile.phone }} </p>
-                    </div>
-                {% endif %}
-                {% if profile.address %}
-                    <div class="col-sm-6">
-                        <p>{{ profile.address }} </p>
-                    </div>
-                {% endif %}
+            ">
+        </span>
+        <span>
+            <h3 class="h-inline">{{ profile.user.username }}</h3>
+            <div>
+                <a data-toggle="modal" data-target="#modal-{{profile.user.username}}"><button type="button" class="btn">{% trans 'see profile' %}</button></a>
             </div>
-            <div class="col-sm-12" align="right">
-                {% if profile.user.email %}
-                    <a href='{{ profile.user.email }}' target='_taget' class='zocial icon email'></a>
-                {% endif %}
-                {% for url in profile.url_set.all %}
-                    <a href='{{ url.url }}' target='_taget' class='zocial icon {{ url.icon }}'></a>
-                {% endfor %}
-            </div>
-        </div>
+        </span>
     </div>
-    <hr />
-    <div class="row">
-        <div class="col-sm-12">
-            <p> {{ profile.bio }} </p>
-            <br /><br />
-            {% for pony in profile.pony_set.all %}
-                <div class="col-sm-4">
-                    <img src="{% static 'img/ponies/'|add:pony.pony|add:'.png' %}" class="img-thumbnail"/>&nbsp;&nbsp;&nbsp;<span class='label label-info'>{{ pony.message }}</span>
+</div>
+<div id="modal-{{profile.user.username}}" class="modal fade" role="dialog" aria-hidden="true">
+    <div class="container list-group-item modal-dialog modal-lg">
+        {% if user.is_authenticated %}
+            <div class="row modal-header">
+                <div class="col-sm-2" align="center">
+                    <img class="img-rounded img-avatar" src="
+                        {% if profile.avatar %}
+                            {{ profile.avatar.avatar.url }}
+                        {% else %}
+                            {% static 'ressources/logo/icon_bronycub.png' %}
+                        {% endif %}
+                    ">
                 </div>
-                {% if not forloop.last %}&nbsp;&nbsp;{% endif %}
-            {% endfor %}
-        </div>
+                <div class="col-sm-10">
+                    <div class="col-sm-12">
+                        <h3>{{ profile.user.username }}</h3>
+                        {% if profile.lastname or profile.firstname %}
+                            <div class="col-sm-6">
+                                <p>
+                                    {% if profile.lastname %} {{ profile.lastname }} {% endif %}
+                                    {% if profile.firstname %} {{ profile.firstname }} {% endif %}
+                                </p>
+                            </div>
+                        {% endif %}
+                        {% if profile.birthday %}
+                            <div class="col-sm-6">
+                                <p>{{ profile.birthday }} </p>
+                            </div>
+                        {% endif %}
+                        {% if profile.phone %}
+                            <div class="col-sm-6">
+                                <p>{{ profile.phone }} </p>
+                            </div>
+                        {% endif %}
+                        {% if profile.address %}
+                            <div class="col-sm-6">
+                                <p>{{ profile.address }} </p>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="col-sm-12" align="right">
+                        {% if profile.user.email %}
+                            <a href='{{ profile.user.email }}' target='_taget' class='zocial icon email'></a>
+                        {% endif %}
+                        {% for url in profile.url_set.all %}
+                            <a href='{{ url.url }}' target='_taget' class='zocial icon {{ url.icon }}'></a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="row modal-body">
+                <div class="col-sm-12">
+                    <p> {{ profile.bio }} </p>
+                </div>
+            </div>
+            <div class="row modal-footer">
+                <div class="col-sm-12">
+                    <br /><br />
+                    {% for pony in profile.pony_set.all %}
+                        <div class="col-sm-4">
+                            <img src="{% static 'img/ponies/'|add:pony.pony|add:'.png' %}" class="img-thumbnail"/>&nbsp;&nbsp;&nbsp;<span class='label label-info'>{{ pony.message }}</span>
+                        </div>
+                        {% if not forloop.last %}&nbsp;&nbsp;{% endif %}
+                    {% endfor %}
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
+                </div>
+            </div>
+        {% else %}
+            <div class="row modal-body">
+                <p>{% trans 'You must be connected to see the members informations.' %}</p>
+            </div>
+            <div class="row modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
+            </div>
+        {% endif %}
     </div>
 </div>

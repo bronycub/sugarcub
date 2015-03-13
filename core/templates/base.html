@@ -48,7 +48,13 @@
                             {% if user.is_authenticated %}
                                 <li role="presentation" class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
-                                        <i class="fa fa-user fa-1x"></i>
+                                        <img class="img-header" src="
+                                            {% if user.profile.avatar.small %}
+                                                {{ user.profile.avatar.small.url }}
+                                            {% else %}
+                                                {% static 'ressources/logo/icon_bronycub.png' %}
+                                            {% endif %}
+                                        "/>
                                         {{ user.username }}
                                         <span class="caret"></span>
 
