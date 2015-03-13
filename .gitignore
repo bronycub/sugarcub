@@ -1,5 +1,6 @@
 # Python
 __pycache__
+__init__.py
 *.pyc
 
 # Django
@@ -7,3 +8,6 @@ db.sqlite3
 
 # I10N
 *.mo
+
+# Code coverage
+.coverage

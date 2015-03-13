@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block title %}{% trans 'Members' %}{% endblock %}
+
+{% block body %}
+{{ block.super }}
+
+<div class="container">
+    <div class="row">
+        {% for profile in profiles %}
+            {% include 'members/one-user.html' with profile=profile %}
+        {% empty %}
+            <div class="col-sm-12">
+                <p>{% trans 'No members registered yet ...' %}</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

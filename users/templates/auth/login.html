@@ -3,17 +3,20 @@
 {% load bootstrap3 %}
 {% load i18n %}
 
+{% block title %}{% trans 'Login' %}{% endblock %}
+
 {% block body %}
     {{ block.super }}
 
     <div class="container">
         <div class="row">
-            <div class="col-sm-12">
-                <form class="form-horizontal" method="post" action="{% url 'core:login' %}">
+            <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+                <form class="form well" method="post" action="{% url 'users:login' %}">
                     {% csrf_token %}
+                    <h2>{% trans 'Login' %}</h2>
                     {% bootstrap_form form %}
                     {% buttons %}
-                        <button type="submit" class="btn btn-primary">{% bootstrap_icon star %}{% trans 'Login' %}</button>
+                        <button type="submit" class="btn btn-primary btn-block">{% bootstrap_icon star %}{% trans 'Login' %}</button>
                     {% endbuttons %}
                 </form>
             </div>

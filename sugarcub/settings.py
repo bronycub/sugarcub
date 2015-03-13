@@ -30,7 +30,14 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = (
+PROJECT_APPS = (
+    'core',
+    'users',
+    'bbbff',
+)
+
+DEPENDENCIES_APPS = (
+    'stdimage',
     'bootstrap3',
     'django_admin_bootstrapped.bootstrap3',
     'django_admin_bootstrapped',
@@ -42,11 +49,12 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'multiform',
-    'sugarcub',
-    'core',
-    'users',
-    'bbbff',
 )
+
+DEV_DEPENDENCIES_APPS = (
+)
+
+INSTALLED_APPS = PROJECT_APPS + ('sugarcub',) + DEPENDENCIES_APPS
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -67,7 +75,8 @@ TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
 )
 
 TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, 'core', 'templates'),
+    os.path.join(BASE_DIR, 'core',  'templates'),
+    os.path.join(BASE_DIR, 'admin', 'templates'),
 )
 
 ROOT_URLCONF = 'sugarcub.urls'
@@ -102,20 +111,24 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL  = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, '../static')
-MEDIA_ROOT  = os.path.join(BASE_DIR, '../media')
+STATIC_ROOT = os.path.join(BASE_DIR, '..', 'static')
+
+# Media
+MEDIA_URL  = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, '..', 'media')
 
 # Auth configuration
 
 LOGIN_REDIRECT_URL = '/'
-LOGIN_URL = '/login'
-LOGOUT_URL = '/logout'
+LOGIN_URL          = '/login'
+LOGOUT_URL         = '/logout'
 
 # Admin
 
 DAB_FIELD_RENDERER = 'django_admin_bootstrapped.renderers.BootstrapFieldRenderer'
 
+# Tests
+
 ## Per Collective Custom
 
 from sugarcub.custom_settings import *
-

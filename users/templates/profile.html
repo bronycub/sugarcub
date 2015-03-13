@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load bootstrap3 %}
+
+{% block title %}{% trans 'Profile' %}{% endblock %}
+
+{% block body %}
+    {{ block.super }}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                {% if profile.avatar %}
+                    <img class="img-rounded img-avatar" src="{{ profile.avatar.avatar.url }}"/>
+                {% endif %}
+                {{ profile.user.username }}
+                <form enctype="multipart/form-data" class="form-horizontal" method="post" action="{% url 'users:profile' %}">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    {% buttons %}
+                        <button type="submit" class="btn btn-primary">{% bootstrap_icon star %}{% trans 'Update' %}</button>
+                    {% endbuttons %}
+                    {% bootstrap_formset ponies layout='horizontal' %}
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
