@@ -1,29 +1,28 @@
-from    django.test              import TestCase
-from    utils.tests              import UnitTestUtilsMixin
-from   .                         import views, models, forms
+from	django.test				 import TestCase
+from	utils.tests				 import UnitTestUtilsMixin
+from   .						 import views, models, forms
 from   django.contrib.auth.views import login, logout
-from   django.core.exceptions    import ValidationError
-from   model_mommy               import mommy
+from   django.core.exceptions	 import ValidationError
+from   model_mommy				 import mommy
 import datetime
 import unittest
 
 valid_profile_data = {
     'firstname': 'form',
-    'lastname':  'test',
-    'email':     'form@test.ts',
-    'bio':       'test',
-    'phone':     '0123456789',
-    'birthday':  '01/01/1970',
-    'address':   'test',
+    'lastname':	 'test',
+    'bio':		 'test',
+    'phone':	 '0123456789',
+    'birthday':	 '01/01/1970',
+    'address':	 'test',
 }
 
 valid_signup_data = {
     'user-username':     'form_test',
     'user-password1':    'test',
     'user-password2':    'test',
+    'user-email':        'form@test.ts',
     'profile-firstname': 'form',
     'profile-lastname':  'test',
-    'profile-email':     'form@test.ts',
     'profile-bio':       'test',
     'profile-phone':     '0123456789',
     'profile-birthday':  '01/01/1970',
@@ -33,25 +32,9 @@ valid_signup_data = {
 class UsersViewsTest(UnitTestUtilsMixin, TestCase):
 
     @unittest.skipIf(True, 'not implemented')
-    def test_login(self):
-        self.assert_url_matches_view(login, '/login', 'users:login')
-        self.fail('todo')
-
-    @unittest.skipIf(True, 'not implemented')
-    def test_logout(self):
-        self.assert_url_matches_view(logout, '/logout', 'users:logout')
-        self.fail('todo')
-
-    @unittest.skipIf(True, 'not implemented')
     def test_signup(self):
-        self.assert_url_matches_view(views.signup, '/signup', 'users:signup')
+        self.assert_url_matches_view(views.signup, '/signup', 'registration_register')
         self.fail('todo')
-
-    def test_signup_success(self):
-        self.assert_url_matches_view(views.signup_success, '/signup_success', 'users:signup_success')
-
-        response = self.client.get('/signup_success')
-        self.assertTemplateUsed(response, 'auth/signup_success.html')
 
     def test_members(self):
         self.assert_url_matches_view(views.members, '/members', 'users:members')
@@ -69,8 +52,8 @@ class UsersViewsTest(UnitTestUtilsMixin, TestCase):
 class UsersModelsTest(TestCase):
 
     def test_name_profile(self):
-        user    = mommy.make(models.User,    username = 'test')
-        profile = mommy.make(models.Profile, user     = user)
+        user	= mommy.make(models.User,	 username = 'test')
+        profile = mommy.make(models.Profile, user	  = user)
         profile.phone = '23456789'
         self.assertRaises(ValidationError, profile.full_clean)
 
@@ -80,7 +63,7 @@ class UsersModelsTest(TestCase):
 
     def test_name_pony(self):
         pony = mommy.make(models.Pony,
-            pony    = 'Fluttershy',
+            pony	= 'Fluttershy',
             message = '%s is best pony !',
         )
         pony.full_clean()
@@ -88,7 +71,7 @@ class UsersModelsTest(TestCase):
         self.assertEquals('Fluttershy is best pony !', pony.__unicode__())
 
         pony = mommy.make(models.Pony,
-            pony    = 'Fluttershy',
+            pony	= 'Fluttershy',
             message = '%d is best pony !',
         )
         pony.full_clean()
@@ -113,6 +96,7 @@ class UsersFormsTest(TestCase):
         form = forms.ProfileForm(data = valid_profile_data)
         self.assertTrue(form.is_valid())
 
+    @unittest.skipIf(True, 'not implemented')
     def test_signup(self):
         form = forms.SignupForm()
         self.assertFalse(form.is_valid())

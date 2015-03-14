@@ -49,6 +49,7 @@ DEPENDENCIES_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'multiform',
+    'registration',
 )
 
 DEV_DEPENDENCIES_APPS = (
@@ -75,8 +76,9 @@ TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
 )
 
 TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, 'core',  'templates'),
+    os.path.join(BASE_DIR, 'core',	'templates'),
     os.path.join(BASE_DIR, 'admin', 'templates'),
+    os.path.join(BASE_DIR, 'users', 'templates'),
 )
 
 ROOT_URLCONF = 'sugarcub.urls'
@@ -110,7 +112,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
-STATIC_URL  = '/static/'
+STATIC_URL	= '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, '..', 'static')
 
 # Media
@@ -119,9 +121,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, '..', 'media')
 
 # Auth configuration
 
-LOGIN_REDIRECT_URL = '/'
-LOGIN_URL          = '/login'
-LOGOUT_URL         = '/logout'
+LOGIN_REDIRECT_URL      = '/'
+LOGIN_URL               = '/login'
+LOGOUT_URL              = '/logout'
+ACCOUNT_ACTIVATION_DAYS  = 7
+AUTH_PROFILE_MODULE     = 'users.profile'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Admin
 

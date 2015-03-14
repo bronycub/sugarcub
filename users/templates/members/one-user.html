@@ -50,8 +50,8 @@
                             </div>
                         </div>
                         <div class="col-sm-12" align="right">
-                            {% if profile.email %}
-                                <a href='{{ profile.email }}' target='_taget' class='zocial icon email'></a>
+                            {% if profile.user.email %}
+                                <a href='{{ profile.user.email }}' target='_taget' class='zocial icon email'></a>
                             {% endif %}
                             {% for url in profile.url_set.all %}
                                 <a href='{{ url.url }}' target='_taget' class='zocial icon {{ url.icon }}'></a>
