@@ -1,19 +1,19 @@
-from django             import forms
+from django				import forms
 from registration.forms import RegistrationFormUniqueEmail
-from multiform          import MultiModelForm, InvalidArgument
-from .models            import Profile
+from multiform			import MultiModelForm, InvalidArgument
+from .models			import Profile
 
 class ProfileForm(forms.ModelForm):
 
     class Meta:
-        model   = Profile
+        model	= Profile
         exclude = ['user', 'addressLatitude', 'addressLongitude']
 
 class RegistrationForm(MultiModelForm):
 
     base_forms = [
         ('registration', RegistrationFormUniqueEmail),
-        ('profile',      ProfileForm),
+        ('profile',		 ProfileForm),
     ]
 
     def dispatch_init_instance(self, name, instance):

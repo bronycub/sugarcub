@@ -20,13 +20,13 @@ valid_signup_data = {
     'registration-username':  'form_test',
     'registration-password1': 'test',
     'registration-password2': 'test',
-    'registration-email':     'form@test.ts',
-    'profile-firstname':      'form',
-    'profile-lastname':       'test',
-    'profile-bio':            'test',
-    'profile-phone':          '0123456789',
-    'profile-birthday':       '01/01/1970',
-    'profile-address':        'test',
+    'registration-email':	  'form@test.ts',
+    'profile-firstname':	  'form',
+    'profile-lastname':		  'test',
+    'profile-bio':			  'test',
+    'profile-phone':		  '0123456789',
+    'profile-birthday':		  '01/01/1970',
+    'profile-address':		  'test',
 }
 
 

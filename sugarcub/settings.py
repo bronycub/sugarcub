@@ -121,11 +121,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, '..', 'media')
 
 # Auth configuration
 
-LOGIN_REDIRECT_URL      = '/'
-LOGIN_URL               = '/login'
-LOGOUT_URL              = '/logout'
-ACCOUNT_ACTIVATION_DAYS  = 7
-AUTH_PROFILE_MODULE     = 'users.profile'
+LOGIN_REDIRECT_URL		= '/'
+LOGIN_URL				= '/login'
+LOGOUT_URL				= '/logout'
+ACCOUNT_ACTIVATION_DAYS	= 7
+AUTH_PROFILE_MODULE		= 'users.profile'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 

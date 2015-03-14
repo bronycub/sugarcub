@@ -1,8 +1,8 @@
-from django.shortcuts				     import render
-from .models						     import Profile, Pony
-from .forms							     import RegistrationForm, ProfileForm
-from django.contrib.auth.decorators      import login_required
-from django.forms.models			     import modelformset_factory
+from django.shortcuts					 import render
+from .models							 import Profile, Pony
+from .forms								 import RegistrationForm, ProfileForm
+from django.contrib.auth.decorators		 import login_required
+from django.forms.models				 import modelformset_factory
 from registration.backends.default.views import RegistrationView as BaseRegistrationView
 
 class RegistrationView(BaseRegistrationView):

@@ -11,5 +11,5 @@ urlpatterns = patterns('',
     url(r'^',			include('users.urls', namespace='users')),
     url(r'^',			include('core.urls',  namespace='core')),
 
-    url(r'^',           include('registration.backends.default.urls')),
+    url(r'^',			include('registration.backends.default.urls')),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
