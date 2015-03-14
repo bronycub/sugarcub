@@ -8,9 +8,8 @@ urlpatterns = patterns('',
     url(r'^admin/',		include(admin.site.urls)),
 
     url(r'^bbbff/',		include('bbbff.urls', namespace='bbbff')),
-
-    url(r'^',           include('registration.backends.default.urls')),
-
     url(r'^',			include('users.urls', namespace='users')),
     url(r'^',			include('core.urls',  namespace='core')),
+
+    url(r'^',           include('registration.backends.default.urls')),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

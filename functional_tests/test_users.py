@@ -58,21 +58,24 @@ class AccountTest(WebTest):
         assert page.html.select('.has-error')
 
         # You can submit a correct form and create your account
-        page.form['user-username']     = 'user_signup_test'
-        page.form['user-password1']    = 'password_test'
-        page.form['user-password2']    = 'password_test'
-        page.form['user-email']        = 'fluttershy@equestria.pn'
-        page.form['profile-firstname'] = 'first_test'
-        page.form['profile-lastname']  = 'last_test'
-        page.form['profile-bio']       = 'test'
-        page.form['profile-phone']     = '0123456789'
-        page.form['profile-birthday']  = '01/01/1970'
-        page.form['profile-address']   = 'test'
+        page.form['registration-username']  = 'user_signup_test'
+        page.form['registration-password1'] = 'password_test'
+        page.form['registration-password2'] = 'password_test'
+        page.form['registration-email']     = 'fluttershy@equestria.pn'
+        page.form['profile-firstname']      = 'first_test'
+        page.form['profile-lastname']       = 'last_test'
+        page.form['profile-bio']            = 'test'
+        page.form['profile-phone']          = '0123456789'
+        page.form['profile-birthday']       = '01/01/1970'
+        page.form['profile-address']        = 'test'
         page = page.form.submit().follow()
 
-        # You're then redirected to the welcome page and you're logged in
+        # You're then redirected to the welcome page and you receive an activation mail
         assert reverse('registration_complete') in page.request.url 
         assert 'user_signup_test' in page
+
+        # You can activate your account
+        self.fail('TODO : Write the mail and activtation tests')
 
     def test_login_signup_only_not_logged(self):
         '''Test that the links to the login and signup pages are only present if you\'re not logged'''

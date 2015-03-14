@@ -17,17 +17,18 @@ valid_profile_data = {
 }
 
 valid_signup_data = {
-    'user-username':     'form_test',
-    'user-password1':    'test',
-    'user-password2':    'test',
-    'user-email':        'form@test.ts',
-    'profile-firstname': 'form',
-    'profile-lastname':  'test',
-    'profile-bio':       'test',
-    'profile-phone':     '0123456789',
-    'profile-birthday':  '01/01/1970',
-    'profile-address':   'test',
+    'registration-username':  'form_test',
+    'registration-password1': 'test',
+    'registration-password2': 'test',
+    'registration-email':     'form@test.ts',
+    'profile-firstname':      'form',
+    'profile-lastname':       'test',
+    'profile-bio':            'test',
+    'profile-phone':          '0123456789',
+    'profile-birthday':       '01/01/1970',
+    'profile-address':        'test',
 }
+
 
 class UsersViewsTest(UnitTestUtilsMixin, TestCase):
 
@@ -98,10 +99,10 @@ class UsersFormsTest(TestCase):
 
     @unittest.skipIf(True, 'not implemented')
     def test_signup(self):
-        form = forms.SignupForm()
+        form = forms.RegistrationForm()
         self.assertFalse(form.is_valid())
 
-        form = forms.SignupForm(data = valid_signup_data)
+        form = forms.RegistrationForm(data = valid_signup_data)
         self.assertTrue(form.is_valid())
 
         models = form.save()
