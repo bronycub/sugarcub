@@ -9,8 +9,6 @@ class Profile(models.Model):
 
     user			 = models.OneToOneField(User)
     
-    firstname		 = models.CharField(max_length = 32)
-    lastname		 = models.CharField(max_length = 32)
     bio				 = models.TextField()
     avatar			 = StdImageField(blank = True, null = True,
                             variations = {'avatar': (100, 100), 'small': (50, 50)},

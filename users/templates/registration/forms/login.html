@@ -1,0 +1,14 @@
+{% load bootstrap3 %}
+{% load i18n %}
+
+<form class="form well" method="post" action="{% url 'auth_login' %}">
+    {% csrf_token %}
+    <h2>{% trans 'Login' %}</h2>
+    {% bootstrap_form authentication_form %}
+    {% buttons %}
+        <button type="submit" class="btn btn-primary btn-block">{% bootstrap_icon star %}{% trans 'Login' %}</button>
+    {% endbuttons %}
+    <div class="form-group text-center">
+        <a href="{% url 'auth_password_reset' %}">{% trans 'You forgot your password ?' %}</a>
+    </div>
+</form>

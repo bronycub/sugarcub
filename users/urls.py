@@ -1,5 +1,6 @@
-from django.conf.urls import patterns, include, url
-from .views import RegistrationView
+from django.conf.urls     import patterns, include, url
+from django.views.generic import TemplateView
+from .views               import RegistrationView
 
 urlpatterns = patterns('',
     url(r'^members$', 'users.views.members', name = 'members'),
@@ -8,5 +9,6 @@ urlpatterns = patterns('',
         RegistrationView.as_view(),
         name='registration_register'
     ),
+    url(r'^register/informations$', TemplateView.as_view(template_name = 'registration/informations.html'), name = 'pre_register'),
 )
 

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% load i18n %}
+{% load login_form %}
 
 {% block title %}{% trans 'Account created' %}{% endblock %}
 
@@ -10,9 +11,12 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 text-center">
-                <h1>
-                    TODO | Activation complete
-                </h1>
+                <h1>{% trans 'Your account is now activated ! Please login and enjoy ! ;)' %}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+                {% login_form %}
             </div>
         </div>
     </div>

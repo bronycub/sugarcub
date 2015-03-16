@@ -23,7 +23,7 @@ class RegistrationView(BaseRegistrationView):
 
 def members(request):
     return render(request, 'members.html', {
-        'profiles': Profile.objects.all(),
+        'profiles': Profile.objects.filter(user__is_active = True),
     })
 
 @login_required
