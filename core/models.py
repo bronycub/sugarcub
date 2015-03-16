@@ -13,7 +13,7 @@ class Friend(models.Model):
 
     name		= models.CharField(max_length = 32)
     description = models.TextField()
-    image		= models.ImageField(blank = True, null = True)
+    image		= models.ImageField()
     url			= models.URLField()
 
     def __unicode__(self):

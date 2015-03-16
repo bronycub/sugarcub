@@ -1,4 +1,5 @@
 from   django.shortcuts import render, redirect
+from   django.conf		import settings
 from   .models			import Friend, Quote
 from   users.models		import Profile
 import urllib.request
@@ -23,8 +24,9 @@ def agenda(request):
 
 def map(request):
     return render(request, 'map.html', {
-        'fillPage': True,
-        'profiles': Profile.objects.all(),
+        'fillPage':		   True,
+        'profiles':		   Profile.objects.filter(user__is_active = True),
+        'OSM_TILE_SERVER': settings.OSM_TILE_SERVER,
     })
 
 def friends(request):

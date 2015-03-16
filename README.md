@@ -17,3 +17,10 @@ Pour signaler un bug ou soumettre une idée, allez simplement sur la page "Issue
 # Contribute
 
 TODO
+
+# License / Licence
+
+This project is released under GPL3. See LICENSE.txt for more information or visit http://www.gnu.org/licenses/.
+
+Ce projet est distribué sous licence GPL3. Voir LICENSE.txt pour plus d'informations ou visitez  http://www.gnu.org/licenses/.
+
