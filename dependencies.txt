@@ -11,3 +11,4 @@ model-mommy==1.2.3
 selenium==2.45.0
 docutils==0.12
 django-registration-redux==1.1
+gunicorn==19.3.0
