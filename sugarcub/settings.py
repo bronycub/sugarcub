@@ -17,15 +17,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '@93eg2!@%a4r@(qh9v#e2xpb@nkv^0=2em%9@k$_+qz9xr$&c@'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-TEMPLATE_DEBUG = True
-
-ALLOWED_HOSTS = []
+if os.getenv('DEPLOY_TYPE', 'dev') == 'prod':
+    from sugarcub.settings_prod import *
+else:
+    from sugarcub.settings_dev import *
 
 
 # Application definition
@@ -86,16 +81,6 @@ ROOT_URLCONF = 'sugarcub.urls'
 WSGI_APPLICATION = 'sugarcub.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
@@ -109,16 +94,6 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.7/howto/static-files/
-
-STATIC_URL	= '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, '..', 'static')
-
-# Media
-MEDIA_URL  = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, '..', 'media')
-
 # Auth configuration
 
 LOGIN_REDIRECT_URL		= '/'
@@ -127,14 +102,15 @@ LOGOUT_URL				= '/logout'
 ACCOUNT_ACTIVATION_DAYS	= 7
 AUTH_PROFILE_MODULE		= 'users.profile'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Admin
 
 DAB_FIELD_RENDERER = 'django_admin_bootstrapped.renderers.BootstrapFieldRenderer'
 
+
 # Tests
 
-## Per Collective Custom
+
+# Per Collective Custom
 
 from sugarcub.custom_settings import *
