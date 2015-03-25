@@ -1,16 +1,16 @@
-from	django.test				 import TestCase
-from	utils.tests				 import UnitTestUtilsMixin
-from   .						 import views, models, forms
-from   django.contrib.auth.views import login, logout
-from   django.core.exceptions	 import ValidationError
-from   model_mommy				 import mommy
+from   django.test				  import TestCase
+from   utils.tests				  import UnitTestUtilsMixin
+from   .						  import views, models, forms
+from   django.contrib.auth.views  import login, logout
+from   django.contrib.auth.models import User
+from   django.core.exceptions	  import ValidationError
+from   model_mommy				  import mommy
 import datetime
 import unittest
 
 valid_profile_data = {
     'firstname': 'form',
     'lastname':	 'test',
-    'email':	 'form@test.ts',
     'bio':		 'test',
     'phone':	 '0123456789',
     'birthday':	 '01/01/1970',
@@ -18,47 +18,35 @@ valid_profile_data = {
 }
 
 valid_signup_data = {
-    'user-username':	 'form_test',
-    'user-password1':	 'test',
-    'user-password2':	 'test',
-    'profile-firstname': 'form',
-    'profile-lastname':	 'test',
-    'profile-email':	 'form@test.ts',
-    'profile-bio':		 'test',
-    'profile-phone':	 '0123456789',
-    'profile-birthday':	 '01/01/1970',
-    'profile-address':	 'test',
+    'registration-username':  'form_test',
+    'registration-password1': 'test',
+    'registration-password2': 'test',
+    'registration-email':	  'form@test.ts',
+    'user-firstname':		  'form',
+    'user-lastname':		  'test',
+    'profile-bio':			  'test',
+    'profile-phone':		  '0123456789',
+    'profile-birthday':		  '01/01/1970',
+    'profile-address':		  'test',
 }
+
 
 class UsersViewsTest(UnitTestUtilsMixin, TestCase):
 
     @unittest.skipIf(True, 'not implemented')
-    def test_login(self):
-        self.assert_url_matches_view(login, '/login', 'users:login')
-        self.fail('todo')
-
-    @unittest.skipIf(True, 'not implemented')
-    def test_logout(self):
-        self.assert_url_matches_view(logout, '/logout', 'users:logout')
-        self.fail('todo')
-
-    @unittest.skipIf(True, 'not implemented')
     def test_signup(self):
-        self.assert_url_matches_view(views.signup, '/signup', 'users:signup')
+        self.assert_url_matches_view(views.signup, '/signup', 'registration_register')
         self.fail('todo')
-
-    def test_signup_success(self):
-        self.assert_url_matches_view(views.signup_success, '/signup_success', 'users:signup_success')
-
-        response = self.client.get('/signup_success')
-        self.assertTemplateUsed(response, 'auth/signup_success.html')
 
     def test_members(self):
         self.assert_url_matches_view(views.members, '/members', 'users:members')
 
-        profiles = mommy.make(models.Profile, _quantity = 2)
+        profiles = mommy.make(models.Profile, _quantity = 3)
+        profiles[0].user.is_active = False
+        profiles[0].user.save()
+
         response = self.client.get('/members')
-        self.assertCountEqual(profiles, response.context['profiles'])
+        self.assertCountEqual(profiles[1:], response.context['profiles'])
 
     @unittest.skipIf(True, 'not implemented')
     def test_profile(self):
@@ -114,11 +102,11 @@ class UsersFormsTest(TestCase):
         self.assertTrue(form.is_valid())
 
     def test_signup(self):
-        form = forms.SignupForm()
+        form = forms.RegistrationForm()
         self.assertFalse(form.is_valid())
 
-        form = forms.SignupForm(data = valid_signup_data)
+        form = forms.RegistrationForm(data = valid_signup_data)
         self.assertTrue(form.is_valid())
 
-        models = form.save()
+        models = form.save(user = mommy.make(User))
         self.assertEquals(models['user'], models['profile'].user)

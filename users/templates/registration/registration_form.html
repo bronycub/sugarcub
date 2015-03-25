@@ -6,6 +6,19 @@
 
 {% block title %}{% trans 'Signup' %}{% endblock %}
 
+{% block extrastyle %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/datepicker.css' %}">
+{% endblock %}
+
+{% block extrascripts %}
+    <script type="application/javascript" src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+    <script type="application/javascript">
+        $(document).ready(function(){
+            $('#id_profile-birthday').datepicker({'format': 'dd/mm/yyyy'})
+        })
+    </script>
+{% endblock %}
+
 {% block body %}
     {{ block.super }}
 
@@ -17,11 +30,11 @@
         </div>
         <div class="row">
             <div class="col-md-8 col-md-offset-2 col-sm-12">
-                <form enctype="multipart/form-data" class="form well" method="post" action="{% url 'users:signup' %}">
+                <form enctype="multipart/form-data" class="form well" method="post" action="">
                     {% csrf_token %}
                     {% bootstrap_form form %}
                     {% buttons %}
-                        <button type="submit" class="btn btn-primary">{% bootstrap_icon star %}{% trans 'Signup' %}</button>
+                        <button type="submit" class="btn btn-primary">{% bootstrap_icon star %}{% trans 'Send' %}</button>
                     {% endbuttons %}
                 </form>
             </div>

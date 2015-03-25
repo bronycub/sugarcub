@@ -1,39 +1,30 @@
-from django.shortcuts				import render, redirect
-from django.contrib.auth			import authenticate, login
-from django.shortcuts				import render
-from .models						import Profile, Pony
-from .forms							import SignupForm, ProfileForm
-from django.contrib.auth.decorators import login_required
-from django.forms.models			import modelformset_factory
+from django.shortcuts					 import render
+from .models							 import Profile, Pony
+from .forms								 import RegistrationForm, ProfileForm
+from django.contrib.auth.decorators		 import login_required
+from django.forms.models				 import modelformset_factory
+from registration.backends.default.views import RegistrationView as BaseRegistrationView
+
+class RegistrationView(BaseRegistrationView):
+
+    form_class = RegistrationForm
+
+    def register(self, request, **cleaned_data):
+        return super(RegistrationView, self).register(request, **cleaned_data['registration'])
+
+    def form_valid(self, request, form):
+        self.form = form
+        return super(RegistrationView, self).form_valid(request, form)
+
+    def get_success_url(self, request=None, user=None):
+        self.form.save(user = user)
+        return super(RegistrationView, self).get_success_url(request, user)
+
 
 def members(request):
     return render(request, 'members.html', {
-        'profiles': Profile.objects.all(),
+        'profiles': Profile.objects.filter(user__is_active = True),
     })
-
-def signup(request):
-    if request.method == 'POST':
-        form = SignupForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            user = authenticate(
-                username = request.POST.get('user-username'),
-                password = request.POST.get('user-password1')
-            )
-            if user is not None and user.is_active:
-                login(request, user)
-
-            return redirect('users:signup_success')
-
-    else:
-        form = SignupForm()
-
-    return render(request, 'auth/signup.html', {
-        'form' : form,
-    })
-
-def signup_success(request):
-    return render(request, 'auth/signup_success.html')
 
 @login_required
 def profile(request):

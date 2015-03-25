@@ -21,9 +21,9 @@
                         <div class="panel-heading">{{ friend.name }}</div>
                       <div class="panel-body">
                           <a href="{{ friend.url }}" target="_blank">
-                            <img class="thumbnail" src="{% static 'img/friends/' ~ friend.title|lower|replace(' ', '_') ~ '.png' %}">
+                              <img class="thumbnail" src="{{ friend.image.url }}">
                         </a>
-                        <p>{{ friend.description }}<br /><br /></p>
+                        <p>{{ friend.description }}</p>
                       </div>
                     </div>
                 </div>

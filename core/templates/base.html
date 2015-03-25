@@ -11,8 +11,8 @@
             <title>{{ collective_name }} | {% block title %}{% endblock %}</title>
             <link rel="shortcut icon" type="image/png" href="{% static 'ressources/logo/favicon_bronycub.png' %}" />
             {% block stylesheets %}
-                <link rel="stylesheet" type="text/css" media="screen" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
                 <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/bootstrap.min.css' %}">
+                <link rel="stylesheet" type="text/css" media="screen" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
                 <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/sugarcub.css' %}">
                 <link rel="stylesheet" type="text/css" media="screen" href="{% static 'zocial/zocial.css' %}">
                 {% block extrastyle %}{% endblock %}
@@ -37,14 +37,17 @@
                     <div class="navbar-collapse collapse" id="navbar-main">
                         <ul class="nav navbar-nav">
                             <li><a href="{% url 'users:members' %}"><i class="fa fa-user fa-1x"></i>&nbsp;{% trans 'Members' %}</a></li>
-                            <li><a href="{# url '' #}"><i class="fa fa-calendar fa-1x"></i>&nbsp;{% trans 'Agenda' %}</a></li>
-                            <li><a href="{# url '' #}" target="_blank"><i class="fa fa-picture-o fa-1x"></i>&nbsp;{% trans 'Medias' %}</a></li>
+                            <li><a href="{% url 'core:agenda' %}"><i class="fa fa-calendar fa-1x"></i>&nbsp;{% trans 'Agenda' %}</a></li>
+                            <li><a href="{% url 'core:hq' %}"><i class="fa fa-glass fa-1x"></i>&nbsp;{% trans 'HQ' %}</a></li>
+                            <li><a href="https://plus.google.com/photos/+Heuz%C3%A9Florent/albums/5919043632414199089?authkey=CJOh4YWuw6_rVA{# url '' #}"><i class="fa fa-picture-o fa-1x"></i>&nbsp;{% trans 'Medias' %}</a></li>
                             <li><a href="{% url 'core:map' %}"><i class="fa fa-map-marker fa-1x"></i>&nbsp;{% trans 'Map' %}</a></li>
                             <li><a href="{% url 'core:friends' %}"><i class="fa fa-heart fa-1x"></i>&nbsp;{% trans 'Friends' %}</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="https://kiwiirc.com/client?settings=3ebf3eb7a40c2b03f47b918eb2f7087a" target="_blank"><i class="fa fa-comment fa-1x"></i>&nbsp;{% trans 'Tchat' %}</a></li>
                             <li><a href="https://vroom.im/bronycub" target="_blank"><i class="fa fa-video-camera fa-1x"></i>&nbsp;{% trans 'Visio' %}</a></li>
+                            <li><a href="https://plug.dj/bronycub" target="_blank"><i class="fa fa-headphones fa-1x"></i>&nbsp;{% trans 'DJ' %}</a></li>
+                            <li><a href="https://bronycub.freshdesk.com/support/tickets/new" target="_blank"><i class="fa fa-ticket fa-1x"></i>&nbsp;{% trans 'Ticket' %}</a></li>
                             {% if user.is_authenticated %}
                                 <li role="presentation" class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
@@ -65,12 +68,12 @@
                                             <li><a href="{% url 'admin:index' %}" class=""><i class="glyphicon glyphicon-cog"></i>&nbsp;{% trans 'Admin' %}</a></li>
                                             <li><a href="{% url 'django-admindocs-docroot' %}" class=""><i class="glyphicon glyphicon-file"></i>&nbsp;{% trans 'Documentation' %}</a></li>
                                         {% endif %}
-                                        <li><a href="{% url 'users:logout' %}"><i class="fa fa-sign-out fa-1x"></i>&nbsp;{% trans 'Logout' %}</a></li>
+                                        <li><a href="{% url 'auth_logout' %}"><i class="fa fa-sign-out fa-1x"></i>&nbsp;{% trans 'Logout' %}</a></li>
                                     </ul>
                                 </li>
                             {% else %}
-                                <li><a href="{% url 'users:login' %}"><!-- data-toggle="modal" data-target="#LoginForm"--><i class="fa fa-sign-in fa-1x"></i>&nbsp;{% trans 'Login' %}</a></li>
-                                <li><a href="{% url 'users:signup' %}"><i class="fa fa-plus fa-1x"></i>&nbsp;{% trans 'Signup' %}</a></li>
+                                <li><a href="{% url 'auth_login' %}"><!-- data-toggle="modal" data-target="#LoginForm"--><i class="fa fa-sign-in fa-1x"></i>&nbsp;{% trans 'Login' %}</a></li>
+                                <li><a href="{% url 'users:pre_register' %}"><i class="fa fa-plus fa-1x"></i>&nbsp;{% trans 'Signup' %}</a></li>
                             {% endif %}
                         </ul>
                     </div>
@@ -106,7 +109,7 @@
                                         {% blocktrans with host=next_humanitarian_action.host when=next_humanitarian_action.when|date where=next_humanitarian_action.where %}Hosted by {{ host }}, {{ where }}, {{ when }}{% endblocktrans %}
                                     </a>
                                 {% else %}
-                                    {% trans 'No humanitarian action scheduled at the moment. /)' %}
+                                    {% trans "Warning, there's realy cool stuff in preparation for this year !! :D" %}
                                 {% endif %}
                             </div>
                         </div>

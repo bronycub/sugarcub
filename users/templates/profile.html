@@ -15,7 +15,8 @@
                     <img class="img-rounded img-avatar" src="{{ profile.avatar.avatar.url }}"/>
                 {% endif %}
                 {{ profile.user.username }}
-                <form enctype="multipart/form-data" class="form-horizontal" method="post" action="{% url 'users:profile' %}">
+                <a href="{% url 'auth_password_change' %}">{% trans 'Change your password' %}</a>
+                <form enctype="multipart/form-data" class="form-horizontal" method="post" action="">
                     {% csrf_token %}
                     {% bootstrap_form form %}
                     {% buttons %}

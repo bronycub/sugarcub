@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans 'Agenda' %}{% endblock %}
+
+{% block body %}
+    {{ block.super }}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>TODO | Agenda</h1>
+            </div>
+        </div>
+    </div>
+{% endblock %}

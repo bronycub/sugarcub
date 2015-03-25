@@ -37,7 +37,7 @@
                         <div class="col-sm-12">
                             <h3>{{ profile.user.username }}</h3>
                             <div class="col-sm-6">
-                                <p>{{ profile.lastname }} {{ profile.firstname }}</p>
+                                <p>{{ profile.user.last_name }} {{ profile.user.first_name }}</p>
                             </div>
                             <div class="col-sm-6">
                                 <p>{{ profile.birthday }} </p>
@@ -50,8 +50,8 @@
                             </div>
                         </div>
                         <div class="col-sm-12" align="right">
-                            {% if profile.email %}
-                                <a href='{{ profile.email }}' target='_taget' class='zocial icon email'></a>
+                            {% if profile.user.email %}
+                                <a href='{{ profile.user.email }}' target='_taget' class='zocial icon email'></a>
                             {% endif %}
                             {% for url in profile.url_set.all %}
                                 <a href='{{ url.url }}' target='_taget' class='zocial icon {{ url.icon }}'></a>

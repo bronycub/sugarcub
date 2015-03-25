@@ -1,31 +1,44 @@
 from django						import forms
-from django.contrib.auth.models import User
-from django.contrib.auth.forms	import UserCreationForm
-from multiform					import MultiModelForm
+from registration.forms			import RegistrationFormUniqueEmail
+from multiform					import MultiModelForm, InvalidArgument
 from .models					import Profile
+from django.contrib.auth.models import User
+
+class UserForm(forms.ModelForm):
+
+    class Meta:
+        model  = User
+        fields = ['first_name', 'last_name']
 
 class ProfileForm(forms.ModelForm):
 
     class Meta:
-        model  = Profile
+        model	= Profile
         exclude = ['user', 'addressLatitude', 'addressLongitude']
 
-class SignupForm(MultiModelForm):
+class RegistrationForm(MultiModelForm):
+
     base_forms = [
-        ('user',	UserCreationForm),
-        ('profile', ProfileForm),
-    ]	
+        ('registration', RegistrationFormUniqueEmail),
+        ('user',		 UserForm),
+        ('profile',		 ProfileForm),
+    ]
 
     def dispatch_init_instance(self, name, instance):
-        if name == 'profile':
-            return instance
-        return super(SignupForm, self).dispatch_init_instance(name, instance)
+        if name == 'registration':
+            return InvalidArgument
+        return super(RegistrationForm, self).dispatch_init_instance(name, instance)
 
-    def save(self, commit=True):
+    def save(self, commit=True, user=None):
         """Save both forms and attach the user to the profile."""
-        instances = super(SignupForm, self).save(commit=False)
-        instances['user'].save()
-        instances['profile'].user = instances['user']
+        instances = self._combine('save', call=True, ignore_missing=True, call_kwargs={'commit': False})
+
+        user.first_name = instances['user'].first_name
+        user.last_name	= instances['user'].last_name
+        instances['user'] = user
+
+        instances['profile'].user = user
         instances['profile'].save()
+        instances['user'].save()
         return instances
 
