@@ -10,5 +10,7 @@
     {% endbuttons %}
     <div class="form-group text-center">
         <a href="{% url 'auth_password_reset' %}">{% trans 'You forgot your password ?' %}</a>
+        <hr />
+        <a href="{% url 'users:pre_register' %}">{% trans 'Signup' %}</a>
     </div>
 </form>
