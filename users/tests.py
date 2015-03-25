@@ -1,33 +1,33 @@
-from    django.test              import TestCase
-from    utils.tests              import UnitTestUtilsMixin
-from   .                         import views, models, forms
+from	django.test				 import TestCase
+from	utils.tests				 import UnitTestUtilsMixin
+from   .						 import views, models, forms
 from   django.contrib.auth.views import login, logout
-from   django.core.exceptions    import ValidationError
-from   model_mommy               import mommy
+from   django.core.exceptions	 import ValidationError
+from   model_mommy				 import mommy
 import datetime
 import unittest
 
 valid_profile_data = {
     'firstname': 'form',
-    'lastname':  'test',
-    'email':     'form@test.ts',
-    'bio':       'test',
-    'phone':     '0123456789',
-    'birthday':  '01/01/1970',
-    'address':   'test',
+    'lastname':	 'test',
+    'email':	 'form@test.ts',
+    'bio':		 'test',
+    'phone':	 '0123456789',
+    'birthday':	 '01/01/1970',
+    'address':	 'test',
 }
 
 valid_signup_data = {
-    'user-username':     'form_test',
-    'user-password1':    'test',
-    'user-password2':    'test',
+    'user-username':	 'form_test',
+    'user-password1':	 'test',
+    'user-password2':	 'test',
     'profile-firstname': 'form',
-    'profile-lastname':  'test',
-    'profile-email':     'form@test.ts',
-    'profile-bio':       'test',
-    'profile-phone':     '0123456789',
-    'profile-birthday':  '01/01/1970',
-    'profile-address':   'test',
+    'profile-lastname':	 'test',
+    'profile-email':	 'form@test.ts',
+    'profile-bio':		 'test',
+    'profile-phone':	 '0123456789',
+    'profile-birthday':	 '01/01/1970',
+    'profile-address':	 'test',
 }
 
 class UsersViewsTest(UnitTestUtilsMixin, TestCase):
@@ -69,8 +69,8 @@ class UsersViewsTest(UnitTestUtilsMixin, TestCase):
 class UsersModelsTest(TestCase):
 
     def test_name_profile(self):
-        user    = mommy.make(models.User,    username = 'test')
-        profile = mommy.make(models.Profile, user     = user)
+        user	= mommy.make(models.User,	 username = 'test')
+        profile = mommy.make(models.Profile, user	  = user)
         profile.phone = '23456789'
         self.assertRaises(ValidationError, profile.full_clean)
 
@@ -80,7 +80,7 @@ class UsersModelsTest(TestCase):
 
     def test_name_pony(self):
         pony = mommy.make(models.Pony,
-            pony    = 'Fluttershy',
+            pony	= 'Fluttershy',
             message = '%s is best pony !',
         )
         pony.full_clean()
@@ -88,7 +88,7 @@ class UsersModelsTest(TestCase):
         self.assertEquals('Fluttershy is best pony !', pony.__unicode__())
 
         pony = mommy.make(models.Pony,
-            pony    = 'Fluttershy',
+            pony	= 'Fluttershy',
             message = '%d is best pony !',
         )
         pony.full_clean()

@@ -75,7 +75,7 @@ TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
 )
 
 TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, 'core',  'templates'),
+    os.path.join(BASE_DIR, 'core',	'templates'),
     os.path.join(BASE_DIR, 'admin', 'templates'),
 )
 
@@ -110,7 +110,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
-STATIC_URL  = '/static/'
+STATIC_URL	= '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, '..', 'static')
 
 # Media
@@ -120,8 +120,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, '..', 'media')
 # Auth configuration
 
 LOGIN_REDIRECT_URL = '/'
-LOGIN_URL          = '/login'
-LOGOUT_URL         = '/logout'
+LOGIN_URL		   = '/login'
+LOGOUT_URL		   = '/logout'
 
 # Admin
 

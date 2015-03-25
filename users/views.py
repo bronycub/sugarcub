@@ -1,10 +1,10 @@
-from django.shortcuts               import render, redirect
-from django.contrib.auth            import authenticate, login
-from django.shortcuts               import render
-from .models                        import Profile, Pony
-from .forms                         import SignupForm, ProfileForm
+from django.shortcuts				import render, redirect
+from django.contrib.auth			import authenticate, login
+from django.shortcuts				import render
+from .models						import Profile, Pony
+from .forms							import SignupForm, ProfileForm
 from django.contrib.auth.decorators import login_required
-from django.forms.models            import modelformset_factory
+from django.forms.models			import modelformset_factory
 
 def members(request):
     return render(request, 'members.html', {
@@ -55,6 +55,6 @@ def profile(request):
 
     return render(request, 'profile.html', {
         'profile': profile,
-        'form':    form,
+        'form':	   form,
         'ponies':  ponies,
     })

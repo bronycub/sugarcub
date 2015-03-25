@@ -1,8 +1,8 @@
-from django                     import forms
+from django						import forms
 from django.contrib.auth.models import User
-from django.contrib.auth.forms  import UserCreationForm
-from multiform                  import MultiModelForm
-from .models                    import Profile
+from django.contrib.auth.forms	import UserCreationForm
+from multiform					import MultiModelForm
+from .models					import Profile
 
 class ProfileForm(forms.ModelForm):
 
@@ -12,9 +12,9 @@ class ProfileForm(forms.ModelForm):
 
 class SignupForm(MultiModelForm):
     base_forms = [
-        ('user',    UserCreationForm),
+        ('user',	UserCreationForm),
         ('profile', ProfileForm),
-    ]   
+    ]	
 
     def dispatch_init_instance(self, name, instance):
         if name == 'profile':
