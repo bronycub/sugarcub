@@ -5,7 +5,7 @@ class Quote(models.Model):
 
     quote = models.TextField()
 
-    def __unicode__(self):
+    def __str__(self):
         return self.quote
 
 class Friend(models.Model):
@@ -16,8 +16,8 @@ class Friend(models.Model):
     image		= models.ImageField()
     url			= models.URLField()
 
-    def __unicode__(self):
-        return self.title
+    def __str__(self):
+        return self.name
 
 class Event(models.Model):
     ''' List of events the collective has planned '''
@@ -28,7 +28,7 @@ class Event(models.Model):
     when  = models.DateTimeField()
     where = models.CharField(max_length = 256)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
     class Meta:

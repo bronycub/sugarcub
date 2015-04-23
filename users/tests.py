@@ -63,7 +63,7 @@ class UsersModelsTest(TestCase):
         self.assertRaises(ValidationError, profile.full_clean)
 
         profile.phone = '0123456789'
-        self.assertEquals('test', profile.__unicode__())
+        self.assertEquals('test', profile.__str__())
         profile.full_clean()
 
     def test_name_pony(self):
@@ -73,7 +73,7 @@ class UsersModelsTest(TestCase):
         )
         pony.full_clean()
 
-        self.assertEquals('Fluttershy is best pony !', pony.__unicode__())
+        self.assertEquals('Fluttershy is best pony !', pony.__str__())
 
         pony = mommy.make(models.Pony,
             pony	= 'Fluttershy',
@@ -81,7 +81,7 @@ class UsersModelsTest(TestCase):
         )
         pony.full_clean()
 
-        self.assertEquals('%d is best pony !', pony.__unicode__())
+        self.assertEquals('%d is best pony !', pony.__str__())
 
     def test_name_url(self):
         url = mommy.make(models.Url,
@@ -89,7 +89,7 @@ class UsersModelsTest(TestCase):
         )
         url.full_clean()
 
-        self.assertEquals('http://equestria.pn', url.__unicode__())
+        self.assertEquals('http://equestria.pn', url.__str__())
 
 
 class UsersFormsTest(TestCase):

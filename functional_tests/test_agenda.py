@@ -1,9 +1,8 @@
 from   model_mommy                import mommy
 from   django.contrib.auth.models import User
 from   django.core.urlresolvers   import reverse
-from   django.core                import mail
 from   django_webtest             import WebTest
-from   agenda.models              import Profile
+from   agenda                     import models
 import datetime
 import unittest
 import re

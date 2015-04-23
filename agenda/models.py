@@ -4,21 +4,49 @@ from django.contrib.auth.models import User
 class Event(models.Model):
     ''' Represent an event in the agenda '''
 
-    title       = models.TextField()
     author      = models.OneToOneField(User)
+
+    title       = models.TextField()
     description = models.TextField()
     date_begin  = models.DateTimeField()
     date_end    = models.DateTimeField()
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
-class Comment(models.Model):
-    ''' Represent a post in a discussion attached to an event '''
+    class Meta:
+        ordering = ['-date_begin', '-date_end']
 
-    text   = models.TextField()
-    author = models.OneToOneField(User)
+class Comment(models.Model):
+    '''
+    Represent a post in a discussion attached to an event
+
+    Comment is posted by author if logged in, else by pseudo
+    '''
+
+    author = models.OneToOneField(User, null = True)
+    pseudo = models.CharField(max_length = 30, blank = True)
     event  = models.OneToOneField(Event)
 
-    def __unicode__(self):
+    text   = models.TextField()
+    date   = models.DateTimeField()
+
+    def __str__(self):
         return self.text
+
+    class Meta:
+        ordering = ['-date']
+
+class Participation(models.Model):
+    '''
+    Represent a participation to an event by a user
+
+    Participation is made by author if logged in, else by pseudo
+    '''
+
+    user   = models.OneToOneField(User, null = True)
+    pseudo = models.CharField(max_length = 30, blank = True)
+    event  = models.OneToOneField(Event)
+
+    def __str__(self):
+        return (str(self.user) if self.user else self.pseudo) + ' ' + str(self.event)

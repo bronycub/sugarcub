@@ -21,7 +21,7 @@ class Profile(models.Model):
     address_longitude = models.FloatField(blank = True, null = True)
     address_latitude  = models.FloatField(blank = True, null = True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.user.username
 
 
@@ -32,7 +32,7 @@ class Pony(models.Model):
     pony	= models.CharField(max_length = 32)
     message = models.CharField(max_length = 64)
 
-    def __unicode__(self):
+    def __str__(self):
         try:
             return self.message % self.pony
         except TypeError:
@@ -49,6 +49,6 @@ class Url(models.Model):
     url		= models.URLField()
     icon	= models.CharField(max_length = 16)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.url
 
