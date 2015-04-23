@@ -12,3 +12,4 @@ selenium==2.45.0
 docutils==0.12
 django-registration-redux==1.1
 gunicorn==19.3.0
+django-endless-pagination==2.0

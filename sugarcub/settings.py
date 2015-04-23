@@ -46,6 +46,7 @@ DEPENDENCIES_APPS = (
     'django.contrib.staticfiles',
     'multiform',
     'registration',
+    'endless_pagination',
 )
 
 DEV_DEPENDENCIES_APPS = (

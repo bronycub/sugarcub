@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 class Event(models.Model):
     ''' Represent an event in the agenda '''
 
-    author      = models.OneToOneField(User)
+    author      = models.ForeignKey(User)
 
     title       = models.TextField()
     description = models.TextField()
@@ -24,9 +24,9 @@ class Comment(models.Model):
     Comment is posted by author if logged in, else by pseudo
     '''
 
-    author = models.OneToOneField(User, null = True)
+    author = models.ForeignKey(User, null = True)
     pseudo = models.CharField(max_length = 30, blank = True)
-    event  = models.OneToOneField(Event)
+    event  = models.ForeignKey(Event)
 
     text   = models.TextField()
     date   = models.DateTimeField()
@@ -44,8 +44,8 @@ class Participation(models.Model):
     Participation is made by author if logged in, else by pseudo
     '''
 
-    user   = models.OneToOneField(User, null = True)
-    pseudo = models.CharField(max_length = 30, blank = True)
+    user   = models.ForeignKey(User, null = True)
+    pseudo = models.CharField(max_length = 31, blank = True)
     event  = models.OneToOneField(Event)
 
     def __str__(self):
