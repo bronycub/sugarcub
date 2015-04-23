@@ -29,6 +29,7 @@ PROJECT_APPS = (
     'core',
     'users',
     'bbbff',
+    'agenda',
 )
 
 DEPENDENCIES_APPS = (
