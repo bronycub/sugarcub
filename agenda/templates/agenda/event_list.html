@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load endless %}
+
+{% block title %}{% trans 'Events' %}{% endblock %}
+
+{% block body %}
+{{ block.super }}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 endless_page_template">
+            {% include 'agenda/event_list_page.html' %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ block.super }}
+    <script src="{{ STATIC_URL }}endless_pagination/js/endless-pagination.js"></script>
+    <script>$.endlessPaginate();</script>
+{% endblock %}

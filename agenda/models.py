@@ -49,4 +49,7 @@ class Participation(models.Model):
     event  = models.OneToOneField(Event)
 
     def __str__(self):
-        return (str(self.user) if self.user else self.pseudo) + ' ' + str(self.event)
+        return str(self.author()) + ' ' + str(self.event)
+
+    def author(self):
+        return self.user if self.user else self.pseudo

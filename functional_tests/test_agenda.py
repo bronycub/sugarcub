@@ -18,7 +18,7 @@ class AgendaTest(WebTest):
     def test_list_events(self):
         '''Test that you can see and navigate the list of events'''
         # You can go to the agenda page
-        page = self.app.get(reverse('agenda:index'))
+        page = self.app.get(reverse('agenda:list'))
 
         # You can see all the upcoming events or the 10 most recent events
         # You can navigate the older events with the pagination buttons
@@ -29,7 +29,7 @@ class AgendaTest(WebTest):
     @unittest.skipIf(True, 'not implemented')
     def test_comments(self):
         '''Test that you can see and navigate all comments and add one'''
-        page = self.app.get(reverse('agenda:index'))
+        page = self.app.get(reverse('agenda:list'))
 
         # You can show the comments for an event
         # You see older comments when going back in the history
@@ -40,7 +40,7 @@ class AgendaTest(WebTest):
     @unittest.skipIf(True, 'not implemented')
     def test_can_participate(self):
         '''Test that you can participate and unparticipate to an event'''
-        page = self.app.get(reverse('agenda:index'))
+        page = self.app.get(reverse('agenda:list'))
 
         # You can click the participate button
         # You can click the cancel participation button

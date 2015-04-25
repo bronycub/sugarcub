@@ -65,9 +65,11 @@ class AgendaModelsTest(TestCase):
         participation = mommy.make(models.Participation, event = event, user = user)
 
         self.assertEquals('test Test', participation.__str__())
+        self.assertEquals(user, participation.author())
 
     def test_name_participation_pseudo(self):
         event = mommy.make(models.Event, title = 'Test')
         participation = mommy.make(models.Participation, event = event, pseudo = 'test')
 
         self.assertEquals('test Test', participation.__str__())
+        self.assertEquals('test', participation.author())
