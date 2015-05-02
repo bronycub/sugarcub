@@ -6,11 +6,12 @@ from   agenda                     import models
 import datetime
 import unittest
 import re
+import ics
 
 class AgendaTest(WebTest):
 
     def setUp(self):
-        events = mommy.make(model.Event,
+        events = mommy.make(models.Event,
             _quantity = 20,
         )
 
@@ -20,8 +21,8 @@ class AgendaTest(WebTest):
         # You can go to the agenda page
         page = self.app.get(reverse('agenda:list'))
 
-        # You can see all the upcoming events or the 10 most recent events
-        # You can navigate the older events with the pagination buttons
+        # You can see the 10 most recent events
+        # You can navigate the older events
         # You can search for an event
 
         self.fail('TODO : Write the functionalities and tests')
@@ -54,3 +55,12 @@ class AgendaTest(WebTest):
         # The event appears in the list
 
         self.fail('TODO : Write the functionalities and tests')
+
+    def test_get_ics_export(self):
+        '''Test that you can download the ical corresponding to the events in the DB'''
+        # You can download the ics
+        export = self.app.get(reverse('agenda:ics_export'))
+
+        # It contains the events in the DB
+        calendar = ics.Calendar(imports = export.text)
+        self.assertEqual(len(calendar.events), models.Event.objects.count())

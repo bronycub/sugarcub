@@ -3,9 +3,11 @@ from   django.contrib.auth.models import User
 from   .                          import views,    models
 from   model_mommy                import mommy
 from   datetime                   import datetime, timedelta
+from   utils.tests                import UnitTestUtilsMixin
 import unittest
+import ics
 
-class AgendaViewsTest(TestCase):
+class AgendaViewsTest(UnitTestUtilsMixin, TestCase):
 
     @unittest.skipIf(True, 'not implemented')
     def test_index(self):
@@ -14,6 +16,9 @@ class AgendaViewsTest(TestCase):
     @unittest.skipIf(True, 'not implemented')
     def test_create(self):
         self.fail('todo')
+
+    def test_export(self):
+        self.assert_url_matches_view(views.ics_export, '/agenda/ics', 'agenda:ics_export')
 
 
 class AgendaModelsTest(TestCase):
@@ -73,3 +78,38 @@ class AgendaModelsTest(TestCase):
 
         self.assertEquals('test Test', participation.__str__())
         self.assertEquals('test', participation.author())
+
+    def test_from_ics(self):
+        now   = datetime.now()
+        event = mommy.make(models.Event,
+            title       = 'name',
+            date_begin  = now,
+            date_end    = now + timedelta(days = 1, hours = 1),
+            description = 'description',
+        )
+        ics_event = ics.Event(
+            name        = 'name',
+            begin       = now,
+            end         = now + timedelta(days = 1, hours = 1),
+            description = 'description',
+        )
+
+        event_imported = models.Event.objects.create(ics_import = ics_event)
+        self.assertEquals(event, event_imported)
+
+    def test_to_ics(self):
+        now   = datetime.now()
+        event = mommy.make(models.Event,
+            title       = 'name',
+            date_begin  = now,
+            date_end    = now + timedelta(days = 1, hours = 1),
+            description = 'description',
+        )
+        ics_event = ics.Event(
+            name        = 'name',
+            begin       = now,
+            end         = now + timedelta(days = 1, hours = 1),
+            description = 'description',
+        )
+
+        self.assertEquals(ics_event, event.to_ics_event())
