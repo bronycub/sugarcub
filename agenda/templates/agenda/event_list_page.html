@@ -14,6 +14,12 @@
             </a>
         </div>
         <div id="event{{event.id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+            {% if event.date_begin.date == event.date_end.date %}
+                <div>{{ event.date_begin|date }} : {{ event.date_begin|time }} - {{ event.date_end|time }}</div>
+            {% else %}
+                <div>{{ event.date_begin|date }} : {{ event.date_begin|time }} - {{ event.date_end|date }} : {{ event.date_end|time }}</div>
+            {% endif %}
+            <div>{{ event.description }}</div>
             <div class="list-group-item-text">
                 {% include 'agenda/comment_list_page.html' with comment_list=event.comment_set.all %}
             </div>

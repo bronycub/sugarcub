@@ -9,11 +9,13 @@
 {{ block.super }}
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-12 endless_page_template">
-            {% include 'agenda/event_list_page.html' %}
-        </div>
-    </div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="endless_page_template">
+				{% include 'agenda/event_list_page.html' %}
+			</div>
+		</div>
+	</div>
 </div>
 
 {% endblock %}

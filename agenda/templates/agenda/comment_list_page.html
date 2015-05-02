@@ -4,16 +4,20 @@
 {% load endless %}
 
 {% url 'agenda:comment_list' comment_list.0.event.id as comment_url %}
-{% lazy_paginate 0,10 comment_list with comment_url %}
+{% lazy_paginate 3,10 comment_list with comment_url %}
 
-{% for comment in comment_list %}
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            {{ comment.author }}
+{% if user.is_authenticated %}
+    {% for comment in comment_list %}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {{ comment.author }}
+            </div>
+            <div class="panel-body">
+                {{ comment.text }}
+            </div>
         </div>
-        <div class="panel-body">
-            {{ comment.text }}
-        </div>
-    </div>
-{% endfor %}
-{% show_more %}
+    {% endfor %}
+    {% show_more %}
+{% else %}
+    <div>{% trans 'You must be logged in to see the comments.' %}</div>
+{% endif %}
