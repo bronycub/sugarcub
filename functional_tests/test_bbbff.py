@@ -1,10 +1,12 @@
-from  selenium             import webdriver
-from  functional_tests.base import FunctionalTest
-import unittest
+from   selenium              import webdriver
+from   functional_tests.base import FunctionalTest
+from   utils                 import tests
+import pytest
 
+@pytest.mark.functional
 class BbbffTest(FunctionalTest):
     '''Test BBBFF functionalitites'''
 
-    @unittest.skipIf(True, 'not implemented')
+    @tests.skipNotFinishedYet
     def test_todo(self):
         self.fail('TODO : Write the functional tests')

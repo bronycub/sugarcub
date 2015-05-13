@@ -1,10 +1,10 @@
-from   django.test				  import TestCase
-from   utils.tests				  import UnitTestUtilsMixin
-from   .						  import views, models, forms
+from   django.test                import TestCase
+from   utils                      import tests
+from   .                          import views, models, forms
 from   django.contrib.auth.views  import login, logout
 from   django.contrib.auth.models import User
-from   django.core.exceptions	  import ValidationError
-from   model_mommy				  import mommy
+from   django.core.exceptions     import ValidationError
+from   model_mommy                import mommy
 import datetime
 import unittest
 
@@ -31,9 +31,9 @@ valid_signup_data = {
 }
 
 
-class UsersViewsTest(UnitTestUtilsMixin, TestCase):
+class UsersViewsTest(tests.UnitTestUtilsMixin, TestCase):
 
-    @unittest.skipIf(True, 'not implemented')
+    @tests.skipNotFinishedYet
     def test_signup(self):
         self.assert_url_matches_view(views.signup, '/signup', 'registration_register')
         self.fail('todo')
@@ -48,7 +48,7 @@ class UsersViewsTest(UnitTestUtilsMixin, TestCase):
         response = self.client.get('/members')
         self.assertCountEqual(profiles[1:], response.context['profiles'])
 
-    @unittest.skipIf(True, 'not implemented')
+    @tests.skipNotFinishedYet
     def test_profile(self):
         self.assert_url_matches_view(views.profile, '/profile', 'users:profile')
         self.fail('todo')

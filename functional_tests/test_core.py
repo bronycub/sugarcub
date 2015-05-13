@@ -1,9 +1,12 @@
-from  selenium                      import webdriver
-from  functional_tests.base         import FunctionalTest
-from  selenium.webdriver.common.keys import Keys
-from  time                          import sleep
-import unittest
+from   selenium                       import webdriver
+from   utils                          import tests
+from   functional_tests.base          import FunctionalTest
+from   selenium.webdriver.common.keys import Keys
+from   time                           import sleep
+import pytest
 
+@pytest.mark.functional
+@pytest.mark.selenium
 class CoreTest(FunctionalTest):
     '''Test the core functionalitites'''
 
@@ -12,7 +15,7 @@ class CoreTest(FunctionalTest):
         self.browser.find_element_by_partial_link_text(link).click()
         self.assertRegex(self.browser.current_url, url)
 
-    @unittest.skipIf(True, 'not implemented')
+    @tests.skipNotFinishedYet
     def test_header(self):
         '''Test the header without testing the login/signup, logout, and my account which are tested in users_test'''
         self.browser.get(self.server_url)
@@ -35,7 +38,7 @@ class CoreTest(FunctionalTest):
 
         self.fail('TODO : Fix the tests')
 
-    @unittest.skipIf(True, 'not implemented')
+    @tests.skipNotFinishedYet
     def test_footer(self):
         '''Test the footer'''
         self.browser.get(self.server_url)
@@ -49,7 +52,7 @@ class CoreTest(FunctionalTest):
 
         self.fail('TODO : Write the tests')
 
-    @unittest.skipIf(True, 'not implemented')
+    @tests.skipNotFinishedYet
     def test_home_page(self):
         '''Test the home page'''
         # You can see a message when the IRC logs aren't available
@@ -62,13 +65,13 @@ class CoreTest(FunctionalTest):
 
         self.fail('TODO : Write the tests')
 
-    @unittest.skipIf(True, 'not implemented')
+    @tests.skipNotFinishedYet
     def test_agenda(self):
         '''Test the agenda'''
 
         self.fail('TODO : Write the functionalities and tests')
 
-    @unittest.skipIf(True, 'not implemented')
+    @tests.skipNotFinishedYet
     def test_map(self):
         '''Test the map'''
         # You can see the map of the collective's location 
@@ -81,7 +84,7 @@ class CoreTest(FunctionalTest):
 
         self.fail('TODO : Write the tests')
 
-    @unittest.skipIf(True, 'not implemented')
+    @tests.skipNotFinishedYet
     def test_friends(self):
         '''Test the friends map'''
         # You can see the list of friends of this collective
@@ -92,7 +95,7 @@ class CoreTest(FunctionalTest):
 
         self.fail('TODO : Write the tests')
 
-    @unittest.skipIf(True, 'not implemented')
+    @tests.skipNotFinishedYet
     def test_konami(self):
         '''Test that you can trigger the konami easter egg and see the video'''
         # The konami is hidden by default

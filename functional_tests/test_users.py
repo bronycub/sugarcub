@@ -1,13 +1,15 @@
-from   model_mommy				  import mommy
+from   model_mommy                import mommy
+from   utils                      import tests
 from   django.contrib.auth.models import User
-from   django.core.urlresolvers	  import reverse
-from   django.core				  import mail
-from   django_webtest			  import WebTest
-from   users.models				  import Profile
+from   django.core.urlresolvers   import reverse
+from   django.core                import mail
+from   django_webtest             import WebTest
+from   users.models               import Profile
 import datetime
-import unittest
+import pytest
 import re
 
+@pytest.mark.functional
 class AccountTest(WebTest):
 
     def setUp(self):
@@ -105,7 +107,7 @@ class AccountTest(WebTest):
         page = self.app.get(reverse('core:home'), user='user_test')
         assert page.html(href = reverse('users:profile'))
 
-    @unittest.skipIf(True, 'not implemented')
+    @tests.skipNotFinishedYet
     def test_edit_profile(self):
         'Test that you can edit your profile'
         page = self.app.get(reverse('users:profile'), user = 'user_test')
@@ -123,41 +125,42 @@ class AccountTest(WebTest):
         # You can update your data
         self.fail('TODO : Write the functionalities and tests')
 
-    @unittest.skipIf(True, 'not implemented')
+    @tests.skipNotFinishedYet
     def test_change_password(self):
         '''Test that you cant change your password'''
 
         self.fail('TODO : Write the functionalities and tests')
 
-    @unittest.skipIf(True, 'not implemented')
+    @tests.skipNotFinishedYet
     def test_reset_password(self):
         '''Test that you can reset your password if you forgot it'''
 
         self.fail('TODO : Write the functionalities and tests')
 
 
+@pytest.mark.functional
 class MembersTest(WebTest):
     '''Test the functionalitites related to the members page'''
 
-    @unittest.skipIf(True, 'not implemented')
+    @tests.skipNotFinishedYet
     def test_shows_members(self):
         '''Test that the page shows all (activated) members with their informations'''
 
         self.fail('TODO : Write the functionalities and tests')
 
-    @unittest.skipIf(True, 'not implemented')
+    @tests.skipNotFinishedYet
     def test_shows_only_public_not_logged(self):
         '''Test that not logged users can only see informations defined as public'''
 
         self.fail('TODO : Write the functionalities and tests')
 
-    @unittest.skipIf(True, 'not implemented')
+    @tests.skipNotFinishedYet
     def test_shows_all_logged(self):
         '''Test that logged users can see all informations'''
 
         self.fail('TODO : Write the functionalities and tests')
 
-    @unittest.skipIf(True, 'not implemented')
+    @tests.skipNotFinishedYet
     def test_can_search_list(self):
         '''Test that you can search for particular members by role, skills or hobies'''
 
