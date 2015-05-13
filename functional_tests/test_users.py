@@ -1,28 +1,31 @@
-from   model_mommy				  import mommy
+from   model_mommy                import mommy
+from   utils                      import tests
 from   django.contrib.auth.models import User
-from   django.core.urlresolvers	  import reverse
-from   django.core				  import mail
-from   django_webtest			  import WebTest
-from   users.models				  import Profile
+from   django.core.urlresolvers   import reverse
+from   django.core                import mail
+from   django_webtest             import WebTest
+from   users.models               import Profile
 import datetime
-import unittest
+import pytest
 import re
 
+
+@pytest.mark.functional
 class AccountTest(WebTest):
 
     def setUp(self):
         user = mommy.make(User,
             username   = 'user_test',
-            email	   = 'email_test',
+            email      = 'email_test',
             first_name = 'first_test',
             last_name  = 'last_test',
         )
-        profile = mommy.make(Profile,
-            bio		 = 'bio_test',
-            phone	 = '0123456789',
+        mommy.make(Profile,
+            bio      = 'bio_test',
+            phone    = '0123456789',
             birthday = datetime.date(1970, 1, 1),
-            address	 = 'address_test',
-            user	 = user,
+            address  = 'address_test',
+            user     = user,
         )
         user.set_password('password_test')
         user.save()
@@ -63,16 +66,16 @@ class AccountTest(WebTest):
         assert not mail.outbox
 
         # You can submit a correct form and create your account
-        page.form['registration-username']	= 'user_signup_test'
+        page.form['registration-username']  = 'user_signup_test'
         page.form['registration-password1'] = 'password_test'
         page.form['registration-password2'] = 'password_test'
-        page.form['registration-email']		= 'fluttershy@equestria.pn'
-        page.form['user-first_name']		= 'first_test'
-        page.form['user-last_name']			= 'last_test'
-        page.form['profile-bio']			= 'test'
-        page.form['profile-phone']			= '0123456789'
-        page.form['profile-birthday']		= '01/01/1970'
-        page.form['profile-address']		= 'test'
+        page.form['registration-email']     = 'fluttershy@equestria.pn'
+        page.form['user-first_name']        = 'first_test'
+        page.form['user-last_name']         = 'last_test'
+        page.form['profile-bio']            = 'test'
+        page.form['profile-phone']          = '0123456789'
+        page.form['profile-birthday']       = '01/01/1970'
+        page.form['profile-address']        = 'test'
         page = page.form.submit().follow()
 
         # You're then redirected to the welcome page and you receive an activation mail
@@ -105,61 +108,61 @@ class AccountTest(WebTest):
         page = self.app.get(reverse('core:home'), user='user_test')
         assert page.html(href = reverse('users:profile'))
 
-    @unittest.skipIf(True, 'not implemented')
+    @tests.skipNotFinishedYet
     def test_edit_profile(self):
         'Test that you can edit your profile'
         page = self.app.get(reverse('users:profile'), user = 'user_test')
 
-        # Current data are displayed
-        assert 'first_test'	  in page
-        assert 'last_test'	  in page
-        assert 'email_test'	  in page
-        assert 'user_test'	  in page
-        assert 'bio_test'	  in page
-        assert '0123456789'	  in page
-        assert '01/01/1970'	  in page
+        # Current data are displayed
+        assert 'first_test'   in page
+        assert 'last_test'    in page
+        assert 'email_test'   in page
+        assert 'user_test'    in page
+        assert 'bio_test'     in page
+        assert '0123456789'   in page
+        assert '01/01/1970'   in page
         assert 'address_test' in page
 
-        # You can update your data
+        # You can update your data
         self.fail('TODO : Write the functionalities and tests')
 
-    @unittest.skipIf(True, 'not implemented')
+    @tests.skipNotFinishedYet
     def test_change_password(self):
         '''Test that you cant change your password'''
 
         self.fail('TODO : Write the functionalities and tests')
 
-    @unittest.skipIf(True, 'not implemented')
+    @tests.skipNotFinishedYet
     def test_reset_password(self):
         '''Test that you can reset your password if you forgot it'''
 
         self.fail('TODO : Write the functionalities and tests')
 
 
+@pytest.mark.functional
 class MembersTest(WebTest):
     '''Test the functionalitites related to the members page'''
 
-    @unittest.skipIf(True, 'not implemented')
+    @tests.skipNotFinishedYet
     def test_shows_members(self):
         '''Test that the page shows all (activated) members with their informations'''
 
         self.fail('TODO : Write the functionalities and tests')
 
-    @unittest.skipIf(True, 'not implemented')
+    @tests.skipNotFinishedYet
     def test_shows_only_public_not_logged(self):
         '''Test that not logged users can only see informations defined as public'''
 
         self.fail('TODO : Write the functionalities and tests')
 
-    @unittest.skipIf(True, 'not implemented')
+    @tests.skipNotFinishedYet
     def test_shows_all_logged(self):
         '''Test that logged users can see all informations'''
 
         self.fail('TODO : Write the functionalities and tests')
 
-    @unittest.skipIf(True, 'not implemented')
+    @tests.skipNotFinishedYet
     def test_can_search_list(self):
         '''Test that you can search for particular members by role, skills or hobies'''
 
         self.fail('TODO : Write the functionalities and tests')
-

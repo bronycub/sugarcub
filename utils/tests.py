@@ -1,4 +1,8 @@
-from django.core.urlresolvers import reverse, resolve
+from   django.core.urlresolvers import reverse, resolve
+import pytest
+
+skipNotFinishedYet = pytest.mark.skipif(True, reason = 'not implemented')
+
 
 class UnitTestUtilsMixin(object):
     ''' Regroup utilities functions for django unittests '''

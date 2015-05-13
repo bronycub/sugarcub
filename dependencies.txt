@@ -12,3 +12,10 @@ selenium==2.45.0
 docutils==0.12
 django-registration-redux==1.1
 gunicorn==19.3.0
+pytest==2.7.0
+pytest-cov==1.8.1
+pytest-django==2.8.0
+git+https://github.com/mdevlamynck/pytest-flake8.git@master#egg=pytest-flake8
+pytest-instafail==0.3.0
+pytest-sugar==0.4.0
+pytest-xdist==1.12
