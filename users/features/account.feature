@@ -27,3 +27,21 @@ Scenario: Correctly fill registration form and receive confirmation mail
 	When I correctly fill the registration form
 	Then I see Bienvenue !
 	And I receive a mail
+
+
+Scenario: No account / Logout buttons when logout
+	Given I'm on /
+	Then I see Connexion
+	And I see Nous rejoindre ?
+	Then I don't see Profil
+	And I don't see Déconnexion
+
+
+Scenario: No Login / Signup buttons when logged in
+	Given I'm logged in
+	And I'm on /
+	When I click on user
+	Then I see Profil
+	And I see Déconnexion
+	Then I don't see Connexion
+	And I don't see Nous rejoindre ?

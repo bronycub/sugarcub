@@ -1,16 +1,8 @@
-from   pytest_bdd import scenario, then
+from   pytest_bdd import scenarios, then
 from   utils.bdd  import *
-import pytest
 
 
-@pytest.mark.funtional
-@pytest.mark.selenium
-@scenario('account.feature', 'See welcome guide')
-@scenario('account.feature', 'See registration form')
-@scenario('account.feature', 'Fail to fill registration form')
-@scenario('account.feature', 'Correctly fill registration form and receive confirmation mail')
-def test_account():
-    pass
+scenarios('features')
 
 
 @then('I see a form')
