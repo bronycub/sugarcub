@@ -38,13 +38,13 @@ def friends(request):
     friends = Friend.objects.all()
 
     if friends.count() > 2:
-        friendWidth = 4
+        friend_width = 4
     elif friends.count() == 2:
-        friendWidth = 6
+        friend_width = 6
     else:
-        friendWidth = 12
+        friend_width = 12
 
     return render(request, 'friends.html', {
         'friends':     friends,
-        'friendWidth': friendWidth,
+        'friendWidth': friend_width,
     })
