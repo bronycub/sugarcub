@@ -9,4 +9,7 @@ db.sqlite3
 *.mo
 
 # Code coverage
-.coverage
+.coverage*
+
+# PyTest and Cie
+.cache

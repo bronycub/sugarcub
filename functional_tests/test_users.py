@@ -9,22 +9,23 @@ import datetime
 import pytest
 import re
 
+
 @pytest.mark.functional
 class AccountTest(WebTest):
 
     def setUp(self):
         user = mommy.make(User,
             username   = 'user_test',
-            email	   = 'email_test',
+            email      = 'email_test',
             first_name = 'first_test',
             last_name  = 'last_test',
         )
-        profile = mommy.make(Profile,
-            bio		 = 'bio_test',
-            phone	 = '0123456789',
+        mommy.make(Profile,
+            bio      = 'bio_test',
+            phone    = '0123456789',
             birthday = datetime.date(1970, 1, 1),
-            address	 = 'address_test',
-            user	 = user,
+            address  = 'address_test',
+            user     = user,
         )
         user.set_password('password_test')
         user.save()
@@ -65,16 +66,16 @@ class AccountTest(WebTest):
         assert not mail.outbox
 
         # You can submit a correct form and create your account
-        page.form['registration-username']	= 'user_signup_test'
+        page.form['registration-username']  = 'user_signup_test'
         page.form['registration-password1'] = 'password_test'
         page.form['registration-password2'] = 'password_test'
-        page.form['registration-email']		= 'fluttershy@equestria.pn'
-        page.form['user-first_name']		= 'first_test'
-        page.form['user-last_name']			= 'last_test'
-        page.form['profile-bio']			= 'test'
-        page.form['profile-phone']			= '0123456789'
-        page.form['profile-birthday']		= '01/01/1970'
-        page.form['profile-address']		= 'test'
+        page.form['registration-email']     = 'fluttershy@equestria.pn'
+        page.form['user-first_name']        = 'first_test'
+        page.form['user-last_name']         = 'last_test'
+        page.form['profile-bio']            = 'test'
+        page.form['profile-phone']          = '0123456789'
+        page.form['profile-birthday']       = '01/01/1970'
+        page.form['profile-address']        = 'test'
         page = page.form.submit().follow()
 
         # You're then redirected to the welcome page and you receive an activation mail
@@ -112,17 +113,17 @@ class AccountTest(WebTest):
         'Test that you can edit your profile'
         page = self.app.get(reverse('users:profile'), user = 'user_test')
 
-        # Current data are displayed
-        assert 'first_test'	  in page
-        assert 'last_test'	  in page
-        assert 'email_test'	  in page
-        assert 'user_test'	  in page
-        assert 'bio_test'	  in page
-        assert '0123456789'	  in page
-        assert '01/01/1970'	  in page
+        # Current data are displayed
+        assert 'first_test'   in page
+        assert 'last_test'    in page
+        assert 'email_test'   in page
+        assert 'user_test'    in page
+        assert 'bio_test'     in page
+        assert '0123456789'   in page
+        assert '01/01/1970'   in page
         assert 'address_test' in page
 
-        # You can update your data
+        # You can update your data
         self.fail('TODO : Write the functionalities and tests')
 
     @tests.skipNotFinishedYet
@@ -165,4 +166,3 @@ class MembersTest(WebTest):
         '''Test that you can search for particular members by role, skills or hobies'''
 
         self.fail('TODO : Write the functionalities and tests')
-

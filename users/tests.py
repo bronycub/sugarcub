@@ -1,33 +1,30 @@
 from   django.test                import TestCase
 from   utils                      import tests
 from   .                          import views, models, forms
-from   django.contrib.auth.views  import login, logout
 from   django.contrib.auth.models import User
 from   django.core.exceptions     import ValidationError
 from   model_mommy                import mommy
-import datetime
-import unittest
 
 valid_profile_data = {
     'firstname': 'form',
-    'lastname':	 'test',
-    'bio':		 'test',
-    'phone':	 '0123456789',
-    'birthday':	 '01/01/1970',
-    'address':	 'test',
+    'lastname':  'test',
+    'bio':       'test',
+    'phone':     '0123456789',
+    'birthday':  '01/01/1970',
+    'address':   'test',
 }
 
 valid_signup_data = {
     'registration-username':  'form_test',
     'registration-password1': 'test',
     'registration-password2': 'test',
-    'registration-email':	  'form@test.ts',
-    'user-firstname':		  'form',
-    'user-lastname':		  'test',
-    'profile-bio':			  'test',
-    'profile-phone':		  '0123456789',
-    'profile-birthday':		  '01/01/1970',
-    'profile-address':		  'test',
+    'registration-email':     'form@test.ts',
+    'user-firstname':         'form',
+    'user-lastname':          'test',
+    'profile-bio':            'test',
+    'profile-phone':          '0123456789',
+    'profile-birthday':       '01/01/1970',
+    'profile-address':        'test',
 }
 
 
@@ -57,8 +54,8 @@ class UsersViewsTest(tests.UnitTestUtilsMixin, TestCase):
 class UsersModelsTest(TestCase):
 
     def test_name_profile(self):
-        user	= mommy.make(models.User,	 username = 'test')
-        profile = mommy.make(models.Profile, user	  = user)
+        user    = mommy.make(models.User,    username = 'test')
+        profile = mommy.make(models.Profile, user     = user)
         profile.phone = '23456789'
         self.assertRaises(ValidationError, profile.full_clean)
 
@@ -68,7 +65,7 @@ class UsersModelsTest(TestCase):
 
     def test_name_pony(self):
         pony = mommy.make(models.Pony,
-            pony	= 'Fluttershy',
+            pony    = 'Fluttershy',
             message = '%s is best pony !',
         )
         pony.full_clean()
@@ -76,7 +73,7 @@ class UsersModelsTest(TestCase):
         self.assertEquals('Fluttershy is best pony !', pony.__unicode__())
 
         pony = mommy.make(models.Pony,
-            pony	= 'Fluttershy',
+            pony    = 'Fluttershy',
             message = '%d is best pony !',
         )
         pony.full_clean()

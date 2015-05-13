@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Quote(models.Model):
     ''' List of quotes in the home page '''
 
@@ -8,16 +9,18 @@ class Quote(models.Model):
     def __unicode__(self):
         return self.quote
 
+
 class Friend(models.Model):
     ''' List of other collectives shown as your friends '''
 
-    name		= models.CharField(max_length = 32)
+    name        = models.CharField(max_length = 32)
     description = models.TextField()
-    image		= models.ImageField()
-    url			= models.URLField()
+    image       = models.ImageField()
+    url         = models.URLField()
 
     def __unicode__(self):
         return self.title
+
 
 class Event(models.Model):
     ''' List of events the collective has planned '''

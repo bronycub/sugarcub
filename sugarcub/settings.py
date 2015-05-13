@@ -71,7 +71,7 @@ TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
 )
 
 TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, 'core',	'templates'),
+    os.path.join(BASE_DIR, 'core',  'templates'),
     os.path.join(BASE_DIR, 'admin', 'templates'),
     os.path.join(BASE_DIR, 'users', 'templates'),
 )
@@ -96,11 +96,11 @@ USE_TZ = True
 
 # Auth configuration
 
-LOGIN_REDIRECT_URL		= '/'
-LOGIN_URL				= '/login'
-LOGOUT_URL				= '/logout'
-ACCOUNT_ACTIVATION_DAYS	= 7
-AUTH_PROFILE_MODULE		= 'users.profile'
+LOGIN_REDIRECT_URL      = '/'
+LOGIN_URL               = '/login'
+LOGOUT_URL              = '/logout'
+ACCOUNT_ACTIVATION_DAYS = 7
+AUTH_PROFILE_MODULE     = 'users.profile'
 
 
 # Admin

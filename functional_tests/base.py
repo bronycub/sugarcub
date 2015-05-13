@@ -1,9 +1,9 @@
-import sys, os
+import sys
+import os
 from   selenium                           import webdriver
-from   selenium.webdriver.common.keys     import Keys
 from   django.contrib.staticfiles.testing import StaticLiveServerTestCase
-from   unittest.result                    import TestResult
 from   datetime                           import datetime
+
 
 class FunctionalTest(StaticLiveServerTestCase):
 
@@ -31,13 +31,14 @@ class FunctionalTest(StaticLiveServerTestCase):
         super().run(result)
         override.release()
 
+
 class ScreenshotTaker:
 
     def __init__(self, result, webdriver):
         self._result = result
         self._webdriver = webdriver
 
-        if self._result != None:
+        if self._result is not None:
             self._old_addFailure           = result.addFailure
             self._old_addError             = result.addError
             self._old_addUnexpectedSuccess = result.addUnexpectedSuccess
@@ -47,25 +48,25 @@ class ScreenshotTaker:
             self._result.addUnexpectedSuccess = self.addUnexpectedSuccess
 
     def release(self):
-        if self._result != None:
+        if self._result is not None:
             self._result.addFailure           = self._old_addFailure
             self._result.addError             = self._old_addError
             self._result.addUnexpectedSuccess = self._old_addUnexpectedSuccess
 
     def addFailure(self, test, err):
         self._take_screenshot(test)
-        if self._result != None:
+        if self._result is not None:
             self._old_addFailure(test, err)
 
     def addError(self, test, err):
         self._take_screenshot(test)
-        if self._result != None:
+        if self._result is not None:
             self._old_addError(test, err)
 
     def addUnexpectedSuccess(self, test):
         self._take_screenshot(test)
-        if self._result != None:
-            self._old_addUnexpectedSuccess(test, err)
+        if self._result is not None:
+            self._old_addUnexpectedSuccess(test)
 
     def _take_screenshot(self, test):
         filename = os.getenv('SELENIUM_SCREENSHOTS_PATH', '')

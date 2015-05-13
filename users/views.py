@@ -1,9 +1,10 @@
-from django.shortcuts					 import render
-from .models							 import Profile, Pony
-from .forms								 import RegistrationForm, ProfileForm
-from django.contrib.auth.decorators		 import login_required
-from django.forms.models				 import modelformset_factory
+from django.shortcuts                    import render
+from .models                             import Profile, Pony
+from .forms                              import RegistrationForm, ProfileForm
+from django.contrib.auth.decorators      import login_required
+from django.forms.models                 import modelformset_factory
 from registration.backends.default.views import RegistrationView as BaseRegistrationView
+
 
 class RegistrationView(BaseRegistrationView):
 
@@ -26,6 +27,7 @@ def members(request):
         'profiles': Profile.objects.filter(user__is_active = True),
     })
 
+
 @login_required
 def profile(request):
     try:
@@ -46,6 +48,6 @@ def profile(request):
 
     return render(request, 'profile.html', {
         'profile': profile,
-        'form':	   form,
+        'form':    form,
         'ponies':  ponies,
     })
