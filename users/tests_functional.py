@@ -1,5 +1,5 @@
-from   pytest_bdd import scenarios, then
-from   utils.bdd  import *
+from pytest_bdd import scenarios, then
+from utils.bdd  import *
 
 
 scenarios('features')

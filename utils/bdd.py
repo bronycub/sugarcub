@@ -1,5 +1,22 @@
-from pytest_bdd   import given, when, then, parsers
-from urllib.parse import urljoin
+from   pytest_bdd                 import given, when, then, parsers
+from   urllib.parse               import urljoin
+from   django.contrib.auth.models import User
+from   model_mommy                import mommy
+
+
+@given('I am logged in')
+@given("I'm logged in")
+def i_m_logged_in(browser):
+    user = mommy.make(User, username = 'Fluttershy')
+    user.set_password('password_test')
+    user.save()
+
+    i_am_on('/')
+    i_click_on_link('Connexion')
+    browser.fill('username', user.username)
+    browser.fill('password', 'password_test')
+    i_submit()
+    return user
 
 
 @given(parsers.cfparse('I am on {url}'))
@@ -19,8 +36,13 @@ def i_submit(browser):
 
 
 @then(parsers.cfparse('I see {text}'))
-def i_see_a(browser, text):
+def i_see(browser, text):
     assert browser.is_text_present(text)
+
+
+@then(parsers.cfparse("I don't see {text}"))
+def i_dont_see(browser, text):
+    assert not browser.is_text_present(text)
 
 
 @then(parsers.cfparse('I see class {css_class}'))
