@@ -2,6 +2,12 @@ Feature: Account
 	Create and Manager your user account
 
 
+Scenario: Login
+	Given I have a user account
+	When I log in
+	Then I see Fluttershy
+
+
 Scenario: See welcome guide
 	Given I'm on /
 	When I click on link Nous rejoindre ?

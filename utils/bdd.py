@@ -4,19 +4,28 @@ from   django.contrib.auth.models import User
 from   model_mommy                import mommy
 
 
-@given('I am logged in')
-@given("I'm logged in")
-def i_m_logged_in(browser):
+@given('I have a user account')
+def user_account():
     user = mommy.make(User, username = 'Fluttershy')
     user.set_password('password_test')
     user.save()
-
-    i_am_on('/')
-    i_click_on_link('Connexion')
-    browser.fill('username', user.username)
-    browser.fill('password', 'password_test')
-    i_submit()
     return user
+
+
+@given('I am logged in')
+@given("I'm logged in")
+def i_m_logged_in(browser, live_server, user_account):
+    i_log_in(browser, live_server, user_account)
+    return user_account
+
+
+@when('I log in')
+def i_log_in(browser, live_server, user_account):
+    i_am_on(browser, '/', live_server)
+    i_click_on_link(browser, 'Connexion')
+    browser.fill('username', user_account.username)
+    browser.fill('password', 'password_test')
+    i_submit(browser)
 
 
 @given(parsers.cfparse('I am on {url}'))

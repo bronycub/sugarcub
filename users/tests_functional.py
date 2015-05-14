@@ -1,5 +1,10 @@
-from pytest_bdd import scenarios, then
-from utils.bdd  import *
+from   pytest_bdd import scenarios, then
+from   utils.bdd  import *
+import pytest
+
+
+pytestmark = pytest.mark.django_db
+pytestfunctional = pytest.mark.functional
 
 
 scenarios('features')
