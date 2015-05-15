@@ -17,7 +17,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
-if os.getenv('DEPLOY_TYPE', 'dev') == 'prod':
+IS_PROD = os.getenv('DEPLOY_TYPE', 'dev') == 'prod'
+if IS_PROD:
     from sugarcub.settings_prod import *
 else:
     from sugarcub.settings_dev import *
@@ -34,7 +35,6 @@ PROJECT_APPS = (
 DEPENDENCIES_APPS = (
     'stdimage',
     'bootstrap3',
-    'django_admin_bootstrapped.bootstrap3',
     'django_admin_bootstrapped',
     'django.contrib.admindocs',
     'django.contrib.admin',
