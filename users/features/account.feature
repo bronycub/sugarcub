@@ -9,6 +9,7 @@ Scenario: Login
 
 
 Scenario: See welcome guide
+	Given I'm not logged in
 	Given I'm on /
 	When I click on link Nous rejoindre ?
 	Then I see L'histoire de BronyCUB
@@ -16,6 +17,7 @@ Scenario: See welcome guide
 
 
 Scenario: See registration form
+	Given I'm not logged in
 	Given I'm on /
 	When I click on link Nous rejoindre ?
 	When I click on link Formulaire d'inscription
@@ -23,12 +25,14 @@ Scenario: See registration form
 
 
 Scenario: Fail to fill registration form
+	Given I'm not logged in
 	Given I'm on /register
 	When I incorrectly fill the registration form
 	Then form has errors
 
 
 Scenario: Correctly fill registration form and receive confirmation mail
+	Given I'm not logged in
 	Given I'm on /register
 	When I correctly fill the registration form
 	Then I see Bienvenue !
@@ -36,6 +40,7 @@ Scenario: Correctly fill registration form and receive confirmation mail
 
 
 Scenario: No account / Logout buttons when logout
+	Given I'm not logged in
 	Given I'm on /
 	Then I see Connexion
 	Then I see Nous rejoindre ?

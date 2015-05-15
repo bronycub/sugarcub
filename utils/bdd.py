@@ -2,6 +2,10 @@ from   pytest_bdd                 import given, when, then, parsers
 from   urllib.parse               import urljoin
 from   django.contrib.auth.models import User
 from   model_mommy                import mommy
+import pytest
+
+
+pytestmark = [pytest.mark.django_db, pytest.mark.functional]
 
 
 @given('I have a user account')
@@ -12,11 +16,22 @@ def user_account():
     return user
 
 
+@given('I am not logged in')
+@given("I'm not logged in")
+def i_m_not_logged_in(browser):
+    browser.cookies.delete()
+
+
 @given('I am logged in')
 @given("I'm logged in")
 def i_m_logged_in(browser, live_server, user_account):
     i_log_in(browser, live_server, user_account)
     return user_account
+
+
+@when('I log out')
+def i_log_out(browser):
+    i_click_on_link(browser, 'Déconnexion')
 
 
 @when('I log in')

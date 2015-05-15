@@ -35,7 +35,6 @@ PROJECT_APPS = (
 DEPENDENCIES_APPS = (
     'stdimage',
     'bootstrap3',
-    'django_admin_bootstrapped.bootstrap3',
     'django_admin_bootstrapped',
     'django.contrib.admindocs',
     'django.contrib.admin',

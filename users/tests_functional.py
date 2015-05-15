@@ -1,13 +1,16 @@
-from   pytest_bdd import scenarios, then
+from   pytest_bdd import scenario, then
 from   utils.bdd  import *
-import pytest
 
 
-pytestmark = pytest.mark.django_db
-pytestfunctional = pytest.mark.functional
-
-
-scenarios('features')
+@scenario('features/account.feature', 'Login')
+@scenario('features/account.feature', 'See welcome guide')
+@scenario('features/account.feature', 'See registration form')
+@scenario('features/account.feature', 'Fail to fill registration form')
+@scenario('features/account.feature', 'Correctly fill registration form and receive confirmation mail')
+@scenario('features/account.feature', 'No account / Logout buttons when logout')
+@scenario('features/account.feature', 'No Login / Signup buttons when logged in')
+def test_feature(live_server):
+    pass
 
 
 @then('I see a form')

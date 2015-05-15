@@ -1,9 +1,14 @@
+from   django.test                import TestCase
 from   utils                      import tests
 from   .                          import views, models, forms
 from   django.contrib.auth.models import User
 from   django.core.exceptions     import ValidationError
 from   model_mommy                import mommy
 import pytest
+
+
+pytestmark = pytest.mark.logical
+
 
 valid_profile_data = {
     'firstname': 'form',
@@ -13,6 +18,7 @@ valid_profile_data = {
     'birthday':  '01/01/1970',
     'address':   'test',
 }
+
 
 valid_signup_data = {
     'registration-username':  'form_test',
@@ -28,7 +34,7 @@ valid_signup_data = {
 }
 
 
-class UsersViewsTest:
+class UsersViewsTest(TestCase):
 
     @tests.skipNotFinishedYet
     def test_signup(self):
@@ -52,7 +58,7 @@ class UsersViewsTest:
         self.fail('todo')
 
 
-class UsersModelsTest:
+class UsersModelsTest(TestCase):
 
     def test_name_profile(self):
         user    = mommy.make(models.User,    username = 'test')
@@ -91,7 +97,7 @@ class UsersModelsTest:
         assert 'http://equestria.pn' == url.__unicode__()
 
 
-class UsersFormsTest:
+class UsersFormsTest(TestCase):
 
     def test_profile(self):
         form = forms.ProfileForm()
