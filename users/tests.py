@@ -7,9 +7,6 @@ from   model_mommy                import mommy
 import pytest
 
 
-pytestmark = pytest.mark.logical
-
-
 valid_profile_data = {
     'firstname': 'form',
     'lastname':  'test',

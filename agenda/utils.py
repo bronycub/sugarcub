@@ -1,11 +1,13 @@
 from   .   import models
 import ics
 
+
 def import_calendar(calendar):
     ''' Insert in database the events from a ics calendar instance '''
 
     for ics_event in calendar:
-        event = models.Event.objects.create(ics_import = ics_event)
+        models.Event.objects.create(ics_import = ics_event)
+
 
 def export_calendar():
     ''' Create an ics calendar from the content of the database '''

@@ -2,6 +2,7 @@ from   django.db                  import models
 from   django.contrib.auth.models import User
 import ics
 
+
 class Event(models.Model):
     ''' Represent an event in the agenda '''
 

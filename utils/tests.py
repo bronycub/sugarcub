@@ -1,7 +1,11 @@
 from   django.core.urlresolvers import reverse, resolve
 import pytest
 
+
 skipNotFinishedYet = pytest.mark.skipif(True, reason = 'not implemented')
+
+
+pytestmark = pytest.mark.logical
 
 
 class UnitTestUtilsMixin(object):

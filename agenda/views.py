@@ -1,7 +1,7 @@
-from django.shortcuts         import render
 from .                        import models, utils
 from endless_pagination.views import AjaxListView
 from django.http              import HttpResponse
+
 
 class CommentAjaxListView(AjaxListView):
 

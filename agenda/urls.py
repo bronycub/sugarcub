@@ -1,6 +1,7 @@
-from django.conf.urls         import patterns, include, url
+from django.conf.urls         import patterns, url
 from .                        import views, models
 from endless_pagination.views import AjaxListView
+
 
 urlpatterns = patterns('',
     url(
@@ -19,4 +20,3 @@ urlpatterns = patterns('',
         name  = 'ics_export',
     ),
 )
-
