@@ -17,7 +17,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
-if os.getenv('DEPLOY_TYPE', 'dev') == 'prod':
+IS_PROD = os.getenv('DEPLOY_TYPE', 'dev') == 'prod'
+if IS_PROD:
     from sugarcub.settings_prod import *
 else:
     from sugarcub.settings_dev import *
@@ -35,7 +36,6 @@ PROJECT_APPS = (
 DEPENDENCIES_APPS = (
     'stdimage',
     'bootstrap3',
-    'django_admin_bootstrapped.bootstrap3',
     'django_admin_bootstrapped',
     'django.contrib.admindocs',
     'django.contrib.admin',
@@ -73,7 +73,7 @@ TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
 )
 
 TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, 'core',	'templates'),
+    os.path.join(BASE_DIR, 'core',  'templates'),
     os.path.join(BASE_DIR, 'admin', 'templates'),
     os.path.join(BASE_DIR, 'users', 'templates'),
 )
@@ -98,11 +98,11 @@ USE_TZ = True
 
 # Auth configuration
 
-LOGIN_REDIRECT_URL		= '/'
-LOGIN_URL				= '/login'
-LOGOUT_URL				= '/logout'
-ACCOUNT_ACTIVATION_DAYS	= 7
-AUTH_PROFILE_MODULE		= 'users.profile'
+LOGIN_REDIRECT_URL      = '/'
+LOGIN_URL               = '/login'
+LOGOUT_URL              = '/logout'
+ACCOUNT_ACTIVATION_DAYS = 7
+AUTH_PROFILE_MODULE     = 'users.profile'
 
 
 # Admin
