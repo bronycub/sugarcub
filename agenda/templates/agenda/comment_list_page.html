@@ -8,7 +8,7 @@
 
 {% if user.is_authenticated %}
     {% for comment in comment_list %}
-        <div class="panel panel-default">
+        <div class="comment panel panel-default">
             <div class="panel-heading">
                 {{ comment.author }}
             </div>
@@ -17,7 +17,7 @@
             </div>
         </div>
     {% endfor %}
-    {% show_more %}
+    {% show_more 'more comments' %}
 {% else %}
     <div>{% trans 'You must be logged in to see the comments.' %}</div>
 {% endif %}

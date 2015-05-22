@@ -6,7 +6,7 @@
 {% url 'agenda:list' as event_url %}
 {% lazy_paginate event_list with event_url %}
 {% for event in event_list %}
-<div class="list-group" id="event_list" role="tablist" aria-multiselectable="true">
+<div class="event list-group" role="tablist" aria-multiselectable="true">
     <div class="list-group-item" role="tab" id="headingOne">
         <div class="list-group-item-heading">
             <a data-toggle="collapse" data-parent="#event_list" href="#event{{event.id}}" aria-expanded="false" aria-controls="collapseOne">
@@ -27,4 +27,4 @@
     </div>
 </div>
 {% endfor %}
-{% show_more %}
+{% show_more 'more events' %}
