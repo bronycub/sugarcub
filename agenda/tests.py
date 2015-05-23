@@ -9,14 +9,6 @@ import ics
 
 class AgendaViewsTest(tests.UnitTestUtilsMixin, TestCase):
 
-    @tests.skipNotFinishedYet
-    def test_index(self):
-        self.fail('todo')
-
-    @tests.skipNotFinishedYet
-    def test_create(self):
-        self.fail('todo')
-
     def test_export(self):
         self.assert_url_matches_view(views.ics_export, '/agenda/ics', 'agenda:ics_export')
 
@@ -94,8 +86,11 @@ class AgendaModelsTest(TestCase):
             description = 'description',
         )
 
-        event_imported = models.Event.objects.create(ics_import = ics_event)
-        assert event == event_imported
+        event_imported = models.Event.objects.create(
+            author     = event.author,
+            ics_import = ics_event,
+        )
+        assert objects_contain_same_data(event, event_imported)
 
     def test_to_ics(self):
         now   = datetime.now()
@@ -112,4 +107,47 @@ class AgendaModelsTest(TestCase):
             description = 'description',
         )
 
-        assert ics_event == event.to_ics_event()
+        assert objects_contain_same_data(ics_event, event.to_ics_event())
+
+    def test_from_to_event(self):
+        now   = datetime.now()
+        event = mommy.make(models.Event,
+            title       = 'name',
+            date_begin  = now,
+            date_end    = now + timedelta(days = 1, hours = 1),
+            description = 'description',
+        )
+
+        ics_event = event.to_ics_event()
+        assert objects_contain_same_data(
+            event,
+            models.Event.objects.create(
+                author     = event.author,
+                ics_import = ics_event,
+            )
+        )
+
+    def test_from_to_ics(self):
+        now   = datetime.now()
+        ics_event = ics.Event(
+            name        = 'name',
+            begin       = now,
+            end         = now + timedelta(days = 1, hours = 1),
+            description = 'description',
+        )
+
+        event_imported = models.Event.objects.create(
+            author = mommy.make(User),
+            ics_import = ics_event,
+        )
+        assert objects_contain_same_data(ics_event, event_imported.to_ics_event())
+
+
+def objects_contain_same_data(expected, given):
+    assert expected.__class__ == given.__class__
+    print(expected.__dict__)
+    for i in expected.__dict__.keys():
+        if not (i == 'pk' or i == 'id' or i == 'uid' or i.startswith('_')):
+            assert getattr(expected, i) == getattr(given, i)
+
+    return True

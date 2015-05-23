@@ -15,7 +15,3 @@ def ics_export(request):
     response['Content-Disposition'] = 'attachment; filename=agenda.ics'
     response['Content-Lenght'] = len(calendar)
     return response
-
-
-def ics_import(request):
-    pass

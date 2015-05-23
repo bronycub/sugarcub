@@ -26,8 +26,8 @@ class Event(models.Model):
 
     def from_ics_event(self, ics_event):
         self.title       = ics_event.name
-        self.date_begin  = ics_event.begin.format()
-        self.date_end    = ics_event.end.format()
+        self.date_begin  = ics_event.begin.naive
+        self.date_end    = ics_event.end.naive
         self.description = ics_event.description
 
     def to_ics_event(self):

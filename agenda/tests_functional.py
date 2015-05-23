@@ -9,6 +9,7 @@ from   .           import models
 @scenario('features/agenda.feature', 'Endless pagination on events')
 @scenario('features/agenda.feature', 'Endless pagination on comments')
 @scenario('features/agenda.feature', "Don't see comments when not logged in")
+@scenario('features/agenda.feature', 'Export events')
 def test_feature(live_server):
     pass
 

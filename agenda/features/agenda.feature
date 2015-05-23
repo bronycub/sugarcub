@@ -50,3 +50,9 @@ Feature: Agenda
 		Then I see a list of 10 events
 		Then I don't see any comments
 		Then I see 'You must be logged in to see the comments.'
+
+
+	Scenario: Export events
+		Given I'm not logged in
+		When I'm on '/agenda'
+		When I click on link 'Download the caldendar'
