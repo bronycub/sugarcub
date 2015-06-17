@@ -17,7 +17,6 @@ pytest-cov
 pytest-django
 git+https://github.com/mdevlamynck/pytest-flake8.git@master#egg=pytest-flake8
 pytest-instafail
-pytest-sugar
 pytest-xdist
 pytest-bdd
 pytest-splinter
