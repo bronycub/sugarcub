@@ -7,7 +7,7 @@ import pytest
 import random
 
 
-pytestmark = [pytest.mark.django_db, pytest.mark.functional]
+pytestmark = pytest.mark.django_db
 
 
 @given('I have a user account')
@@ -29,11 +29,6 @@ def i_m_not_logged_in(browser):
 def i_m_logged_in(browser, live_server, user_account):
     i_log_in(browser, live_server, user_account)
     return user_account
-
-
-@when('I log out')
-def i_log_out(browser):
-    i_click_on_link(browser, 'Déconnexion')
 
 
 @when('I log in')
@@ -76,11 +71,6 @@ def i_see(browser, text):
 @then(parsers.cfparse("I don't see '{text}'"))
 def i_dont_see(browser, text):
     assert not browser.is_text_present(text)
-
-
-@then(parsers.cfparse("I see class '{css_class}'"))
-def i_see_class(browser, css_class):
-    assert browser.is_element_present_by_css(css_class)
 
 
 @then('form has errors')

@@ -1,16 +1,10 @@
 from   django.test                import TestCase
+from   utils.tests                import *
 from   django.contrib.auth.models import User
-from   .                          import views,    models
+from   .                          import models
 from   model_mommy                import mommy
 from   datetime                   import datetime, timedelta
-from   utils                      import tests
 import ics
-
-
-class AgendaViewsTest(tests.UnitTestUtilsMixin, TestCase):
-
-    def test_export(self):
-        self.assert_url_matches_view(views.ics_export, '/agenda/ics', 'agenda:ics_export')
 
 
 class AgendaModelsTest(TestCase):

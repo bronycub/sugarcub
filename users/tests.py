@@ -1,6 +1,6 @@
 from   django.test                import TestCase
-from   utils                      import tests
-from   .                          import views, models, forms
+from   utils.tests                import *
+from   .                          import models, forms
 from   django.contrib.auth.models import User
 from   django.core.exceptions     import ValidationError
 from   model_mommy                import mommy
@@ -29,30 +29,6 @@ valid_signup_data = {
     'profile-birthday':       '01/01/1970',
     'profile-address':        'test',
 }
-
-
-class UsersViewsTest(TestCase):
-
-    @tests.skipNotFinishedYet
-    def test_signup(self):
-        self.assert_url_matches_view(views.signup, '/signup', 'registration_register')
-        self.fail('todo')
-
-    @tests.skipNotFinishedYet
-    def test_members(self):
-        self.assert_url_matches_view(views.members, '/members', 'users:members')
-
-        profiles = mommy.make(models.Profile, _quantity = 3)
-        profiles[0].user.is_active = False
-        profiles[0].user.save()
-
-        response = self.client.get('/members')
-        self.assertCountEqual(profiles[1:], response.context['profiles'])
-
-    @tests.skipNotFinishedYet
-    def test_profile(self):
-        self.assert_url_matches_view(views.profile, '/profile', 'users:profile')
-        self.fail('todo')
 
 
 class UsersModelsTest(TestCase):
