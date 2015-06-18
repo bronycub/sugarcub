@@ -15,10 +15,8 @@
         {% if not is_popup %}
             <div class="row">
                 <div class="col-sm-12">
-                    <ul class="breadcrumb">
-                        {% block breadcrumbs %}
-                        {% endblock %}
-                    </ul>
+                    {% block breadcrumbs %}
+                    {% endblock %}
                 </div>
             </div>
         {% endif %}
@@ -26,7 +24,7 @@
         <!-- Content -->
         <div class="{% block coltype %}colM{% endblock %}">
             {% block navbar %}
-            <div class="navbar navbar-default">
+            <div class="navbar navbar-default" id="navbar">
                 <div class="navbar-inner">
                     {% block pretitle %}{% endblock %}
                         <div class="navbar-header">
