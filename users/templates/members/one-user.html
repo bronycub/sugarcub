@@ -51,10 +51,10 @@
                         </div>
                         <div class="col-sm-12 text-right">
                             {% if profile.user.email %}
-                                <a href='{{ profile.user.email }}' target='_taget' class='zocial icon email'></a>
+                                <a href='{{ profile.user.email }}' class='zocial icon email'></a>
                             {% endif %}
                             {% for url in profile.url_set.all %}
-                                <a href='{{ url.url }}' target='_taget' class='zocial icon {{ url.icon }}'></a>
+                                <a href='{{ url.url }}' class='zocial icon {{ url.icon }}'></a>
                             {% endfor %}
                         </div>
                     </div>
