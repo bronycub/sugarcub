@@ -24,7 +24,7 @@
     <body>
         
         {% block header %}
-            <header class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <a href="{% url 'core:home' %}" class="navbar-brand">{{ collective_name }}</a>
@@ -78,7 +78,7 @@
                         </ul>
                     </div>
                 </div>
-            </header>
+            </nav>
         {% endblock %}
 
         <div id="content"
@@ -96,7 +96,7 @@
                         <div class="col-xs-12 col-md-3 col-md-offset-1 text-center">
                             <h4>
                                 <i class="fa fa-envelope"></i>&nbsp;&nbsp;{% trans 'Contact us :' %}
-                                <img src="{% static 'img/derpy.gif' %}" width="50px"/>
+                                <img src="{% static 'img/derpy.gif' %}" width="50" alt="DerpyHooves"/>
                             </h4>
                             <a class="btn btn-primary btn-lg" href="mailto:bronycub@googlegroups.com">bronycub@googlegroups.com</a>
                         </div>
