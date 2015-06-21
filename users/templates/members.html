@@ -8,6 +8,7 @@
 {{ block.super }}
 
 <div class="container">
+	<!-- {% now "i\m s\s" %} -->
     <div class="row">
         {% for profile in profiles %}
             {% include 'members/one-user.html' with profile=profile %}
