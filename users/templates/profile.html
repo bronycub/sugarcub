@@ -12,11 +12,11 @@
         <div class="row">
             <div class="col-sm-12">
                 {% if profile.avatar %}
-                    <img class="img-rounded img-avatar" src="{{ profile.avatar.avatar.url }}"/>
+                    <img class="img-rounded img-avatar" src="{{ profile.avatar.avatar.url }}" alt="avatar"/>
                 {% endif %}
                 {{ profile.user.username }}
                 <a href="{% url 'auth_password_change' %}">{% trans 'Change your password' %}</a>
-                <form enctype="multipart/form-data" class="form-horizontal" method="post" action="">
+                <form enctype="multipart/form-data" class="form-horizontal" method="post">
                     {% csrf_token %}
                     {% bootstrap_form form %}
                     {% buttons %}

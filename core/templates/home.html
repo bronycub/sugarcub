@@ -8,12 +8,12 @@
 {% block body %}
     {{ block.super }}
     <div class="container">
-        <p align="center">
-            <img src="{% static 'img/logo_min.png' %}" alt="logo_bronycub" height="200" width="600" class="img-responsive">
+        <p>
+            <img src="{% static 'img/logo_min.png' %}" alt="logo_bronycub" height="200" width="600" class="img-responsive center-block">
         </p>
-        <div align="center" class="blockquotes">
+        <div class="blockquotes">
             {% for quote in quotes %}
-                <div align="center" class="quotes">
+                <div class="quotes text-center">
                     <p> {{ quote.quote }} </p>
                 </div>
             {% endfor %}
@@ -32,7 +32,7 @@
                 </article>
 
                 <!-- Question -->
-                <a data-toggle="modal" data-target="#modal"><button type="button" class="btn btn-primary btn-lg">Plus d'info ...</button></a>
+                <a data-toggle="modal" data-target="#modal" class="btn btn-primary btn-lg">Plus d'info ...</a>
                 <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="plusinfos" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -42,11 +42,11 @@
                             </div>
                             <div class="modal-header">
                                 <h4>{% trans 'Un Brony ? Ça ce mange ? Kécéssé ?' %}</h4>
-                                <iframe width="540" height="320" src="//www.youtube.com/embed/Y67pwC9iOBw" frameborder="0" allowfullscreen></iframe>
+                                <iframe width="540" height="320" src="//www.youtube.com/embed/Y67pwC9iOBw" allowfullscreen></iframe>
                             </div>
                             <div class="modal-body">
                                 <h4>{% trans 'Sérieusement ... Pourquoi ?' %}</h4>
-                                <iframe width="540" height="320" src="//www.youtube.com/embed/pXYqLKko6Ss" frameborder="0" allowfullscreen></iframe>
+                                <iframe width="540" height="320" src="//www.youtube.com/embed/pXYqLKko6Ss" allowfullscreen></iframe>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Fermer' %}</button>
