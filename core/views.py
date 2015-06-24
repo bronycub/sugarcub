@@ -2,11 +2,10 @@ from   django.shortcuts import render
 from   django.conf      import settings
 from   .models          import Friend, Quote
 from   users.models     import Profile
-from   django.views.decorators.cache import cache_page
 import urllib.request
 import re
 
-@cache_page(60 * 0.5)
+
 def home(request):
     try:
         irc = str(urllib.request.urlopen('http://www.art-software.fr/files/lastlog_bronycub.php').read(),
@@ -22,11 +21,9 @@ def home(request):
         'quotes': Quote.objects.all,
     })
 
-@cache_page(60 * 15)
 def agenda(request):
     return render(request, 'agenda.html')
 
-@cache_page(60 * 15)
 def map(request):
     return render(request, 'map.html', {
         'fillPage':        True,
@@ -34,7 +31,6 @@ def map(request):
         'OSM_TILE_SERVER': settings.OSM_TILE_SERVER,
     })
 
-@cache_page(60 * 15)
 def friends(request):
     friends = Friend.objects.all()
 

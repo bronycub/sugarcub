@@ -4,7 +4,6 @@ from .forms                              import RegistrationForm, ProfileForm
 from django.contrib.auth.decorators      import login_required
 from django.forms.models                 import modelformset_factory
 from registration.backends.default.views import RegistrationView as BaseRegistrationView
-from django.views.decorators.cache import cache_page
 
 
 class RegistrationView(BaseRegistrationView):
@@ -22,7 +21,6 @@ class RegistrationView(BaseRegistrationView):
         self.form.save(user = user)
         return super(RegistrationView, self).get_success_url(request, user)
 
-@cache_page(60 * 15)
 def members(request):
     return render(request, 'members.html', {
         'profiles': Profile.objects.filter(user__is_active = True),
