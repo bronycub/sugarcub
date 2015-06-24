@@ -2,6 +2,7 @@
 
 {% load static %}
 {% load i18n %}
+{% load cache %}
 
 {% block title %}{% trans 'Home' %}{% endblock %}
 
@@ -61,7 +62,10 @@
         <div class="col-md-6">
             <h2>Tchat - <small><a href="https://kiwiirc.com/client?settings=3ebf3eb7a40c2b03f47b918eb2f7087a">{% trans 'Nous rejoindre' %}</a></small></h2>
             <div class="jumbotron monospace">
-                {{ irc|safe }}
+                {% cache 30 cache_irc %}
+                    <!-- {% now "i s" %} -->
+                    {{ irc|safe }}
+                {% endcache %}
             </div>
         </div>
     </div>

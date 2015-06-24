@@ -2,17 +2,20 @@
 
 {% load static %}
 {% load i18n %}
+{% load cache %}
 
 {% block title %}{% trans 'Agenda' %}{% endblock %}
 
 {% block body %}
     {{ block.super }}
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1>TODO | Agenda</h1>
-            </div>
-        </div>
-    </div>
+    {% cache 900 cache_agenda %}
+    	<!-- {% now "i\m s\s" %} -->
+	    <div class="container">
+	        <div class="row">
+	            <div class="col-md-12">
+	                <h1>TODO | Agenda</h1>
+	            </div>
+	        </div>
+	    </div>
+    {% endcache %}
 {% endblock %}

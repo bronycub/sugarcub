@@ -2,35 +2,39 @@
 
 {% load static %}
 {% load i18n %}
+{% load cache %}
 
 {% block title %}{% trans 'Friends' %}{% endblock %}
 
 {% block body %}
     {{ block.super }}
 
-    <div class="container">
-        <div class="row">
+    {% cache 900 cache_friends %}
+    <!-- {% now "i\m s\s" %} -->
+        <div class="container">
+            <div class="row">
 
-            {% for friend in friends %}
-                {% if forloop.counter0|divisibleby:3 and not forloop.first %}
+                {% for friend in friends %}
+                    {% if forloop.counter0|divisibleby:3 and not forloop.first %}
+                        </div>
+                        <div class="row">
+                    {% endif %}
+                    <div class="col-md-{{ friendWidth }} text-center">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">{{ friend.name }}</div>
+                          <div class="panel-body">
+                              <a href="{{ friend.url }}" target="_blank">
+                                  <img class="thumbnail img-responsive center-block" src="{{ friend.image.url }}" alt="Image{{ friend.name }}">
+                            </a>
+                            <p>{{ friend.description }}</p>
+                          </div>
+                        </div>
                     </div>
-                    <div class="row">
-                {% endif %}
-                <div class="col-md-{{ friendWidth }} text-center">
-                    <div class="panel panel-info">
-                        <div class="panel-heading">{{ friend.name }}</div>
-                      <div class="panel-body">
-                          <a href="{{ friend.url }}" target="_blank">
-                              <img class="thumbnail img-responsive center-block" src="{{ friend.image.url }}" alt="Image{{ friend.name }}">
-                        </a>
-                        <p>{{ friend.description }}</p>
-                      </div>
-                    </div>
-                </div>
-            {% empty %}
-                <p>{% trans 'No friends at the moment ...' %}</p>
-            {% endfor %}
+                {% empty %}
+                    <p>{% trans 'No friends at the moment ...' %}</p>
+                {% endfor %}
 
+            </div>
         </div>
-    </div>
+    {% endcache %}
 {% endblock %}
