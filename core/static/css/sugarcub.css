@@ -161,8 +161,10 @@ a {
  * Avatar in header
  */
 .img-header {
+  float: left;
 	margin-top: -15px;
 	margin-bottom: -15px;
+  margin-right: 5px;
 	width: 50px;
 	height: 50px;
 }
@@ -198,7 +200,7 @@ a {
  * To set the collapse width for the navbar
  * 1137px is the exact comment the navbar bug while log out
  */
-@media (max-width: 1150px) {
+@media (max-width: 1200px) {
     .navbar-header {
         float: none;
     }
@@ -239,4 +241,19 @@ a {
     .collapsing {
         overflow: hidden!important;
     }
+}
+
+/*
+ * To set an static width on the username, if it's too long display ...
+ */
+.username-header {
+  display: inline-block;
+  max-width: 125px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.header-span {
+  margin-top: -10px;
+  margin-left: 5px;
 }
