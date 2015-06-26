@@ -9,7 +9,7 @@
 {% block body %}
     {{ block.super }}
     <div class="container">
-        <!-- {% now "i s" %} -->
+        {% now "i s" %}
         <p>
             <img src="{% static 'img/logo_min.png' %}" alt="logo_bronycub" height="200" width="600" class="img-responsive center-block">
         </p>
@@ -63,7 +63,7 @@
             <h2>Tchat - <small><a href="https://kiwiirc.com/client?settings=3ebf3eb7a40c2b03f47b918eb2f7087a">{% trans 'Nous rejoindre' %}</a></small></h2>
             <div class="jumbotron monospace">
                 {% cache 30 cache_irc %}
-                    <!-- {% now "i s" %} -->
+                    {% now "i s" %}
                     {{ irc|safe }}
                 {% endcache %}
             </div>
