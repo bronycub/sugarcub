@@ -4,12 +4,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ''  # TODO get from local install (not versioned)
+with open(os.path.join(BASE_DIR, '..', '.secret'), 'r') as secretFile:
+    SECRET_KEY = secretFile.readline()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG          = False
 TEMPLATE_DEBUG = False
-ALLOWED_HOSTS  = []  # TODO Allow for easy setup in BO
+
+with open(os.path.join(BASE_DIR, '..', 'host'), 'r') as hostFile:
+    ALLOWED_HOSTS  = [hostFile.readline(), ]
 
 
 # Database

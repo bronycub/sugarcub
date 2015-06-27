@@ -16,12 +16,12 @@
                     </div>
                     <div class="row">
                 {% endif %}
-                <div class="col-md-{{ friendWidth }}" align="center">
+                <div class="col-md-{{ friendWidth }} text-center">
                     <div class="panel panel-info">
                         <div class="panel-heading">{{ friend.name }}</div>
                       <div class="panel-body">
                           <a href="{{ friend.url }}" target="_blank">
-                              <img class="thumbnail" src="{{ friend.image.url }}">
+                              <img class="thumbnail img-responsive center-block" src="{{ friend.image.url }}" alt="Image{{ friend.name }}">
                         </a>
                         <p>{{ friend.description }}</p>
                       </div>
