@@ -2,6 +2,8 @@ from   pytest_bdd  import scenario
 from   utils.bdd   import *
 from   model_mommy import mommy
 from   .           import models
+import os
+import ics
 
 
 @scenario('features/agenda.feature', 'See a list of events')
@@ -52,3 +54,9 @@ def i_see_comments(browser, count):
 @then("I don't see any comments")
 def i_see_no_comments(browser, count):
     i_see_comments(browser, 0)
+
+
+@then('the downloaded file is a valid ics')
+def valid_ics(splinter_file_download_dir):
+    with open(os.path.join(splinter_file_download_dir, 'agenda.ics')) as downloadedFile:
+        assert ics.Calendar(imports = downloadedFile.read())

@@ -56,3 +56,4 @@ Feature: Agenda
 		Given I'm not logged in
 		When I'm on '/agenda'
 		When I click on link 'Download the caldendar'
+		Then the downloaded file is a valid ics
