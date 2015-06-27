@@ -18,20 +18,23 @@ def i_see_a_form(browser):
     assert browser.find_by_css('form')
 
 
+registration_form_data = {
+    'registration-username':  'user_signup_test',
+    'registration-password1': 'password_test',
+    'registration-email':     'fluttershy@equestria.pn',
+    'user-first_name':        'first_test',
+    'user-last_name':         'last_test',
+    'profile-bio':            'test',
+    'profile-phone':          '0123456789',
+    'profile-birthday':       '01/01/1970',
+    'profile-address':        'test',
+}
+
+
 @when('I incorrectly fill the registration form')
 def i_incorrectly_fill_registration_form(browser):
-    for field in [
-        ('registration-username',  'user_signup_test'),
-        ('registration-password1', 'password_test'),
-        ('registration-password2', 'password_invalid'),
-        ('registration-email',     'fluttershy@equestria.pn'),
-        ('user-first_name',        'first_test'),
-        ('user-last_name',         'last_test'),
-        ('profile-bio',            'test'),
-        ('profile-phone',          '0123456789'),
-        ('profile-birthday',       '01/01/1970'),
-        ('profile-address',        'test'),
-    ]:
+    registration_form_data['registration-password2'] = 'password_invalid'
+    for field in registration_form_data.items():
         browser.fill(*field)
 
     i_submit(browser)
@@ -39,18 +42,8 @@ def i_incorrectly_fill_registration_form(browser):
 
 @when('I correctly fill the registration form')
 def i_correctly_fill_registration_form(browser):
-    for field in [
-        ('registration-username',  'user_signup_test'),
-        ('registration-password1', 'password_test'),
-        ('registration-password2', 'password_test'),
-        ('registration-email',     'fluttershy@equestria.pn'),
-        ('user-first_name',        'first_test'),
-        ('user-last_name',         'last_test'),
-        ('profile-bio',            'test'),
-        ('profile-phone',          '0123456789'),
-        ('profile-birthday',       '01/01/1970'),
-        ('profile-address',        'test'),
-    ]:
+    registration_form_data['registration-password2'] = 'password_test'
+    for field in registration_form_data.items():
         browser.fill(*field)
 
     i_submit(browser)
