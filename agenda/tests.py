@@ -1,13 +1,43 @@
-from   django.test                import TestCase
 from   utils.tests                import *
 from   django.contrib.auth.models import User
 from   .                          import models
 from   model_mommy                import mommy
 from   datetime                   import datetime, timedelta
 import ics
+import pytest
 
 
-class AgendaModelsTest(TestCase):
+@pytest.fixture
+def now():
+    return datetime.now()
+
+
+@pytest.fixture
+def ics_event(now):
+    ics_event = ics.Event(
+        name        = 'name',
+        begin       = now,
+        end         = now + timedelta(days = 1, hours = 1),
+        description = 'description',
+    )
+
+    return ics_event
+
+
+@pytest.fixture
+def event(now):
+    event = mommy.make(models.Event,
+        title       = 'name',
+        date_begin  = now,
+        date_end    = now + timedelta(days = 1, hours = 1),
+        description = 'description',
+    )
+
+    return event
+
+
+@pytest.mark.django_db
+class TestAgendaModels:
 
     def test_event_ordering(self):
         older_event = mommy.make(models.Event,
@@ -33,7 +63,7 @@ class AgendaModelsTest(TestCase):
             title = "Picnic at Flutter's",
         )
 
-        self.assertEquals("Picnic at Flutter's", event.__str__())
+        assert "Picnic at Flutter's" == event.__str__()
 
     def test_comment_ordering(self):
         older_comment = mommy.make(models.Comment, date = datetime.now() - timedelta(hours = 1))
@@ -65,53 +95,17 @@ class AgendaModelsTest(TestCase):
         assert 'test Test' == participation.__str__()
         assert 'test'      == participation.author()
 
-    def test_from_ics(self):
-        now   = datetime.now()
-        event = mommy.make(models.Event,
-            title       = 'name',
-            date_begin  = now,
-            date_end    = now + timedelta(days = 1, hours = 1),
-            description = 'description',
-        )
-        ics_event = ics.Event(
-            name        = 'name',
-            begin       = now,
-            end         = now + timedelta(days = 1, hours = 1),
-            description = 'description',
-        )
-
+    def test_from_ics(self, ics_event, event):
         event_imported = models.Event.objects.create(
             author     = event.author,
             ics_import = ics_event,
         )
         assert objects_contain_same_data(event, event_imported)
 
-    def test_to_ics(self):
-        now   = datetime.now()
-        event = mommy.make(models.Event,
-            title       = 'name',
-            date_begin  = now,
-            date_end    = now + timedelta(days = 1, hours = 1),
-            description = 'description',
-        )
-        ics_event = ics.Event(
-            name        = 'name',
-            begin       = now,
-            end         = now + timedelta(days = 1, hours = 1),
-            description = 'description',
-        )
-
+    def test_to_ics(self, ics_event, event):
         assert objects_contain_same_data(ics_event, event.to_ics_event())
 
-    def test_from_to_event(self):
-        now   = datetime.now()
-        event = mommy.make(models.Event,
-            title       = 'name',
-            date_begin  = now,
-            date_end    = now + timedelta(days = 1, hours = 1),
-            description = 'description',
-        )
-
+    def test_from_to_event(self, event):
         ics_event = event.to_ics_event()
         assert objects_contain_same_data(
             event,
@@ -121,15 +115,7 @@ class AgendaModelsTest(TestCase):
             )
         )
 
-    def test_from_to_ics(self):
-        now   = datetime.now()
-        ics_event = ics.Event(
-            name        = 'name',
-            begin       = now,
-            end         = now + timedelta(days = 1, hours = 1),
-            description = 'description',
-        )
-
+    def test_from_to_ics(self, ics_event):
         event_imported = models.Event.objects.create(
             author = mommy.make(User),
             ics_import = ics_event,

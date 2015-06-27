@@ -13,11 +13,6 @@ def test_feature(live_server):
     pass
 
 
-@then('I see a form')
-def i_see_a_form(browser):
-    assert browser.find_by_css('form')
-
-
 registration_form_data = {
     'registration-username':  'user_signup_test',
     'registration-password1': 'password_test',
@@ -31,22 +26,27 @@ registration_form_data = {
 }
 
 
-@when('I incorrectly fill the registration form')
-def i_incorrectly_fill_registration_form(browser):
-    registration_form_data['registration-password2'] = 'password_invalid'
+def fill_registration_form(password2, browser):
+    registration_form_data['registration-password2'] = password2
     for field in registration_form_data.items():
         browser.fill(*field)
 
     i_submit(browser)
+
+
+@then('I see a form')
+def i_see_a_form(browser):
+    assert browser.find_by_css('form')
+
+
+@when('I incorrectly fill the registration form')
+def i_incorrectly_fill_registration_form(browser):
+    fill_registration_form('password_invalid', browser)
 
 
 @when('I correctly fill the registration form')
 def i_correctly_fill_registration_form(browser):
-    registration_form_data['registration-password2'] = 'password_test'
-    for field in registration_form_data.items():
-        browser.fill(*field)
-
-    i_submit(browser)
+    fill_registration_form('password_test', browser)
 
 
 @then('I receive a mail')
