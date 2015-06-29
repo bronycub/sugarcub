@@ -35,7 +35,7 @@
                     'Imagery © <a href="http://openstreetmap.org">OpenStreetMap</a>',
             }).addTo(map);
 
-            {% if user.is_authenticated %}
+            {% if user.is_authenticated and user.profile.enabled %}
                 {% for profile in profiles %}
                     var customIcon = L.icon({
                         iconUrl: {% if profile.avatar %}
