@@ -57,3 +57,30 @@ Feature: Agenda
 		When I'm on '/agenda'
 		When I click on link 'Download the caldendar'
 		Then the downloaded file is a valid ics
+
+
+#	Scenario: Participate to an event
+
+
+#	Scenario: Unparticipate to an event
+
+
+#	Scenario: Add event
+
+
+	Scenario: Post comment logged in
+		Given I'm logged in
+		When I'm on '/agenda'
+		When I click on an event
+		When I fill .post-comment input with Count me in ;)
+		When I press 'Enter'
+		Then '.post-comment input' is empty
+		Then the first comment is 'Count me in ;)
+
+
+	Scenario: Comment posted is still present
+		Given I'm logged in
+		When I'm on '/agenda'
+		When I click on an event
+		Then '.post-comment input' is empty
+		Then the first comment is 'Count me in ;)

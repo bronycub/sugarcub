@@ -12,6 +12,8 @@ import ics
 @scenario('features/agenda.feature', 'Endless pagination on comments')
 @scenario('features/agenda.feature', "Don't see comments when not logged in")
 @scenario('features/agenda.feature', 'Export events')
+@scenario('features/agenda.feature', 'Post comment logged in')
+@scenario('features/agenda.feature', 'Comment posted is still present')
 def test_feature(live_server):
     pass
 

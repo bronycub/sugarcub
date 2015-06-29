@@ -20,6 +20,12 @@
                 <div>{{ event.date_begin|date }} : {{ event.date_begin|time }} - {{ event.date_end|date }} : {{ event.date_end|time }}</div>
             {% endif %}
             <div>{{ event.description }}</div>
+            <hr />
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="{% trans 'Post a message' %}">
+                <span class="input-group-addon glyphicon glyphicon-send"> {% trans 'Post' %}</span>
+            </div>
+            <hr />
             <div class="list-group-item-text">
                 {% include 'agenda/comment_list_page.html' with comment_list=event.comment_set.all %}
             </div>

@@ -63,6 +63,11 @@ def i_wait():
     sleep(5)
 
 
+@when(parsers.cfparse('I fill {element} with {content}'))
+def fill_in_form(browser, element, content):
+    browser.fill(element, content)
+
+
 @then(parsers.cfparse("I see '{text}'"))
 def i_see(browser, text):
     assert browser.is_text_present(text)
