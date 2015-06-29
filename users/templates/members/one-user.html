@@ -78,6 +78,10 @@
                         <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
                     </div>
                 </div>
+            {% else if not user.profile.enabled %}
+                <div class="row modal-body">
+                    <p>{% trans 'Your account must be accepted by the admin to see the members informations.' %}</p>
+                </div>
             {% else %}
                 <div class="row modal-body">
                     <p>{% trans 'You must be connected to see the members informations.' %}</p>

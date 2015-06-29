@@ -103,6 +103,11 @@ ACCOUNT_ACTIVATION_DAYS = 7
 AUTH_PROFILE_MODULE     = 'users.profile'
 
 
+# Registration
+
+REGISTRATION_AUTO_LOGIN = True
+
+
 # Admin
 
 DAB_FIELD_RENDERER = 'django_admin_bootstrapped.renderers.BootstrapFieldRenderer'

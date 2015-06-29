@@ -16,7 +16,7 @@ class ProfileForm(forms.ModelForm):
 
     class Meta:
         model   = Profile
-        exclude = ['user', 'addressLatitude', 'addressLongitude']
+        exclude = ['user', 'enabled', 'address_latitude', 'address_longitude']
 
 
 class RegistrationForm(MultiModelForm):
