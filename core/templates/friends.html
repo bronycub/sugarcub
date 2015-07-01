@@ -9,7 +9,7 @@
 {% block body %}
     {{ block.super }}
 
-    {% cache 900 cache_friends %}
+    {# cache 900 cache_friends #}
     <!-- {% now "i\m s\s" %} -->
         <div class="container">
             <div class="row">
@@ -22,7 +22,7 @@
                     <div class="col-md-{{ friendWidth }} text-center">
                         <div class="panel panel-info">
                             <div class="panel-heading">{{ friend.name }}</div>
-                          <div class="panel-body">
+                          <div class="panel-body panel-min-height">
                               <a href="{{ friend.url }}" target="_blank">
                                   <img class="thumbnail img-responsive center-block" src="{{ friend.image.url }}" alt="Image{{ friend.name }}">
                             </a>
@@ -36,5 +36,5 @@
 
             </div>
         </div>
-    {% endcache %}
+    {# endcache #}
 {% endblock %}
