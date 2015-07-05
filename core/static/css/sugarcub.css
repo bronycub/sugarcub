@@ -177,13 +177,6 @@ a {
 	height: 100px;
 }
 
-/*
- * Members title
- */
-.h-inline {
-	display: inline;
-}
-
 
 /*
  * Use all available space
@@ -241,6 +234,23 @@ a {
     .collapsing {
         overflow: hidden!important;
     }
+    .username-member {
+      text-align: center;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .member-avatar{
+      margin-left: auto;
+      margin-right: auto;
+    }
+}
+
+@media (max-width: 768px) {
+  .username-member {
+    display: inline-block;
+  }
 }
 
 /*
@@ -256,6 +266,23 @@ a {
 .header-span {
   margin-top: -10px;
   margin-left: 5px;
+}
+
+.username-member {
+  display: inline;
+  margin-left: 15px;
+  max-width: 200px;
+  white-space: nowrap;
+}
+
+.member-link:hover { 
+  cursor: pointer;
+  text-decoration: none;
+  color: #DD4814;
+}
+
+.panel-member:hover {
+  background-color: #eeeeee;
 }
 
 /*

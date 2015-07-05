@@ -2,26 +2,25 @@
 
 {% load i18n %}
 
-<div class="col-sm-4">
-    <a data-toggle="modal" data-target="#modal-{{profile.user.username}}">
-        <div class="thumbnail">
-        <span>
-            <img class="img-rounded img-avatar" alt="avatar" src="
-                {% if profile.avatar %}
-                    {{ profile.avatar.avatar.url }}
-                {% else %}
-                    {% static 'ressources/logo/icon_bronycub.png' %}
-                {% endif %}
-            ">
-        </span>
-        <h3 class="h-inline">{{ profile.user.username }}</h3>
+<div class="col-sm-6 col-md-4">
+    <a data-toggle="modal" data-target="#modal-{{profile.user.username}}" class="member-link">
+        <div class="thumbnail panel-member">
+            <span>
+                <img class="img-rounded img-avatar" alt="avatar" src="
+                    {% if profile.avatar %}
+                        {{ profile.avatar.avatar.url }}
+                    {% else %}
+                        {% static 'ressources/logo/icon_bronycub.png' %}
+                    {% endif %}">
+            </span>
+            <h3 class="username-member">{{ profile.user.username }}</h3>
         </div>
     </a>
 </div>
 <div id="modal-{{profile.user.username}}" class="modal fade" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
-        <div class="container-fluid modal-content modal-lg">
-            {% if user.is_authenticated %}
+        {% if user.is_authenticated %}
+            <div class="container-fluid modal-content modal-lg">
                 <div class="row modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <div class="col-sm-2 text-center">
@@ -51,7 +50,7 @@
                         </div>
                         <div class="col-sm-12 text-right">
                             {% if profile.user.email %}
-                                <a href='{{ profile.user.email }}' class='zocial icon email'></a>
+                                <a href='mailto:{{ profile.user.email }}' class='zocial icon email'></a>
                             {% endif %}
                             {% for url in profile.url_set.all %}
                                 <a href='{{ url.url }}' class='zocial icon {{ url.icon }}'></a>
@@ -78,14 +77,18 @@
                         <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
                     </div>
                 </div>
-            {% else %}
-                <div class="row modal-body">
-                    <p>{% trans 'You must be connected to see the members informations.' %}</p>
+            </div>
+        {% else %}
+            <div class="container-fluid">
+                <div class="alert alert-danger">
+                    <div class="row modal-body">
+                        <p>{% trans 'You must be connected to see the members informations.' %}</p>
+                    </div>
+                    <div class="row modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
+                    </div>
                 </div>
-                <div class="row modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
-                </div>
-            {% endif %}
-        </div>
+            </div>
+        {% endif %}
     </div>
 </div>
