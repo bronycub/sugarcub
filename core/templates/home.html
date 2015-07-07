@@ -24,34 +24,34 @@
     <hr />
     <div class="container">
         <div class="col-md-6">
-            <h2>{% trans "BronyCUB, Qu'est-ce que c'est ?" %}</h2>
+            <h2>{% trans 'BronyCUB, What is it ?' %}</h2>
             <div class="jumbotron">
                 <article>
-                    {% trans 'BronyCUB est un collectif de Bronies de la <strong>C</strong>ommunauté <strong>U</strong>rbaine de <strong>B</strong>ordeaux en Gironde.' %}
+                    {% trans "BronyCUB is a collective from the <strong>U</strong>rban <strong>C</strong>ommunity of <strong>B</strong>ordeaux (<strong>CUB</strong> in french) in the Gironde." %}
                     <br /><br />
-                    {% trans 'Ce collectif a pour ambition de réunir les fans pour organiser diverses rencontres.' %}
+                    {% trans "this collective try to gather fans to orgenize various meet-up." %}
                     <br /><br />
                 </article>
 
                 <!-- Question -->
-                <a data-toggle="modal" data-target="#modal" class="btn btn-primary btn-lg">Plus d'info ...</a>
+                <a data-toggle="modal" data-target="#modal" class="btn btn-primary btn-lg">{% trans 'More info ...' %}</a>
                 <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="plusinfos" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <h4 class="modal-title" id="plusinfos">{% trans "Plus d'info ..." %}</h4>
+                                <h4 class="modal-title" id="plusinfos">{% trans 'More info ...' %}</h4>
                             </div>
                             <div class="modal-header">
-                                <h4>{% trans 'Un Brony ? Ça ce mange ? Kécéssé ?' %}</h4>
+                                <h4>{% trans 'A Brony ? Can we eat it ? whatisit ?' %}</h4>
                                 <iframe width="540" height="320" src="//www.youtube.com/embed/Y67pwC9iOBw" allowfullscreen></iframe>
                             </div>
                             <div class="modal-body">
-                                <h4>{% trans 'Sérieusement ... Pourquoi ?' %}</h4>
+                                <h4>{% trans 'Why ?' %}</h4>
                                 <iframe width="540" height="320" src="//www.youtube.com/embed/pXYqLKko6Ss" allowfullscreen></iframe>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Fermer' %}</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
                             </div>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <h2>Tchat - <small><a href="https://kiwiirc.com/client?settings=3ebf3eb7a40c2b03f47b918eb2f7087a">{% trans 'Nous rejoindre' %}</a></small></h2>
+            <h2>Tchat - <small><a href="https://kiwiirc.com/client?settings=3ebf3eb7a40c2b03f47b918eb2f7087a">{% trans 'Join us' %}</a></small></h2>
             <div class="jumbotron monospace">
                 {% cache 30 cache_irc %}
                     <!-- {% now "i s" %} -->
