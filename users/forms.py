@@ -3,6 +3,7 @@ from registration.forms         import RegistrationFormUniqueEmail
 from multiform                  import MultiModelForm, InvalidArgument
 from .models                    import Profile
 from django.contrib.auth.models import User
+from django.utils.translation   import ugettext_lazy                    as _
 
 
 class UserForm(forms.ModelForm):
@@ -17,6 +18,12 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model   = Profile
         exclude = ['user', 'addressLatitude', 'addressLongitude']
+        labels = {
+            "bio": _("Biography"),
+            "phone": _("Phone"),
+            "birthday": _("Birthday"),
+            "address": _("Address"),
+        }
 
 
 class RegistrationForm(MultiModelForm):
