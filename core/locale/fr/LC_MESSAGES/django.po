@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SugarCUB 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-05 15:14+0000\n"
+"POT-Creation-Date: 2015-07-08 16:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Matthias Devlamynck <matthias.devlamynck@mailoo.org>\n"
 "Language: French\n"
@@ -120,9 +120,8 @@ msgid ""
 "strong>ommunity of <strong>B</strong>ordeaux (<strong>CUB</strong> in "
 "french) in the Gironde."
 msgstr ""
-"BronyCUB est un collectif de Bronies de la <strong>C</"
-"strong>ommunauté <strong>U</strong>rbaine de <strong>B</strong>ordeaux en "
-"Gironde."
+"BronyCUB est un collectif de Bronies de la <strong>C</strong>ommunauté "
+"<strong>U</strong>rbaine de <strong>B</strong>ordeaux en Gironde."
 
 #: templates/home.html:32
 msgid "this collective try to gather fans to orgenize various meet-up."
@@ -149,3 +148,23 @@ msgstr "Fermer"
 #: templates/home.html:63
 msgid "Join us"
 msgstr "Rejoignez-vous"
+
+#: urls.py:18
+msgid "^en/"
+msgstr "^fr/"
+
+#: urls.py:21
+msgid "^agenda$"
+msgstr "^agenda$"
+
+#: urls.py:23
+msgid "^hq$"
+msgstr "^qg$"
+
+#: urls.py:25
+msgid "^map$"
+msgstr "^carte$"
+
+#: urls.py:27
+msgid "^friends$"
+msgstr "^amis$"
