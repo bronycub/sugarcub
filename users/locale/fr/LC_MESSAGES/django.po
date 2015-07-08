@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SugarCUB 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-07 17:48+0000\n"
+"POT-Creation-Date: 2015-07-08 16:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Matthias Devlamynck <matthias.devlamynck@mailoo.org>\n"
 "Language: French\n"
@@ -32,14 +32,6 @@ msgstr "Date de naissance"
 #: forms.py:25
 msgid "Address"
 msgstr "Adresse"
-
-#: forms.py:26
-msgid "Address longitude"
-msgstr "Adresse longitude"
-
-#: forms.py:27
-msgid "Address latitude"
-msgstr "Adresse latitude"
 
 #: templates/members.html:6
 msgid "Members"
@@ -174,3 +166,23 @@ msgstr ""
 #: templates/registration/registration_form.html:37
 msgid "Send"
 msgstr "Soumettre"
+
+#: urls.py:17
+msgid "^en/"
+msgstr "^fr/"
+
+#: urls.py:19
+msgid "^members$"
+msgstr "^membres$"
+
+#: urls.py:21
+msgid "^profile$"
+msgstr "^profil$"
+
+#: urls.py:23
+msgid "^register$"
+msgstr "^inscription$"
+
+#: urls.py:25
+msgid "^register/informations$"
+msgstr "^inscription/informations$"
