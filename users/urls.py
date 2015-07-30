@@ -9,7 +9,7 @@ urlpatterns = patterns('',
     # Profil
     url(r'^profile$', 'users.views.profile', name = 'profile'),
     # Inscription
-    url(r'^register$', RegistrationView.as_view(), name='registration_register'),
+    url(r'^register/$', RegistrationView.as_view(), name='registration_register'),
     # Information
     url(r'^register/informations$',
         TemplateView.as_view(template_name = 'registration/informations.html'),  name = 'pre_register'),
@@ -20,7 +20,7 @@ urlpatterns = patterns('',
         # Profil
         url(_(r'^profile$'), 'users.views.profile', name = 'profile'),
         # Inscription
-        url(_(r'^register$'), RegistrationView.as_view(), name='registration_register'),
+        url(_(r'^register/$'), RegistrationView.as_view(), name='registration_register'),
         # Information
         url(_(r'^register/informations$'),
             TemplateView.as_view(template_name = 'registration/informations.html'),  name = 'pre_register'),
