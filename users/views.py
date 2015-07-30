@@ -21,6 +21,7 @@ class RegistrationView(BaseRegistrationView):
         self.form.save(user = user)
         return super(RegistrationView, self).get_success_url(request, user)
 
+
 def members(request):
     return render(request, 'members.html', {
         'profiles': Profile.objects.filter(user__is_active = True),

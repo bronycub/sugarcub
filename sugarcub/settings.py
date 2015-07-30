@@ -53,11 +53,11 @@ DEV_DEPENDENCIES_APPS = (
 INSTALLED_APPS = PROJECT_APPS + ('sugarcub',) + DEPENDENCIES_APPS
 
 MIDDLEWARE_CLASSES = (
-    #'django.middleware.cache.UpdateCacheMiddleware',
+    # 'django.middleware.cache.UpdateCacheMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
-    #'django.middleware.cache.FetchFromCacheMiddleware',
+    # 'django.middleware.cache.FetchFromCacheMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
@@ -85,8 +85,8 @@ CACHES = {
     }
 }
 
-#CACHE_MIDDLEWARE_SECONDS = 300
-#CACHE_MIDDLEWARE_KEY_PREFIX = 'BCUB'
+# CACHE_MIDDLEWARE_SECONDS = 300
+# CACHE_MIDDLEWARE_KEY_PREFIX = 'BCUB'
 
 ROOT_URLCONF = 'sugarcub.urls'
 
