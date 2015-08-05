@@ -56,3 +56,17 @@ Scenario: No Login / Signup buttons when logged in
 	Then I see Déconnexion
 	Then I don't see Connexion
 	Then I don't see Nous rejoindre ?
+
+
+Scenario: Access /en/members
+	Given I am on /
+	When I click on link Membres
+	Then I see Aucun membre
+
+
+Scenario: Access /en/profil
+	Given I am on /
+	Given I am logged in
+	When I click on link Fluttershy
+	When I click on link Profil
+	Then I see Mettre à jour
