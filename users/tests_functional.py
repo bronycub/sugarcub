@@ -9,6 +9,8 @@ from   utils.bdd  import *
 @scenario('features/account.feature', 'Correctly fill registration form and receive confirmation mail')
 @scenario('features/account.feature', 'No account / Logout buttons when logout')
 @scenario('features/account.feature', 'No Login / Signup buttons when logged in')
+@scenario('features/account.feature', 'Access /en/members')
+@scenario('features/account.feature', 'Access /en/profil')
 def test_feature(live_server):
     pass
 
