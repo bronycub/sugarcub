@@ -3,37 +3,37 @@ Feature: Core
 
 
 Scenario: Access /agenda
-	Given I'm on /agenda
+	Given I am on /agenda
 	Then I see TODO
 
 Scenario: Access /en/agenda
-	Given I'm on /
+	Given I am on /
 	When I click on link Agenda
 	Then I see TODO
 
 Scenario: Access /HQ
-	Given I'm on /HQ
+	Given I am on /hq
 	Then I see Le Quartier Général de BronyCUB !
 
 Scenario: Access /en/HQ
-	Given I'm on /
+	Given I am on /
 	When I click on link QG
 	Then I see Le Quartier Général de BronyCUB !
 
 Scenario: Access /map
-	Given I'm on /map
+	Given I am on /map
 	Then I see Map data
 
 Scenario: Access /en/map
-	Given I'm on /
+	Given I am on /
 	When I click on link Carte
 	Then I see Map data
 
 Scenario: Access /friends
-	Given I'm on /friends
+	Given I am on /friends
 	Then I see Aucun ami pour le moment ...
 
 Scenario: Access /en/friends
-	Given I'm on /
+	Given I am on /
 	When I click on link Nos amis
 	Then I see Aucun ami pour le moment ...
