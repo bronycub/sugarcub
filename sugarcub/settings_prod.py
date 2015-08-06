@@ -4,14 +4,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-with open(os.path.join(BASE_DIR, '..', '.secret'), 'r') as secretFile:
+with open(os.path.join(BASE_DIR, '..', '..', '.secret'), 'r') as secretFile:
     SECRET_KEY = secretFile.readline()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG          = False
 TEMPLATE_DEBUG = False
 
-with open(os.path.join(BASE_DIR, '..', 'host'), 'r') as hostFile:
+with open(os.path.join(BASE_DIR, '..', '..', 'host'), 'r') as hostFile:
     ALLOWED_HOSTS  = [hostFile.readline(), ]
 
 
@@ -21,7 +21,7 @@ with open(os.path.join(BASE_DIR, '..', 'host'), 'r') as hostFile:
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, '..', 'database', 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, '..', '..', 'database', 'db.sqlite3'),
     }
 }
 
@@ -36,7 +36,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, '..', 'static')
 # Media
 
 MEDIA_URL  = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, '..', 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, '..', '..', 'media')
 
 
 # Mails
