@@ -5,14 +5,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 with open(os.path.join(BASE_DIR, '..', '..', '.secret'), 'r') as secretFile:
-    SECRET_KEY = secretFile.readline()
+    SECRET_KEY = secretFile.readline().strip(' \t\n\r')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG          = False
 TEMPLATE_DEBUG = False
 
 with open(os.path.join(BASE_DIR, '..', '..', 'host'), 'r') as hostFile:
-    ALLOWED_HOSTS  = [hostFile.readline(), ]
+    ALLOWED_HOSTS  = [hostFile.readline().strip(' \t\n\r'), ]
 
 
 # Database
