@@ -18,7 +18,6 @@ case $1 in
 		exit $RETURN
 		;;
 	deploy|d)
-		[[ -n $2 ]] && docker kill -s HUP $2-gunicorn
 		exit $RETURN
 		;;
 	*)

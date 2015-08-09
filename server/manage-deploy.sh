@@ -44,7 +44,7 @@ function update_main_repo()
 function install_last_commit()
 {
     cd /shared/sugarcub
-    FOLDER_NAME="$(date +%Y-%m-%d)-$(git rev-parse --short dev)"
+    FOLDER_NAME="$(date +%Y-%m-%d-%H-%M-%S)-$(git rev-parse --short dev)"
     [[ $FOLDER_NAME == -* || $FOLDER_NAME == *- ]] && (echo "FAIL: can't determine folder name" && return 1)
     [[ -e $FOLDER_NAME ]] && (echo "FAIL: there is already a file named $FOLDER_NAME" && return 1)
 
@@ -75,10 +75,12 @@ function first_install_setup()
 
     mkdir -p /shared/$INSTANCE/{logs,media,database}                                     \
         && (tr -cd "[:graph:]" < /dev/urandom | head -c 512 > /shared/$INSTANCE/.secret) \
-        && (printf "$HOST" > /shared/$INSTANCE/host)                                       \
+        && (printf "$HOST" > /shared/$INSTANCE/host)                                     \
 		&& cp /shared/nginx-template.conf /shared/nginx-sites/$INSTANCE.conf             \
 		&& sed -e "s/INSTANCE/$INSTANCE/g" -i /shared/nginx-sites/$INSTANCE.conf         \
 		&& sed -e "s/HOST/$HOST/g" -i /shared/nginx-sites/$INSTANCE.conf                 \
+		&& cp /shared/uwsgi-template.ini /shared/$INSTANCE/uwsgi-first-deploy.ini        \
+		&& sed -e "s/INSTANCE/$INSTANCE/g" -i /shared/$INSTANCE/uwsgi-first-deploy.ini   \
 	|| (echo 'FAIL: setup instance folder and common configuration' && return 1)
 }
 
@@ -89,7 +91,7 @@ function validate_deploy()
 	# Atomic symlink change
     ln -s $FOLDER_NAME new-current
 	mv -T new-current current
-	rm new-current
+	touch shared/$INSTANCE/uwsgi.ini
 }
 
 # ---- Main commands ----
@@ -100,6 +102,7 @@ function create_instance()
 
     first_install_setup || exit $FIRST_SETUP_ERROR
     deploy
+	mv /shared/$INSTANCE/uwsgi-first-deploy.ini /shared/$INSTANCE/uwsgi.ini
 }
 
 function deploy()

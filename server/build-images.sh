@@ -15,12 +15,13 @@ function build_image() {
 build_image "base"
 build_image "python"
 build_image "console"
-build_image "gunicorn"
+build_image "uwsgi"
 #build_image "celery"
 build_image "nginx"
 #build_image "postgresql"
-#build_image "redis"
+build_image "redis"
 
 mkdir -p shared/nginx-sites
 cp manage-deploy.sh shared/
+cp uwsgi-template.ini shared/
 cp nginx-template.conf shared/
