@@ -5,10 +5,26 @@ from stdimage.utils             import UploadToUUID
 from django.core.validators     import RegexValidator
 
 
+class ProfileManager(models.Manager):
+    ''' Manager of the Profile model '''
+
+    def get_active_users(self):
+        '''
+        Return a QuerySet of all profiles of active users
+        ie profile.enabled == True and user.is_active == True
+        '''
+
+        return self.model.objects.filter(enabled = True, user__is_active = True)
+
+
 class Profile(models.Model):
     ''' Represent extra data about a User '''
 
+    objects           = ProfileManager()
+
     user              = models.OneToOneField(User)
+
+    enabled           = models.BooleanField(default = False)
 
     bio               = models.TextField()
     avatar            = StdImageField(blank = True, null = True,
