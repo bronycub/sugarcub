@@ -8,9 +8,7 @@ SECRET_KEY = '@93eg2!@%a4r@(qh9v#e2xpb@nkv^0=2em%9@k$_+qz9xr$&c@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 TEMPLATE_DEBUG = True
-
 ALLOWED_HOSTS = []
 
 

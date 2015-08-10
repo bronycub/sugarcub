@@ -47,6 +47,7 @@ DEPENDENCIES_APPS = (
     'multiform',
     'registration',
     'endless_pagination',
+    'ws4redis',
 )
 
 DEV_DEPENDENCIES_APPS = (
@@ -64,12 +65,16 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.admindocs.middleware.XViewMiddleware',
+
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
     'core.processors.custom_fields',
     'core.processors.humanitarian_actions',
     'django.core.context_processors.request',
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.static',
+    'ws4redis.context_processors.default',
 )
 
 TEMPLATE_DIRS = (
@@ -81,6 +86,45 @@ TEMPLATE_DIRS = (
 ROOT_URLCONF = 'sugarcub.urls'
 
 WSGI_APPLICATION = 'sugarcub.wsgi.application'
+
+
+# Database
+# https://docs.djangoproject.com/en/1.7/ref/settings/#databases
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, '..', '..', 'database', 'db.sqlite3'),
+    }
+}
+
+
+# Cache & session
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'unix:///shared/redis.sock',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+            'IGNORE_EXCEPTIONS': True,
+        }
+    }
+}
+
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_CACHE_ALIAS = "default"
+
+
+# Websocket 4 Redis
+
+WS4REDIS_CONNECTION = {
+    'unix_socket_path': '/shared/redis.sock',
+    'db': 0,
+    'password': None,
+}
+
+WS4REDIS_PREFIX = 'ws'
 
 
 # Internationalization

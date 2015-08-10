@@ -1,170 +1,293 @@
 #!/usr/bin/env bash
 
-# ---- Return Codes ----
+source utils.sh
 
-MISSING_PARAMETER_ERROR=1
-FIRST_SETUP_ERROR=2
-UPDATE_MAIN_REPO_ERROR=3
-INSTALL_LAST_COMMIT_ERROR=4
-INSTANCE_DOESNT_EXIST=5
-INSTANCE_ALREADY_EXIST=6
+# ---- Configuration ----
 
-# ---- Global Vars ----
+SHARED_FOLDER="$(pwd)/shared"
 
-FOLDER_NAME=""
+# ---- Global vars ----
+
+GIT_PATH="$SHARED_FOLDER/sugarcub"
 
 # ---- Utils ----
 
-function print_failure()
+function run_container()
 {
-    echo "$1"
-    exit $2
+	docker run -v "$SHARED_FOLDER:/shared" -i --rm sugarcub-console -c "./container-subfunctions.sh $*" || exit $?
 }
 
-# ---- General ----
+# ---- Build ----
 
-function create_main_repo()
+BUILD_DIR="/tmp/docker"
+
+function build_image()
 {
-    [[ -d /shared/sugarcub ]] || git clone http://gitlab.com/mdevlamynck/sugarcub.git /shared/sugarcub --mirror
+	IMG=$1
+	if [[ -d $BUILD_DIR ]]
+	then
+		rm -r $BUILD_DIR
+	fi
+
+	mkdir -p $BUILD_DIR                                         \
+	&& cp $IMG/* /tmp/docker                                    \
+	&& docker build --force-rm --rm -t sugarcub-$IMG $BUILD_DIR \
+	&& rm -r $BUILD_DIR
 }
+
+function clean_images()
+{
+	docker rmi $(docker images | grep '<none>' | sed -e 's/ \+/ /g' | cut -d ' ' -f 3) || true
+}
+
+function finalyse_setup()
+{
+	run_container "finalyse_setup"
+}
+
+# ---- Deploy ----
 
 function update_main_repo()
 {
-    echo "	Getting last commit ..."
-
-    create_main_repo
-
-    cd /shared/sugarcub
-    git fetch --all
-    git fetch --tags
+	run_container "update_main_repo"
 }
 
-# ---- Per instance ----
+# ---- Services ----
 
-function install_last_commit()
+SERVICES="nginx uwsgi redis"
+
+function services_start()
 {
-    cd /shared/sugarcub
-    FOLDER_NAME="$(date +%Y-%m-%d-%H-%M-%S)-$(git rev-parse --short dev)"
-    [[ $FOLDER_NAME == -* || $FOLDER_NAME == *- ]] && (echo "FAIL: can't determine folder name" && return 1)
-    [[ -e $FOLDER_NAME ]] && (echo "FAIL: there is already a file named $FOLDER_NAME" && return 1)
+	for i in $SERVICES
+	do
+		PORT_MAPPING=""
+		if [[ $i == 'nginx' ]]
+		then
+			PORT_MAPPING="-p 80:80"
+		fi
 
-    echo "	Installing in $FOLDER_NAME"
-
-    mkdir -p /shared/$INSTANCE/$FOLDER_NAME/{code,static}        \
-        && cd /shared/$INSTANCE/$FOLDER_NAME/code                \
-        && git clone file:///shared/sugarcub -b dev --depth 1 .  \
-        \
-        && virtualenv ../env -p python3                          \
-        && . ../env/bin/activate                                 \
-        && pip install -r dependencies.txt                       \
-        \
-        && chmod u+x manage.py                                   \
-        && ./manage.py migrate --noinput                         \
-        && ./manage.py compilemessages                           \
-        && ./manage.py collectstatic --noinput                   \
-        || (echo 'FAIL: error during commit code setup' && return 1)
-
-    deactivate
+		docker run $PORT_MAPPING -v "$SHARED_FOLDER:/shared" -d --name sugarcub-$i sugarcub-$i || die $SERVICES_START_ERROR "can't start service $i"
+	done
 }
 
-function first_install_setup()
+function services_stop()
 {
-    echo "	Creating new instance $INSTANCE"
-
-    [[ -d /shared/$INSTANCE && $(ls -A -1 | wc -l) -ne 0 ]] && print_failure "FAIL: instance already exists" $INSTANCE_ALREADY_EXISTS
-
-    mkdir -p /shared/$INSTANCE/{logs,media,database}                                     \
-        && (tr -cd "[:graph:]" < /dev/urandom | head -c 512 > /shared/$INSTANCE/.secret) \
-        && (printf "$HOST" > /shared/$INSTANCE/host)                                     \
-		&& cp /shared/nginx-template.conf /shared/nginx-sites/$INSTANCE.conf             \
-		&& sed -e "s/INSTANCE/$INSTANCE/g" -i /shared/nginx-sites/$INSTANCE.conf         \
-		&& sed -e "s/HOST/$HOST/g" -i /shared/nginx-sites/$INSTANCE.conf                 \
-		&& cp /shared/uwsgi-template.ini /shared/$INSTANCE/uwsgi-first-deploy.ini        \
-		&& sed -e "s/INSTANCE/$INSTANCE/g" -i /shared/$INSTANCE/uwsgi-first-deploy.ini   \
-	|| (echo 'FAIL: setup instance folder and common configuration' && return 1)
+	for i in $SERVICES
+	do
+		docker rm -f sugarcub-$i || echo "can't stop service $i" >&2
+	done
 }
 
-function validate_deploy()
+function services_restart()
 {
-    echo "	Validating $FOLDER_NAME for $INSTANCE"
-	cd /shared/$INSTANCE/
-	# Atomic symlink change
-    ln -s $FOLDER_NAME new-current
-	mv -T new-current current
-	touch shared/$INSTANCE/uwsgi.ini
+	for i in $SERVICES
+	do
+		PORT_MAPPING=""
+		if [[ $i == 'nginx' ]]
+		then
+			PORT_MAPPING="-p 80:80"
+		fi
+
+		docker rm -f sugarcub-$i || true
+		docker run $PORT_MAPPING -v "$SHARED_FOLDER:/shared" -d --name sugarcub-$i sugarcub-$i || die $SERVICES_START_ERROR "can't start service $i"
+	done
 }
 
 # ---- Main commands ----
 
+function build_setup()
+{
+	echo "Building setup"
+
+	# "postgresql" "celery" "dev"
+	for i in "base" "nginx" "redis" "python" "console" "uwsgi"
+	do
+		build_image "$i" || die $BUILD_ERROR "can't build image $i"
+	done
+
+	mkdir -p "$SHARED_FOLDER/"{nginx-sites,logs} \
+	&& cp manage-deploy.sh uwsgi-template.ini nginx-template.conf redis.conf container-subfunctions.sh utils.sh "$SHARED_FOLDER" \
+	&& finalyse_setup \
+	|| die $BUILD_ERROR "can't setup shared folder"
+
+	[[ $# -ge 1 && $1 == '-f' ]] && services_restart
+
+	clean_images
+}
+
 function create_instance()
 {
-    echo "Deploying $INSTANCE ..."
+	[[ $# -ge 2 ]] || display_help
 
-    first_install_setup || exit $FIRST_SETUP_ERROR
-    deploy
-	mv /shared/$INSTANCE/uwsgi-first-deploy.ini /shared/$INSTANCE/uwsgi.ini
+	run_container "create_instance" "$@"
 }
 
-function deploy()
+function deploy_instance()
 {
-    echo "Deploying $INSTANCE ..."
-    [[ -d /shared/$INSTANCE && $(ls -A -1 | wc -l) -ne 0 ]] || print_failure "FAIL: $INSTANCE doesn't exist or is empty, make sure you to run add before calling deploy" $INSTANCE_DOESNT_EXIST
+	[[ $# -ge 1 ]] || display_help
 
-    update_main_repo || exit $UPDATE_MAIN_REPO_ERROR
-
-    install_last_commit && validate_deploy || exit $INSTALL_LAST_COMMIT_ERROR
+	run_container "deploy" "$@"
 }
+
+#function list_deploys()
+#{
+#}
+#
+#function rollback_instance()
+#{
+#}
+#
+#function manage_config()
+#{
+#}
+#
+#function manage_dev()
+#{
+#}
+
+function manage_services()
+{
+	[[ $# -ge 1 ]] || display_help
+
+	case $1 in
+		start)
+			services_start
+			;;
+		stop)
+			services_stop
+			;;
+		restart)
+			services_restart
+			;;
+		*)
+			display_help
+			;;
+	esac
+}
+
+#function print_logs()
+#{
+#}
 
 function display_help()
 {
-    echo \
+	echo \
 "
 Usage:
-    $0 [a|add] [instance] [host]
-    $0 [d|deploy] [instance]
+    $0 <b|build> [-f]
+    $0 <a|add> <instance> <host>
+    $0 <d|deploy> <instance>
+    $0 <L|list> [instance]
+    $0 <r|rollback> <instance> [deploy]
+    $0 <c|config> [instance] [key=value] ...
+    $0 <D|dev> [start|stop|restart|wathever command you want]
+    $0 <s|services> <start|stop|restart>
+    $0 <l|logs> <type> [instance] [-f]
 
 If called without parameters, print this help.
 
 Commands:
-    a, add         setup and deploy a new instance with the given parameters :
-                   [host] url the instance will be reachable from
+    b, build       build and setup the various containers and files needed
+                   may be run again to update the setup
+                   with -f, replace containers once the updated one are built
+                   (this will start the containers even if they weren't running)
 
+    a, add         setup and deploy a new instance with the given parameters :
+                   (deploy only once all paramaters are set,
+                    see config to set paramaters and deploy to actualy deploy)
+                   [host] url the instance will be reachable from
+    
     d, deploy      deploy the last commit of sugarcub for the given instance
                    (must exists first, use add to create a new instance)
+                   (all parameters must be set, see config)
 
+    L, list        list existing deploys for the given instance or all if none given
+                   -c only print the current deploy
+
+    r, rollback    change the current deploy for the given instance to the given deploy
+                   or the previous one if none given
+    
+    c, config      show / change configurations values
+                   if [instance] is specified, work on the givent instance settings,
+                   else work on global settings
+                   if no key=value is given, show the current configuration,
+                   else update the given keys with the given values
+    
+    D, dev         without parameters, open a shell in the container
+                   with start, stop or restart, respectively start, stop or restart the dev server
+                   with anything else, run wathever you gave in the container
+    
+    s, services    respectively start, stop or restart the services
+    
+    l, logs        print the log file of given service, optionally for given instance
+                   with -f, follow the logs instead of printing the whole log file
+    
 Return codes:
-    $MISSING_PARAMETER_ERROR the given command requires a parameter not provided
-    $FIRST_SETUP_ERROR can't determine folder name (problem with the main repo ?)
-    $UPDATE_MAIN_REPO_ERROR can't update the main repo
-    $INSTALL_LAST_COMMIT_ERROR the folder for the new commit already exists
-    $INSTANCE_DOESNT_EXIST the given instance doesn't exist or is empty
-    $INSTANCE_ALREADY_EXIST the given instance already exists
+    global:
+        $MISSING_PARAMETER_ERROR the given command requires a parameter not provided
+        $SYSTEM_NOT_BUILT the build command wasn't called or the setup is broken
+
+    instance:
+        $INSTANCE_DOESNT_EXIST the given instance doesn't exist or is empty
+
+    build:
+        $BUILD_ERROR an error occured while building the setup
+        $BUILD_GIT_CLONE_ERROR can't clone the master git repo
+
+    add:
+    deploy:
+        $DEPLOY_GIT_UPDATE_ERROR can't update the master git repo
+
+    list:
+    rollback:
+    config:
+    dev:
+    services:
+        $SERVICES_START_ERROR can't start a service
+
+    logs:
 "
-exit 0
+	exit 0
 }
 
 # ---- Entry point ----
 
-ACTION=$1
+[[ $# -ge 1 ]] && ACTION=$1 || display_help
+shift
 
 [[ -n $ACTION ]] || display_help
 
 case $ACTION in
-    add|a)
-        INSTANCE=$2
-        HOST=$3
-        [[ -z $INSTANCE ]] && print_failure "missing parameter [instance], see help" $MISSING_PARAMETER_ERROR
-        [[ -z $HOST ]] && print_failure "missing parameter [host], see help" $MISSING_PARAMETER_ERROR
-        create_instance
-        ;;
-    deploy|d)
-        INSTANCE=$2
-        [[ -z $INSTANCE ]] && print_failure "missing parameter [instance], see help" $MISSING_PARAMETER_ERROR
-        deploy
-        ;;
-    *)
-        display_help
-        ;;
+	build|b)
+		build_setup "$@"
+		;;
+	add|a)
+		create_instance "$@"
+		;;
+	deploy|d)
+		deploy_instance "$@"
+		;;
+	list|L)
+		list_deploys "$@"
+		;;
+	rollback|r)
+		rollback_instance "$@"
+		;;
+	config|c)
+		manage_config "$@"
+		;;
+	dev|D)
+		manage_dev "$@"
+		;;
+	services|s)
+		manage_services "$@"
+		;;
+	logs|l)
+		print_logs "$@"
+		;;
+	*)
+		display_help
+		;;
 esac
 
 exit 0

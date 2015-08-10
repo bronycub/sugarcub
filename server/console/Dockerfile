@@ -6,6 +6,4 @@ RUN apt-get install -y     \
 
 WORKDIR /shared
 
-USER 33
-
 ENTRYPOINT ["/bin/bash"]

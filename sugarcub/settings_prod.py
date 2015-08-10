@@ -15,31 +15,6 @@ with open(os.path.join(BASE_DIR, '..', '..', 'host'), 'r') as hostFile:
     ALLOWED_HOSTS  = [hostFile.readline().strip(' \t\n\r'), ]
 
 
-# Database
-# https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, '..', '..', 'database', 'db.sqlite3'),
-    }
-}
-
-
-# Cache
-
-CACHES = {
-    'default': {
-        'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': 'unix:///shared/redis.sock',
-        'OPTIONS': {
-            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-            'IGNORE_EXCEPTIONS': True,
-        }
-    }
-}
-
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 

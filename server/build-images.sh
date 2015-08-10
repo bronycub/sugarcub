@@ -13,15 +13,17 @@ function build_image() {
 
 
 build_image "base"
+build_image "nginx"
+build_image "redis"
+#build_image "postgresql"
 build_image "python"
 build_image "console"
+build_image "dev"
 build_image "uwsgi"
 #build_image "celery"
-build_image "nginx"
-#build_image "postgresql"
-build_image "redis"
 
-mkdir -p shared/nginx-sites
+mkdir -p shared/{nginx-sites,logs}
 cp manage-deploy.sh shared/
 cp uwsgi-template.ini shared/
 cp nginx-template.conf shared/
+cp redis.conf shared/
