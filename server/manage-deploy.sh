@@ -1,10 +1,18 @@
 #!/usr/bin/env bash
 
+cd $(dirname $0)
 source utils.sh
 
 # ---- Configuration ----
 
-SHARED_FOLDER="$(pwd)/shared"
+BASE_FOLDER="$(pwd)"
+DEV_FOLDER="$BASE_FOLDER/.."
+if [[ -d $DEV_FOLDER/.git ]]
+then
+	SHARED_FOLDER="$BASE_FOLDER/../../shared"
+else
+	SHARED_FOLDER="$BASE_FOLDER/shared"
+fi
 
 # ---- Global vars ----
 
@@ -54,7 +62,7 @@ function update_main_repo()
 
 # ---- Services ----
 
-SERVICES="nginx uwsgi redis"
+SERVICES="redis uwsgi nginx"
 
 function services_start()
 {
@@ -105,7 +113,8 @@ function build_setup()
 		build_image "$i" || die $BUILD_ERROR "can't build image $i"
 	done
 
-	mkdir -p "$SHARED_FOLDER/"{nginx-sites,logs} \
+	mkdir -p "$SHARED_FOLDER" \
+	&& chmod a+rwx $SHARED_FOLDER \
 	&& cp manage-deploy.sh uwsgi-template.ini nginx-template.conf redis.conf container-subfunctions.sh utils.sh "$SHARED_FOLDER" \
 	&& finalyse_setup \
 	|| die $BUILD_ERROR "can't setup shared folder"
@@ -120,6 +129,7 @@ function create_instance()
 	[[ $# -ge 2 ]] || display_help
 
 	run_container "create_instance" "$@"
+	docker kill -s HUP sugarcub-nginx || true
 }
 
 function deploy_instance()
@@ -140,10 +150,36 @@ function deploy_instance()
 #function manage_config()
 #{
 #}
-#
-#function manage_dev()
-#{
-#}
+
+function manage_dev()
+{
+	[[ -d $DEV_FOLDER/.git ]] || die $DEV_NOT_DEV_SETUP "You don't seem to be running in a dev environement"
+	if [[ $# -ge 1 ]]
+	then
+		SERVICES="redis"
+
+		case $1 in
+			start)
+				services_start
+				docker run -p 8000:8000 -v "$SHARED_FOLDER:/shared" -v "$DEV_FOLDER:/shared/dev/code" -d --name sugarcub-dev sugarcub-console -c "./container-subfunctions.sh start_dev" || die $SERVICES_START_ERROR "can't start service $i"
+				;;
+			stop)
+				docker rm -f sugarcub-dev || true
+				services_stop
+				;;
+			restart)
+				docker rm -f sugarcub-dev || true
+				services_restart
+				docker run -p 8000:8000 -v "$SHARED_FOLDER:/shared" -v "$DEV_FOLDER:/shared/dev/code" -d --name sugarcub-dev sugarcub-console -c "./container-subfunctions.sh start_dev" || die $SERVICES_START_ERROR "can't start service $i"
+				;;
+			*)
+				docker run -v "$SHARED_FOLDER:/shared" -v "$DEV_FOLDER:/shared/dev/code" -i --rm sugarcub-console -c "./container-subfunctions.sh run_virtualenv $*" || exit $?
+				;;
+		esac
+	else
+		docker run -v "$SHARED_FOLDER:/shared" -v "$DEV_FOLDER:/shared/dev/code" -it --rm sugarcub-console || exit $?
+	fi
+}
 
 function manage_services()
 {
@@ -216,6 +252,7 @@ Commands:
     D, dev         without parameters, open a shell in the container
                    with start, stop or restart, respectively start, stop or restart the dev server
                    with anything else, run wathever you gave in the container
+				   without any paramaters, run a console for you
     
     s, services    respectively start, stop or restart the services
     
@@ -229,14 +266,19 @@ Return codes:
 
     instance:
         $INSTANCE_DOESNT_EXIST the given instance doesn't exist or is empty
+		$INSTANCE_ALREADY_EXISTS the given already exist and can't be created
 
     build:
         $BUILD_ERROR an error occured while building the setup
         $BUILD_GIT_CLONE_ERROR can't clone the master git repo
 
     add:
+        $DEPLOY_FIRST_INSTALL_ERROR can't setup the new instance
+        $DEPLOY_LAST_COMMIT_SETUP_ERROR can't setup the last commit
+
     deploy:
         $DEPLOY_GIT_UPDATE_ERROR can't update the master git repo
+        $DEPLOY_LAST_COMMIT_SETUP_ERROR can't setup the last commit
 
     list:
     rollback:

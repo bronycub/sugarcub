@@ -4,17 +4,29 @@ source utils.sh
 
 GIT_PATH="/shared/sugarcub"
 
+# ---- Global ----
+
+function run_virtualenv()
+{
+	set +o nounset
+	. /shared/dev/env/bin/activate
+
+	if [[ $# -gt 0 ]]
+	then
+		/bin/bash -c "$*"
+	else
+		/bin/bash
+	fi
+
+	deactivate
+	set -o nounset
+}
+
 # ---- Build ----
 
 function create_main_repo()
 {
 	[[ -d "$GIT_PATH" ]] || { git clone $MASTER_GIT_URL "$GIT_PATH" --mirror || die $BUILD_GIT_CLONE_ERROR "can't clone the master git repo"; }
-}
-
-
-function set_files_owner()
-{
-	chmod 33 . -R
 }
 
 # ---- Deploy ----
@@ -38,7 +50,7 @@ function install_last_commit()
 
 	echo "Installing in $FOLDER_NAME"
 
-	trap "rm $FOLDER_NAME -rf; die $DEPLOY_LAST_COMMIT_SETUP_ERROR 'error during commit code setup'" ERR
+	trap "rm /shared/$INSTANCE/$FOLDER_NAME -rf; die $DEPLOY_LAST_COMMIT_SETUP_ERROR 'error during commit code setup'" ERR
 
 	mkdir -p /shared/$INSTANCE/$FOLDER_NAME/{code,static}    \
 	&& cd /shared/$INSTANCE/$FOLDER_NAME/code                \
@@ -52,6 +64,14 @@ function install_last_commit()
 	&& ./manage.py migrate --noinput                         \
 	&& ./manage.py compilemessages                           \
 	&& ./manage.py collectstatic --noinput
+
+	APPS=$(python3 <<<"from sugarcub import settings; print(','.join(settings.PROJECT_APPS))")
+	for i in $(echo $APPS | sed -e 's/,/ /g')
+	do
+		pushd $i
+		[ -d locale ] && ../manage.py compilemessages
+		popd
+	done
 
 	trap - ERR
 
@@ -94,7 +114,7 @@ function validate_deploy()
 function finalyse_setup()
 {
 	create_main_repo
-	set_files_owner
+	mkdir -p /shared/{nginx-sites,logs,dev/{static,media}}
 }
 
 function create_instance()
@@ -116,6 +136,15 @@ function deploy()
 	validate_deploy
 }
 
+function start_dev()
+{
+	[[ -d "/shared/dev/env" ]] || { virtualenv "/shared/dev/env" -p python3 && run_virtualenv 'pip' 'install' '-r' '/shared/dev/code/dependencies.txt'; }
+	
+	export DEPLOY_TYPE=dev
+	cd /shared/dev/code
+	run_virtualenv 'exec' './manage.py' 'runserver' '0.0.0.0:8000'
+}
+
 # ---- Entry point ----
 
 ACTION=$1
@@ -131,5 +160,14 @@ case $ACTION in
 	deploy)
 		deploy "$@"
 		;;
+	run_virtualenv)
+		export DEPLOY_TYPE=dev
+		cd /shared/dev/code
+		run_virtualenv "$@"
+		;;
+	start_dev)
+		start_dev "$@"
+		;;
 esac
 
+exit 0

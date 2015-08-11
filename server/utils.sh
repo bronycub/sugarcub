@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 # Fail on unset vars
-set -x
 set -o nounset
 set -o errexit
 
