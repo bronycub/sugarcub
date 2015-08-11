@@ -120,6 +120,7 @@ function build_setup()
 	|| die $BUILD_ERROR "can't setup shared folder"
 
 	[[ $# -ge 1 && $1 == '-f' ]] && services_restart
+	docker rm -f sugarcub-dev || true
 
 	clean_images
 }
@@ -153,12 +154,16 @@ function deploy_instance()
 
 function manage_dev()
 {
+	XSOCK="/tmp/.X11-unix/X0"
+
 	[[ -d $DEV_FOLDER/.git ]] || die $DEV_NOT_DEV_SETUP "You don't seem to be running in a dev environement"
 	if [[ $# -ge 1 ]]
 	then
+		ACTION=$1
+		shift
 		SERVICES="redis"
 
-		case $1 in
+		case $ACTION in
 			start)
 				services_start
 				docker run -p 8000:8000 -v "$SHARED_FOLDER:/shared" -v "$DEV_FOLDER:/shared/dev/code" -d --name sugarcub-dev sugarcub-console -c "./container-subfunctions.sh start_dev" || die $SERVICES_START_ERROR "can't start service $i"
@@ -172,8 +177,20 @@ function manage_dev()
 				services_restart
 				docker run -p 8000:8000 -v "$SHARED_FOLDER:/shared" -v "$DEV_FOLDER:/shared/dev/code" -d --name sugarcub-dev sugarcub-console -c "./container-subfunctions.sh start_dev" || die $SERVICES_START_ERROR "can't start service $i"
 				;;
+			test)
+				if [[ $# -ge 2 && $2 == '-s' ]]
+				then
+					shift
+					trap 'xhost - ; exit $?' ERR
+					xhost +local:
+					docker run -v "$XSOCK:$XSOCK" -e DISPLAY=unix$DISPLAY -v "$SHARED_FOLDER:/shared" -v "$DEV_FOLDER:/shared/dev/code" -i --rm sugarcub-console -c "./container-subfunctions.sh run_virtualenv py.test $*" || exit $?
+					trap - ERR
+				else
+					docker run -v "$SHARED_FOLDER:/shared" -v "$DEV_FOLDER:/shared/dev/code" -i --rm sugarcub-console -c "./container-subfunctions.sh run_virtualenv xvfb-run py.test $*" || exit $?
+				fi
+				;;
 			*)
-				docker run -v "$SHARED_FOLDER:/shared" -v "$DEV_FOLDER:/shared/dev/code" -i --rm sugarcub-console -c "./container-subfunctions.sh run_virtualenv $*" || exit $?
+				docker run -v "$SHARED_FOLDER:/shared" -v "$DEV_FOLDER:/shared/dev/code" -i --rm sugarcub-console -c "./container-subfunctions.sh run_virtualenv $ACTION $*" || exit $?
 				;;
 		esac
 	else
@@ -216,7 +233,7 @@ Usage:
     $0 <L|list> [instance]
     $0 <r|rollback> <instance> [deploy]
     $0 <c|config> [instance] [key=value] ...
-    $0 <D|dev> [start|stop|restart|wathever command you want]
+    $0 <D|dev> [start|stop|restart|test [-s]|wathever command you want]
     $0 <s|services> <start|stop|restart>
     $0 <l|logs> <type> [instance] [-f]
 
@@ -251,6 +268,7 @@ Commands:
     
     D, dev         without parameters, open a shell in the container
                    with start, stop or restart, respectively start, stop or restart the dev server
+                   with test, run the test suite, with -s, show the browser during functional tests
                    with anything else, run wathever you gave in the container
 				   without any paramaters, run a console for you
     
