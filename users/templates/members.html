@@ -10,7 +10,6 @@
 
 {% cache 900 cache_members request.user.is_authenticated %}
     <div class="container">
-        {% now "i\m s\s" %}
         <div class="row">
             {% for profile in profiles %}
                 {% include 'members/one-user.html' with profile=profile %}
