@@ -9,13 +9,13 @@
 {% block body %}
     {{ block.super }}
     {% cache 900 cache_agenda %}
-    	<!-- {% now "i\m s\s" %} -->
-	    <div class="container">
-	        <div class="row">
-	            <div class="col-md-12">
-	                <h1>TODO | Agenda</h1>
-	            </div>
-	        </div>
-	    </div>
+        <!-- {% now "i\m s\s" %} -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>TODO | Agenda</h1>
+                </div>
+            </div>
+        </div>
     {% endcache %}
 {% endblock %}
