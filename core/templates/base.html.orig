@@ -1,0 +1,148 @@
+{% load static %}
+{% load url from future %}
+{% load i18n %}
+{% load cache %}
+
+<!doctype html>
+<html lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
+	<head>
+		{% block head %}
+			<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<title>{{ collective_name }} | {% block title %}{% endblock %}</title>
+			<link rel="shortcut icon" type="image/png" href="{% static 'ressources/logo/favicon_bronycub.png' %}" />
+			{% block stylesheets %}
+				<link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/bootstrap.min.css' %}">
+				<link rel="stylesheet" type="text/css" media="screen" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
+				<link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/sugarcub.css' %}">
+				<link rel="stylesheet" type="text/css" media="screen" href="{% static 'zocial/zocial.css' %}">
+				{% block extrastyle %}{% endblock %}
+			{% endblock %}
+			{% block blockbots %}{% endblock %}
+			{% block extrahead %}{% endblock %}
+		{% endblock %}
+	</head>
+	<body>
+		
+		{% block header %}
+<<<<<<< HEAD
+			{% cache 900 cache_header request.user.username %}
+=======
+			<header>
+>>>>>>> dev
+				<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+					<div class="container-fluid">
+						<div class="navbar-header">
+							<a href="{% url 'core:home' %}" class="navbar-brand">{{ collective_name }}</a>
+							<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							</button>
+						</div>
+						<div class="navbar-collapse collapse" id="navbar-main">
+							<ul class="nav navbar-nav">
+								<li><a href="{% url 'users:members' %}"><i class="fa fa-user fa-1x"></i>&nbsp;{% trans 'Members' %}</a></li>
+								<li><a href="{% url 'core:agenda' %}"><i class="fa fa-calendar fa-1x"></i>&nbsp;{% trans 'Agenda' %}</a></li>
+								<li><a href="{% url 'core:hq' %}"><i class="fa fa-glass fa-1x"></i>&nbsp;{% trans 'HQ' %}</a></li>
+								<li><a href="https://plus.google.com/photos/+Heuz%C3%A9Florent/albums/5919043632414199089?authkey=CJOh4YWuw6_rVA{# url '' #}"><i class="fa fa-picture-o fa-1x"></i>&nbsp;{% trans 'Medias' %}</a></li>
+								<li><a href="{% url 'core:map' %}"><i class="fa fa-map-marker fa-1x"></i>&nbsp;{% trans 'Map' %}</a></li>
+								<li><a href="{% url 'core:friends' %}"><i class="fa fa-heart fa-1x"></i>&nbsp;{% trans 'Friends' %}</a></li>
+							</ul>
+							<ul class="nav navbar-nav navbar-right">
+								<li><a href="https://kiwiirc.com/client?settings=3ebf3eb7a40c2b03f47b918eb2f7087a" target="_blank"><i class="fa fa-comment fa-1x"></i>&nbsp;{% trans 'Tchat' %}</a></li>
+								<li><a href="https://vroom.im/bronycub" target="_blank"><i class="fa fa-video-camera fa-1x"></i>&nbsp;{% trans 'Visio' %}</a></li>
+								<li><a href="https://plug.dj/bronycub" target="_blank"><i class="fa fa-headphones fa-1x"></i>&nbsp;{% trans 'DJ' %}</a></li>
+								<li><a href="https://bronycub.freshdesk.com/support/tickets/new" target="_blank"><i class="fa fa-ticket fa-1x"></i>&nbsp;{% trans 'Ticket' %}</a></li>
+								{% if user.is_authenticated %}
+									<li role="presentation" class="dropdown">
+										<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+											<img class="img-header" alt="avatar" src="
+												{% if user.profile.avatar.small %}
+													{{ user.profile.avatar.small.url }}
+												{% else %}
+													{% static 'ressources/logo/icon_bronycub.png' %}
+												{% endif %}
+											"/>
+											{{ user.username }}
+											<span class="caret"></span>
+
+										</a>
+										<ul class="dropdown-menu" role="menu">
+											<li><a href="{% url 'users:profile' %}" class=""><i class="fa fa-user fa-1x"></i>&nbsp;{% trans 'Profile' %}</a></li>
+											{% if user.is_staff %}
+												<li><a href="{% url 'admin:index' %}" class=""><i class="glyphicon glyphicon-cog"></i>&nbsp;{% trans 'Admin' %}</a></li>
+												<li><a href="{% url 'django-admindocs-docroot' %}" class=""><i class="glyphicon glyphicon-file"></i>&nbsp;{% trans 'Documentation' %}</a></li>
+											{% endif %}
+											<li><a href="{% url 'auth_logout' %}"><i class="fa fa-sign-out fa-1x"></i>&nbsp;{% trans 'Logout' %}</a></li>
+										</ul>
+									</li>
+								{% else %}
+									<li><a href="{% url 'auth_login' %}"><!-- data-toggle="modal" data-target="#LoginForm"--><i class="fa fa-sign-in fa-1x"></i>&nbsp;{% trans 'Login' %}</a></li>
+									<li><a href="{% url 'users:pre_register' %}"><i class="fa fa-plus fa-1x"></i>&nbsp;{% trans 'Signup' %}</a></li>
+								{% endif %}
+							</ul>
+						</div>
+					</div>
+				</nav>
+<<<<<<< HEAD
+			{% endcache %}
+=======
+			</header>
+>>>>>>> dev
+		{% endblock %}
+
+		<div id="content"
+			{% if fillPage %}
+				class="min-size full-height"
+			{% endif %}
+		>
+			{% block body %}
+				<div id="WhenIm"></div>
+			{% endblock %}
+
+			{% block footer %}
+				{% cache 900 cache_footer %}
+					<footer class="container-fluid">
+						<div class="row">
+							<div class="col-xs-12 col-md-3 col-md-offset-1 text-center">
+								<h4>
+									<i class="fa fa-envelope"></i>&nbsp;&nbsp;{% trans 'Contact us :' %}
+									<img src="{% static 'img/derpy.gif' %}" width="50" alt="DerpyHooves"/>
+								</h4>
+								<a class="btn btn-primary btn-lg" href="mailto:bronycub@googlegroups.com">bronycub@googlegroups.com</a>
+							</div>
+							<div class="col-xs-12 col-md-4">
+								<h4><i class="fa fa-heart"></i>&nbsp;&nbsp;{% trans 'Next humanitarian action :' %}</h4>
+								<div class="well">
+									{% if next_humanitarian_action %}
+										<a href="{{ next_humanitarian_action.link }}">
+											<strong>{{ next_humanitarian_action.title }}</strong>
+											{% blocktrans with host=next_humanitarian_action.host when=next_humanitarian_action.when|date where=next_humanitarian_action.where %}Hosted by {{ host }}, {{ where }}, {{ when }}{% endblocktrans %}
+										</a>
+									{% else %}
+										{% trans "Warning, there's realy cool stuff in preparation for this year !! :D" %}
+									{% endif %}
+								</div>
+							</div>
+							<div class="col-xs-12 col-md-3 text-center">
+								<a href="http://djangopony.com/" class="ponybadge" title="Magic! Ponies! Django! Whee!"><img src="http://media.djangopony.com/img/small/badge.png" width="210" height="65" alt="pony powered"/></a>
+								<p>Developed by Matthias Devlamynck</p>
+							</div>
+						</div>
+					</footer>
+				{% endcache %}
+			{% endblock %}
+		</div>
+
+		{% block javascripts %}
+			<script type="application/javascript" src="{% static 'js/jquery-1.11.2.min.js' %}"></script>
+			<script type="application/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+			<script type="application/javascript" src="{% static 'js/jquery.expander.js' %}"></script>
+			<script type="application/javascript" src="{% static 'js/expender.js' %}"></script>
+			<script type="application/javascript" src="{% static 'js/konami.js' %}"></script>
+			{% block extrascripts %}{% endblock %}
+		{% endblock %}
+
+	</body>
+</html>
