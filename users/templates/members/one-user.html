@@ -2,19 +2,18 @@
 
 {% load i18n %}
 
-<div class="col-sm-4">
-    <a data-toggle="modal" data-target="#modal-{{profile.user.username}}">
-        <div class="thumbnail">
-        <span>
-            <img class="img-rounded img-avatar" alt="avatar" src="
-                {% if profile.avatar %}
-                    {{ profile.avatar.avatar.url }}
-                {% else %}
-                    {% static 'ressources/logo/icon_bronycub.png' %}
-                {% endif %}
-            ">
-        </span>
-        <h3 class="h-inline">{{ profile.user.username }}</h3>
+<div class="col-sm-6 col-md-4">
+    <a data-toggle="modal" data-target="#modal-{{profile.user.username}}" class="member-link">
+        <div class="thumbnail panel-member">
+            <span>
+                <img class="img-rounded img-avatar" alt="avatar" src="
+                    {% if profile.avatar %}
+                        {{ profile.avatar.avatar.url }}
+                    {% else %}
+                        {% static 'ressources/logo/icon_bronycub.png' %}
+                    {% endif %}">
+            </span>
+            <h3 class="username-member">{{ profile.user.username }}</h3>
         </div>
     </a>
 </div>
@@ -51,7 +50,7 @@
                         </div>
                         <div class="col-sm-12 text-right">
                             {% if profile.user.email %}
-                                <a href='{{ profile.user.email }}' class='zocial icon email'></a>
+                                <a href='mailto:{{ profile.user.email }}' class='zocial icon email'></a>
                             {% endif %}
                             {% for url in profile.url_set.all %}
                                 <a href='{{ url.url }}' class='zocial icon {{ url.icon }}'></a>
