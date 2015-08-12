@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SugarCUB 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-08 16:42+0000\n"
+"POT-Creation-Date: 2015-08-12 14:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Matthias Devlamynck <matthias.devlamynck@mailoo.org>\n"
 "Language: French\n"
@@ -17,104 +17,96 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: templates/agenda.html:7 templates/base.html:41
+#: core/templates/agenda.html:7 core/templates/base.html:43
 msgid "Agenda"
 msgstr "Agenda"
 
-#: templates/base.html:40
+#: core/templates/base.html:42
 msgid "Members"
 msgstr "Membres"
 
-#: templates/base.html:42 templates/hq.html:6
+#: core/templates/base.html:44 core/templates/hq.html:6
 msgid "HQ"
 msgstr "QG"
 
-#: templates/base.html:43
+#: core/templates/base.html:45
 msgid "Medias"
 msgstr "Médias"
 
-#: templates/base.html:44 templates/map.html:12
+#: core/templates/base.html:46 core/templates/map.html:12
 msgid "Map"
 msgstr "Carte"
 
-#: templates/base.html:45 templates/friends.html:7
+#: core/templates/base.html:47 core/templates/friends.html:7
 msgid "Friends"
 msgstr "Nos amis"
 
-#: templates/base.html:48
+#: core/templates/base.html:50
 msgid "Tchat"
 msgstr "Tchat"
 
-#: templates/base.html:49
+#: core/templates/base.html:51
 msgid "Visio"
 msgstr "Visio"
 
-#: templates/base.html:50
+#: core/templates/base.html:52
 msgid "DJ"
 msgstr "DJ"
 
-#: templates/base.html:51
+#: core/templates/base.html:53
 msgid "Ticket"
 msgstr "Ticket"
 
-#: templates/base.html:67
+#: core/templates/base.html:69
 msgid "Profile"
 msgstr "Profil"
 
-#: templates/base.html:69
+#: core/templates/base.html:71
 msgid "Admin"
 msgstr "Admin"
 
-#: templates/base.html:70
-msgid "Documentation"
-msgstr "Documentation"
-
-#: templates/base.html:72
+#: core/templates/base.html:73
 msgid "Logout"
 msgstr "Déconnexion"
 
-#: templates/base.html:76
+#: core/templates/base.html:77
 msgid "Login"
 msgstr "Connexion"
 
-#: templates/base.html:77
+#: core/templates/base.html:78
 msgid "Signup"
 msgstr "Nous rejoindre ?"
 
-#: templates/base.html:99
+#: core/templates/base.html:103
 msgid "Contact us :"
 msgstr "Contactez-nous :"
 
-#: templates/base.html:105
+#: core/templates/base.html:109
 msgid "Next humanitarian action :"
 msgstr "Prochaine action humanitaire :"
 
-#: templates/base.html:110
+#: core/templates/base.html:114
 #, python-format
 msgid "Hosted by %(host)s, %(where)s, %(when)s"
 msgstr "Organisé par %(host)s, %(where)s, %(when)s"
 
-#: templates/base.html:113
+#: core/templates/base.html:117
 msgid "Warning, there's realy cool stuff in preparation for this year !! :D"
 msgstr "Attention, y'a du lourd en préparation pour cette année !! :D"
 
-#: templates/base.html:119
-msgid "Developed by Matthias Devlamynck"
-msgstr "Développé par Matthias Devlamynck"
-
-#: templates/friends.html:34
+#: core/templates/friends.html:33
 msgid "No friends at the moment ..."
 msgstr "Aucun ami pour le moment ..."
 
-#: templates/home.html:7
+#: core/templates/home.html:7
 msgid "Home"
 msgstr "Accueil"
 
-#: templates/home.html:27
+#: core/templates/home.html:26
 msgid "BronyCUB, What is it ?"
 msgstr "BronyCUB, Qu'est-ce que c'est ?"
 
-#: templates/home.html:30
+#: core/templates/home.html:29
 msgid ""
 "BronyCUB is a collective from the <strong>U</strong>rban <strong>C</"
 "strong>ommunity of <strong>B</strong>ordeaux (<strong>CUB</strong> in "
@@ -123,48 +115,40 @@ msgstr ""
 "BronyCUB est un collectif de Bronies de la <strong>C</strong>ommunauté "
 "<strong>U</strong>rbaine de <strong>B</strong>ordeaux en Gironde."
 
-#: templates/home.html:32
-msgid "this collective try to gather fans to orgenize various meet-up."
+#: core/templates/home.html:31
+msgid "this collective try to gather fans to organize various meet-up."
 msgstr ""
 "Ce collectif a pour ambition de réunir les fans pour organiser diverses "
 "rencontres."
 
-#: templates/home.html:37 templates/home.html.py:43
+#: core/templates/home.html:36 core/templates/home.html.py:42
 msgid "More info ..."
 msgstr "Plus d'info ..."
 
-#: templates/home.html:46
-msgid "A Brony ? Can we eat it ? whatisit ?"
+#: core/templates/home.html:45
+msgid "A Brony ? Is it edible ? whatisit ?"
 msgstr "Un Brony ? Ça ce mange ? Kécéssé ?"
 
-#: templates/home.html:50
+#: core/templates/home.html:49
 msgid "Why ?"
 msgstr "Pourquoi ?"
 
-#: templates/home.html:54
+#: core/templates/home.html:53
 msgid "Close"
 msgstr "Fermer"
 
-#: templates/home.html:63
+#: core/templates/home.html:62
 msgid "Join us"
-msgstr "Rejoignez-vous"
+msgstr "Rejoignez-nous"
 
-#: urls.py:18
-msgid "^en/"
-msgstr "^fr/"
-
-#: urls.py:21
-msgid "^agenda$"
-msgstr "^agenda$"
-
-#: urls.py:23
+#: core/urls.py:7
 msgid "^hq$"
 msgstr "^qg$"
 
-#: urls.py:25
+#: core/urls.py:8
 msgid "^map$"
 msgstr "^carte$"
 
-#: urls.py:27
+#: core/urls.py:9
 msgid "^friends$"
 msgstr "^amis$"

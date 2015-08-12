@@ -1,0 +1,48 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-12 14:28+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: agenda/templates/agenda/comment_list.html:6
+#: agenda/templates/agenda/event_list.html:6
+msgid "Events"
+msgstr "Évènements"
+
+#: agenda/templates/agenda/comment_list_page.html:22
+msgid "You must be logged in to see the comments."
+msgstr "Vous devez être connecté pour voir les commentaires."
+
+#: agenda/templates/agenda/event_list.html:14
+msgid "Download the caldendar"
+msgstr "Télécharger l'agenda"
+
+#: agenda/templates/agenda/event_list_page.html:25
+msgid "Post a message"
+msgstr "Poster un commentaire"
+
+#: agenda/templates/agenda/event_list_page.html:26
+msgid "Post"
+msgstr "Envoyer"
+
+#: agenda/urls.py:14
+msgid "^(?P<event_id>[0-9]+)/comments$"
+msgstr "^(?P<event_id>[0-9]+)/commentaires$"
+
+#: agenda/urls.py:19
+msgid "^ics$"
+msgstr ""
