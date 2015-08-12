@@ -21,8 +21,10 @@ def home(request):
         'quotes': Quote.objects.all,
     })
 
+
 def agenda(request):
     return render(request, 'agenda.html')
+
 
 def map(request):
     return render(request, 'map.html', {
@@ -30,6 +32,7 @@ def map(request):
         'profiles':        Profile.objects.filter(user__is_active = True),
         'OSM_TILE_SERVER': settings.OSM_TILE_SERVER,
     })
+
 
 def friends(request):
     friends = Friend.objects.all()
