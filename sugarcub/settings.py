@@ -53,11 +53,11 @@ DEV_DEPENDENCIES_APPS = (
 INSTALLED_APPS = PROJECT_APPS + ('sugarcub',) + DEPENDENCIES_APPS
 
 MIDDLEWARE_CLASSES = (
-    # 'django.middleware.cache.UpdateCacheMiddleware',
+    'django.middleware.cache.UpdateCacheMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.cache.FetchFromCacheMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
@@ -78,15 +78,11 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'users', 'templates'),
 )
 
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-        'LOCATION': '/var/tmp/django_cache',
-    }
-}
 
-# CACHE_MIDDLEWARE_SECONDS = 300
-# CACHE_MIDDLEWARE_KEY_PREFIX = 'BCUB'
+# Cache
+
+CACHE_MIDDLEWARE_SECONDS = 300
+CACHE_MIDDLEWARE_KEY_PREFIX = 'SCUB'
 
 ROOT_URLCONF = 'sugarcub.urls'
 
@@ -113,6 +109,11 @@ LOGIN_URL               = '/login'
 LOGOUT_URL              = '/logout'
 ACCOUNT_ACTIVATION_DAYS = 7
 AUTH_PROFILE_MODULE     = 'users.profile'
+
+
+# Registration
+
+REGISTRATION_AUTO_LOGIN = True
 
 
 # Admin

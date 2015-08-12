@@ -8,8 +8,7 @@
 
 {% block body %}
     {{ block.super }}
-    {% cache 900 cache_agenda %}
-        <!-- {% now "i\m s\s" %} -->
+    {% cache 900 cache_agenda request.user.username %}
         <div class="container">
             <div class="row">
                 <div class="col-md-12">

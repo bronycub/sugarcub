@@ -9,8 +9,7 @@
 {% block body %}
     {{ block.super }}
 
-    {# cache 900 cache_friends #}
-    <!-- {% now "i\m s\s" %} -->
+    {% cache 900 cache_friends %}
         <div class="container">
             <div class="row">
 
@@ -36,5 +35,5 @@
 
             </div>
         </div>
-    {# endcache #}
+    {% endcache %}
 {% endblock %}

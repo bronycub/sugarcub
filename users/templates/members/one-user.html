@@ -19,8 +19,8 @@
 </div>
 <div id="modal-{{profile.user.username}}" class="modal fade" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
-        {% if user.is_authenticated %}
-            <div class="container-fluid modal-content modal-lg">
+        <div class="container-fluid modal-content modal-lg">
+            {% if user.is_authenticated %}
                 <div class="row modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <div class="col-sm-2 text-center">
@@ -77,18 +77,18 @@
                         <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
                     </div>
                 </div>
-            </div>
-        {% else %}
-            <div class="container-fluid">
-                <div class="alert alert-danger">
-                    <div class="row modal-body">
-                        <p>{% trans 'You must be connected to see the members informations.' %}</p>
-                    </div>
-                    <div class="row modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
-                    </div>
+            {% elif user.profile.enabled %}
+                <div class="row modal-body">
+                    <p>{% trans 'Your account must be accepted by the admin to see the members informations.' %}</p>
                 </div>
-            </div>
-        {% endif %}
+            {% else %}
+                <div class="row modal-body">
+                    <p>{% trans 'You must be connected to see the members informations.' %}</p>
+                </div>
+                <div class="row modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
+                </div>
+            {% endif %}
+        </div>
     </div>
 </div>

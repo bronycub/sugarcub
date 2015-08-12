@@ -29,7 +29,7 @@ def agenda(request):
 def map(request):
     return render(request, 'map.html', {
         'fillPage':        True,
-        'profiles':        Profile.objects.filter(user__is_active = True),
+        'profiles':        Profile.objects.get_active_users(),
         'OSM_TILE_SERVER': settings.OSM_TILE_SERVER,
     })
 
