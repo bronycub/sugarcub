@@ -26,6 +26,7 @@
 
 {% block javascripts %}
     {{ block.super }}
+    {% cache 900 cache_map_js user.is_authenticated and user.profile.enabled %}
         <script src="{% static 'leaflet/leaflet.js' %}"></script>
         <script>
             $(document).ready(function() {
@@ -38,7 +39,7 @@
                         'Imagery © <a href="http://openstreetmap.org">OpenStreetMap</a>',
                 }).addTo(map);
 
-                {% if user.is_authenticated %}
+                {% if user.is_authenticated and user.profile.enabled %}
                     {% for profile in profiles %}
                         var customIcon = L.icon({
                             iconUrl: {% if profile.avatar %}
@@ -62,4 +63,5 @@
                 var popup = L.popup();
             });
         </script>
+    {% endcache %}
 {% endblock %}

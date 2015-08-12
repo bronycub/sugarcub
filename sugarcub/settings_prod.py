@@ -4,12 +4,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ''  # TODO get from local install (not versioned)
+with open(os.path.join(BASE_DIR, '..', '..', '.secret'), 'r') as secretFile:
+    SECRET_KEY = secretFile.readline().strip(' \t\n\r')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG          = False
 TEMPLATE_DEBUG = False
-ALLOWED_HOSTS  = []  # TODO Allow for easy setup in BO
+
+with open(os.path.join(BASE_DIR, '..', '..', 'host'), 'r') as hostFile:
+    ALLOWED_HOSTS  = [hostFile.readline().strip(' \t\n\r'), ]
 
 
 # Database
@@ -18,7 +21,21 @@ ALLOWED_HOSTS  = []  # TODO Allow for easy setup in BO
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, '..', 'database', 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, '..', '..', 'database', 'db.sqlite3'),
+    }
+}
+
+
+# Cache
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'unix:///shared/redis.sock',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+            'IGNORE_EXCEPTIONS': True,
+        }
     }
 }
 
@@ -33,7 +50,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, '..', 'static')
 # Media
 
 MEDIA_URL  = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, '..', 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, '..', '..', 'media')
 
 
 # Mails
