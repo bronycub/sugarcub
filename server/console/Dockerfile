@@ -9,8 +9,6 @@ RUN apt-get install -y     \
 	&& mkdir -p /var/www   \
 	&& chown 33 /var/www
 
-ENV LANG=fr
-
 WORKDIR /shared
 
 USER 33

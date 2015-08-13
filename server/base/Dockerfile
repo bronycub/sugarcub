@@ -8,4 +8,6 @@ RUN apt-get update                           \
 	&& apt-get upgrade -y                    \
 	&& mkdir /shared
 
+ENV LANG=C.UTF-8
+
 RUN echo 'C.UTF-8' >> /etc/default/locale

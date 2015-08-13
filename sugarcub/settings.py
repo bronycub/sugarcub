@@ -79,16 +79,6 @@ TEMPLATE_DIRS = (
 )
 
 
-# Cache
-
-CACHE_MIDDLEWARE_SECONDS = 300
-CACHE_MIDDLEWARE_KEY_PREFIX = 'SCUB'
-
-ROOT_URLCONF = 'sugarcub.urls'
-
-WSGI_APPLICATION = 'sugarcub.wsgi.application'
-
-
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
@@ -101,6 +91,13 @@ DATABASES = {
 
 
 # Cache & session
+
+CACHE_MIDDLEWARE_SECONDS = 300
+CACHE_MIDDLEWARE_KEY_PREFIX = 'SCUB'
+
+ROOT_URLCONF = 'sugarcub.urls'
+
+WSGI_APPLICATION = 'sugarcub.wsgi.application'
 
 CACHES = {
     'default': {

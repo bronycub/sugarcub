@@ -183,14 +183,14 @@ function manage_dev()
 					shift
 					trap 'xhost - ; exit $?' ERR
 					xhost +local:
-					docker run -v "$XSOCK:$XSOCK" -e DISPLAY=unix$DISPLAY -v "$SHARED_FOLDER:/shared" -v "$DEV_FOLDER:/shared/dev/code" -i --rm sugarcub-console -c "./container-subfunctions.sh run_virtualenv py.test $*" || exit $?
+					docker run -v "$XSOCK:$XSOCK" -e DISPLAY=unix$DISPLAY -v "$SHARED_FOLDER:/shared" -v "$DEV_FOLDER:/shared/dev/code" -i --rm sugarcub-console -c "./container-subfunctions.sh run_virtualenv ENV=fr py.test $*" || exit $?
 					trap - ERR
 				else
-					docker run -v "$SHARED_FOLDER:/shared" -v "$DEV_FOLDER:/shared/dev/code" -i --rm sugarcub-console -c "./container-subfunctions.sh run_virtualenv xvfb-run py.test $*" || exit $?
+					docker run -v "$SHARED_FOLDER:/shared" -v "$DEV_FOLDER:/shared/dev/code" -i --rm sugarcub-console -c "./container-subfunctions.sh run_virtualenv ENV=fr xvfb-run py.test $*" || exit $?
 				fi
 				;;
 			*)
-				docker run -v "$SHARED_FOLDER:/shared" -v "$DEV_FOLDER:/shared/dev/code" -i --rm sugarcub-console -c "./container-subfunctions.sh run_virtualenv $ACTION $*" || exit $?
+				docker run -v "$SHARED_FOLDER:/shared" -v "$DEV_FOLDER:/shared/dev/code" -it --rm sugarcub-console -c "./container-subfunctions.sh run_virtualenv $ACTION $*" || exit $?
 				;;
 		esac
 	else
