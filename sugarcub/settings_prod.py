@@ -12,7 +12,8 @@ DEBUG          = False
 TEMPLATE_DEBUG = False
 
 with open(os.path.join(BASE_DIR, '..', '..', 'host'), 'r') as hostFile:
-    ALLOWED_HOSTS  = [hostFile.readline().strip(' \t\n\r'), ]
+    HOST = hostFile.readline().strip(' \t\n\r')
+    ALLOWED_HOSTS  = [HOST, ]
 
 
 # Static files (CSS, JavaScript, Images)
@@ -33,19 +34,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, '..', '..', 'media')
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # TODO Allow for easy setup in BO
-EMAIL_HOST          = ''
-EMAIL_PORT          = ''
+EMAIL_HOST          = '172.17.42.1'
+EMAIL_PORT          = 25
 EMAIL_HOST_USER     = ''
 EMAIL_HOST_PASSWORD = ''
-EMAIL_USE_TLS       = ''
-EMAIL_USE_SSL       = ''
-
-
-# Cache
-
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-        'LOCATION': '/var/tmp/django_cache',
-    }
-}
+EMAIL_USE_TLS       = False
+EMAIL_USE_SSL       = False
+DEFAULT_FROM_MAIL   = 'no-reply@' + HOST

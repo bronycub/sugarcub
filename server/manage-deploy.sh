@@ -62,17 +62,21 @@ function update_main_repo()
 
 # ---- Services ----
 
-SERVICES="redis uwsgi nginx"
+SERVICES="redis uwsgi postfix nginx"
 
 function services_start()
 {
 	for i in $SERVICES
 	do
 		PORT_MAPPING=""
-		if [[ $i == 'nginx' ]]
-		then
-			PORT_MAPPING="-p 80:80"
-		fi
+		case $i in
+			nginx)
+				PORT_MAPPING="-p 80:80"
+				;;
+			postfix)
+				PORT_MAPPING="-p 25:25"
+				;;
+		esac
 
 		docker run $PORT_MAPPING -v "$SHARED_FOLDER:/shared" -d --name sugarcub-$i sugarcub-$i || die $SERVICES_START_ERROR "can't start service $i"
 	done
@@ -91,10 +95,14 @@ function services_restart()
 	for i in $SERVICES
 	do
 		PORT_MAPPING=""
-		if [[ $i == 'nginx' ]]
-		then
-			PORT_MAPPING="-p 80:80"
-		fi
+		case $i in
+			nginx)
+				PORT_MAPPING="-p 80:80"
+				;;
+			postfix)
+				PORT_MAPPING="-p 25:25"
+				;;
+		esac
 
 		docker rm -f sugarcub-$i || true
 		docker run $PORT_MAPPING -v "$SHARED_FOLDER:/shared" -d --name sugarcub-$i sugarcub-$i || die $SERVICES_START_ERROR "can't start service $i"
@@ -108,14 +116,14 @@ function build_setup()
 	echo "Building setup"
 
 	# "postgresql" "celery" "dev"
-	for i in "base" "nginx" "redis" "python" "console" "uwsgi"
+	for i in "base" "nginx" "redis" "python" "console" "uwsgi" "postfix"
 	do
 		build_image "$i" || die $BUILD_ERROR "can't build image $i"
 	done
 
 	mkdir -p "$SHARED_FOLDER" \
 	&& chmod a+rwx $SHARED_FOLDER \
-	&& cp manage-deploy.sh uwsgi-template.ini nginx-template.conf redis.conf container-subfunctions.sh utils.sh "$SHARED_FOLDER" \
+	&& cp manage-deploy.sh uwsgi-template.ini nginx-template.conf redis.conf container-subfunctions.sh utils.sh postfix-supervisord.conf main.cf "$SHARED_FOLDER" \
 	&& finalyse_setup \
 	|| die $BUILD_ERROR "can't setup shared folder"
 
