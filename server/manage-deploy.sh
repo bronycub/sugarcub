@@ -62,7 +62,7 @@ function update_main_repo()
 
 # ---- Services ----
 
-SERVICES="redis uwsgi postfix nginx"
+SERVICES="redis uwsgi postfix dovecot nginx"
 
 function services_start()
 {
@@ -102,6 +102,9 @@ function services_restart()
 			postfix)
 				PORT_MAPPING="-p 25:25"
 				;;
+			dovecot)
+				PORT_MAPPING="-p 143:143"
+				;;
 		esac
 
 		docker rm -f sugarcub-$i || true
@@ -116,14 +119,17 @@ function build_setup()
 	echo "Building setup"
 
 	# "postgresql" "celery" "dev"
-	for i in "base" "nginx" "redis" "python" "console" "uwsgi" "postfix"
+	for i in "base" "nginx" "redis" "python" "console" "uwsgi" "postfix" "dovecot"
 	do
 		build_image "$i" || die $BUILD_ERROR "can't build image $i"
 	done
 
 	mkdir -p "$SHARED_FOLDER" \
+	&& mkdir -p "$SHARED_FOLDER"/maildirs \
+	&& chown root:users "$SHARED_FOLDER"/maildirs \
+	&& chmod 755 "$SHARED_FOLDER"/maildirs \
 	&& chmod a+rwx $SHARED_FOLDER \
-	&& cp manage-deploy.sh uwsgi-template.ini nginx-template.conf redis.conf container-subfunctions.sh utils.sh postfix-supervisord.conf main.cf "$SHARED_FOLDER" \
+	&& cp manage-deploy.sh uwsgi-template.ini nginx-template.conf redis.conf container-subfunctions.sh utils.sh postfix.sh main.cf dovecot.conf "$SHARED_FOLDER" \
 	&& finalyse_setup \
 	|| die $BUILD_ERROR "can't setup shared folder"
 

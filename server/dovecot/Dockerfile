@@ -1,14 +1,11 @@
-FROM sugarcub-base
+FROM sugarcub-python
 MAINTAINER matthias.devlamynck@mailoo.org
 
-RUN apt-get install -y \
-		nginx
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y        \
+		dovecot-common                                       \
+	&& ln -sf /shared/maildirs /home                         \ 
+	&& ln -sf /shared/dovecot.conf /etc/dovecot/dovecot.conf
 
-RUN echo "daemon off;" >> /etc/nginx/nginx.conf
+EXPOSE 143
 
-RUN rm -r /etc/nginx/sites-enabled \
-	&& ln -s -f /shared/nginx-sites /etc/nginx/sites-enabled
-
-EXPOSE 80
-
-ENTRYPOINT ["nginx", "-c", "/etc/nginx/nginx.conf"]
+ENTRYPOINT dovecot -F
