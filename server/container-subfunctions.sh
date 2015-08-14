@@ -3,6 +3,7 @@
 source utils.sh
 
 GIT_PATH="/shared/sugarcub"
+MAILMAN_PATH="/shared/mailman"
 
 # ---- Global ----
 
@@ -27,6 +28,30 @@ function run_virtualenv()
 function create_main_repo()
 {
 	[[ -d "$GIT_PATH" ]] || { git clone $MASTER_GIT_URL "$GIT_PATH" --mirror || die $BUILD_GIT_CLONE_ERROR "can't clone the master git repo"; }
+}
+
+function create_mailman_repo()
+{
+	[[ -d "$MAILMAN_PATH" ]] || { git clone $MAILMAN_GIT_URL "$MAILMAN_PATH" || die $BUILD_GIT_CLONE_ERROR "can't clone the mailman git repo"; }
+}
+
+function setup_mailman()
+{
+	create_mailman_repo
+
+	cd "$MAILMAN_PATH"
+	[[ -d env ]] && { set -o nounset; return 0; } || true
+	set +o nounset
+	virtualenv env
+	. env/bin/activate
+
+	pip install zc.buildout
+	#git apply mailman_setup.patch
+	buildout
+	./bin/mailman-post-update
+
+	deactivate
+	set -o nounset
 }
 
 # ---- Deploy ----
@@ -114,6 +139,7 @@ function validate_deploy()
 function finalyse_setup()
 {
 	create_main_repo
+	setup_mailman
 	mkdir -p /shared/{nginx-sites,logs,dev/{static,media}}
 }
 

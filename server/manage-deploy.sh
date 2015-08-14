@@ -62,7 +62,7 @@ function update_main_repo()
 
 # ---- Services ----
 
-SERVICES="redis uwsgi postfix dovecot nginx"
+SERVICES="redis uwsgi postfix mailman nginx"
 
 function services_start()
 {
@@ -75,6 +75,9 @@ function services_start()
 				;;
 			postfix)
 				PORT_MAPPING="-p 25:25"
+				;;
+			mailman)
+				PORT_MAPPING="-p 8000:8000"
 				;;
 		esac
 
@@ -92,24 +95,8 @@ function services_stop()
 
 function services_restart()
 {
-	for i in $SERVICES
-	do
-		PORT_MAPPING=""
-		case $i in
-			nginx)
-				PORT_MAPPING="-p 80:80"
-				;;
-			postfix)
-				PORT_MAPPING="-p 25:25"
-				;;
-			dovecot)
-				PORT_MAPPING="-p 143:143"
-				;;
-		esac
-
-		docker rm -f sugarcub-$i || true
-		docker run $PORT_MAPPING -v "$SHARED_FOLDER:/shared" -d --name sugarcub-$i sugarcub-$i || die $SERVICES_START_ERROR "can't start service $i"
-	done
+	services_stop
+	services_start
 }
 
 # ---- Main commands ----
@@ -119,18 +106,17 @@ function build_setup()
 	echo "Building setup"
 
 	# "postgresql" "celery" "dev"
-	for i in "base" "nginx" "redis" "python" "console" "uwsgi" "postfix" "dovecot"
+	for i in "base" "nginx" "redis" "python" "console" "uwsgi" "postfix" "mailman"
 	do
 		build_image "$i" || die $BUILD_ERROR "can't build image $i"
 	done
 
 	mkdir -p "$SHARED_FOLDER" \
-	&& mkdir -p "$SHARED_FOLDER"/maildirs \
-	&& chown root:users "$SHARED_FOLDER"/maildirs \
-	&& chmod 755 "$SHARED_FOLDER"/maildirs \
 	&& chmod a+rwx $SHARED_FOLDER \
-	&& cp manage-deploy.sh uwsgi-template.ini nginx-template.conf redis.conf container-subfunctions.sh utils.sh postfix.sh main.cf dovecot.conf "$SHARED_FOLDER" \
+	&& cp manage-deploy.sh uwsgi-template.ini nginx-template.conf redis.conf container-subfunctions.sh utils.sh postfix.sh mailman.sh main.cf "$SHARED_FOLDER" \
+	&& cp nginx-mailman.conf "$SHARED_FOLDER/nginx" \
 	&& finalyse_setup \
+	&& cp uwsgi-mailman.ini "$SHARED_FOLDER/mailman/uwsgi.ini" \
 	|| die $BUILD_ERROR "can't setup shared folder"
 
 	[[ $# -ge 1 && $1 == '-f' ]] && services_restart
@@ -197,10 +183,10 @@ function manage_dev()
 					shift
 					trap 'xhost - ; exit $?' ERR
 					xhost +local:
-					docker run -v "$XSOCK:$XSOCK" -e DISPLAY=unix$DISPLAY -v "$SHARED_FOLDER:/shared" -v "$DEV_FOLDER:/shared/dev/code" -i --rm sugarcub-console -c "./container-subfunctions.sh run_virtualenv ENV=fr py.test $*" || exit $?
+					docker run -v "$XSOCK:$XSOCK" -e DISPLAY=unix$DISPLAY -v "$SHARED_FOLDER:/shared" -v "$DEV_FOLDER:/shared/dev/code" -i --rm sugarcub-console -c "./container-subfunctions.sh run_virtualenv LANG=fr py.test $*" || exit $?
 					trap - ERR
 				else
-					docker run -v "$SHARED_FOLDER:/shared" -v "$DEV_FOLDER:/shared/dev/code" -i --rm sugarcub-console -c "./container-subfunctions.sh run_virtualenv ENV=fr xvfb-run py.test $*" || exit $?
+					docker run -v "$SHARED_FOLDER:/shared" -v "$DEV_FOLDER:/shared/dev/code" -i --rm sugarcub-console -c "./container-subfunctions.sh run_virtualenv LANG=fr xvfb-run py.test $*" || exit $?
 				fi
 				;;
 			*)

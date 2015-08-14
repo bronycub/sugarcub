@@ -28,7 +28,8 @@ SERVICES_START_ERROR=9
 
 # ---- Configuration ----
 
-MASTER_GIT_URL="http://gitlab.com/mdevlamynck/sugarcub.git"
+MASTER_GIT_URL="https://gitlab.com/mdevlamynck/sugarcub.git"
+MAILMAN_GIT_URL="https://gitlab.com/mailman/mailman-bundler.git"
 
 # ---- Utils ----
 
