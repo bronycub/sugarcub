@@ -74,7 +74,7 @@ mail_owner = postfix
 #
 #myhostname = host.domain.tld
 #myhostname = virtual.domain.tld
-myhostname = mail.bronycub.org
+myhostname = mail.sugarcub.org
 
 # The mydomain parameter specifies the local internet domain name.
 # The default is to use $myhostname minus the first component.
@@ -82,7 +82,7 @@ myhostname = mail.bronycub.org
 # parameters.
 #
 #mydomain = domain.tld
-mydomain = bronycub.org
+mydomain = sugarcub.org
 
 # SENDING MAIL
 # 
@@ -664,3 +664,17 @@ sample_directory = /etc/postfix/sample
 #
 readme_directory = /usr/share/doc/postfix
 inet_protocols = ipv4
+
+
+# Mailman
+# Support the default VERP delimiter.
+recipient_delimiter = +
+unknown_local_recipient_reject_code = 550
+owner_request_special = no
+# Maps
+transport_maps =
+    hash:/shared/mailman/var/data/postfix_lmtp
+local_recipient_maps =
+    hash:/shared/mailman/var/data/postfix_lmtp
+relay_domains =
+    hash:/shared/mailman/var/data/postfix_domains

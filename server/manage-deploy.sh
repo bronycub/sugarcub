@@ -71,13 +71,10 @@ function services_start()
 		PORT_MAPPING=""
 		case $i in
 			nginx)
-				PORT_MAPPING="-p 80:80"
+				PORT_MAPPING="-p 80:80 -p 443:443"
 				;;
 			postfix)
 				PORT_MAPPING="-p 25:25"
-				;;
-			mailman)
-				PORT_MAPPING="-p 8000:8000"
 				;;
 		esac
 
@@ -113,10 +110,8 @@ function build_setup()
 
 	mkdir -p "$SHARED_FOLDER" \
 	&& chmod a+rwx $SHARED_FOLDER \
-	&& cp manage-deploy.sh uwsgi-template.ini nginx-template.conf redis.conf container-subfunctions.sh utils.sh postfix.sh mailman.sh main.cf "$SHARED_FOLDER" \
-	&& cp nginx-mailman.conf "$SHARED_FOLDER/nginx" \
+	&& cp manage-deploy.sh uwsgi-template.ini nginx-template.conf redis.conf container-subfunctions.sh utils.sh postfix.sh mailman.sh main.cf settings_local.py uwsgi-mailman.ini nginx-mailman.conf "$SHARED_FOLDER" \
 	&& finalyse_setup \
-	&& cp uwsgi-mailman.ini "$SHARED_FOLDER/mailman/uwsgi.ini" \
 	|| die $BUILD_ERROR "can't setup shared folder"
 
 	[[ $# -ge 1 && $1 == '-f' ]] && services_restart
@@ -275,7 +270,7 @@ Commands:
     s, services    respectively start, stop or restart the services
     
     l, logs        print the log file of given service, optionally for given instance
-                   with -f, follow the logs instead of printing the whole log file
+                   with -f, follow the logs instead of printing the whole log 
     
 Return codes:
     global:

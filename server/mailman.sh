@@ -3,6 +3,7 @@
 trap '/shared/mailman/bin/mailman stop ; exit $?' TERM
 
 rm /shared/mailman/var/locks/*
+cd /shared/mailman
 /shared/mailman/bin/mailman start &
 
-/shared/mailman/bin/mailman-web-django-admin runserver 0.0.0.0:8000
+/uwsgi-build/uwsgi /shared/uwsgi-mailman.ini

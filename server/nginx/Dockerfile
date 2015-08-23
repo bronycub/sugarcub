@@ -7,7 +7,8 @@ RUN apt-get install -y \
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 
 RUN rm -r /etc/nginx/sites-enabled \
-	&& ln -s -f /shared/nginx-sites /etc/nginx/sites-enabled
+	&& ln -s -f /shared/nginx-sites /etc/nginx/sites-enabled \
+	&& ln -s -f /shared/nginx-ssl /etc/nginx/ssl
 
 EXPOSE 80
 

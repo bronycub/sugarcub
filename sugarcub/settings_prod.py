@@ -40,4 +40,4 @@ EMAIL_HOST_USER     = ''
 EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS       = False
 EMAIL_USE_SSL       = False
-DEFAULT_FROM_MAIL   = 'no-reply@' + HOST
+DEFAULT_FROM_EMAIL  = 'no-reply@' + HOST

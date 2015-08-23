@@ -45,10 +45,13 @@ function setup_mailman()
 	virtualenv env
 	. env/bin/activate
 
+	cp /shared/settings_local.py /shared/mailman/mailman_web/
+	tr -cd "[:graph:]" < /dev/urandom | head -c 512 > /shared/mailman/.secret
+	sed -e '7s/development/production/' -i /shared/mailman/buildout.cfg
 	pip install zc.buildout
-	#git apply mailman_setup.patch
 	buildout
 	./bin/mailman-post-update
+	./bin/mailman-web-django-admin collectstatic --noinput
 
 	deactivate
 	set -o nounset
@@ -140,7 +143,10 @@ function finalyse_setup()
 {
 	create_main_repo
 	setup_mailman
-	mkdir -p /shared/{nginx-sites,logs,dev/{static,media}}
+	mkdir -p /shared/{nginx-{sites,ssl},logs,dev/{static,media}}
+	cp /shared/nginx-mailman.conf /shared/nginx-sites
+	cd /shared/nginx-ssl
+	[[ -f /shared/nginx-ssl/server.crt ]] || openssl req -new -x509 -nodes -out server.crt -keyout server.key
 }
 
 function create_instance()
