@@ -56,3 +56,19 @@ Scenario: No Login / Signup buttons when logged in
 	Then I see Déconnexion
 	Then I don't see Connexion
 	Then I don't see Nous rejoindre ?
+
+
+Scenario: See Profil form
+	Given I'm logged in
+	Given I'm on /
+	When I click on link Profil
+	Then I see a form
+
+
+Scenario: Change profile value
+	Given I'm logged in
+	Given I'm on /profile
+	When I correctly fill the profile form
+	Then I see profile_address
+	Then I see profile_bio
+
