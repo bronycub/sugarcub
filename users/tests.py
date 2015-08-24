@@ -1,6 +1,5 @@
 from   django.test                import TestCase
-from   utils                      import tests
-from   .                          import views, models, forms
+from   .                          import models, forms
 from   django.contrib.auth.models import User
 from   django.core.exceptions     import ValidationError
 from   model_mommy                import mommy
@@ -36,26 +35,37 @@ valid_signup_data = {
 
 class UsersViewsTest(TestCase):
 
-    @tests.skipNotFinishedYet
-    def test_signup(self):
-        self.assert_url_matches_view(views.signup, '/signup', 'registration_register')
-        self.fail('todo')
-
-    @tests.skipNotFinishedYet
     def test_members(self):
-        self.assert_url_matches_view(views.members, '/members', 'users:members')
 
         profiles = mommy.make(models.Profile, _quantity = 3)
+
+        # Test avec enabled = False et is_active = True
+        response = self.client.get('/members')
+        self.assertCountEqual(profiles[:0], response.context['profiles'])
+
+        # Test avec enabled = True et is_active = True
+        profiles[0].enabled = True
+        profiles[0].save()
+        profiles[1].enabled = True
+        profiles[1].save()
+        response = self.client.get('/members')
+        self.assertCountEqual(profiles[:2], response.context['profiles'])
+
+        # Test avec enabled = True et is_active = False
         profiles[0].user.is_active = False
         profiles[0].user.save()
-
+        profiles[1].user.is_active = False
+        profiles[1].user.save()
         response = self.client.get('/members')
-        self.assertCountEqual(profiles[1:], response.context['profiles'])
+        self.assertCountEqual(profiles[:0], response.context['profiles'])
 
-    @tests.skipNotFinishedYet
-    def test_profile(self):
-        self.assert_url_matches_view(views.profile, '/profile', 'users:profile')
-        self.fail('todo')
+        # Test avec enabled = False et is_active = False
+        profiles[0].enabled = False
+        profiles[0].save()
+        profiles[1].enabled = False
+        profiles[1].save()
+        response = self.client.get('/members')
+        self.assertCountEqual(profiles[:0], response.context['profiles'])
 
 
 class UsersModelsTest(TestCase):
