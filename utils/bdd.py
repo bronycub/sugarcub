@@ -69,9 +69,9 @@ def i_dont_see(browser, text):
     assert not browser.is_text_present(text)
 
 
-@then(parsers.cfparse('I see class {css_class}'))
-def i_see_class(browser, css_class):
-    assert browser.is_element_present_by_css(css_class)
+# @then(parsers.cfparse('I see class {css_class}'))
+# def i_see_class(browser, css_class):
+#    assert browser.is_element_present_by_css(css_class)
 
 
 @then('form has errors')
