@@ -11,6 +11,7 @@ from   utils.bdd  import *
 @scenario('features/account.feature', 'No Login / Signup buttons when logged in')
 @scenario('features/account.feature', 'See Profil form')
 @scenario('features/account.feature', 'Change profile value')
+@scenario('features/account.feature', 'Change in profile stay')
 def test_feature(live_server):
     pass
 

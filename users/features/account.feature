@@ -72,3 +72,13 @@ Scenario: Change profile value
 	Then I see profile_address
 	Then I see profile_bio
 
+Scenario: Change in profile stay
+	Given I'm logged in
+	Given I'm on /profile
+	When I click on link Fluttershy
+	When I log out
+	When I log in
+	When I click on link Fluttershy
+	When I click on link Profil
+	Then I see profile_address
+	Then I see profile_bio
