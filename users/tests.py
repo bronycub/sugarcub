@@ -33,41 +33,6 @@ valid_signup_data = {
 }
 
 
-class UsersViewsTest(TestCase):
-
-    def test_members(self):
-
-        profiles = mommy.make(models.Profile, _quantity = 3)
-
-        # Test avec enabled = False et is_active = True
-        response = self.client.get('/members')
-        self.assertCountEqual(profiles[:0], response.context['profiles'])
-
-        # Test avec enabled = True et is_active = True
-        profiles[0].enabled = True
-        profiles[0].save()
-        profiles[1].enabled = True
-        profiles[1].save()
-        response = self.client.get('/members')
-        self.assertCountEqual(profiles[:2], response.context['profiles'])
-
-        # Test avec enabled = True et is_active = False
-        profiles[0].user.is_active = False
-        profiles[0].user.save()
-        profiles[1].user.is_active = False
-        profiles[1].user.save()
-        response = self.client.get('/members')
-        self.assertCountEqual(profiles[:0], response.context['profiles'])
-
-        # Test avec enabled = False et is_active = False
-        profiles[0].enabled = False
-        profiles[0].save()
-        profiles[1].enabled = False
-        profiles[1].save()
-        response = self.client.get('/members')
-        self.assertCountEqual(profiles[:0], response.context['profiles'])
-
-
 class UsersModelsTest(TestCase):
 
     def test_name_profile(self):
@@ -105,6 +70,33 @@ class UsersModelsTest(TestCase):
         url.full_clean()
 
         assert 'http://equestria.pn' == url.__unicode__()
+
+    def test_get_active_users(self):
+        profiles = mommy.make(models.Profile, _quantity = 3)
+
+        # Test avec enabled = False et is_active = True
+        self.assertCountEqual(profiles[:0], models.Profile.objects.get_active_users())
+
+        # Test avec enabled = True et is_active = True
+        profiles[0].enabled = True
+        profiles[0].save()
+        profiles[1].enabled = True
+        profiles[1].save()
+        self.assertCountEqual(profiles[:2], models.Profile.objects.get_active_users())
+
+        # Test avec enabled = True et is_active = False
+        profiles[0].user.is_active = False
+        profiles[0].user.save()
+        profiles[1].user.is_active = False
+        profiles[1].user.save()
+        self.assertCountEqual(profiles[:0], models.Profile.objects.get_active_users())
+
+        # Test avec enabled = False et is_active = False
+        profiles[0].enabled = False
+        profiles[0].save()
+        profiles[1].enabled = False
+        profiles[1].save()
+        self.assertCountEqual(profiles[:0], models.Profile.objects.get_active_users())
 
 
 class UsersFormsTest(TestCase):
