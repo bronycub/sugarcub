@@ -8,6 +8,13 @@ Scenario: Login
 	Then I see Fluttershy
 
 
+Scenario: Logout
+	Given I'm on /
+	When I click on link Fluttershy
+	When I log out
+	Then I see Nous rejoindre ?
+
+
 Scenario: See welcome guide
 	Given I'm not logged in
 	Given I'm on /
@@ -82,3 +89,9 @@ Scenario: Change in profile stay
 	When I click on link Profil
 	Then I see profile_address
 	Then I see profile_bio
+
+Scenario: I can check members
+	Given I'm logged in
+	Given I'm on /
+	When I click on link Membres
+	Then I see Membres

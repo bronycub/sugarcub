@@ -3,6 +3,7 @@ from   utils.bdd  import *
 
 
 @scenario('features/account.feature', 'Login')
+@scenario('features/account.feature', 'Logout')
 @scenario('features/account.feature', 'See welcome guide')
 @scenario('features/account.feature', 'See registration form')
 @scenario('features/account.feature', 'Fail to fill registration form')
@@ -12,6 +13,7 @@ from   utils.bdd  import *
 @scenario('features/account.feature', 'See Profil form')
 @scenario('features/account.feature', 'Change profile value')
 @scenario('features/account.feature', 'Change in profile stay')
+# @scenario('features/account.feature', 'I can check members')
 def test_feature(live_server):
     pass
 
