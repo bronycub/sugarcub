@@ -79,6 +79,7 @@ Scenario: Change profile value
 	Then I see profile_address
 	Then I see profile_bio
 
+
 Scenario: Change in profile stay
 	Given I'm logged in
 	Given I'm on /profile
@@ -90,8 +91,24 @@ Scenario: Change in profile stay
 	Then I see profile_address
 	Then I see profile_bio
 
+
 Scenario: I can check members
+	Given I have valid users
 	Given I'm logged in
 	Given I'm on /
 	When I click on link Membres
-	Then I see Membres
+	Then I only see valid members
+
+
+Scenario: Access /en/members
+	Given I am on /
+	When I click on link Membres
+	Then I see Aucun membre
+
+
+Scenario: Access /en/profil
+	Given I am on /
+	Given I am logged in
+	When I click on link Fluttershy
+	When I click on link Profil
+	Then I see Mettre à jour

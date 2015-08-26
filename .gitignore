@@ -13,3 +13,6 @@ db.sqlite3
 
 # PyTest and Cie
 .cache
+
+# Deploy generated files
+/server/shared

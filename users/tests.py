@@ -1,5 +1,5 @@
 from   django.test                import TestCase
-from   .                          import models, forms
+from   .                          import models, forms, test_data
 from   django.contrib.auth.models import User
 from   django.core.exceptions     import ValidationError
 from   model_mommy                import mommy
@@ -72,31 +72,9 @@ class UsersModelsTest(TestCase):
         assert 'http://equestria.pn' == url.__unicode__()
 
     def test_get_active_users(self):
-        profiles = mommy.make(models.Profile, _quantity = 3)
+        profiles = test_data.create_profiles()
 
-        # Test avec enabled = False et is_active = True
-        self.assertCountEqual(profiles[:0], models.Profile.objects.get_active_users())
-
-        # Test avec enabled = True et is_active = True
-        profiles[0].enabled = True
-        profiles[0].save()
-        profiles[1].enabled = True
-        profiles[1].save()
-        self.assertCountEqual(profiles[:2], models.Profile.objects.get_active_users())
-
-        # Test avec enabled = True et is_active = False
-        profiles[0].user.is_active = False
-        profiles[0].user.save()
-        profiles[1].user.is_active = False
-        profiles[1].user.save()
-        self.assertCountEqual(profiles[:0], models.Profile.objects.get_active_users())
-
-        # Test avec enabled = False et is_active = False
-        profiles[0].enabled = False
-        profiles[0].save()
-        profiles[1].enabled = False
-        profiles[1].save()
-        self.assertCountEqual(profiles[:0], models.Profile.objects.get_active_users())
+        self.assertCountEqual(profiles[4:], models.Profile.objects.get_active_users())
 
 
 class UsersFormsTest(TestCase):

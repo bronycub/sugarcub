@@ -1,5 +1,6 @@
-from   pytest_bdd import scenario, then
-from   utils.bdd  import *
+from pytest_bdd  import scenario, then
+from .           import test_data
+from utils.bdd   import *
 
 
 @scenario('features/account.feature', 'Login')
@@ -13,9 +14,16 @@ from   utils.bdd  import *
 @scenario('features/account.feature', 'See Profil form')
 @scenario('features/account.feature', 'Change profile value')
 @scenario('features/account.feature', 'Change in profile stay')
-# @scenario('features/account.feature', 'I can check members')
+@scenario('features/account.feature', 'I can check members')
+@scenario('features/account.feature', 'Access /en/members')
+@scenario('features/account.feature', 'Access /en/profil')
 def test_feature(live_server):
     pass
+
+
+@given('I have valid users')
+def valid_users():
+    test_data.create_profiles()
 
 
 @then('I see a form')
@@ -77,3 +85,8 @@ def i_correctly_fill_profile_form(browser):
 @then('I receive a mail')
 def i_receive_a_mail(browser):
     pass
+
+
+@then('I only see valid members')
+def i_only_see_valid_members(browser):
+    browser.find_by_text('profile3')
