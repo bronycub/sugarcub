@@ -1,6 +1,6 @@
-from pytest_bdd  import scenario, then
-from .           import test_data
-from utils.bdd   import *
+from   pytest_bdd  import scenario, then
+from .             import test_data
+from   utils.bdd   import *
 
 
 @scenario('features/account.feature', 'Login')
@@ -14,9 +14,12 @@ from utils.bdd   import *
 @scenario('features/account.feature', 'See Profil form')
 @scenario('features/account.feature', 'Change profile value')
 @scenario('features/account.feature', 'Change in profile stay')
-@scenario('features/account.feature', 'I can check members')
-@scenario('features/account.feature', 'Access /en/members')
-@scenario('features/account.feature', 'Access /en/profil')
+@scenario('features/account.feature', 'I see change password')
+@scenario('features/account.feature', 'Failed to fill the change password form')
+@scenario('features/account.feature', 'Succeed to fill the change password form')
+@scenario('features/account.feature', 'I can see members')
+@scenario('features/account.feature', 'I can see members profile')
+@scenario('features/account.feature', "I can't see members profile")
 def test_feature(live_server):
     pass
 
@@ -82,11 +85,30 @@ def i_correctly_fill_profile_form(browser):
     i_submit(browser)
 
 
+@when('I incorrectly fill the password form')
+def i_incorrectly_fill_the_password_form(browser):
+    for field in [
+        ('old_password',        'error_password_test'),
+        ('new_password1',       'new_password_test'),
+        ('new_password2',       'new_password_test'),
+    ]:
+        browser.fill(*field)
+
+    browser.find_by_css('.btn-primary').first.click()
+
+
+@when('I correctly fill the password form')
+def i_correctly_fill_the_password_form(browser):
+    for field in [
+        ('old_password',        'password_test'),
+        ('new_password1',       'new_password_test'),
+        ('new_password2',       'new_password_test'),
+    ]:
+        browser.fill(*field)
+
+    browser.find_by_css('.btn-primary').first.click()
+
+
 @then('I receive a mail')
 def i_receive_a_mail(browser):
     pass
-
-
-@then('I only see valid members')
-def i_only_see_valid_members(browser):
-    browser.find_by_text('profile3')

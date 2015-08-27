@@ -2,6 +2,10 @@ Feature: Account
 	Create and Manager your user account
 
 
+Background:
+	Given I have valid users
+
+
 Scenario: Login
 	Given I have a user account
 	When I log in
@@ -66,22 +70,17 @@ Scenario: No Login / Signup buttons when logged in
 
 
 Scenario: See Profil form
-	Given I'm logged in
-	Given I'm on /
 	When I click on link Profil
 	Then I see a form
 
 
 Scenario: Change profile value
-	Given I'm logged in
-	Given I'm on /profile
 	When I correctly fill the profile form
 	Then I see profile_address
 	Then I see profile_bio
 
 
 Scenario: Change in profile stay
-	Given I'm logged in
 	Given I'm on /profile
 	When I click on link Fluttershy
 	When I log out
@@ -92,23 +91,38 @@ Scenario: Change in profile stay
 	Then I see profile_bio
 
 
-Scenario: I can check members
-	Given I have valid users
-	Given I'm logged in
+Scenario: I see change password
+	Given I'm on /profile
+	When I click on link Modifiez votre mot de passe
+	Then I see a form
+
+
+Scenario: Failed to fill the change password form
+	When I incorrectly fill the password form
+	Then form has errors
+
+
+Scenario: Succeed to fill the change password form
+	When I correctly fill the password form
+	Then I see Votre mot de passe a été modifié.
+
+
+Scenario: I can see members
 	Given I'm on /
 	When I click on link Membres
-	Then I only see valid members
+	Then I see Fluttershy_profile
 
 
-Scenario: Access /en/members
-	Given I am on /
-	When I click on link Membres
-	Then I see Aucun membre
+Scenario: I can see members profile
+	Given I'm on /members
+	When I click on link Fluttershy_profile
+	Then I see profile_bio
 
 
-Scenario: Access /en/profil
-	Given I am on /
-	Given I am logged in
+Scenario: I can't see members profile
+	Given I'm on /members
 	When I click on link Fluttershy
-	When I click on link Profil
-	Then I see Mettre à jour
+	When I log out
+	When I click on link Membres
+	When I click on link Fluttershy_profile
+	Then I see Vous devez être connecté pour voir les informations de ce membre.

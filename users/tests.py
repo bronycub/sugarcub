@@ -74,7 +74,7 @@ class UsersModelsTest(TestCase):
     def test_get_active_users(self):
         profiles = test_data.create_profiles()
 
-        self.assertCountEqual(profiles[4:], models.Profile.objects.get_active_users())
+        self.assertCountEqual(profiles[3:], models.Profile.objects.get_active_users())
 
 
 class UsersFormsTest(TestCase):
