@@ -79,6 +79,7 @@ Scenario: Change profile value
 	Then I see profile_address
 	Then I see profile_bio
 
+
 Scenario: Change in profile stay
 	Given I'm logged in
 	Given I'm on /profile
@@ -90,8 +91,47 @@ Scenario: Change in profile stay
 	Then I see profile_address
 	Then I see profile_bio
 
-Scenario: I can check members
+
+Scenario: I see change password
+	Given I'm logged in
+	Given I'm on /profile
+	When I click on link Modifiez votre mot de passe
+	Then I see a form
+
+
+Scenario: Failed to fill the change password form
+	Given I'm logged in
+	When I incorrectly fill the password form
+	Then form has errors
+
+
+Scenario: Succeed to fill the change password form
+	Given I'm logged in
+	When I correctly fill the password form
+	Then I see Votre mot de passe a été modifié.
+
+
+Scenario: I can see members
 	Given I'm logged in
 	Given I'm on /
+	Given There is active members
 	When I click on link Membres
-	Then I see Membres
+	Then I see Fluttershy_profile
+
+
+Scenario: I can see members profile
+	Given I'm logged in
+	Given I'm on /membres
+	Given There is active members
+	When I click on link Fluttershy_profile
+	Then i see profile_bio
+
+Scenario: I can't see members profile
+	Given I'm logged in
+	Given I'm on /membres
+	Given There is active members
+	When I click on link Fluttershy
+	When I log out
+	When I click on link Membres
+	When I click on link Fluttershy_profile
+	Then i see Vous devez être connecté pour voir les informations de ce membre.
