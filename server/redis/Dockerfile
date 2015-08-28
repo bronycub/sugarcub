@@ -3,4 +3,6 @@ MAINTAINER matthias.devlamynck@mailoo.org
 
 RUN apt-get install -y redis-server
 
+USER 33
+
 ENTRYPOINT redis-server /shared/redis.conf
