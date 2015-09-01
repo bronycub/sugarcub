@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SugarCUB 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-08 16:57+0000\n"
+"POT-Creation-Date: 2015-09-01 16:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Matthias Devlamynck <matthias.devlamynck@mailoo.org>\n"
 "Language: French\n"
@@ -33,19 +33,38 @@ msgstr "Date de naissance"
 msgid "Address"
 msgstr "Adresse"
 
+#: models.py:31
+msgid "The bio should be longer than 150 character"
+msgstr "La bio doit être longue de plus de 150 caractère"
+
+#: models.py:38
+msgid ""
+"Phone number must be entered in the format: '+999999999'. Up to 15 digits "
+"allowed."
+msgstr ""
+"Le numéro de téléphone doit être entré dans le format : '+999999999'."
+"Jusqu'à 15 chiffres sont autorisés"
+
 #: templates/members.html:6
 msgid "Members"
 msgstr "Membres"
 
-#: templates/members.html:19
+#: templates/members.html:18
 msgid "No members registered yet ..."
 msgstr "Aucun membre enregistré pour le moment ..."
 
-#: templates/members/one-user.html:77 templates/members/one-user.html.py:88
+#: templates/members/one-user.html:77 templates/members/one-user.html.py:89
 msgid "Close"
 msgstr "Fermer"
 
-#: templates/members/one-user.html:85
+#: templates/members/one-user.html:82
+#, fuzzy
+#| msgid "You must be connected to see the members informations."
+msgid ""
+"Your account must be accepted by the admin to see the members informations."
+msgstr "Vous devez être connecté pour voir les informations de ce membre."
+
+#: templates/members/one-user.html:86
 msgid "You must be connected to see the members informations."
 msgstr "Vous devez être connecté pour voir les informations de ce membre."
 
@@ -180,7 +199,9 @@ msgid "^profile$"
 msgstr "^profil$"
 
 #: urls.py:23
-msgid "^register$"
+#, fuzzy
+#| msgid "^register$"
+msgid "^register/$"
 msgstr "^inscription$"
 
 #: urls.py:25
