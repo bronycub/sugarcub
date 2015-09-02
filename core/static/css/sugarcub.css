@@ -291,6 +291,11 @@ a {
   background-color: #eeeeee;
 }
 
+.member_separator
+{
+  border-right: solid 1px #E5E5E5;
+}
+
 /*
  * To set each friends to a min-height
  */
