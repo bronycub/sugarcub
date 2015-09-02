@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SugarCUB 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-01 16:55+0000\n"
+"POT-Creation-Date: 2015-09-02 14:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Matthias Devlamynck <matthias.devlamynck@mailoo.org>\n"
 "Language: French\n"
@@ -33,17 +33,25 @@ msgstr "Date de naissance"
 msgid "Address"
 msgstr "Adresse"
 
-#: models.py:31
+#: forms.py:32
+msgid ""
+"Write about yourself! how you discover My Little Pony or BronyCUB, what you "
+"like and dislike..."
+msgstr ""
+"Ecrivez à propos de vous! Comment vous avez découvert My Little Pony ou "
+"BronyCUB , Ce que vous aimez ou detestez..."
+
+#: models.py:32
 msgid "The bio should be longer than 150 character"
 msgstr "La bio doit être longue de plus de 150 caractère"
 
-#: models.py:38
+#: models.py:39
 msgid ""
 "Phone number must be entered in the format: '+999999999'. Up to 15 digits "
 "allowed."
 msgstr ""
-"Le numéro de téléphone doit être entré dans le format : '+999999999'."
-"Jusqu'à 15 chiffres sont autorisés"
+"Le numéro de téléphone doit être entré dans le format : '+999999999'.Jusqu'à "
+"15 chiffres sont autorisés"
 
 #: templates/members.html:6
 msgid "Members"
