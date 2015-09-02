@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from stdimage.models            import StdImageField
 from stdimage.utils             import UploadToUUID
 from django.core.validators     import RegexValidator, MinLengthValidator
+from django.core.validators     import MaxValueValidator, MinValueValidator
+from django                     import forms
 from django.utils.translation   import ugettext_lazy as _
 
 
@@ -38,7 +40,12 @@ class Profile(models.Model):
         "Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed."))
     phone             = models.CharField(validators=[phone_regex], max_length=15)
     birthday          = models.DateField()
-    address           = models.TextField()
+    address           = models.CharField(max_length=200)
+    city              = models.CharField(max_length=30)
+    postal_code       = models.IntegerField(validators=[
+                            MaxValueValidator(99999),
+                            MinValueValidator(1000)
+                        ])
     address_longitude = models.FloatField(blank = True, null = True)
     address_latitude  = models.FloatField(blank = True, null = True)
 

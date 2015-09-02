@@ -23,6 +23,8 @@ class ProfileForm(forms.ModelForm):
             "phone": _("Phone"),
             "birthday": _("Birthday"),
             "address": _("Address"),
+            "city": _("City"),
+            "postal_code": _("Postal code"),
         }
 
     def __init__(self, *args, **kwargs):
