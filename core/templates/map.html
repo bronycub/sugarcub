@@ -13,7 +13,7 @@
 
 {% block body %}
     {{ block.super }}
-
+    {% cache 900 cache_map %}
         <div class="container-fluid map-size">
             <div class="row full-height">
                 <div class="col-sm-12 full-height">
@@ -25,12 +25,12 @@
             <a class="btn btn-success btn-lg" href="{% url 'core:hq' %}">{% trans 'Access HQ' %}</a>
             <a class="btn btn-primary btn-lg" href="http://carte.leponeyblanc.fr/">{% trans 'Map of France' %}</a>
         </div>
-        
+    {% endcache %}    
 {% endblock %}
 
 {% block javascripts %}
     {{ block.super }}
-
+    {% cache 900 cache_map_js user.is_authenticated and user.profile.enabled %}
         <script src="{% static 'leaflet/leaflet.js' %}"></script>
         <script>
             $(document).ready(function() {
@@ -67,5 +67,5 @@
                 var popup = L.popup();
             });
         </script>
-
+    {% endcache %}
 {% endblock %}
