@@ -2,7 +2,6 @@
 
 {% load static %}
 {% load i18n %}
-{% load cache %}
 
 {% block title %}{% trans 'Home' %}{% endblock %}
 
@@ -22,48 +21,48 @@
     </div>
     <hr />
     <div class="container">
-        <div class="col-md-6">
-            <h2>{% trans 'BronyCUB, What is it ?' %}</h2>
-            <div class="jumbotron">
-                <article>
-                    {% trans "BronyCUB is a collective from the <strong>U</strong>rban <strong>C</strong>ommunity of <strong>B</strong>ordeaux (<strong>CUB</strong> in french) in the Gironde." %}
-                    <br /><br />
-                    {% trans "this collective try to gather fans to orgenize various meet-up." %}
-                    <br /><br />
-                </article>
+        {% if not user.is_authenticated %}
+            <div class="col-md-6">
+                <h2>{% trans 'BronyCUB, What is it ?' %}</h2>
+                <div class="jumbotron">
+                    <article>
+                        {% trans "BronyCUB is a collective from the <strong>U</strong>rban <strong>C</strong>ommunity of <strong>B</strong>ordeaux (<strong>CUB</strong> in french) in the Gironde." %}
+                        <br /><br />
+                        {% trans "this collective try to gather fans to orgenize various meet-up." %}
+                        <br /><br />
+                    </article>
 
-                <!-- Question -->
-                <a data-toggle="modal" data-target="#modal" class="btn btn-primary btn-lg">{% trans 'More info ...' %}</a>
-                <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="plusinfos" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <h4 class="modal-title" id="plusinfos">{% trans 'More info ...' %}</h4>
-                            </div>
-                            <div class="modal-header">
-                                <h4>{% trans 'A Brony ? Can we eat it ? whatisit ?' %}</h4>
-                                <iframe width="540" height="320" src="//www.youtube.com/embed/Y67pwC9iOBw" allowfullscreen></iframe>
-                            </div>
-                            <div class="modal-body">
-                                <h4>{% trans 'Why ?' %}</h4>
-                                <iframe width="540" height="320" src="//www.youtube.com/embed/pXYqLKko6Ss" allowfullscreen></iframe>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
+                    <!-- Question -->
+                    <a data-toggle="modal" data-target="#modal" class="btn btn-primary btn-lg">{% trans 'More info ...' %}</a>
+                    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="plusinfos" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title" id="plusinfos">{% trans 'More info ...' %}</h4>
+                                </div>
+                                <div class="modal-header embed-responsive embed-responsive-16by9">
+                                    <h4>{% trans 'A Brony ? Can we eat it ? whatisit ?' %}</h4>
+                                    <iframe class="embed-responsive-item" src="//www.youtube.com/embed/Y67pwC9iOBw" allowfullscreen></iframe>
+                                </div>
+                                <div class="modal-body embed-responsive embed-responsive-16by9">
+                                    <h4>{% trans 'Why ?' %}</h4>
+                                    <iframe class="embed-responsive-item" src="//www.youtube.com/embed/pXYqLKko6Ss" allowfullscreen></iframe>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <!-- /Question -->
                 </div>
-                <!-- /Question -->
             </div>
-        </div>
-        <div class="col-md-6">
+        {% endif %}
+        <div class="{% if user.is_authenticated %}col-md-12{% else %}col-md-6{% endif %}">
             <h2>Tchat - <small><a href="https://kiwiirc.com/client?settings=3ebf3eb7a40c2b03f47b918eb2f7087a">{% trans 'Join us' %}</a></small></h2>
             <div class="jumbotron monospace">
-                {% cache 30 cache_irc %}
-                    {{ irc|safe }}
-                {% endcache %}
+                {{ irc|safe }}
             </div>
         </div>
     </div>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SugarCUB 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-08 16:42+0000\n"
+"POT-Creation-Date: 2015-09-01 16:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Matthias Devlamynck <matthias.devlamynck@mailoo.org>\n"
 "Language: French\n"
@@ -17,92 +17,84 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: templates/agenda.html:7 templates/base.html:41
+#: templates/agenda.html:7 templates/base.html:43
 msgid "Agenda"
 msgstr "Agenda"
 
-#: templates/base.html:40
+#: templates/base.html:42
 msgid "Members"
 msgstr "Membres"
 
-#: templates/base.html:42 templates/hq.html:6
+#: templates/base.html:44 templates/hq.html:6
 msgid "HQ"
 msgstr "QG"
 
-#: templates/base.html:43
+#: templates/base.html:45
 msgid "Medias"
 msgstr "Médias"
 
-#: templates/base.html:44 templates/map.html:12
+#: templates/base.html:46 templates/map.html:12
 msgid "Map"
 msgstr "Carte"
 
-#: templates/base.html:45 templates/friends.html:7
+#: templates/base.html:47 templates/friends.html:7
 msgid "Friends"
 msgstr "Nos amis"
 
-#: templates/base.html:48
+#: templates/base.html:50
 msgid "Tchat"
 msgstr "Tchat"
 
-#: templates/base.html:49
+#: templates/base.html:51
 msgid "Visio"
 msgstr "Visio"
 
-#: templates/base.html:50
+#: templates/base.html:52
 msgid "DJ"
 msgstr "DJ"
 
-#: templates/base.html:51
+#: templates/base.html:53
 msgid "Ticket"
 msgstr "Ticket"
 
-#: templates/base.html:67
+#: templates/base.html:69
 msgid "Profile"
 msgstr "Profil"
 
-#: templates/base.html:69
+#: templates/base.html:71
 msgid "Admin"
 msgstr "Admin"
 
-#: templates/base.html:70
-msgid "Documentation"
-msgstr "Documentation"
-
-#: templates/base.html:72
+#: templates/base.html:73
 msgid "Logout"
 msgstr "Déconnexion"
 
-#: templates/base.html:76
+#: templates/base.html:77
 msgid "Login"
 msgstr "Connexion"
 
-#: templates/base.html:77
+#: templates/base.html:78
 msgid "Signup"
 msgstr "Nous rejoindre ?"
 
-#: templates/base.html:99
+#: templates/base.html:103
 msgid "Contact us :"
 msgstr "Contactez-nous :"
 
-#: templates/base.html:105
+#: templates/base.html:109
 msgid "Next humanitarian action :"
 msgstr "Prochaine action humanitaire :"
 
-#: templates/base.html:110
+#: templates/base.html:114
 #, python-format
 msgid "Hosted by %(host)s, %(where)s, %(when)s"
 msgstr "Organisé par %(host)s, %(where)s, %(when)s"
 
-#: templates/base.html:113
+#: templates/base.html:117
 msgid "Warning, there's realy cool stuff in preparation for this year !! :D"
 msgstr "Attention, y'a du lourd en préparation pour cette année !! :D"
 
-#: templates/base.html:119
-msgid "Developed by Matthias Devlamynck"
-msgstr "Développé par Matthias Devlamynck"
-
-#: templates/friends.html:34
+#: templates/friends.html:33
 msgid "No friends at the moment ..."
 msgstr "Aucun ami pour le moment ..."
 
@@ -110,11 +102,11 @@ msgstr "Aucun ami pour le moment ..."
 msgid "Home"
 msgstr "Accueil"
 
-#: templates/home.html:27
+#: templates/home.html:26
 msgid "BronyCUB, What is it ?"
 msgstr "BronyCUB, Qu'est-ce que c'est ?"
 
-#: templates/home.html:30
+#: templates/home.html:29
 msgid ""
 "BronyCUB is a collective from the <strong>U</strong>rban <strong>C</"
 "strong>ommunity of <strong>B</strong>ordeaux (<strong>CUB</strong> in "
@@ -123,48 +115,62 @@ msgstr ""
 "BronyCUB est un collectif de Bronies de la <strong>C</strong>ommunauté "
 "<strong>U</strong>rbaine de <strong>B</strong>ordeaux en Gironde."
 
-#: templates/home.html:32
+#: templates/home.html:31
 msgid "this collective try to gather fans to orgenize various meet-up."
 msgstr ""
 "Ce collectif a pour ambition de réunir les fans pour organiser diverses "
 "rencontres."
 
-#: templates/home.html:37 templates/home.html.py:43
+#: templates/home.html:36 templates/home.html.py:42
 msgid "More info ..."
 msgstr "Plus d'info ..."
 
-#: templates/home.html:46
+#: templates/home.html:45
 msgid "A Brony ? Can we eat it ? whatisit ?"
 msgstr "Un Brony ? Ça ce mange ? Kécéssé ?"
 
-#: templates/home.html:50
+#: templates/home.html:49
 msgid "Why ?"
 msgstr "Pourquoi ?"
 
-#: templates/home.html:54
+#: templates/home.html:53
 msgid "Close"
 msgstr "Fermer"
 
-#: templates/home.html:63
+#: templates/home.html:62
 msgid "Join us"
 msgstr "Rejoignez-vous"
 
-#: urls.py:18
+#: templates/map.html:25
+msgid "Access HQ"
+msgstr "Acceder au QG"
+
+#: templates/map.html:26
+msgid "Map of France"
+msgstr "Carte de France"
+
+#: urls.py:17
 msgid "^en/"
 msgstr "^fr/"
 
-#: urls.py:21
+#: urls.py:20
 msgid "^agenda$"
 msgstr "^agenda$"
 
-#: urls.py:23
+#: urls.py:22
 msgid "^hq$"
 msgstr "^qg$"
 
-#: urls.py:25
+#: urls.py:24
 msgid "^map$"
 msgstr "^carte$"
 
-#: urls.py:27
+#: urls.py:26
 msgid "^friends$"
 msgstr "^amis$"
+
+#~ msgid "Documentation"
+#~ msgstr "Documentation"
+
+#~ msgid "Developed by Matthias Devlamynck"
+#~ msgstr "Développé par Matthias Devlamynck"

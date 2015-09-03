@@ -53,11 +53,9 @@ DEV_DEPENDENCIES_APPS = (
 INSTALLED_APPS = PROJECT_APPS + ('sugarcub',) + DEPENDENCIES_APPS
 
 MIDDLEWARE_CLASSES = (
-    'django.middleware.cache.UpdateCacheMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.cache.FetchFromCacheMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
@@ -69,6 +67,7 @@ MIDDLEWARE_CLASSES = (
 TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
     'core.processors.custom_fields',
     'core.processors.humanitarian_actions',
+    'core.processors.mailing_list',
     'django.core.context_processors.request',
 )
 
@@ -79,10 +78,10 @@ TEMPLATE_DIRS = (
 )
 
 
-# Cache
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'admin',  'static'),
+)
 
-CACHE_MIDDLEWARE_SECONDS = 300
-CACHE_MIDDLEWARE_KEY_PREFIX = 'SCUB'
 
 ROOT_URLCONF = 'sugarcub.urls'
 
