@@ -1,6 +1,5 @@
 from   django.test                import TestCase
-from   utils.tests                import *
-from   .                          import models, forms
+from   .                          import models, forms, test_data
 from   django.contrib.auth.models import User
 from   django.core.exceptions     import ValidationError
 from   model_mommy                import mommy
@@ -68,6 +67,11 @@ class UsersModelsTest(TestCase):
         url.full_clean()
 
         assert 'http://equestria.pn' == url.__str__()
+
+    def test_get_active_users(self):
+        profiles = test_data.create_profiles()
+
+        self.assertCountEqual(profiles[3:], models.Profile.objects.get_active_users())
 
 
 class UsersFormsTest(TestCase):

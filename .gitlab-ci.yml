@@ -17,6 +17,6 @@ Continuous Integration Tests:
   - ''
   - "# Run tests"
   - xvfb-run py.test
-  tags: 
+  tags:
   except:
   - tags
