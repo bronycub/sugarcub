@@ -64,10 +64,10 @@ class Profile(models.Model):
 
         self.address_latitude = float(root[0].get("lat", default=None))
         self.address_longitude = float(root[0].get("lon", default=None))
-        super().save()
 
     def save(self, commit=True, user=None):
         self.get_gps_position(self.address, self.city)
+        super().save(*args, **kwargs)
 
 
 class Pony(models.Model):
