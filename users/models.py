@@ -5,7 +5,6 @@ from stdimage.utils             import UploadToUUID
 from django.core.validators     import RegexValidator, MinLengthValidator
 from django.utils.translation   import ugettext_lazy as _
 import requests
-import xml.etree.ElementTree                         as ET
 
 
 class ProfileManager(models.Manager):
@@ -52,10 +51,12 @@ class Profile(models.Model):
         return self.user.username
 
     def get_gps_position(self):
-        """Get and return longitute and latitude"""
+        ''' Update latitude and longitude form address using nominatim api '''
 
-        nominatim_query = "https://nominatim.openstreetmap.org/search?q=" + self.address + ",+" + self.city + "&format=json"
-        doc = requests.get(nominatim_query).json()
+        doc = requests.get(
+            'https://nominatim.openstreetmap.org/search',
+            {'q': self.address + ' ' + self.city + ' ' + self.postal_code, 'format': 'json'}
+        ).json()
 
         self.address_latitude = float(doc[0]['lat'])
         self.address_longitude = float(doc[0]['lon'])
