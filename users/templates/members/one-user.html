@@ -40,13 +40,16 @@
                             <p>{{ profile.user.last_name }} {{ profile.user.first_name }}</p>
                         </div>
                         <div class="col-sm-12">
-                            <p>{{ profile.birthday }} </p>
+                            <p>{{ profile.birthday }}</p>
                         </div>
                         <div class="col-sm-12">
-                            <p>{{ profile.phone }} </p>
+                            <p>{{ profile.phone }}</p>
                         </div>
                         <div class="col-sm-12">
-                            <p>{{ profile.user.email }} </p>
+                            <p>{{ profile.user.email }}</p>
+                        </div>
+                        <div class="col-sm-12">
+                            <p>{{ profile.address }}, {{ profile.postal_code }} {{ profile.city }}</p>
                         </div>
                         <div class="col-sm-12">
                             {% for url in profile.url_set.all %}
