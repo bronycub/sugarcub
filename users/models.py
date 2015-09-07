@@ -4,7 +4,6 @@ from stdimage.models            import StdImageField
 from stdimage.utils             import UploadToUUID
 from django.core.validators     import RegexValidator, MinLengthValidator
 from django.utils.translation   import ugettext_lazy as _
-from xml.dom                    import minidom
 import urllib.request
 import xml.etree.ElementTree                         as ET
 
