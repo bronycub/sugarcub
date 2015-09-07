@@ -53,13 +53,16 @@ class Profile(models.Model):
     def get_gps_position(self):
         ''' Update latitude and longitude form address using nominatim api '''
 
-        doc = requests.get(
-            'https://nominatim.openstreetmap.org/search',
-            {'q': self.address + ' ' + self.city + ' ' + self.postal_code, 'format': 'json'}
-        ).json()
+        try:
+            doc = requests.get(
+                'https://nominatim.openstreetmap.org/search',
+                {'q': self.address + ' ' + self.city, 'format': 'json'}
+            ).json()
 
-        self.address_latitude = float(doc[0]['lat'])
-        self.address_longitude = float(doc[0]['lon'])
+            self.address_latitude = float(doc[0]['lat'])
+            self.address_longitude = float(doc[0]['lon'])
+        except:
+            pass
 
     def save(self, *args, **kwargs):
         self.get_gps_position()
