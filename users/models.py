@@ -51,7 +51,7 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
-    def get_gps_position(self, address, city):
+    def get_gps_position(address, city):
         """Get and return longitute and latitude"""
 
         address = address.replace(" ", "+")
