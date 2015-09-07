@@ -4,6 +4,9 @@ from stdimage.models            import StdImageField
 from stdimage.utils             import UploadToUUID
 from django.core.validators     import RegexValidator, MinLengthValidator
 from django.utils.translation   import ugettext_lazy as _
+from xml.dom                    import minidom
+import urllib.request
+import xml.etree.ElementTree                         as ET
 
 
 class ProfileManager(models.Manager):
@@ -48,6 +51,24 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+    def get_gps_position(self, address, city):
+        """Get and return longitute and latitude"""
+
+        address = address.replace(" ", "+")
+        city = city.replace(" ", "+")
+
+        nominatim_query = "https://nominatim.openstreetmap.org/search?q=" + address + ",+" + city + "&format=xml"
+        doc = urllib.request.urlopen(nominatim_query)
+        tree = ET.parse(doc)
+        root = tree.getroot()
+
+        self.address_latitude = float(root[0].get("lat", default=None))
+        self.address_longitude = float(root[0].get("lon", default=None))
+        super().save()
+
+    def save(self, commit=True, user=None):
+        self.get_gps_position(self.address, self.city)
 
 
 class Pony(models.Model):
