@@ -4,6 +4,7 @@ from stdimage.models            import StdImageField
 from stdimage.utils             import UploadToUUID
 from django.core.validators     import RegexValidator, MinLengthValidator
 from django.utils.translation   import ugettext_lazy as _
+import requests
 
 
 class ProfileManager(models.Manager):
@@ -48,6 +49,21 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+    def get_gps_position(self):
+        ''' Update latitude and longitude form address using nominatim api '''
+
+        doc = requests.get(
+            'https://nominatim.openstreetmap.org/search',
+            {'q': self.address + ' ' + self.city + ' ' + self.postal_code, 'format': 'json'}
+        ).json()
+
+        self.address_latitude = float(doc[0]['lat'])
+        self.address_longitude = float(doc[0]['lon'])
+
+    def save(self, *args, **kwargs):
+        self.get_gps_position()
+        super().save(*args, **kwargs)
 
 
 class Pony(models.Model):
