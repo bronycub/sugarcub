@@ -16,6 +16,16 @@ urlpatterns = [
         name  = 'comment_list',
     ),
     url(
+        regex = _(r'^event$'),
+        view  = views.CreateEventView.as_view(),
+        name  = 'event',
+    ),
+    url(
+        regex = _(r'^event/(?P<pk>[\d]+)$'),
+        view  = views.UpdateEventView.as_view(),
+        name  = 'event',
+    ),
+    url(
         regex = _(r'^ics$'),
         view  = views.ics_export,
         name  = 'ics_export',

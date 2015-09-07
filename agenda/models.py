@@ -1,5 +1,6 @@
 from   django.db                  import models
 from   django.contrib.auth.models import User
+from   django.core.urlresolvers   import reverse
 import ics
 
 
@@ -15,6 +16,9 @@ class Event(models.Model):
 
     class Meta:
         ordering = ['-date_begin', '-date_end']
+
+    def get_absolute_url(self):
+        return reverse('event', kwargs={'pk': self.pk})
 
     def __str__(self):
         return self.title
