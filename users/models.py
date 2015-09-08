@@ -4,6 +4,7 @@ from stdimage.models            import StdImageField
 from stdimage.utils             import UploadToUUID
 from django.core.validators     import RegexValidator, MinLengthValidator
 from django.utils.translation   import ugettext_lazy as _
+from datetime                   import date
 import requests
 
 
@@ -17,6 +18,19 @@ class ProfileManager(models.Manager):
         '''
 
         return self.model.objects.filter(enabled = True, user__is_active = True)
+
+    def get_birthday(self):
+        ''' Return all profile with birthday today '''
+
+        return self.model.objects.filter(birthday__day=date.today().day, birthday__month=date.today().month,
+            enabled = True, user__is_active = True)
+
+    def get_new_members(self):
+        ''' Return all profile with birthday today '''
+        new_member_date = date(date.today().year, date.today().day, date.today().month - 1)
+
+        return self.model.objects.filter(user__date_joined__range=(new_member_date, date.today()),
+            enabled = True, user__is_active = True)
 
 
 class Profile(models.Model):
