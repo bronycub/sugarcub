@@ -21,8 +21,8 @@
     </div>
     <hr />
     <div class="container">
-        {% if not user.is_authenticated %}
-            <div class="col-md-6">
+        <div class="col-md-6">
+            {% if not user.is_authenticated %}
                 <h2>{% trans 'BronyCUB, What is it ?' %}</h2>
                 <div class="jumbotron">
                     <article>
@@ -57,9 +57,36 @@
                     </div>
                     <!-- /Question -->
                 </div>
-            </div>
-        {% endif %}
-        <div class="{% if user.is_authenticated %}col-md-12{% else %}col-md-6{% endif %}">
+            {% else %}
+                <h2>{% trans 'What is happening in BronyCUB?' %}</h2>
+                <div class="jumbotron">
+                    <article>
+                        {% for user in birthday %}
+                            {% trans "It's the birthday of " %}<b>{{ user.user.username }}</b>{% trans " today, Happy Birthday!" %}
+                        {% endfor %}
+                    </article>
+                    </br>
+                    <article>
+                        {% trans 'This month : ' %}
+                            {% if list_new >= 1 %}
+                                {% for user in new %}
+                                    <b>{{ user.user.username }}</b>, 
+                                {% endfor %}
+                                    {% trans 'join us! Give ' %}
+                                        {% if list_new > 1 %}
+                                            {% trans 'them' %}
+                                        {% else %}
+                                            {% trans 'him/her' %}
+                                        {% endif %}
+                                    {% trans ' a warm welcome!' %}
+                            {% else %}
+                                {% trans 'nobody join us, how sad...' %}
+                            {% endif %}
+                    </article>
+                </div>
+            {% endif %}
+        </div>
+        <div class="col-md-6">
             <h2>Tchat - <small><a href="https://kiwiirc.com/client?settings=3ebf3eb7a40c2b03f47b918eb2f7087a">{% trans 'Join us' %}</a></small></h2>
             <div class="jumbotron monospace">
                 {{ irc|safe }}
