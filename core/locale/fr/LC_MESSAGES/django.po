@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SugarCUB 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-01 16:50+0000\n"
+"POT-Creation-Date: 2015-09-08 17:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Matthias Devlamynck <matthias.devlamynck@mailoo.org>\n"
 "Language: French\n"
@@ -17,88 +17,75 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: templates/agenda.html:7 templates/base.html:43
+#: templates/agenda.html:6 templates/base.html:41
 msgid "Agenda"
 msgstr "Agenda"
 
-#: templates/base.html:42
+#: templates/base.html:40
 msgid "Members"
 msgstr "Membres"
 
-#: templates/base.html:44 templates/hq.html:6
+#: templates/base.html:42 templates/hq.html:6
 msgid "HQ"
 msgstr "QG"
 
-#: templates/base.html:45
+#: templates/base.html:43
 msgid "Medias"
 msgstr "Médias"
 
-#: templates/base.html:46 templates/map.html:12
+#: templates/base.html:44 templates/map.html:11
 msgid "Map"
 msgstr "Carte"
 
-#: templates/base.html:47 templates/friends.html:7
+#: templates/base.html:45 templates/friends.html:6
 msgid "Friends"
 msgstr "Nos amis"
 
-#: templates/base.html:50
+#: templates/base.html:48
 msgid "Tchat"
 msgstr "Tchat"
 
-#: templates/base.html:51
+#: templates/base.html:49
 msgid "Visio"
 msgstr "Visio"
 
-#: templates/base.html:52
+#: templates/base.html:50
 msgid "DJ"
 msgstr "DJ"
 
-#: templates/base.html:53
+#: templates/base.html:51
 msgid "Ticket"
 msgstr "Ticket"
 
-#: templates/base.html:69
+#: templates/base.html:67
 msgid "Profile"
 msgstr "Profil"
 
-#: templates/base.html:71
+#: templates/base.html:69
 msgid "Admin"
 msgstr "Admin"
 
-#: templates/base.html:73
+#: templates/base.html:71
 msgid "Logout"
 msgstr "Déconnexion"
 
-#: templates/base.html:77
+#: templates/base.html:75
 msgid "Login"
 msgstr "Connexion"
 
-#: templates/base.html:78
+#: templates/base.html:76
 msgid "Signup"
 msgstr "Nous rejoindre ?"
 
-#: templates/base.html:103
+#: templates/base.html:105
 msgid "Contact us :"
 msgstr "Contactez-nous :"
 
-#: templates/base.html:109
-msgid "Next humanitarian action :"
-msgstr "Prochaine action humanitaire :"
-
-#: templates/base.html:114
-#, python-format
-msgid "Hosted by %(host)s, %(where)s, %(when)s"
-msgstr "Organisé par %(host)s, %(where)s, %(when)s"
-
-#: templates/base.html:117
-msgid "Warning, there's realy cool stuff in preparation for this year !! :D"
-msgstr "Attention, y'a du lourd en préparation pour cette année !! :D"
-
-#: templates/friends.html:33
+#: templates/friends.html:31
 msgid "No friends at the moment ..."
 msgstr "Aucun ami pour le moment ..."
 
-#: templates/home.html:7
+#: templates/home.html:6
 msgid "Home"
 msgstr "Accueil"
 
@@ -137,15 +124,51 @@ msgstr "Pourquoi ?"
 msgid "Close"
 msgstr "Fermer"
 
-#: templates/home.html:62
+#: templates/home.html:61
+msgid "What is happening in BronyCUB?"
+msgstr "Que se passe t'il à BronyCUB?"
+
+#: templates/home.html:65
+msgid "It's the birthday of "
+msgstr "C'est l'anniversaire de "
+
+#: templates/home.html:65
+msgid " today, Happy Birthday!"
+msgstr " aujourd'hui, Bon Anniversaire!"
+
+#: templates/home.html:70
+msgid "This month : "
+msgstr "Ce mois-ci : "
+
+#: templates/home.html:75
+msgid "join us! Give "
+msgstr "nous on rejoins! donnons-"
+
+#: templates/home.html:77
+msgid "them"
+msgstr "leur"
+
+#: templates/home.html:79
+msgid "him/her"
+msgstr "lui"
+
+#: templates/home.html:81
+msgid " a warm welcome!"
+msgstr " un accueil chaleureux!"
+
+#: templates/home.html:83
+msgid "nobody join us, how sad..."
+msgstr "personne ne nous a rejoins, comme c'est triste..."
+
+#: templates/home.html:90
 msgid "Join us"
 msgstr "Rejoignez-vous"
 
-#: templates/map.html:25
+#: templates/map.html:23
 msgid "Access HQ"
 msgstr "Acceder au QG"
 
-#: templates/map.html:26
+#: templates/map.html:24
 msgid "Map of France"
 msgstr "Carte de France"
 
@@ -168,6 +191,15 @@ msgstr "^carte$"
 #: urls.py:26
 msgid "^friends$"
 msgstr "^amis$"
+
+#~ msgid "Next humanitarian action :"
+#~ msgstr "Prochaine action humanitaire :"
+
+#~ msgid "Hosted by %(host)s, %(where)s, %(when)s"
+#~ msgstr "Organisé par %(host)s, %(where)s, %(when)s"
+
+#~ msgid "Warning, there's realy cool stuff in preparation for this year !! :D"
+#~ msgstr "Attention, y'a du lourd en préparation pour cette année !! :D"
 
 #~ msgid "Documentation"
 #~ msgstr "Documentation"
