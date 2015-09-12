@@ -45,6 +45,8 @@ class Profile(models.Model):
     user              = models.OneToOneField(User)
 
     enabled           = models.BooleanField(default = False)
+    name_enabled      = models.BooleanField(default = False)
+    mail_enabled      = models.BooleanField(default = False)
 
     bio_min_size      = MinLengthValidator(150, message=_(
         "The bio should be longer than 150 character"))
@@ -53,11 +55,18 @@ class Profile(models.Model):
         variations = {'avatar': (100, 100), 'small': (50, 50)},
         upload_to  = UploadToUUID(path = 'avatars'),
     )
+
     phone             = models.CharField(validators=[phone_regex], max_length=15)
+    phone_enabled     = models.BooleanField(default = False)
+
     birthday          = models.DateField()
+    birthday_enabled  = models.BooleanField(default = False)
+    
     address           = models.CharField(max_length=200)
     city              = models.CharField(max_length=30)
     postal_code       = models.CharField(max_length=5, validators=[zipcode_regex])
+    address_enabled   = models.BooleanField(default = False)
+
     address_longitude = models.FloatField(blank = True, null = True)
     address_latitude  = models.FloatField(blank = True, null = True)
 

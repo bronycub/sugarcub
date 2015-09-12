@@ -25,6 +25,11 @@ class ProfileForm(forms.ModelForm):
             "address": _("Address"),
             "city": _("City"),
             "postal_code": _("Postal code"),
+            "name_enabled": _("Hide my firstname and lastname"),
+            "phone_enabled": _("Hide my phone number"),
+            "birthday_enabled": _("Hide my birthday"),
+            "address_enabled": _("Hide my address"),
+            "mail_enabled": _("Hide my email"),
         }
 
     def __init__(self, *args, **kwargs):
