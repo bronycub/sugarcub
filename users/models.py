@@ -27,7 +27,10 @@ class ProfileManager(models.Manager):
 
     def get_new_members(self):
         ''' Return all profile with birthday today '''
-        new_member_date = date(date.today().year, date.today().day, date.today().month - 1)
+        if ((date.today().month - 1) <= 0):
+            new_member_date = date(date.today().year, 12, date.today().day)
+        else:
+            new_member_date = date(date.today().year, date.today().month - 1, date.today().day)
 
         return self.model.objects.filter(user__date_joined__range=(new_member_date, date.today()),
             enabled = True, user__is_active = True)
