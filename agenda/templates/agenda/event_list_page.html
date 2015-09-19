@@ -14,12 +14,20 @@
             </a>
         </div>
         <div id="event{{event.id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-            {% if event.date_begin.date == event.date_end.date %}
-                <div>{{ event.date_begin|date }} : {{ event.date_begin|time }} - {{ event.date_end|time }}</div>
-            {% else %}
-                <div>{{ event.date_begin|date }} : {{ event.date_begin|time }} - {{ event.date_end|date }} : {{ event.date_end|time }}</div>
-            {% endif %}
-            <div>{{ event.description }}</div>
+            <div class="row">
+                <div class="col-md-8">
+                    {% if event.date_begin.date == event.date_end.date %}
+                        <div>{{ event.date_begin|date }} : {{ event.date_begin|time }} - {{ event.date_end|time }}</div>
+                    {% else %}
+                        <div>{{ event.date_begin|date }} : {{ event.date_begin|time }} - {{ event.date_end|date }} : {{ event.date_end|time }}</div>
+                    {% endif %}
+                    <div>{{ event.description }}</div>
+                </div>
+                <div class="col-md-4 text-right">
+                    <button class="btn btn-primary">{% trans 'I will be there !' %}</button>
+                    <button class="btn btn-default">{% trans 'I  wont be there ...' %}</button>
+                </div>
+            </div>
 
             {% if user.is_authenticated and user.profile.enabled %}
                 <hr />

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-19 14:26+0000\n"
+"POT-Creation-Date: 2015-09-19 17:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,16 +36,16 @@ msgstr "Date de fin"
 
 #: agenda/templates/agenda/comment_list.html:6
 #: agenda/templates/agenda/event_form.html:6
-#: agenda/templates/agenda/event_list.html:7
+#: agenda/templates/agenda/event_list.html:8
 msgid "Events"
 msgstr "Évènements"
 
-#: agenda/templates/agenda/comment_list_page.html:22
+#: agenda/templates/agenda/comment_list_page.html:29
 msgid "You must be logged in to see the comments."
 msgstr "Vous devez être connecté pour voir les commentaires."
 
 #: agenda/templates/agenda/event_form.html:14
-#: agenda/templates/agenda/event_list.html:35
+#: agenda/templates/agenda/event_list.html:37
 msgid "Add an event"
 msgstr "Ajouter un évènement"
 
@@ -53,25 +53,33 @@ msgstr "Ajouter un évènement"
 msgid "Update"
 msgstr "Mettre à jour"
 
-#: agenda/templates/agenda/event_list.html:15
-#: agenda/templates/agenda/event_list.html:21
+#: agenda/templates/agenda/event_list.html:16
+#: agenda/templates/agenda/event_list.html:22
 msgid "Import the agenda"
 msgstr "Importer l'agenda"
 
-#: agenda/templates/agenda/event_list.html:24
+#: agenda/templates/agenda/event_list.html:25
 msgid "To import the agenda in your favorite software use the address:"
 msgstr ""
 "Pour importer l'agenda dans votre logiciel préféré utilisez l'adresse :"
 
-#: agenda/templates/agenda/event_list.html:28
+#: agenda/templates/agenda/event_list.html:29
 msgid "Close"
 msgstr "Fermer"
 
-#: agenda/templates/agenda/event_list_page.html:25
+#: agenda/templates/agenda/event_list_page.html:27
+msgid "I will be there !"
+msgstr "Je participe !"
+
+#: agenda/templates/agenda/event_list_page.html:28
+msgid "I  wont be there ..."
+msgstr "Je ne participe pas ..."
+
+#: agenda/templates/agenda/event_list_page.html:35
 msgid "Post a message"
 msgstr "Poster un commentaire"
 
-#: agenda/templates/agenda/event_list_page.html:26
+#: agenda/templates/agenda/event_list_page.html:36
 msgid "Post"
 msgstr "Envoyer"
 
@@ -88,5 +96,11 @@ msgid "^event/(?P<pk>[\\d]+)$"
 msgstr "^evenement/(?P<pk>[\\d]+)$"
 
 #: agenda/urls.py:29
+#, fuzzy
+#| msgid "^event$"
+msgid "^comment$"
+msgstr "^evenement$"
+
+#: agenda/urls.py:34
 msgid "^ics$"
 msgstr ""
