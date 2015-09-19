@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-12 14:28+0000\n"
+"POT-Creation-Date: 2015-09-19 14:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,8 +18,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+#: agenda/forms.py:12
+msgid "Title"
+msgstr "Nom de l'évènement"
+
+#: agenda/forms.py:13
+msgid "Description"
+msgstr "Description"
+
+#: agenda/forms.py:14
+msgid "Date begin"
+msgstr "Date de début"
+
+#: agenda/forms.py:15
+msgid "Date end"
+msgstr "Date de fin"
+
 #: agenda/templates/agenda/comment_list.html:6
-#: agenda/templates/agenda/event_list.html:6
+#: agenda/templates/agenda/event_form.html:6
+#: agenda/templates/agenda/event_list.html:7
 msgid "Events"
 msgstr "Évènements"
 
@@ -27,9 +44,28 @@ msgstr "Évènements"
 msgid "You must be logged in to see the comments."
 msgstr "Vous devez être connecté pour voir les commentaires."
 
-#: agenda/templates/agenda/event_list.html:14
-msgid "Download the caldendar"
-msgstr "Télécharger l'agenda"
+#: agenda/templates/agenda/event_form.html:14
+#: agenda/templates/agenda/event_list.html:35
+msgid "Add an event"
+msgstr "Ajouter un évènement"
+
+#: agenda/templates/agenda/event_form.html:19
+msgid "Update"
+msgstr "Mettre à jour"
+
+#: agenda/templates/agenda/event_list.html:15
+#: agenda/templates/agenda/event_list.html:21
+msgid "Import the agenda"
+msgstr "Importer l'agenda"
+
+#: agenda/templates/agenda/event_list.html:24
+msgid "To import the agenda in your favorite software use the address:"
+msgstr ""
+"Pour importer l'agenda dans votre logiciel préféré utilisez l'adresse :"
+
+#: agenda/templates/agenda/event_list.html:28
+msgid "Close"
+msgstr "Fermer"
 
 #: agenda/templates/agenda/event_list_page.html:25
 msgid "Post a message"
@@ -44,5 +80,13 @@ msgid "^(?P<event_id>[0-9]+)/comments$"
 msgstr "^(?P<event_id>[0-9]+)/commentaires$"
 
 #: agenda/urls.py:19
+msgid "^event$"
+msgstr "^evenement$"
+
+#: agenda/urls.py:24
+msgid "^event/(?P<pk>[\\d]+)$"
+msgstr "^evenement/(?P<pk>[\\d]+)$"
+
+#: agenda/urls.py:29
 msgid "^ics$"
 msgstr ""

@@ -1,9 +1,11 @@
-from django.core.urlresolvers  import reverse_lazy
-from django.views.generic.edit import CreateView, UpdateView
-from .                         import models,     forms, utils
-from endless_pagination.views  import AjaxListView
-from django.http               import HttpResponse
-from django.shortcuts          import redirect
+from django.core.urlresolvers       import reverse_lazy
+from django.views.generic.edit      import CreateView, UpdateView
+from .                              import models, forms, utils
+from endless_pagination.views       import AjaxListView
+from django.http                    import HttpResponse
+from django.shortcuts               import redirect
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators        import method_decorator
 
 
 class CommentAjaxListView(AjaxListView):
@@ -18,6 +20,10 @@ class CreateEventView(CreateView):
     success_url   = reverse_lazy('agenda:list')
     template_name = 'agenda/event_form.html'
 
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
     def form_valid(self, form):
         instance = form.save(commit = False)
         instance.author = self.request.user
@@ -30,6 +36,10 @@ class UpdateEventView(UpdateView):
     form_class    = forms.EventForm
     success_url   = reverse_lazy('agenda:list')
     template_name = 'agenda/event_form.html'
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
 
 
 def post_comment(request):

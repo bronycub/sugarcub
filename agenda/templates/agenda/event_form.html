@@ -11,6 +11,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
+            <h1 class="text-center">{% trans 'Add an event' %}</h1>
             <form enctype="multipart/form-data" class="form-horizontal" method="post">
                 {% csrf_token %}
                 {% bootstrap_form form %}
