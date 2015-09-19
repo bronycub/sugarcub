@@ -50,12 +50,12 @@ class Comment(models.Model):
     Comment is posted by author if logged in, else by pseudo
     '''
 
-    author = models.ForeignKey(User, null = True)
-    pseudo = models.CharField(max_length = 30, blank = True)
+    author = models.ForeignKey(User, blank = True, null = True)
+    pseudo = models.CharField(max_length = 30, blank = True, null = True)
     event  = models.ForeignKey(Event)
 
     text   = models.TextField()
-    date   = models.DateTimeField()
+    date   = models.DateTimeField(auto_now_add = True)
 
     def __str__(self):
         return self.text

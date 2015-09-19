@@ -10,6 +10,13 @@
     {% for comment in comment_list %}
         <div class="comment panel panel-default">
             <div class="panel-heading">
+                <img class="img-header" alt="avatar" src="
+                    {% if comment.author.profile.avatar.small %}
+                        {{ user.profile.avatar.small.url }}
+                    {% else %}
+                        {% static 'ressources/logo/icon_bronycub.png' %}
+                    {% endif %}
+                "/>
                 {{ comment.author }}
             </div>
             <div class="panel-body">

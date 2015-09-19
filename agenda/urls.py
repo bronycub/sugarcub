@@ -26,6 +26,11 @@ urlpatterns = [
         name  = 'event',
     ),
     url(
+        regex = _(r'^comment$'),
+        view  = views.post_comment,
+        name  = 'comment',
+    ),
+    url(
         regex = _(r'^ics$'),
         view  = views.ics_export,
         name  = 'ics_export',

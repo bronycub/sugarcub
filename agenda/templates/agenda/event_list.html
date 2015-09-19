@@ -2,6 +2,7 @@
 
 {% load i18n %}
 {% load endless %}
+{% load static %}
 {% load absolute %}
 
 {% block title %}{% trans 'Events' %}{% endblock %}
@@ -51,4 +52,37 @@
     {{ block.super }}
     <script src="{{ STATIC_URL }}endless_pagination/js/endless-pagination.js"></script>
     <script>$.endlessPaginate();</script>
+    {% if user.is_authenticated and user.profile.enabled %}
+        <script>
+            $(document).ready(function() {
+                submitComment = function(id) {
+                    var comment = $('#comment-' + id).val();
+                    $.ajax({
+                        type: 'post',
+                        url:  '{% url 'agenda:comment' %}',
+                        data:  {event: id, text: comment},
+                        success: function() {
+                            $('#comment-list-' + id).prepend(
+                                '<div class="comment panel panel-default">' +
+                                    '<div class="panel-heading">' +
+                                        '<img class="img-header" alt="avatar" src="' +
+                                            {% if user.profile.avatar.small %}
+                                                '{{ user.profile.avatar.small.url }}' +
+                                            {% else %}
+                                                '{% static 'ressources/logo/icon_bronycub.png' %}' +
+                                            {% endif %}
+                                        '"/>' +
+                                        '{{ user.username }}' +
+                                    '</div>' +
+                                    '<div class="panel-body">' +
+                                        comment +
+                                    '</div>' +
+                                '</div>'
+                            );
+                        }
+                    });
+                };
+            });
+        </script>
+    {% endif %}
 {% endblock %}

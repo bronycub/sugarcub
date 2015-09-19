@@ -6,6 +6,7 @@ from django.http                    import HttpResponse
 from django.shortcuts               import redirect
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators        import method_decorator
+from django.views.decorators.csrf   import csrf_exempt
 
 
 class CommentAjaxListView(AjaxListView):
@@ -42,12 +43,20 @@ class UpdateEventView(UpdateView):
         return super().dispatch(*args, **kwargs)
 
 
+@login_required
+@csrf_exempt
 def post_comment(request):
 
     if request.method == 'POST':
-        form = forms.CommentForm(request.POST)
-        if form.is_valid():
-            form.save()
+        event = models.Event.objects.get(pk = request.POST.get('event'))
+        comment = models.Comment(
+            author = request.user,
+            text = request.POST.get('text'),
+            event = event
+        )
+        comment.save()
+
+        return HttpResponse('success')
 
     return redirect('agenda:list')
 
