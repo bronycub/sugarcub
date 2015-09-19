@@ -10,9 +10,9 @@
     {% for comment in comment_list %}
         <div class="comment panel panel-default">
             <div class="panel-heading">
-                <img class="img-header" alt="avatar" src="
+                <img class="img-header thumbnail" alt="avatar" src="
                     {% if comment.author.profile.avatar.small %}
-                        {{ user.profile.avatar.small.url }}
+                        {{ comment.author.profile.avatar.small.url }}
                     {% else %}
                         {% static 'ressources/logo/icon_bronycub.png' %}
                     {% endif %}

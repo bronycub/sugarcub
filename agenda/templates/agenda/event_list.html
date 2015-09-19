@@ -62,10 +62,11 @@
                         url:  '{% url 'agenda:comment' %}',
                         data:  {event: id, text: comment},
                         success: function() {
+                            $('#comment-' + id).val('');
                             $('#comment-list-' + id).prepend(
                                 '<div class="comment panel panel-default">' +
                                     '<div class="panel-heading">' +
-                                        '<img class="img-header" alt="avatar" src="' +
+                                        '<img class="img-header thumbnail" alt="avatar" src="' +
                                             {% if user.profile.avatar.small %}
                                                 '{{ user.profile.avatar.small.url }}' +
                                             {% else %}
