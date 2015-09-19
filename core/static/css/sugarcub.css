@@ -185,8 +185,14 @@ a {
 	height: 100%;
 }
 
+.map-size
+{
+  height: 90%;
+  padding-bottom: 20px;
+}
+
 .min-size {
-	min-height: 500px !important;
+	min-height: 1000px !important;
 }
 
 /*
@@ -283,6 +289,11 @@ a {
 
 .panel-member:hover {
   background-color: #eeeeee;
+}
+
+.member_separator
+{
+  border-right: solid 1px #E5E5E5;
 }
 
 /*

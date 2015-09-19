@@ -2,38 +2,35 @@
 
 {% load static %}
 {% load i18n %}
-{% load cache %}
 
 {% block title %}{% trans 'Friends' %}{% endblock %}
 
 {% block body %}
     {{ block.super }}
 
-    {% cache 900 cache_friends %}
-        <div class="container">
-            <div class="row">
+    <div class="container">
+        <div class="row">
 
-                {% for friend in friends %}
-                    {% if forloop.counter0|divisibleby:3 and not forloop.first %}
-                        </div>
-                        <div class="row">
-                    {% endif %}
-                    <div class="col-md-{{ friendWidth }} text-center">
-                        <div class="panel panel-info">
-                            <div class="panel-heading">{{ friend.name }}</div>
-                          <div class="panel-body panel-min-height">
-                              <a href="{{ friend.url }}" target="_blank">
-                                  <img class="thumbnail img-responsive center-block" src="{{ friend.image.url }}" alt="Image{{ friend.name }}">
-                            </a>
-                            <p>{{ friend.description }}</p>
-                          </div>
-                        </div>
+            {% for friend in friends %}
+                {% if forloop.counter0|divisibleby:3 and not forloop.first %}
                     </div>
-                {% empty %}
-                    <p>{% trans 'No friends at the moment ...' %}</p>
-                {% endfor %}
+                    <div class="row">
+                {% endif %}
+                <div class="col-md-{{ friendWidth }} text-center">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">{{ friend.name }}</div>
+                      <div class="panel-body panel-min-height">
+                          <a href="{{ friend.url }}" target="_blank">
+                              <img class="thumbnail img-responsive center-block" src="{{ friend.image.url }}" alt="Image{{ friend.name }}">
+                        </a>
+                        <p>{{ friend.description }}</p>
+                      </div>
+                    </div>
+                </div>
+            {% empty %}
+                <p>{% trans 'No friends at the moment ...' %}</p>
+            {% endfor %}
 
-            </div>
         </div>
-    {% endcache %}
+    </div>
 {% endblock %}

@@ -40,7 +40,6 @@ DEPENDENCIES_APPS = (
     'multiform',
     'registration',
     'endless_pagination',
-    'ws4redis',
 )
 
 DEV_DEPENDENCIES_APPS = (
@@ -49,11 +48,9 @@ DEV_DEPENDENCIES_APPS = (
 INSTALLED_APPS = PROJECT_APPS + ('sugarcub',) + DEPENDENCIES_APPS
 
 MIDDLEWARE_CLASSES = (
-    'django.middleware.cache.UpdateCacheMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.cache.FetchFromCacheMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
@@ -66,10 +63,10 @@ MIDDLEWARE_CLASSES = (
 TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
     'core.processors.custom_fields',
     'core.processors.humanitarian_actions',
+    'core.processors.mailing_list',
     'django.core.context_processors.request',
     'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.static',
-    'ws4redis.context_processors.default',
 )
 
 TEMPLATE_DIRS = (
@@ -79,21 +76,10 @@ TEMPLATE_DIRS = (
 )
 
 
-# Database
-# https://docs.djangoproject.com/en/1.7/ref/settings/#databases
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'admin',  'static'),
+)
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, '..', '..', 'database', 'db.sqlite3'),
-    }
-}
-
-
-# Cache & session
-
-CACHE_MIDDLEWARE_SECONDS = 300
-CACHE_MIDDLEWARE_KEY_PREFIX = 'SCUB'
 
 ROOT_URLCONF = 'sugarcub.urls'
 
@@ -112,17 +98,6 @@ CACHES = {
 
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_CACHE_ALIAS = "default"
-
-
-# Websocket 4 Redis
-
-WS4REDIS_CONNECTION = {
-    'unix_socket_path': '/shared/redis.sock',
-    'db': 0,
-    'password': None,
-}
-
-WS4REDIS_PREFIX = 'ws'
 
 
 # Internationalization

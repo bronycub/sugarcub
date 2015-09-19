@@ -1,9 +1,9 @@
-from django                     import forms
-from registration.forms         import RegistrationFormUniqueEmail
-from multiform                  import MultiModelForm, InvalidArgument
-from .models                    import Profile
-from django.contrib.auth.models import User
-from django.utils.translation   import ugettext_lazy as _
+from django                         import forms
+from registration.forms             import RegistrationFormUniqueEmail
+from multiform                      import MultiModelForm, InvalidArgument
+from .models                        import Profile
+from django.contrib.auth.models     import User
+from django.utils.translation       import ugettext_lazy                    as _
 
 
 class UserForm(forms.ModelForm):
@@ -23,7 +23,16 @@ class ProfileForm(forms.ModelForm):
             "phone": _("Phone"),
             "birthday": _("Birthday"),
             "address": _("Address"),
+            "city": _("City"),
+            "postal_code": _("Postal code"),
         }
+
+    def __init__(self, *args, **kwargs):
+        super(ProfileForm, self).__init__(*args, **kwargs)
+        self.fields['bio'].widget.attrs.update({'placeholder':
+            _('Write about yourself! how you discover My Little Pony or BronyCUB, '
+                'what you like and dislike...')
+        })
 
 
 class RegistrationForm(MultiModelForm):
@@ -50,4 +59,5 @@ class RegistrationForm(MultiModelForm):
         instances['profile'].user = user
         instances['profile'].save()
         instances['user'].save()
+
         return instances

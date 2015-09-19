@@ -7,12 +7,14 @@ import pytest
 
 
 valid_profile_data = {
-    'firstname': 'form',
-    'lastname':  'test',
-    'bio':       'test',
-    'phone':     '0123456789',
-    'birthday':  '01/01/1970',
-    'address':   'test',
+    'firstname':   'form',
+    'lastname':    'test',
+    'bio':         'test',
+    'phone':       '0123456789',
+    'birthday':    '01/01/1970',
+    'address':     'test',
+    'city':        'test',
+    'postal_code': '33000',
 }
 
 
@@ -27,6 +29,8 @@ valid_signup_data = {
     'profile-phone':          '0123456789',
     'profile-birthday':       '01/01/1970',
     'profile-address':        'test',
+    'profile-city':           'test',
+    'profile-postal_code':    '33000',
 }
 
 
@@ -35,10 +39,18 @@ class UsersModelsTest(TestCase):
     def test_name_profile(self):
         user    = mommy.make(models.User,    username = 'test')
         profile = mommy.make(models.Profile, user     = user)
+
+        profile.postal_code = '00000'
+        profile.phone = '0123456789'
+        with pytest.raises(ValidationError):
+            profile.full_clean()
+
+        profile.postal_code = '33000'
         profile.phone = '23456789'
         with pytest.raises(ValidationError):
             profile.full_clean()
 
+        profile.postal_code = '33000'
         profile.phone = '0123456789'
         assert 'test' == profile.__str__()
         profile.full_clean()

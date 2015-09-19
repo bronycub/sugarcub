@@ -8,7 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SugarCUB 0.1\n"
 "Report-Msgid-Bugs-To: \n"
+<<<<<<< HEAD
+"POT-Creation-Date: 2015-08-12 14:28+0000\n"
+=======
 "POT-Creation-Date: 2015-09-02 15:10+0000\n"
+>>>>>>> dev
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Matthias Devlamynck <matthias.devlamynck@mailoo.org>\n"
 "Language: French\n"
@@ -33,6 +37,29 @@ msgstr "Date de naissance"
 msgid "Address"
 msgstr "Adresse"
 
+<<<<<<< HEAD
+#: users/templates/members.html:6
+msgid "Members"
+msgstr "Membres"
+
+#: users/templates/members.html:18
+msgid "No members registered yet ..."
+msgstr "Aucun membre enregistré pour le moment ..."
+
+#: users/templates/members/one-user.html:77
+#: users/templates/members/one-user.html:89
+msgid "Close"
+msgstr "Fermer"
+
+#: users/templates/members/one-user.html:82
+msgid ""
+"Your account must be accepted by the admin to see the members informations."
+msgstr ""
+"Votre compte doit être validé par un administrateur pour voir les "
+"informations de ce membre."
+
+#: users/templates/members/one-user.html:86
+=======
 #: forms.py:26
 msgid "City"
 msgstr "Ville"
@@ -81,6 +108,7 @@ msgid ""
 msgstr "Vous devez être connecté pour voir les informations de ce membre."
 
 #: templates/members/one-user.html:86
+>>>>>>> dev
 msgid "You must be connected to see the members informations."
 msgstr "Vous devez être connecté pour voir les informations de ce membre."
 
@@ -210,10 +238,15 @@ msgstr "^membres$"
 msgid "^profile$"
 msgstr "^profil$"
 
+<<<<<<< HEAD
+#: users/urls.py:9
+msgid "^register$"
+=======
 #: urls.py:23
 #, fuzzy
 #| msgid "^register$"
 msgid "^register/$"
+>>>>>>> dev
 msgstr "^inscription$"
 
 #: users/urls.py:10

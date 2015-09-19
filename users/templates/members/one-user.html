@@ -19,76 +19,87 @@
 </div>
 <div id="modal-{{profile.user.username}}" class="modal fade" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
-        <div class="container-fluid modal-content modal-lg">
-            {% if user.is_authenticated %}
+        {% if user.is_authenticated %}
+            <div class="container-fluid modal-content modal-lg">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <div class="row modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <div class="col-sm-2 text-center">
-                        <img class="img-rounded img-avatar" alt="avatar" src="
-                            {% if profile.avatar %}
-                                {{ profile.avatar.avatar.url }}
-                            {% else %}
-                                {% static 'ressources/logo/icon_bronycub.png' %}
-                            {% endif %}
-                        ">
-                    </div>
-                    <div class="col-sm-10">
+                    <div class="col-sm-4 member_separator">
+                        <div class="col-sm-12 text-left">
+                            <img class="img-rounded img-avatar" alt="avatar" src="
+                                {% if profile.avatar %}
+                                    {{ profile.avatar.avatar.url }}
+                                {% else %}
+                                    {% static 'ressources/logo/icon_bronycub.png' %}
+                                {% endif %}
+                            ">
+                        </div>
                         <div class="col-sm-12">
                             <h3>{{ profile.user.username }}</h3>
-                            <div class="col-sm-6">
-                                <p>{{ profile.user.last_name }} {{ profile.user.first_name }}</p>
-                            </div>
-                            <div class="col-sm-6">
-                                <p>{{ profile.birthday }} </p>
-                            </div>
-                            <div class="col-sm-6">
-                                <p>{{ profile.phone }} </p>
-                            </div>
-                            <div class="col-sm-6">
-                                <p>{{ profile.address }} </p>
-                            </div>
                         </div>
-                        <div class="col-sm-12 text-right">
-                            {% if profile.user.email %}
-                                <a href='mailto:{{ profile.user.email }}' class='zocial icon email'></a>
-                            {% endif %}
+                        <div class="col-sm-12">
+                            <p>{{ profile.user.last_name }} {{ profile.user.first_name }}</p>
+                        </div>
+                        <div class="col-sm-12">
+                            <p>{{ profile.birthday }}</p>
+                        </div>
+                        <div class="col-sm-12">
+                            <p>{{ profile.phone }}</p>
+                        </div>
+                        <div class="col-sm-12">
+                            <p>{{ profile.user.email }}</p>
+                        </div>
+                        <div class="col-sm-12">
+                            <p>{{ profile.address }}, {{ profile.postal_code }} {{ profile.city }}</p>
+                        </div>
+                        <div class="col-sm-12">
                             {% for url in profile.url_set.all %}
                                 <a href='{{ url.url }}' class='zocial icon {{ url.icon }}'></a>
                             {% endfor %}
                         </div>
                     </div>
-                </div>
-                <div class="row modal-body">
-                    <div class="col-sm-12">
-                        <p>{{ profile.bio }}</p>
-                    </div>
-                </div>
-                <div class="row modal-footer">
-                    <div class="col-sm-12">
-                        <div class="container-fluid">
-                            <div class="row text-left">
-                                {% for pony in profile.pony_set.all %}
-                                    <div class="col-sm-6">
-                                        <img alt="{% static pony.pony %}" src="{% static 'img/ponies/'|add:pony.pony|add:'.png' %}" class="img-thumbnail"/><span class='label label-info'>{{ pony.message }}</span>
-                                    </div>
-                                {% endfor %}
+                    <div class="col-sm-8">
+                        <div class="col-sm-12">
+                            <p>{{ profile.bio }}</p>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="container-fluid">
+                                <div class="row text-left">
+                                    {% for pony in profile.pony_set.all %}
+                                        <div class="col-sm-4">
+                                            <img alt="{% static pony.pony %}" src="{% static 'img/ponies/'|add:pony.pony|add:'.png' %}" class="img-thumbnail"/><span class='label label-info'>{{ pony.message }}</span>
+                                        </div>
+                                    {% endfor %}
+                                </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-sm-offset-10 col-sm-2">
                         <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
                     </div>
                 </div>
-            {% elif user.profile.enabled %}
-                <div class="row modal-body">
-                    <p>{% trans 'Your account must be accepted by the admin to see the members informations.' %}</p>
+            </div>
+        {% elif user.profile.enabled %}
+            <div class="container-fluid">
+                <div class="alert alert-danger">
+                    <div class="row modal-body">
+                        <p>{% trans 'Your account must be accepted by the admin to see the members informations.' %}</p>
+                    </div>
+                    <div class="row modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
+                    </div>
                 </div>
-            {% else %}
-                <div class="row modal-body">
-                    <p>{% trans 'You must be connected to see the members informations.' %}</p>
+            </div>
+        {% else %}
+            <div class="container-fluid">
+                <div class="alert alert-danger">
+                    <div class="row modal-body">
+                        <p>{% trans 'You must be connected to see the members informations.' %}</p>
+                    </div>
+                    <div class="row modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
+                    </div>
                 </div>
-                <div class="row modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
-                </div>
-            {% endif %}
-        </div>
+            </div>
+        {% endif %}
     </div>
 </div>
