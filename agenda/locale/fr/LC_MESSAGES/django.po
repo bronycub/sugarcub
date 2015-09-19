@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-19 17:04+0000\n"
+"POT-Creation-Date: 2015-09-19 18:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,14 +54,17 @@ msgid "Update"
 msgstr "Mettre à jour"
 
 #: agenda/templates/agenda/event_list.html:16
+msgid "Add in your agenda"
+msgstr ""
+
 #: agenda/templates/agenda/event_list.html:22
-msgid "Import the agenda"
-msgstr "Importer l'agenda"
+msgid "Add to your agenda"
+msgstr ""
 
 #: agenda/templates/agenda/event_list.html:25
-msgid "To import the agenda in your favorite software use the address:"
+msgid "To add the agenda in your favorite software use the address:"
 msgstr ""
-"Pour importer l'agenda dans votre logiciel préféré utilisez l'adresse :"
+"Pour ajouter dans votre logiciel préféré utilisez l'adresse :"
 
 #: agenda/templates/agenda/event_list.html:29
 msgid "Close"
@@ -96,8 +99,6 @@ msgid "^event/(?P<pk>[\\d]+)$"
 msgstr "^evenement/(?P<pk>[\\d]+)$"
 
 #: agenda/urls.py:29
-#, fuzzy
-#| msgid "^event$"
 msgid "^comment$"
 msgstr "^evenement$"
 
