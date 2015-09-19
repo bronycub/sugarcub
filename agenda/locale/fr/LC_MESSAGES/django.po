@@ -53,13 +53,9 @@ msgstr "Ajouter un évènement"
 msgid "Update"
 msgstr "Mettre à jour"
 
-#: agenda/templates/agenda/event_list.html:16
-msgid "Add in your agenda"
-msgstr ""
-
 #: agenda/templates/agenda/event_list.html:22
 msgid "Add to your agenda"
-msgstr ""
+msgstr "Ajouter à votre agenda"
 
 #: agenda/templates/agenda/event_list.html:25
 msgid "To add the agenda in your favorite software use the address:"
