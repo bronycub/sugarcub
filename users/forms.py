@@ -30,7 +30,8 @@ class ProfileForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(ProfileForm, self).__init__(*args, **kwargs)
         self.fields['bio'].widget.attrs.update({'placeholder':
-            _('Write about yourself! how you discover My Little Pony or BronyCUB, what you like and dislike...')
+            _('Write about yourself! how you discover My Little Pony or BronyCUB, '
+                'what you like and dislike...')
         })
 
 

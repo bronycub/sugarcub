@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load bootstrap3 %}
+
+{% block title %}{% trans 'Events' %}{% endblock %}
+
+{% block body %}
+{{ block.super }}
+
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+<<<<<<< HEAD
+			<h1 class="text-center">{% trans 'Add an event' %}</h1>
+=======
+>>>>>>> feature/agenda
+			<form enctype="multipart/form-data" class="form-horizontal" method="post">
+				{% csrf_token %}
+				{% bootstrap_form form %}
+				{% buttons %}
+					<button type="submit" class="btn btn-primary">{% bootstrap_icon star %}{% trans 'Update' %}</button>
+				{% endbuttons %}
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}

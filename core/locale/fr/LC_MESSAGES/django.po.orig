@@ -1,0 +1,176 @@
+# SugarCUB core app fr localisation file.
+# Copyright (C) 2015 Matthias Devlamynck
+# This file is distributed under the same license as the SugarCUB package.
+# Matthias Devlamynck <matthias.devlamynck@mailoo.org>, 2015
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SugarCUB 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-09-19 18:51+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Matthias Devlamynck <matthias.devlamynck@mailoo.org>\n"
+"Language: French\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: core/templates/agenda.html:6 core/templates/base.html:41
+msgid "Agenda"
+msgstr "Agenda"
+
+#: core/templates/base.html:40
+msgid "Members"
+msgstr "Membres"
+
+#: core/templates/base.html:42 core/templates/hq.html:6
+msgid "HQ"
+msgstr "QG"
+
+#: core/templates/base.html:43
+msgid "Medias"
+msgstr "Médias"
+
+#: core/templates/base.html:44 core/templates/map.html:11
+msgid "Map"
+msgstr "Carte"
+
+#: core/templates/base.html:45 core/templates/friends.html:6
+msgid "Friends"
+msgstr "Nos amis"
+
+#: core/templates/base.html:48
+msgid "Tchat"
+msgstr "Tchat"
+
+#: core/templates/base.html:49
+msgid "Visio"
+msgstr "Visio"
+
+#: core/templates/base.html:50
+msgid "DJ"
+msgstr "DJ"
+
+#: core/templates/base.html:51
+msgid "Ticket"
+msgstr "Ticket"
+
+#: core/templates/base.html:67
+msgid "Profile"
+msgstr "Profil"
+
+#: core/templates/base.html:69
+msgid "Admin"
+msgstr "Admin"
+
+#: core/templates/base.html:71
+msgid "Logout"
+msgstr "Déconnexion"
+
+#: core/templates/base.html:75
+msgid "Login"
+msgstr "Connexion"
+
+#: core/templates/base.html:76
+msgid "Signup"
+msgstr "Nous rejoindre ?"
+
+#: core/templates/base.html:105
+msgid "Contact us :"
+msgstr "Contactez-nous :"
+
+#: core/templates/friends.html:31
+msgid "No friends at the moment ..."
+msgstr "Aucun ami pour le moment ..."
+
+<<<<<<< HEAD
+#: core/templates/home.html:6
+=======
+#: core/templates/home.html:7
+>>>>>>> feature/agenda
+msgid "Home"
+msgstr "Accueil"
+
+#: core/templates/home.html:26
+msgid "BronyCUB, What is it ?"
+msgstr "BronyCUB, Qu'est-ce que c'est ?"
+
+#: core/templates/home.html:29
+msgid ""
+"BronyCUB is a collective from the <strong>U</strong>rban <strong>C</"
+"strong>ommunity of <strong>B</strong>ordeaux (<strong>CUB</strong> in "
+"french) in the Gironde."
+msgstr ""
+"BronyCUB est un collectif de Bronies de la <strong>C</strong>ommunauté "
+"<strong>U</strong>rbaine de <strong>B</strong>ordeaux en Gironde."
+
+#: core/templates/home.html:31
+msgid "this collective try to gather fans to orgenize various meet-up."
+msgstr ""
+"Ce collectif a pour ambition de réunir les fans pour organiser diverses "
+"rencontres."
+
+#: core/templates/home.html:36 core/templates/home.html.py:42
+msgid "More info ..."
+msgstr "Plus d'info ..."
+
+#: core/templates/home.html:45
+msgid "A Brony ? Can we eat it ? whatisit ?"
+msgstr "Un Brony ? Ça ce mange ? Kécéssé ?"
+
+#: core/templates/home.html:49
+msgid "Why ?"
+msgstr "Pourquoi ?"
+
+#: core/templates/home.html:53
+msgid "Close"
+msgstr "Fermer"
+
+#: core/templates/home.html:63
+msgid "Join us"
+msgstr "Rejoignez-vous"
+
+#: core/templates/map.html:23
+msgid "Access HQ"
+msgstr "Acceder au QG"
+
+#: core/templates/map.html:24
+msgid "Map of France"
+msgstr "Carte de France"
+
+#: core/urls.py:17
+msgid "^en/"
+msgstr "^fr/"
+
+#: core/urls.py:20
+msgid "^agenda$"
+msgstr "^agenda$"
+
+#: core/urls.py:22
+msgid "^hq$"
+msgstr "^qg$"
+
+#: core/urls.py:24
+msgid "^map$"
+msgstr "^carte$"
+
+#: core/urls.py:26
+msgid "^friends$"
+msgstr "^amis$"
+
+#~ msgid "Next humanitarian action :"
+#~ msgstr "Prochaine action humanitaire :"
+
+#~ msgid "Hosted by %(host)s, %(where)s, %(when)s"
+#~ msgstr "Organisé par %(host)s, %(where)s, %(when)s"
+
+#~ msgid "Warning, there's realy cool stuff in preparation for this year !! :D"
+#~ msgstr "Attention, y'a du lourd en préparation pour cette année !! :D"
+
+#~ msgid "Documentation"
+#~ msgstr "Documentation"
+
+#~ msgid "Developed by Matthias Devlamynck"
+#~ msgstr "Développé par Matthias Devlamynck"

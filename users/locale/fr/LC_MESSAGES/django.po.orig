@@ -208,6 +208,7 @@ msgstr ""
 msgid "Send"
 msgstr "Soumettre"
 
+<<<<<<< HEAD
 #: users/urls.py:17
 msgid "^en/"
 msgstr "^fr/"
@@ -217,6 +218,13 @@ msgid "^members$"
 msgstr "^membres$"
 
 #: users/urls.py:21
+=======
+#: users/urls.py:7
+msgid "^members$"
+msgstr "^membres$"
+
+#: users/urls.py:8
+>>>>>>> feature/agenda
 msgid "^profile$"
 msgstr "^profil$"
 
@@ -226,6 +234,10 @@ msgstr "^profil$"
 msgid "^register/$"
 msgstr "^inscription$"
 
+<<<<<<< HEAD
 #: users/urls.py:25
+=======
+#: users/urls.py:10
+>>>>>>> feature/agenda
 msgid "^register/informations$"
 msgstr "^inscription/informations$"

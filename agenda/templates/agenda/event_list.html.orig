@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load endless %}
+<<<<<<< HEAD
+{% load static %}
+{% load absolute %}
+=======
+>>>>>>> feature/agenda
+
+{% block title %}{% trans 'Events' %}{% endblock %}
+
+{% block body %}
+{{ block.super }}
+
+<div class="container">
+	<div class="row">
+<<<<<<< HEAD
+		<div class="col-md-6">
+			<a data-toggle="modal" data-target="#modal" class="btn btn-primary">{% trans 'Add to your agenda' %}</a>
+			<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="plusinfos" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title">{% trans 'Add to your agenda' %}</h4>
+						</div>
+						<div class="modal-body">
+							{% trans 'To add the agenda in your favorite software use the address:' %}
+							<p class="well well-sm">{% absolute 'agenda:ics_export' %}</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% if user.is_authenticated and user.profile.enabled %}
+			<div class="col-md-6 text-right">
+				<a class="btn btn-primary" href="{% url 'agenda:event' %}">{% trans 'Add an event' %}</a>
+			</div>
+		{% endif %}
+		<div class="col-md-12">
+			<hr/>
+=======
+		<div class="col-md-12">
+			<a href="{% url 'agenda:ics_export' %}">{% trans 'Download the caldendar' %}</a>
+>>>>>>> feature/agenda
+			<div class="endless_page_template" id="event_list">
+				{% include 'agenda/event_list_page.html' %}
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+	{{ block.super }}
+	<script src="{{ STATIC_URL }}endless_pagination/js/endless-pagination.js"></script>
+	<script>$.endlessPaginate();</script>
+<<<<<<< HEAD
+	{% if user.is_authenticated and user.profile.enabled %}
+		<script>
+			$(document).ready(function() {
+				submitComment = function(id) {
+					var comment = $('#comment-' + id).val();
+					$.ajax({
+						type: 'post',
+						url:  '{% url 'agenda:comment' %}',
+						data:  {event: id, text: comment},
+						success: function() {
+							$('#comment-' + id).val('');
+							$('#comment-list-' + id).prepend(
+								'<div class="comment panel panel-default">' +
+									'<div class="panel-heading">' +
+										'<img class="img-header thumbnail" alt="avatar" src="' +
+											{% if user.profile.avatar.small %}
+												'{{ user.profile.avatar.small.url }}' +
+											{% else %}
+												'{% static 'ressources/logo/icon_bronycub.png' %}' +
+											{% endif %}
+										'"/>' +
+										'{{ user.username }}' +
+									'</div>' +
+									'<div class="panel-body">' +
+										comment +
+									'</div>' +
+								'</div>'
+							);
+						}
+					});
+				};
+			});
+		</script>
+	{% endif %}
+=======
+>>>>>>> feature/agenda
+{% endblock %}

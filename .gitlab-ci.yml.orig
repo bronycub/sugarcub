@@ -17,6 +17,10 @@ Continuous Integration Tests:
   - ''
   - "# Run tests"
   - xvfb-run py.test
+<<<<<<< HEAD
+  tags: 
+=======
   tags:
+>>>>>>> feature/agenda
   except:
   - tags

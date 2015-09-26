@@ -1,0 +1,31 @@
+<<<<<<< HEAD
+from django                   import forms
+from .                        import models
+from django.utils.translation import ugettext_lazy as _
+=======
+from django import forms
+from .      import models
+>>>>>>> feature/agenda
+
+
+class EventForm(forms.ModelForm):
+
+	class Meta:
+		model  = models.Event
+		exclude = ['author']
+<<<<<<< HEAD
+		labels = {
+			"title": _("Title"),
+			"description": _("Description"),
+			"date_begin": _("Date begin"),
+			"date_end": _("Date end"),
+		}
+=======
+>>>>>>> feature/agenda
+
+
+class CommentForm(forms.ModelForm):
+
+	class Meta:
+		model  = models.Comment
+		fields = ['text']
