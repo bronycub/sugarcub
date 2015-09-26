@@ -16,5 +16,5 @@ urls = [
     url(r'',              include('registration.backends.default.urls')),
 ]
 
-urlpatterns = urls + i18n.i18n_patterns(*urls)
+urlpatterns = i18n.i18n_patterns(*urls)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
