@@ -50,3 +50,4 @@ CACHES = {
         'LOCATION': '/var/tmp/django_cache',
     }
 }
+DEFAULT_FROM_EMAIL  = 'contact@bronycub.org'

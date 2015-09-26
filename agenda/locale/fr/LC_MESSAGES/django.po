@@ -96,7 +96,7 @@ msgstr "^evenement/(?P<pk>[\\d]+)$"
 
 #: agenda/urls.py:29
 msgid "^comment$"
-msgstr "^evenement$"
+msgstr "^commentaire$"
 
 #: agenda/urls.py:34
 msgid "^ics$"
