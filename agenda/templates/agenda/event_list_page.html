@@ -33,7 +33,7 @@
                 <hr />
                 <div class="input-group">
                     <input id="comment-{{ event.id }}" type="text" class="form-control" placeholder="{% trans 'Post a message' %}">
-                    <span class="input-group-addon" onclick="submitComment({{ event.id }})"><span class="glyphicon glyphicon-send"/> {% trans 'Post' %}</span>
+                    <span class="input-group-addon btn" onclick="submitComment({{ event.id }})"><span class="glyphicon glyphicon-send"/> {% trans 'Post' %}</span>
                 </div>
             {% endif %}
             <hr />
