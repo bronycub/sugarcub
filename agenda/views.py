@@ -6,7 +6,6 @@ from django.http                    import HttpResponse
 from django.shortcuts               import redirect
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators        import method_decorator
-from django.views.decorators.csrf   import csrf_exempt
 
 
 class CommentAjaxListView(AjaxListView):
@@ -44,7 +43,6 @@ class UpdateEventView(UpdateView):
 
 
 @login_required
-@csrf_exempt
 def post_comment(request):
 
     if request.method == 'POST':

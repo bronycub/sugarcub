@@ -12,8 +12,8 @@ DEBUG          = False
 TEMPLATE_DEBUG = False
 
 with open(os.path.join(BASE_DIR, '..', '..', 'host'), 'r') as hostFile:
-    HOST = hostFile.readline().strip(' \t\n\r')
-    ALLOWED_HOSTS  = [HOST, ]
+    HOST = hostFile.readline().strip('\t\n\r')
+    ALLOWED_HOSTS  = HOST.split()
 
 
 # Database
