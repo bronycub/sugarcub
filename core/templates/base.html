@@ -38,7 +38,7 @@
                         <div class="navbar-collapse collapse" id="navbar-main">
                             <ul class="nav navbar-nav">
                                 <li><a href="{% url 'users:members' %}"><i class="fa fa-user fa-1x"></i>&nbsp;{% trans 'Members' %}</a></li>
-                                <li><a href="{% url 'core:agenda' %}"><i class="fa fa-calendar fa-1x"></i>&nbsp;{% trans 'Agenda' %}</a></li>
+                                <li><a href="{% url 'agenda:list' %}"><i class="fa fa-calendar fa-1x"></i>&nbsp;{% trans 'Agenda' %}</a></li>
                                 <li><a href="{% url 'core:hq' %}"><i class="fa fa-glass fa-1x"></i>&nbsp;{% trans 'HQ' %}</a></li>
                                 <li><a href="https://plus.google.com/photos/+Heuz%C3%A9Florent/albums/5919043632414199089?authkey=CJOh4YWuw6_rVA{# url '' #}"><i class="fa fa-picture-o fa-1x"></i>&nbsp;{% trans 'Medias' %}</a></li>
                                 <li><a href="{% url 'core:map' %}"><i class="fa fa-map-marker fa-1x"></i>&nbsp;{% trans 'Map' %}</a></li>
@@ -114,6 +114,7 @@
 
         {% block javascripts %}
             <script type="application/javascript" src="{% static 'js/jquery-1.11.2.min.js' %}"></script>
+            <script type="application/javascript" src="{% static 'js/jquery-setup.js' %}"></script>
             <script type="application/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
             <script type="application/javascript" src="{% static 'js/jquery.expander.js' %}"></script>
             <script type="application/javascript" src="{% static 'js/expender.js' %}"></script>

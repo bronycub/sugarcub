@@ -30,6 +30,7 @@ PROJECT_APPS = (
     'core',
     'users',
     'bbbff',
+    'agenda',
 )
 
 DEPENDENCIES_APPS = (
@@ -45,6 +46,8 @@ DEPENDENCIES_APPS = (
     'django.contrib.staticfiles',
     'multiform',
     'registration',
+    'endless_pagination',
+    'absolute',
 )
 
 DEV_DEPENDENCIES_APPS = (
@@ -69,6 +72,9 @@ TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
     'core.processors.humanitarian_actions',
     'core.processors.mailing_list',
     'django.core.context_processors.request',
+    'absolute.context_processors.absolute',
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.static',
 )
 
 TEMPLATE_DIRS = (

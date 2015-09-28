@@ -8,6 +8,7 @@ arrow==0.4.2
 beautifulsoup4==4.3.2
 cov-core==1.15.0
 coverage==3.7.1
+django-absolute==0.3
 django-admin-bootstrapped==2.5.0
 django-bootstrap3==5.4.0
 django-endless-pagination==2.0

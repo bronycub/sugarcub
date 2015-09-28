@@ -6,4 +6,4 @@ rm /shared/mailman/var/locks/*
 cd /shared/mailman
 /shared/mailman/bin/mailman start &
 
-/uwsgi-build/uwsgi /shared/uwsgi-mailman.ini
+/uwsgi-build/uwsgi /shared/uwsgi-mailman.ini --uid 33

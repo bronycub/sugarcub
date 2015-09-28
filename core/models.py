@@ -19,7 +19,7 @@ class Friend(models.Model):
     url         = models.URLField()
 
     def __str__(self):
-        return self.title
+        return self.name
 
 
 class Event(models.Model):

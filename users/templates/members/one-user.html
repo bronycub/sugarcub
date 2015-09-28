@@ -19,7 +19,7 @@
 </div>
 <div id="modal-{{profile.user.username}}" class="modal fade" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
-        {% if user.is_authenticated %}
+        {% if user.is_authenticated and user.profile.enabled %}
             <div class="container-fluid modal-content modal-lg">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <div class="row modal-header">
@@ -88,7 +88,7 @@
                     </div>
                 </div>
             </div>
-        {% elif user.profile.enabled %}
+        {% elif not user.profile.enabled %}
             <div class="container-fluid">
                 <div class="alert alert-danger">
                     <div class="row modal-body">

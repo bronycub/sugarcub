@@ -1,0 +1,47 @@
+{% load static %}
+
+{% load i18n %}
+{% load endless %}
+
+{% url 'agenda:list' as event_url %}
+{% lazy_paginate event_list with event_url %}
+{% for event in event_list %}
+<div class="event list-group" role="tablist" aria-multiselectable="true">
+    <div class="list-group-item" role="tab" id="headingOne">
+        <div class="list-group-item-heading">
+            <a data-toggle="collapse" data-parent="#event_list" href="#event{{event.id}}" aria-expanded="false" aria-controls="collapseOne">
+                <h4>{{ event.title }}</h4>
+            </a>
+        </div>
+        <div id="event{{event.id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="row">
+                <div class="col-md-8">
+                    {% if event.date_begin.date == event.date_end.date %}
+                        <div>{{ event.date_begin|date }} : {{ event.date_begin|time }} - {{ event.date_end|time }}</div>
+                    {% else %}
+                        <div>{{ event.date_begin|date }} : {{ event.date_begin|time }} - {{ event.date_end|date }} : {{ event.date_end|time }}</div>
+                    {% endif %}
+                    <div>{{ event.description }}</div>
+                </div>
+                <div class="col-md-4 text-right">
+                    <button class="btn btn-primary">{% trans 'I will be there !' %}</button>
+                    <button class="btn btn-default">{% trans 'I  wont be there ...' %}</button>
+                </div>
+            </div>
+
+            {% if user.is_authenticated and user.profile.enabled %}
+                <hr />
+                <div class="input-group">
+                    <input id="comment-{{ event.id }}" type="text" class="form-control" placeholder="{% trans 'Post a message' %}">
+                    <span class="input-group-addon btn" onclick="submitComment({{ event.id }})"><span class="glyphicon glyphicon-send"/> {% trans 'Post' %}</span>
+                </div>
+            {% endif %}
+            <hr />
+            <div id="comment-list-{{ event.id }}" class="list-group-item-text">
+                {% include 'agenda/comment_list_page.html' with comment_list=event.comment_set.all %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% show_more 'more events' %}

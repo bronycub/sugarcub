@@ -12,8 +12,8 @@ DEBUG          = False
 TEMPLATE_DEBUG = False
 
 with open(os.path.join(BASE_DIR, '..', '..', 'host'), 'r') as hostFile:
-    HOST = hostFile.readline().strip(' \t\n\r')
-    ALLOWED_HOSTS  = [HOST, ]
+    HOST = hostFile.readline().strip('\t\n\r')
+    ALLOWED_HOSTS  = HOST.split()
 
 
 # Database
@@ -51,4 +51,4 @@ EMAIL_HOST_USER     = ''
 EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS       = False
 EMAIL_USE_SSL       = False
-DEFAULT_FROM_EMAIL  = 'no-reply@' + HOST
+DEFAULT_FROM_EMAIL  = 'contact@' + ALLOWED_HOSTS[0]
