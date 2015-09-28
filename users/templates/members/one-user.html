@@ -21,71 +21,53 @@
     <div class="modal-dialog modal-lg">
         {% if user.is_authenticated and user.profile.enabled %}
             <div class="container-fluid modal-content modal-lg">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <div class="row modal-header">
-                    <div class="col-sm-4 member_separator">
-                        <div class="col-sm-12 text-left">
-                            <img class="img-rounded img-avatar" alt="avatar" src="
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <img class="img-rounded img-avatar" alt="avatar" src="
                                 {% if profile.avatar %}
                                     {{ profile.avatar.avatar.url }}
                                 {% else %}
                                     {% static 'ressources/logo/icon_bronycub.png' %}
                                 {% endif %}
                             ">
-                        </div>
-                        <div class="col-sm-12">
-                            <h4>{{ profile.user.username }}</h4>
-                        </div>
-                        {% if profile.name_enabled == False %}
-                            <div class="col-sm-12">
-                                <p>{{ profile.user.last_name }} {{ profile.user.first_name }}</p>
-                            </div>
-                        {% endif %}
-                        {% if profile.birthday_enabled == False %}
-                            <div class="col-sm-12">
-                                <p>{{ profile.birthday }}</p>
-                            </div>
-                        {% endif %}
-                        {% if profile.phone_enabled == False %}
-                            <div class="col-sm-12">
-                                <p>{{ profile.phone }}</p>
-                            </div>
-                        {% endif %}
-                        {% if profile.mail_enabled == False %}
-                            <div class="col-sm-12">
-                                <p>{{ profile.user.email }}</p>
-                            </div>
-                        {% endif %}
-                        {% if profile.address_enabled == False %}
-                            <div class="col-sm-12">
-                                <p>{{ profile.address }}, {{ profile.postal_code }} {{ profile.city }}</p>
-                            </div>
-                        {% endif %}
-                        <div class="col-sm-12">
-                            {% for url in profile.url_set.all %}
-                                <a href='{{ url.url }}' class='zocial icon {{ url.icon }}'></a>
-                            {% endfor %}
-                        </div>
+                  <strong style="font-size:28px;">{{ profile.user.username }}</strong>
+                </div>
+                <div class="modal-body">
+                  <p style="word-wrap: break-word;">
+                    {{ profile.bio }}
+                  </p>
+                  <hr />
+                  <p>
+                    {% for pony in profile.pony_set.all %}
+                      <img alt="{% static pony.pony %}" src="{% static 'img/ponies/'|add:pony.pony|add:'.png' %}" class="img-thumbnail"/><span class='label label-info'>{{ pony.message }}</span>
+                    {% endfor %}
+                  </p>
+                  <hr />
+                  <div class="list-group col-sm-7">
+                    {% if profile.name_enabled == False %}
+                      <a href="#" class="list-group-item"><i class="fa fa-user">&nbsp;</i>{{ profile.user.last_name }} {{ profile.user.first_name }}</a>
+                    {% endif %}
+                    {% if profile.birthday_enabled == False %}
+                      <a href="#" class="list-group-item"><i class="fa fa-birthday-cake">&nbsp;</i>{{ profile.birthday}}</a>
+                    {% endif %}
+                    {% if profile.phone_enabled == False %}
+                      <a href="#" class="list-group-item"><i class="fa fa-phone">&nbsp;</i>{{ profile.phone}}</a>
+                    {% endif %}
+                    {% if profile.mail_enabled == False %}
+                      <a href="#" class="list-group-item"><i class="fa fa-envelope">&nbsp;</i>{{ profile.email}}</a>
+                    {% endif %}
+                    {% if profile.address_enabled == False %}
+                      <a href="#" class="list-group-item"><i class="fa fa-map-marker">&nbsp;</i>{{ profile.address }}, {{ profile.postal_code }} {{ profile.city }}</a>
+                      <a href="#" class="list-group-item"><i class="fa fa-map-marker">&nbsp;</i><button href="#" class="btn btn-info btn-xs">Localisation sur la carte</button></a>
+                    {% endif %}
+                  </div>
+                  <div class="panel-body">
+                    <div>
+                          {% for url in profile.url_set.all %}
+                              <a href='{{ url.url }}' class='zocial icon {{ url.icon }}'></a>
+                          {% endfor %}
                     </div>
-                    <div class="col-sm-8">
-                        <div class="col-sm-12">
-                            <p>{{ profile.bio }}</p>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="container-fluid">
-                                <div class="row text-left">
-                                    {% for pony in profile.pony_set.all %}
-                                        <div class="col-sm-4">
-                                            <img alt="{% static pony.pony %}" src="{% static 'img/ponies/'|add:pony.pony|add:'.png' %}" class="img-thumbnail"/><span class='label label-info'>{{ pony.message }}</span>
-                                        </div>
-                                    {% endfor %}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-offset-10 col-sm-2">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
-                    </div>
+                  </div>
                 </div>
             </div>
         {% elif not user.profile.enabled %}
