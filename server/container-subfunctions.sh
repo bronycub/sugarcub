@@ -50,6 +50,7 @@ function setup_mailman()
 	sed -e '7s/development/production/' -i /shared/mailman/buildout.cfg
 	pip install zc.buildout
 	buildout
+	cat /shared/mailman.cfg >> /shared/mailman/deployment/mailman.cfg
 	./bin/mailman-post-update
 	./bin/mailman-web-django-admin collectstatic --noinput
 

@@ -10,4 +10,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y                \
 
 EXPOSE 25
 
+RUN echo 'sugarcub.org' > /etc/hostname
+
 ENTRYPOINT /shared/postfix.sh

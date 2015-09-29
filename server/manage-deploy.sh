@@ -68,7 +68,7 @@ function update_main_repo()
 
 # ---- Services ----
 
-SERVICES="redis uwsgi postfix mailman nginx"
+SERVICES="redis uwsgi mailman postfix nginx"
 
 function services_start()
 {
@@ -81,6 +81,9 @@ function services_start()
 				;;
 			postfix)
 				PORT_MAPPING="-p 25:25"
+				;;
+			mailman)
+				PORT_MAPPING="-p 8001:8001 -p 8024:8024"
 				;;
 		esac
 
@@ -116,7 +119,7 @@ function build_setup()
 
 	mkdir -p "$SHARED_FOLDER" \
 	&& chmod a+rwx $SHARED_FOLDER \
-	&& cp manage-deploy.sh uwsgi-template.ini nginx-template.conf redis.conf container-subfunctions.sh utils.sh postfix.sh mailman.sh main.cf settings_local.py uwsgi-mailman.ini nginx-mailman.conf "$SHARED_FOLDER" \
+	&& cp manage-deploy.sh uwsgi-template.ini nginx-template.conf redis.conf container-subfunctions.sh utils.sh postfix.sh mailman.sh main.cf settings_local.py uwsgi-mailman.ini nginx-mailman.conf mailman.cfg "$SHARED_FOLDER" \
 	&& finalyse_setup \
 	|| die $BUILD_ERROR "can't setup shared folder"
 
@@ -157,7 +160,6 @@ function manage_dev()
 {
 	XSOCK="/tmp/.X11-unix/X0"
 
-	[[ -d $DEV_FOLDER/.git ]] || die $DEV_NOT_DEV_SETUP "You don't seem to be running in a dev environement"
 	if [[ $# -ge 1 ]]
 	then
 		ACTION=$1
