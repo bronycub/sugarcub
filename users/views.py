@@ -1,9 +1,10 @@
-from django.shortcuts                    import render
-from .models                             import Profile, Pony
-from .forms                              import RegistrationForm, ProfileForm
-from django.contrib.auth.decorators      import login_required
-from django.forms.models                 import modelformset_factory
-from registration.backends.default.views import RegistrationView as BaseRegistrationView
+from   django.shortcuts                    import render
+from   .models                             import Profile, Pony
+from   .forms                              import RegistrationForm, ProfileForm
+from   django.contrib.auth.decorators      import login_required
+from   django.forms.models                 import modelformset_factory
+from   registration.backends.default.views import RegistrationView as BaseRegistrationView
+import random
 
 
 class RegistrationView(BaseRegistrationView):
@@ -23,8 +24,11 @@ class RegistrationView(BaseRegistrationView):
 
 
 def members(request):
+    users = list(Profile.objects.get_active_users())
+    random.shuffle(users)
+
     return render(request, 'members.html', {
-        'profiles': Profile.objects.get_active_users(),
+        'profiles': users,
     })
 
 

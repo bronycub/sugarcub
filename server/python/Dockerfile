@@ -14,6 +14,7 @@ RUN apt-get install -y                     \
 		python-virtualenv                  \
 		sqlite                             \
         npm                                \
+		libjpeg-dev                        \
     && npm install -g less                 \
 	&& ln -s /usr/bin/nodejs /usr/bin/node \
 	&& pip2 install syslog-stdout

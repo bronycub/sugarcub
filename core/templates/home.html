@@ -8,6 +8,15 @@
 {% block body %}
     {{ block.super }}
     <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="alert alert-dismissible alert-info">
+                   <p>
+                     Bienvenue sur la nouvelle version du site utilisant propulsée par SugarCUB ! Cette version est encore en cours de developpement. N'hésitez pas à nous signaler tout problème ;)
+                   </p>
+                 </div>
+             </div>
+         </div>
         <p>
             <img src="{% static 'img/logo_min.png' %}" alt="logo_bronycub" height="200" width="600" class="img-responsive center-block">
         </p>
@@ -57,6 +66,7 @@
                     </div>
                     <!-- /Question -->
                 </div>
+<<<<<<< HEAD
             {% else %}
                 <h2>{% trans 'What is happening in BronyCUB?' %}</h2>
                 <div class="jumbotron">
@@ -87,6 +97,11 @@
             {% endif %}
         </div>
         <div class="col-md-6">
+=======
+            </div>
+        {% endif %}
+        <div class="{% if user.is_authenticated %}col-xs-12{% else %}col-md-6{% endif %}">
+>>>>>>> 3579e9146dfc0f1dc13fa77bc83e4fe581e3251e
             <h2>Tchat - <small><a href="https://kiwiirc.com/client?settings=3ebf3eb7a40c2b03f47b918eb2f7087a">{% trans 'Join us' %}</a></small></h2>
             <div class="jumbotron monospace">
                 {{ irc|safe }}
