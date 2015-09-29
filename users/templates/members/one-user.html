@@ -24,7 +24,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <div class="row modal-header">
                     <div class="col-sm-4 member_separator">
-                        <div class="col-sm-12 text-left">
+                        <div class="col-xs-12 text-left">
                             <img class="img-rounded img-avatar" alt="avatar" src="
                                 {% if profile.avatar %}
                                     {{ profile.avatar.avatar.url }}
@@ -33,35 +33,35 @@
                                 {% endif %}
                             ">
                         </div>
-                        <div class="col-sm-12">
+                        <div class="col-xs-12">
                             <h3>{{ profile.user.username }}</h3>
                         </div>
-                        <div class="col-sm-12">
+                        <div class="col-xs-12">
                             <p>{{ profile.user.last_name }} {{ profile.user.first_name }}</p>
                         </div>
-                        <div class="col-sm-12">
+                        <div class="col-xs-12">
                             <p>{{ profile.birthday }}</p>
                         </div>
-                        <div class="col-sm-12">
+                        <div class="col-xs-12">
                             <p>{{ profile.phone }}</p>
                         </div>
-                        <div class="col-sm-12">
+                        <div class="col-xs-12">
                             <p>{{ profile.user.email }}</p>
                         </div>
-                        <div class="col-sm-12">
+                        <div class="col-xs-12">
                             <p>{{ profile.address }}, {{ profile.postal_code }} {{ profile.city }}</p>
                         </div>
-                        <div class="col-sm-12">
+                        <div class="col-xs-12">
                             {% for url in profile.url_set.all %}
                                 <a href='{{ url.url }}' class='zocial icon {{ url.icon }}'></a>
                             {% endfor %}
                         </div>
                     </div>
                     <div class="col-sm-8">
-                        <div class="col-sm-12">
+                        <div class="col-xs-12">
                             <p>{{ profile.bio }}</p>
                         </div>
-                        <div class="col-sm-12">
+                        <div class="col-xs-12">
                             <div class="container-fluid">
                                 <div class="row text-left">
                                     {% for pony in profile.pony_set.all %}

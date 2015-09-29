@@ -14,7 +14,7 @@
     <div class="container">
         {% if not is_popup %}
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-xs-12">
                     {% block breadcrumbs %}
                     {% endblock %}
                 </div>
@@ -50,7 +50,7 @@
             {% block messages %}
             {% if messages %}
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-xs-12">
                     {% for message in messages %}
                     <div class="alert {{ message.tags|default:"alert-info" }}">
                         {{ message }}
