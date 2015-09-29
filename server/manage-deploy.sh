@@ -37,9 +37,15 @@ function build_image()
 		rm -r $BUILD_DIR
 	fi
 
+	NO_CACHE=''
+	if [[ $# -ge 2 && $2 == '-c' ]]
+	then
+		NO_CACHE='--no-cache'
+	fi
+
 	mkdir -p $BUILD_DIR                                         \
 	&& cp $IMG/* /tmp/docker                                    \
-	&& docker build --force-rm --rm -t sugarcub-$IMG $BUILD_DIR \
+	&& docker build $NO_CACHE --force-rm --rm -t sugarcub-$IMG $BUILD_DIR \
 	&& rm -r $BUILD_DIR
 }
 
@@ -105,7 +111,7 @@ function build_setup()
 	# "postgresql" "celery" "dev"
 	for i in "base" "nginx" "redis" "python" "console" "uwsgi" "postfix" "mailman"
 	do
-		build_image "$i" || die $BUILD_ERROR "can't build image $i"
+		build_image "$i" "$@" || die $BUILD_ERROR "can't build image $i"
 	done
 
 	mkdir -p "$SHARED_FOLDER" \
@@ -222,7 +228,7 @@ function display_help()
 	echo \
 "
 Usage:
-    $0 <b|build> [-f]
+    $0 <b|build> [-f|-c]
     $0 <a|add> <instance> <host>
     $0 <d|deploy> <instance>
     $0 <L|list> [instance]
@@ -239,6 +245,7 @@ Commands:
                    may be run again to update the setup
                    with -f, replace containers once the updated one are built
                    (this will start the containers even if they weren't running)
+				   with -c, disable cache when building the docker images
 
     a, add         setup and deploy a new instance with the given parameters :
                    (deploy only once all paramaters are set,

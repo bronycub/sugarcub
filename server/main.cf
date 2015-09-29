@@ -674,7 +674,5 @@ owner_request_special = no
 # Maps
 transport_maps =
     hash:/shared/mailman/var/data/postfix_lmtp
-local_recipient_maps =
-    hash:/shared/mailman/var/data/postfix_lmtp
 relay_domains =
     hash:/shared/mailman/var/data/postfix_domains
