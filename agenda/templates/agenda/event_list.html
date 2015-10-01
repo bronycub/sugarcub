@@ -11,36 +11,39 @@
 {{ block.super }}
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <a data-toggle="modal" data-target="#modal" class="btn btn-primary">{% trans 'Add to your agenda' %}</a>
-            <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="plusinfos" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title">{% trans 'Add to your agenda' %}</h4>
-                        </div>
-                        <div class="modal-body">
-                            {% trans 'To add the agenda in your favorite software use the address:' %}
-                            <p class="well well-sm">{% absolute 'agenda:ics_export' %}</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
+        <div class="row">
+            <div class="col-md-6">
+                <a data-toggle="modal" data-target="#modal" class="btn btn-primary"><i class="fa fa-calendar-plus-o">&nbsp;</i>{% trans 'Add to your agenda' %}</a>
+                <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="plusinfos" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title"><i class="fa fa-calendar-plus">&nbsp;</i>{% trans 'Add to your agenda' %}</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p><strong>{% trans 'To add the agenda in your favorite software use the address:' %}</strong></p>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="fa fa-link"></i></span>
+                                  <input type="text" class="form-control" value="{% absolute 'agenda:ics_export' %}">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        {% if user.is_authenticated and user.profile.enabled %}
-            <div class="col-md-6 text-right">
-                <a class="btn btn-primary" href="{% url 'agenda:event' %}">{% trans 'Add an event' %}</a>
-            </div>
-        {% endif %}
-        <div class="col-xs-12">
-            <hr/>
-            <div class="endless_page_template" id="event_list">
-                {% include 'agenda/event_list_page.html' %}
+            {% if user.is_authenticated and user.profile.enabled %}
+                <div class="col-md-6 text-right">
+                    <a class="btn btn-success" href="{% url 'agenda:event' %}"><strong><i class="fa fa-star"></i>&nbsp;{% trans 'Add an event' %}&nbsp;<i class="fa fa-star"></i></strong></a>
+                </div>
+            {% endif %}
+            <div class="col-xs-12">
+                <hr/>
+                <div class="endless_page_template" id="event_list">
+                    {% include 'agenda/event_list_page.html' %}
             </div>
         </div>
     </div>
