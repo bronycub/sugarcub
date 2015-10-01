@@ -13,6 +13,7 @@ class Event(models.Model):
     description = models.TextField()
     date_begin  = models.DateTimeField()
     date_end    = models.DateTimeField()
+    address     = models.CharField(max_length = 200)
 
     class Meta:
         ordering = ['-date_begin', '-date_end']
