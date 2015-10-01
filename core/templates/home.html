@@ -66,7 +66,6 @@
                     </div>
                     <!-- /Question -->
                 </div>
-<<<<<<< HEAD
             {% else %}
                 <h2>{% trans 'What is happening in BronyCUB?' %}</h2>
                 <div class="jumbotron">
@@ -97,11 +96,6 @@
             {% endif %}
         </div>
         <div class="col-md-6">
-=======
-            </div>
-        {% endif %}
-        <div class="{% if user.is_authenticated %}col-xs-12{% else %}col-md-6{% endif %}">
->>>>>>> 3579e9146dfc0f1dc13fa77bc83e4fe581e3251e
             <h2>Tchat - <small><a href="https://kiwiirc.com/client?settings=3ebf3eb7a40c2b03f47b918eb2f7087a">{% trans 'Join us' %}</a></small></h2>
             <div class="jumbotron monospace">
                 {{ irc|safe }}
