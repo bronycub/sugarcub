@@ -86,7 +86,7 @@ msgstr "Participerez-vous?"
 
 #: templates/agenda/event_list_page.html:39
 msgid "I participate !"
-msgstr "Je participere !"
+msgstr "Je participe !"
 
 #: templates/agenda/event_list_page.html:40
 msgid "Nope !"

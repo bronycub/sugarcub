@@ -8,11 +8,6 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SugarCUB 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-<<<<<<< HEAD
-"POT-Creation-Date: 2015-09-08 17:32+0000\n"
-=======
-"POT-Creation-Date: 2015-09-19 18:51+0000\n"
->>>>>>> 05821acf008bb588e6390a4a01da7f1f41739da4
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Matthias Devlamynck <matthias.devlamynck@mailoo.org>\n"
 "Language: French\n"
@@ -21,77 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-<<<<<<< HEAD
-#: templates/agenda.html:6 templates/base.html:41
-msgid "Agenda"
-msgstr "Agenda"
-
-#: templates/base.html:40
-msgid "Members"
-msgstr "Membres"
-
-#: templates/base.html:42 templates/hq.html:6
-msgid "HQ"
-msgstr "QG"
-
-#: templates/base.html:43
-msgid "Medias"
-msgstr "Médias"
-
-#: templates/base.html:44 templates/map.html:11
-msgid "Map"
-msgstr "Carte"
-
-#: templates/base.html:45 templates/friends.html:6
-msgid "Friends"
-msgstr "Nos amis"
-
-#: templates/base.html:48
-msgid "Tchat"
-msgstr "Tchat"
-
-#: templates/base.html:49
-msgid "Visio"
-msgstr "Visio"
-
-#: templates/base.html:50
-msgid "DJ"
-msgstr "DJ"
-
-#: templates/base.html:51
-msgid "Ticket"
-msgstr "Ticket"
-
-#: templates/base.html:67
-msgid "Profile"
-msgstr "Profil"
-
-#: templates/base.html:69
-msgid "Admin"
-msgstr "Admin"
-
-#: templates/base.html:71
-msgid "Logout"
-msgstr "Déconnexion"
-
-#: templates/base.html:75
-msgid "Login"
-msgstr "Connexion"
-
-#: templates/base.html:76
-msgid "Signup"
-msgstr "Nous rejoindre ?"
-
-#: templates/base.html:105
-msgid "Contact us :"
-msgstr "Contactez-nous :"
-
-#: templates/friends.html:31
-msgid "No friends at the moment ..."
-msgstr "Aucun ami pour le moment ..."
-
-#: templates/home.html:6
-=======
 #: core/templates/agenda.html:6 core/templates/base.html:41
 msgid "Agenda"
 msgstr "Agenda"
@@ -161,7 +85,6 @@ msgid "No friends at the moment ..."
 msgstr "Aucun ami pour le moment ..."
 
 #: core/templates/home.html:6
->>>>>>> 05821acf008bb588e6390a4a01da7f1f41739da4
 msgid "Home"
 msgstr "Accueil"
 
@@ -245,18 +168,7 @@ msgstr "Rejoignez-vous"
 msgid "Access HQ"
 msgstr "Acceder au QG"
 
-#: templates/map.html:24
-=======
-#: core/templates/home.html:63
-msgid "Join us"
-msgstr "Rejoignez-vous"
-
-#: core/templates/map.html:23
-msgid "Access HQ"
-msgstr "Acceder au QG"
-
 #: core/templates/map.html:24
->>>>>>> 05821acf008bb588e6390a4a01da7f1f41739da4
 msgid "Map of France"
 msgstr "Carte de France"
 
