@@ -8,11 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SugarCUB 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-<<<<<<< HEAD
 "POT-Creation-Date: 2015-09-12 13:54+0000\n"
-=======
-"POT-Creation-Date: 2015-09-19 18:51+0000\n"
->>>>>>> 05821acf008bb588e6390a4a01da7f1f41739da4
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Matthias Devlamynck <matthias.devlamynck@mailoo.org>\n"
 "Language: French\n"
