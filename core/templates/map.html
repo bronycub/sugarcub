@@ -41,22 +41,24 @@
 
             {% if user.is_authenticated and user.profile.enabled %}
                 {% for profile in profiles %}
-                    var customIcon = L.icon({
-                        iconUrl: {% if profile.avatar %}
-                                    '{{ profile.avatar.avatar.url }}',
-                                 {% else %}
-                                     {# set rand = random(2)+1 #}
-                                     '{% static 'ressources/logo/berry_punch_1.png' %}',
-                                 {% endif %}
-                        iconSize: [80, 80],
-                        iconAnchor: [40, 80],
-                        popupAnchor: [0, -80]
-                    });
-                    L.marker(
-                        [{{ profile.address_latitude|safe}}, {{profile.address_longitude|safe }}],{
-                            icon: customIcon
-                        }
-                    ).addTo(map).bindPopup("{{ profile.user.username }}").openPopup();
+                    {% if profile.address_latitude and profile.address_longitude %}
+                        var customIcon = L.icon({
+                            iconUrl: {% if profile.avatar %}
+                                        '{{ profile.avatar.avatar.url }}',
+                                     {% else %}
+                                         {# set rand = random(2)+1 #}
+                                         '{% static 'ressources/logo/berry_punch_1.png' %}',
+                                     {% endif %}
+                            iconSize: [40, 40],
+                            iconAnchor: [20, 40],
+                            popupAnchor: [0, -40]
+                        });
+                        L.marker(
+                            [{{ profile.address_latitude|safe}}, {{profile.address_longitude|safe }}],{
+                                icon: customIcon
+                            }
+                        ).addTo(map).bindPopup("{{ profile.user.username }}").openPopup();
+                    {% endif %}
                 {% endfor %}
             {% endif %}
 
