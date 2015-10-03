@@ -8,7 +8,6 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SugarCUB 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-19 18:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Matthias Devlamynck <matthias.devlamynck@mailoo.org>\n"
 "Language: French\n"
@@ -124,11 +123,47 @@ msgstr "Pourquoi ?"
 msgid "Close"
 msgstr "Fermer"
 
-#: core/templates/home.html:63
+#: templates/home.html:61
+msgid "What is happening in BronyCUB?"
+msgstr "Que se passe t'il à BronyCUB?"
+
+#: templates/home.html:65
+msgid "It's the birthday of "
+msgstr "C'est l'anniversaire de "
+
+#: templates/home.html:65
+msgid " today, Happy Birthday!"
+msgstr " aujourd'hui, Bon Anniversaire!"
+
+#: templates/home.html:70
+msgid "This month : "
+msgstr "Ce mois-ci : "
+
+#: templates/home.html:75
+msgid "join us! Give "
+msgstr "nous on rejoins! donnons-"
+
+#: templates/home.html:77
+msgid "them"
+msgstr "leur"
+
+#: templates/home.html:79
+msgid "him/her"
+msgstr "lui"
+
+#: templates/home.html:81
+msgid " a warm welcome!"
+msgstr " un accueil chaleureux!"
+
+#: templates/home.html:83
+msgid "nobody join us, how sad..."
+msgstr "personne ne nous a rejoins, comme c'est triste..."
+
+#: templates/home.html:90
 msgid "Join us"
 msgstr "Rejoignez-vous"
 
-#: core/templates/map.html:23
+#: templates/map.html:23
 msgid "Access HQ"
 msgstr "Acceder au QG"
 
