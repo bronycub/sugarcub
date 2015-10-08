@@ -126,7 +126,7 @@ msgstr "Fermer"
 
 #: core/templates/home.html:63
 msgid "Join us"
-msgstr "Rejoignez-vous"
+msgstr "Rejoignez-nous"
 
 #: core/templates/map.html:23
 msgid "Access HQ"
