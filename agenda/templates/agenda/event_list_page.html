@@ -45,7 +45,7 @@
                           <h3 class="panel-title"><strong>{% trans 'Organizer' %}</strong></h3>
                         </div>
                         <div class="panel-body" style="text-align:center;">
-                          <img class="img-rounded thumbnail img-responsive" width="400px" src="{% if event.author.profile.avatar %}
+                          <img class="img-rounded thumbnail img-responsive" width="222px" src="{% if event.author.profile.avatar.big %}
                                                                                      {{ event.author.profile.avatar.avatar.url }}
                                                                                  {% else %}
                                                                                      {% static 'ressources/logo/icon_bronycub.png' %}

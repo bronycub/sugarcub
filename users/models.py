@@ -55,7 +55,7 @@ class Profile(models.Model):
         "The bio should be longer than 150 character"))
     bio               = models.TextField(validators=[bio_min_size])
     avatar            = StdImageField(blank = True, null = True,
-        variations = {'avatar': (100, 100), 'small': (50, 50)},
+        variations = {'avatar': (100, 100), 'small': (50, 50), 'big': (222, 222)},
         upload_to  = UploadToUUID(path = 'avatars'),
     )
 
