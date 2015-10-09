@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-19 18:51+0000\n"
+"POT-Creation-Date: 2015-10-01 14:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,86 +18,118 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: agenda/forms.py:12
+#: forms.py:12
 msgid "Title"
 msgstr "Nom de l'évènement"
 
-#: agenda/forms.py:13
+#: forms.py:13
 msgid "Description"
 msgstr "Description"
 
-#: agenda/forms.py:14
+#: forms.py:14
 msgid "Date begin"
 msgstr "Date de début"
 
-#: agenda/forms.py:15
+#: forms.py:15
 msgid "Date end"
 msgstr "Date de fin"
 
-#: agenda/templates/agenda/comment_list.html:6
-#: agenda/templates/agenda/event_form.html:6
-#: agenda/templates/agenda/event_list.html:8
+#: templates/agenda/comment_list.html:6 templates/agenda/event_form.html:6
+#: templates/agenda/event_list.html:8
 msgid "Events"
 msgstr "Évènements"
 
-#: agenda/templates/agenda/comment_list_page.html:29
+#: templates/agenda/comment_list_page.html:29
 msgid "You must be logged in to see the comments."
 msgstr "Vous devez être connecté pour voir les commentaires."
 
-#: agenda/templates/agenda/event_form.html:14
-#: agenda/templates/agenda/event_list.html:37
+#: templates/agenda/event_form.html:14 templates/agenda/event_list.html:40
 msgid "Add an event"
 msgstr "Ajouter un évènement"
 
-#: agenda/templates/agenda/event_form.html:19
+#: templates/agenda/event_form.html:19
 msgid "Update"
 msgstr "Mettre à jour"
 
-#: agenda/templates/agenda/event_list.html:22
+#: templates/agenda/event_list.html:16 templates/agenda/event_list.html:22
 msgid "Add to your agenda"
 msgstr "Ajouter à votre agenda"
 
-#: agenda/templates/agenda/event_list.html:25
+#: templates/agenda/event_list.html:25
 msgid "To add the agenda in your favorite software use the address:"
-msgstr ""
-"Pour ajouter dans votre logiciel préféré utilisez l'adresse :"
+msgstr "Pour ajouter dans votre logiciel préféré utilisez l'adresse :"
 
-#: agenda/templates/agenda/event_list.html:29
+#: templates/agenda/event_list.html:32
 msgid "Close"
 msgstr "Fermer"
 
-#: agenda/templates/agenda/event_list_page.html:27
-msgid "I will be there !"
+#: templates/agenda/event_list_page.html:20
+msgid "From"
+msgstr "Du"
+
+#: templates/agenda/event_list_page.html:21
+#: templates/agenda/event_list_page.html:23
+msgid "At"
+msgstr "à"
+
+#: templates/agenda/event_list_page.html:22
+msgid "To"
+msgstr "Au"
+
+#: templates/agenda/event_list_page.html:24
+msgid "Address"
+msgstr "Addresse"
+
+#: templates/agenda/event_list_page.html:36
+msgid "Will you participate?"
+msgstr "Participerez-vous?"
+
+#: templates/agenda/event_list_page.html:39
+msgid "I participate !"
 msgstr "Je participe !"
 
-#: agenda/templates/agenda/event_list_page.html:28
-msgid "I  wont be there ..."
-msgstr "Je ne participe pas ..."
+#: templates/agenda/event_list_page.html:40
+msgid "Nope !"
+msgstr "Nope !"
 
-#: agenda/templates/agenda/event_list_page.html:35
+#: templates/agenda/event_list_page.html:45
+msgid "Organizer"
+msgstr "Organisateur"
+
+#: templates/agenda/event_list_page.html:55
+msgid "CONTACT"
+msgstr "CONTACT"
+
+#: templates/agenda/event_list_page.html:63
 msgid "Post a message"
 msgstr "Poster un commentaire"
 
-#: agenda/templates/agenda/event_list_page.html:36
+#: templates/agenda/event_list_page.html:64
 msgid "Post"
 msgstr "Envoyer"
 
-#: agenda/urls.py:14
+#: urls.py:14
 msgid "^(?P<event_id>[0-9]+)/comments$"
 msgstr "^(?P<event_id>[0-9]+)/commentaires$"
 
-#: agenda/urls.py:19
+#: urls.py:19
 msgid "^event$"
 msgstr "^evenement$"
 
-#: agenda/urls.py:24
+#: urls.py:24
 msgid "^event/(?P<pk>[\\d]+)$"
 msgstr "^evenement/(?P<pk>[\\d]+)$"
 
-#: agenda/urls.py:29
+#: urls.py:29
 msgid "^comment$"
 msgstr "^commentaire$"
 
-#: agenda/urls.py:34
+#: urls.py:34
 msgid "^ics$"
 msgstr ""
+
+#~ msgid "I will be there !"
+#~ msgstr "Je participe !"
+
+#~ msgid "I  wont be there ..."
+#~ msgstr "Je ne participe pas ..."

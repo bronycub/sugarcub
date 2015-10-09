@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SugarCUB 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-19 18:51+0000\n"
+"POT-Creation-Date: 2015-09-12 13:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Matthias Devlamynck <matthias.devlamynck@mailoo.org>\n"
 "Language: French\n"
@@ -41,7 +41,27 @@ msgstr "Ville"
 msgid "Postal code"
 msgstr "Code postal"
 
-#: users/forms.py:33
+#: forms.py:28
+msgid "Hide my firstname and lastname"
+msgstr "Cacher mon prénom et nom"
+
+#: forms.py:29
+msgid "Hide my phone number"
+msgstr "Cacher mon numéro de téléphone"
+
+#: forms.py:30
+msgid "Hide my birthday"
+msgstr "Cacher ma date de naissance"
+
+#: forms.py:31
+msgid "Hide my address"
+msgstr "Cacher mon adresse"
+
+#: forms.py:32
+msgid "Hide my email"
+msgstr "Cacher mon adresse mail"
+
+#: forms.py:38
 msgid ""
 "Write about yourself! how you discover My Little Pony or BronyCUB, what you "
 "like and dislike..."
@@ -49,7 +69,7 @@ msgstr ""
 "Ecrivez à propos de vous! Comment vous avez découvert My Little Pony ou "
 "BronyCUB , Ce que vous aimez ou detestez..."
 
-#: users/models.py:27
+#: models.py:41
 msgid ""
 "Phone number must be entered in the format: '+999999999'. Up to 15 digits "
 "allowed."
@@ -57,36 +77,32 @@ msgstr ""
 "Le numéro de téléphone doit être entré dans le format : '+999999999'.Jusqu'à "
 "15 chiffres sont autorisés"
 
-#: users/models.py:29
+#: models.py:43
 msgid "The postal code must be 5 digits."
-msgstr ""
+msgstr "Le code postal doit être de 5 chiffres"
 
-#: users/models.py:36
+#: models.py:52
 msgid "The bio should be longer than 150 character"
 msgstr "La bio doit être longue de plus de 150 caractère"
 
-#: users/templates/members.html:5
+#: templates/members.html:5
 msgid "Members"
 msgstr "Membres"
 
-#: users/templates/members.html:16
+#: templates/members.html:16
 msgid "No members registered yet ..."
 msgstr "Aucun membre enregistré pour le moment ..."
 
-#: users/templates/members/one-user.html:77
-#: users/templates/members/one-user.html:88
-#: users/templates/members/one-user.html:99
+#: templates/members/one-user.html:87 templates/members/one-user.html.py:98
+#: templates/members/one-user.html:109
 msgid "Close"
 msgstr "Fermer"
 
-#: users/templates/members/one-user.html:85
-#, fuzzy
-#| msgid "You must be connected to see the members informations."
-msgid ""
-"Your account must be accepted by the admin to see the members informations."
+#: templates/members/one-user.html:95
+msgid "Your account must be accepted by the admin to see the members informations."
 msgstr "Vous devez être connecté pour voir les informations de ce membre."
 
-#: users/templates/members/one-user.html:96
+#: templates/members/one-user.html:106
 msgid "You must be connected to see the members informations."
 msgstr "Vous devez être connecté pour voir les informations de ce membre."
 
