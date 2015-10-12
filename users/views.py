@@ -34,34 +34,44 @@ def members(request):
 
 @login_required
 def profile(request):
+    # Get the user's profile
     try:
         profile = Profile.objects.get(user = request.user.id)
     except:
         profile = Profile()
         profile.user = request.user
 
-    # Profile pony
-    PonyFormset = inlineformset_factory(Profile, Pony, fields=('pony','message',))
-    ponies = PonyFormset(instance = profile)
+    # inline formset for profile's pony
+    ponyformset = inlineformset_factory(Profile, Pony, fields = ('pony', 'message',), extra = 2)
 
-    # Profile URL
-    UrlFormset = inlineformset_factory(Profile, Url, fields=('url',))
-    urls = UrlFormset(instance = profile)
+    # inline formset for profile's url
+    urlformset = inlineformset_factory(Profile, Url, fields = ('url',), extra = 2)
 
     if request.method == 'POST':
+
         form = ProfileForm(request.POST, request.FILES, instance = profile)
-        ponies = PonyFormset(request.POST, instance = profile)
-        urls = UrlFormset(request.POST, instance = profile)
+        ponies = ponyformset(request.POST, instance = profile, prefix = "pony")
+        urls = urlformset(request.POST, instance = profile, prefix = "url")
+
         if form.is_valid():
             form.save()
-            ponies.save()
+
             form = ProfileForm(instance = profile)
-            ponies = PonyFormset(instance = profile)
-            urls = UrlFormset(instance = profile)
+
+        if ponies.is_valid():
+            ponies.save()
+
+            ponies = ponyformset(instance = profile, prefix = "pony")
+
+        if urls.is_valid():
+            urls.save()
+
+            urls = urlformset(instance = profile, prefix = "url")
+
     else:
         form = ProfileForm(instance = profile)
-        ponies = PonyFormset(instance = profile)
-        urls = UrlFormset(instance = profile)
+        ponies = ponyformset(instance = profile, prefix = "pony")
+        urls = urlformset(instance = profile, prefix = "url")
 
     return render(request, 'profile.html', {
         'profile': profile,
