@@ -49,6 +49,10 @@
 
                     {% endfor %}
 
+                    {% buttons %}
+                        <button type="submit" class="btn btn-primary col-xs-offset-1" name="add_ponyl">{% bootstrap_icon star %}{% trans 'Add new line' %}</button>
+                    {% endbuttons %}
+
                     <hr/>
                     <h3>{% trans 'Url :' %}</h3>
                     <!-- url -->
@@ -65,17 +69,35 @@
 
                     {% endfor %}
 
+                    {% buttons %}
+                        <button type="submit" class="btn btn-primary col-xs-offset-1" name="add_url">{% bootstrap_icon star %}{% trans 'Add new line' %}</button>
+                    {% endbuttons %}
+
                     <hr/>
                     <h4>{% trans 'Only members of BronyCUB will be able to see those information :' %}</h4>
                     <!-- information caché -->
-                    {% bootstrap_field form.phone layout='horizontal' horizontal_label_class='col-xs-1' horizontal_field_class='col-xs-11' %}
-                    {% bootstrap_field form.birthday layout='horizontal' horizontal_label_class='col-xs-1' horizontal_field_class='col-xs-11' %}
-                    {% bootstrap_field form.address layout='horizontal' horizontal_label_class='col-xs-1' horizontal_field_class='col-xs-4' form_group_class='' %}
-                    {% bootstrap_field form.city layout='horizontal' horizontal_label_class='col-xs-1' horizontal_field_class='col-xs-3' form_group_class='' %}
-                    {% bootstrap_field form.postal_code layout='horizontal' horizontal_label_class='col-xs-2' horizontal_field_class='col-xs-1' %}
+                    {% bootstrap_field form.phone layout='horizontal' horizontal_label_class='col-xs-1' horizontal_field_class='col-xs-8' form_group_class='' %}
+                    {% bootstrap_field form.phone_enabled %}
 
+                    {% bootstrap_field form.birthday layout='horizontal' horizontal_label_class='col-xs-1' horizontal_field_class='col-xs-8' form_group_class='' %}
+                    {% bootstrap_field form.birthday_enabled %}
+
+                    {% bootstrap_field form.address layout='horizontal' horizontal_label_class='col-xs-1' horizontal_field_class='col-xs-3' form_group_class='' %}
+                    {% bootstrap_field form.city layout='horizontal' horizontal_label_class='col-xs-1' horizontal_field_class='col-xs-2' form_group_class='' %}
+                    {% bootstrap_field form.postal_code layout='horizontal' horizontal_label_class='col-xs-1' horizontal_field_class='col-xs-2' form_group_class='' %}
+                    {% bootstrap_field form.address_enabled %}
+
+                    <hr/>
+                    <h4>{% trans 'Hide personnal information :' %}</h4>
+                    
+                    
+                    
+                    {% bootstrap_field form.mail_enabled %}
+                    {% bootstrap_field form.name_enabled %}
+
+                    <hr/>
                     {% buttons %}
-                        <button type="submit" class="btn btn-primary">{% bootstrap_icon star %}{% trans 'Update' %}</button>
+                        <button type="submit" class="btn btn-primary" name="submit">{% bootstrap_icon star %}{% trans 'Update' %}</button>
                     {% endbuttons %}
                 </form>
                 <hr/>

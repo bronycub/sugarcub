@@ -42,31 +42,51 @@ def profile(request):
         profile.user = request.user
 
     # inline formset for profile's pony
-    ponyformset = inlineformset_factory(Profile, Pony, fields = ('pony', 'message',), extra = 2)
+    ponyformset = inlineformset_factory(Profile, Pony, fields = ('pony', 'message',), extra = 0)
 
     # inline formset for profile's url
-    urlformset = inlineformset_factory(Profile, Url, fields = ('url',), extra = 2)
+    urlformset = inlineformset_factory(Profile, Url, fields = ('url',), extra = 0)
 
-    if request.method == 'POST':
+    if request.method=='POST':
 
-        form = ProfileForm(request.POST, request.FILES, instance = profile)
-        ponies = ponyformset(request.POST, instance = profile, prefix = "pony")
-        urls = urlformset(request.POST, instance = profile, prefix = "url")
+        # To add a new row for pony (avoid using JS)
+        if 'add_pony' in request.POST:
+            cp = request.POST.copy()
+            cp['pony-TOTAL_FORMS'] = int(cp['pony-TOTAL_FORMS'])+ 1
 
-        if form.is_valid():
-            form.save()
+            form = ProfileForm(request.POST, request.FILES, instance = profile)
+            ponies = ponyformset(cp, prefix = "pony")
+            urls = urlformset(request.POST, instance = profile, prefix='url')
 
-            form = ProfileForm(instance = profile)
+        # To add a new row for url (avoid using JS)
+        if 'add_url' in request.POST:
+            cp = request.POST.copy()
+            cp['url-TOTAL_FORMS'] = int(cp['url-TOTAL_FORMS'])+ 1
 
-        if ponies.is_valid():
-            ponies.save()
+            form = ProfileForm(request.POST, request.FILES, instance = profile)
+            ponies = ponyformset(request.POST, instance = profile, prefix = "pony")
+            urls = urlformset(cp, prefix='url')
 
-            ponies = ponyformset(instance = profile, prefix = "pony")
+        # When submitting information
+        if 'submit' in request.POST:
+            form = ProfileForm(request.POST, request.FILES, instance = profile)
+            ponies = ponyformset(request.POST, instance = profile, prefix = "pony")
+            urls = urlformset(request.POST, instance = profile, prefix = "url")
 
-        if urls.is_valid():
-            urls.save()
+            if form.is_valid():
+                form.save()
 
-            urls = urlformset(instance = profile, prefix = "url")
+                form = ProfileForm(instance = profile)
+
+            if ponies.is_valid():
+                ponies.save()
+
+                ponies = ponyformset(instance = profile, prefix = "pony")
+
+            if urls.is_valid():
+                urls.save()
+
+                urls = urlformset(instance = profile, prefix = "url")
 
     else:
         form = ProfileForm(instance = profile)

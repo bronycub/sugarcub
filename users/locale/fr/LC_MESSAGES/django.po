@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SugarCUB 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-12 15:22+0000\n"
+"POT-Creation-Date: 2015-10-13 12:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Matthias Devlamynck <matthias.devlamynck@mailoo.org>\n"
 "Language: French\n"
@@ -69,7 +69,7 @@ msgstr ""
 "Ecrivez à propos de vous! Comment vous avez découvert My Little Pony ou "
 "BronyCUB , Ce que vous aimez ou detestez..."
 
-#: models.py:27
+#: models.py:44
 msgid ""
 "Phone number must be entered in the format: '+999999999'. Up to 15 digits "
 "allowed."
@@ -77,11 +77,11 @@ msgstr ""
 "Le numéro de téléphone doit être entré dans le format : '+999999999'.Jusqu'à "
 "15 chiffres sont autorisés"
 
-#: models.py:29
+#: models.py:46
 msgid "The postal code must be 5 digits."
 msgstr "Le code postal doit être de 5 chiffres"
 
-#: models.py:36
+#: models.py:55
 msgid "The bio should be longer than 150 character"
 msgstr "La bio doit être longue de plus de 150 caractère"
 
@@ -93,17 +93,16 @@ msgstr "Membres"
 msgid "No members registered yet ..."
 msgstr "Aucun membre enregistré pour le moment ..."
 
-#: templates/members/one-user.html:77 templates/members/one-user.html.py:88
-#: templates/members/one-user.html:99
-msgid "Close"
-msgstr "Fermer"
-
-#: templates/members/one-user.html:85
+#: templates/members/one-user.html:77
 msgid ""
 "Your account must be accepted by the admin to see the members informations."
 msgstr "Vous devez être connecté pour voir les informations de ce membre."
 
-#: templates/members/one-user.html:96
+#: templates/members/one-user.html:80 templates/members/one-user.html.py:91
+msgid "Close"
+msgstr "Fermer"
+
+#: templates/members/one-user.html:88
 msgid "You must be connected to see the members informations."
 msgstr "Vous devez être connecté pour voir les informations de ce membre."
 
@@ -119,19 +118,27 @@ msgstr "SugarCUB </br>Mon Profil"
 msgid "Favorite pony :"
 msgstr "Poney Favoris :"
 
-#: templates/profile.html:53
+#: templates/profile.html:53 templates/profile.html.py:73
+msgid "Add new line"
+msgstr "Ajouter une nouvelle ligne"
+
+#: templates/profile.html:57
 msgid "Url :"
 msgstr "Url :"
 
-#: templates/profile.html:69
+#: templates/profile.html:77
 msgid "Only members of BronyCUB will be able to see those information :"
 msgstr "Seul les membres de BronyCUB peuvent voir les informations suivantes :"
 
-#: templates/profile.html:78
+#: templates/profile.html:91
+msgid "Hide personnal information :"
+msgstr "Cacher vos informations personnelles"
+
+#: templates/profile.html:100
 msgid "Update"
 msgstr "Mettre à jour"
 
-#: templates/profile.html:82
+#: templates/profile.html:104
 msgid "Change your password"
 msgstr "Modifiez votre mot de passe"
 
