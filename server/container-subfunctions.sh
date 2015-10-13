@@ -92,7 +92,8 @@ function install_last_commit()
 	&& chmod u+x manage.py                                   \
 	&& ./manage.py migrate --noinput                         \
 	&& ./manage.py compilemessages                           \
-	&& ./manage.py collectstatic --noinput
+	&& ./manage.py collectstatic --noinput                   \
+	&& ./manage.py rendervariations
 
 	APPS=$(python3 <<<"from sugarcub import settings; print(','.join(settings.PROJECT_APPS))")
 	for i in $(echo $APPS | sed -e 's/,/ /g')

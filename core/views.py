@@ -8,6 +8,7 @@ import re
 
 
 def home(request):
+
     irc = cache.get('irc_log')
     if not irc:
         try:
@@ -21,8 +22,11 @@ def home(request):
             irc = ''
 
     return render(request, 'home.html', {
-        'irc': irc,
-        'quotes': Quote.objects.all,
+        'irc':      irc,
+        'quotes':   Quote.objects.all,
+        'birthday': Profile.objects.get_birthday(),
+        'new': Profile.objects.get_new_members(),
+        'list_new': len(Profile.objects.get_new_members()),
     })
 
 

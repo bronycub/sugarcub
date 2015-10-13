@@ -41,7 +41,27 @@ msgstr "Ville"
 msgid "Postal code"
 msgstr "Code postal"
 
-#: forms.py:33
+#: forms.py:28
+msgid "Hide my firstname and lastname"
+msgstr "Cacher mon prénom et nom"
+
+#: forms.py:29
+msgid "Hide my phone number"
+msgstr "Cacher mon numéro de téléphone"
+
+#: forms.py:30
+msgid "Hide my birthday"
+msgstr "Cacher ma date de naissance"
+
+#: forms.py:31
+msgid "Hide my address"
+msgstr "Cacher mon adresse"
+
+#: forms.py:32
+msgid "Hide my email"
+msgstr "Cacher mon adresse mail"
+
+#: forms.py:38
 msgid ""
 "Write about yourself! how you discover My Little Pony\n"
 "                or BronyCUB, what you like and dislike..."
