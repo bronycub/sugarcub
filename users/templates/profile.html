@@ -82,10 +82,10 @@
                     {% bootstrap_field form.birthday layout='horizontal' horizontal_label_class='col-xs-1' horizontal_field_class='col-xs-8' form_group_class='' %}
                     {% bootstrap_field form.birthday_enabled %}
 
-                    {% bootstrap_field form.address layout='horizontal' horizontal_label_class='col-xs-1' horizontal_field_class='col-xs-3' form_group_class='' %}
-                    {% bootstrap_field form.city layout='horizontal' horizontal_label_class='col-xs-1' horizontal_field_class='col-xs-2' form_group_class='' %}
-                    {% bootstrap_field form.postal_code layout='horizontal' horizontal_label_class='col-xs-1' horizontal_field_class='col-xs-2' form_group_class='' %}
+                    {% bootstrap_field form.address layout='horizontal' horizontal_label_class='col-xs-1' horizontal_field_class='col-xs-8' form_group_class='' %}
                     {% bootstrap_field form.address_enabled %}
+                    {% bootstrap_field form.city layout='horizontal' show_label=false horizontal_label_class='col-xs-1' horizontal_field_class='col-xs-4' form_group_class='' %}
+                    {% bootstrap_field form.postal_code layout='horizontal' horizontal_label_class='col-xs-0' show_label=false horizontal_field_class='col-xs-4' %}
 
                     <hr/>
                     <h4>{% trans 'Hide personnal information :' %}</h4>
