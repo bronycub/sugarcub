@@ -232,7 +232,7 @@ function display_help()
 Usage:
     $0 <b|build> [-f|-c]
     $0 <a|add> <instance> <host>
-    $0 <d|deploy> <instance>
+    $0 <d|deploy> <instance> [<commit>|<branch>|<tag>]
     $0 <L|list> [instance]
     $0 <r|rollback> <instance> [deploy]
     $0 <c|config> [instance] [key=value] ...
@@ -247,14 +247,15 @@ Commands:
                    may be run again to update the setup
                    with -f, replace containers once the updated one are built
                    (this will start the containers even if they weren't running)
-				   with -c, disable cache when building the docker images
+                   with -c, disable cache when building the docker images
 
     a, add         setup and deploy a new instance with the given parameters :
                    (deploy only once all paramaters are set,
                     see config to set paramaters and deploy to actualy deploy)
                    [host] url the instance will be reachable from
     
-    d, deploy      deploy the last commit of sugarcub for the given instance
+    d, deploy      deploy the last release of sugarcub for the given instance
+                   or the given git object
                    (must exists first, use add to create a new instance)
                    (all parameters must be set, see config)
 
@@ -274,7 +275,7 @@ Commands:
                    with start, stop or restart, respectively start, stop or restart the dev server
                    with test, run the test suite, with -s, show the browser during functional tests
                    with anything else, run wathever you gave in the container
-				   without any paramaters, run a console for you
+                   without any paramaters, run a console for you
     
     s, services    respectively start, stop or restart the services
     
