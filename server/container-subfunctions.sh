@@ -72,8 +72,14 @@ function install_last_commit()
 {
 	set +o nounset
 
+	COMMIT='dev'
+	if [[ $# -gt 0 ]]
+	then
+		COMMIT=$1
+	fi
+
 	cd $GIT_PATH
-	FOLDER_NAME="$(date +%Y-%m-%d-%H-%M-%S)-$(git rev-parse --short dev)"
+	FOLDER_NAME="$(date +%Y-%m-%d-%H-%M-%S)-$(git rev-parse --short $COMMIT)"
 	[[ $FOLDER_NAME == -* || $FOLDER_NAME == *- ]] && die $DEPLOY_LAST_COMMIT_SETUP_ERROR "can't determine folder name"
 	[[ -e $FOLDER_NAME ]] && die $DEPLOY_LAST_COMMIT_SETUP_ERROR "there is already a file named $FOLDER_NAME"
 
@@ -83,7 +89,7 @@ function install_last_commit()
 
 	mkdir -p /shared/$INSTANCE/$FOLDER_NAME/{code,static}    \
 	&& cd /shared/$INSTANCE/$FOLDER_NAME/code                \
-	&& git clone file://$GIT_PATH -b dev --depth 1 .         \
+	&& git clone file://$GIT_PATH -b $COMMIT --depth 1 .         \
 	                                                         \
 	&& virtualenv ../env -p python3                          \
 	&& . ../env/bin/activate                                 \
@@ -163,10 +169,15 @@ function create_instance()
 function deploy()
 {
 	INSTANCE=$1
+	COMMIT=''
+	if [[ $# -gt 1 ]]
+	then
+		COMMIT=$2
+	fi
 	[[ -d /shared/$INSTANCE && $(ls -A -1 | wc -l) -ne 0 ]] || die $INSTANCE_DOESNT_EXIST "$INSTANCE doesn't exist or is empty, make sure you to run add before calling deploy"
 	
 	update_main_repo
-	install_last_commit
+	install_last_commit $COMMIT
 	validate_deploy
 }
 
