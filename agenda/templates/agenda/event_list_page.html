@@ -9,11 +9,11 @@
  <div class="event list-group" role="tablist" aria-multiselectable="true">
         <div class="list-group-item" role="tab" id="headingOne">
             <div class="list-group-item-heading">
-                <a data-toggle="collapse" data-parent="#event_list" href="#event1" aria-expanded="false" aria-controls="collapseOne">
+                <a data-toggle="collapse" data-parent="#event_list" href="#{{event.title}}" aria-expanded="false" aria-controls="collapseOne">
                     <h4><span class="label label-default">{{ event.date_begin|date }}</span> <i class="fa fa-caret-right"></i> <strong>{{ event.title }}</strong></h4>
                 </a>
             </div>
-            <div id="event1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div id="{{event.title}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                 <div class="row">
                     <div class="col-md-9">
                         <div>
@@ -52,7 +52,17 @@
                                                                                  {% endif %}">
                           <h3>{{ event.author.username }}</h3>
                           <br />
-                          <button class="btn btn-danger btn-lg"><strong><i class="fa fa-comments"></i>{% trans 'CONTACT' %}</strong></button>
+                          <h4><strong><i class="fa fa-comments"></i>&nbsp;{% trans 'CONTACT' %}</strong></h4>
+                          {% ifequal event.event_enabled "1"  %}
+                            <p>{{ event.author.profile.phone }}</p>
+                            <p>{{ event.author.email }}</p>
+                          {% endifequal %}
+                          {% ifequal event.event_enabled "2"  %}
+                            <p>{{ event.author.email }}</p>
+                          {% endifequal %}
+                          {% ifequal event.event_enabled "3"  %}
+                            <p>{{ event.author.profile.phone }}</p>
+                          {% endifequal %}
                         </div>
                       </div>
                     </div>
