@@ -13,6 +13,8 @@ class Event(models.Model):
     description = models.TextField()
     date_begin  = models.DateTimeField()
     date_end    = models.DateTimeField()
+    event_phone_enabled = models.BooleanField(default = False)
+    event_mail_enabled = models.BooleanField(default = False)
     address     = models.CharField(max_length = 200)
 
     class Meta:
