@@ -98,8 +98,20 @@ class Profile(models.Model):
 class Pony(models.Model):
     ''' List of ponies with little quotes to display in the user's description '''
 
+    favorite_pony = (
+    ('twilight_sparkle', "Twilight Sparkle"),
+    ('rarity', "Rarity"),
+    ('rainbow_dash', "Rainbow Dash"),
+    ('fluttershy', "Fluttershy"),
+    ('apple_jack', "AppleJack"),
+    ('pinkie_pie', "Pinkie Pie"),
+    ('spike', "Spike"),
+    ('discord', "Discord"),
+    ('octavia_melody', "Octavia"),
+    )
+
     profile = models.ForeignKey(Profile)
-    pony    = models.CharField(max_length = 32)
+    pony    = models.CharField(max_length = 32, choices = favorite_pony)
     message = models.CharField(max_length = 64)
 
     def __str__(self):
