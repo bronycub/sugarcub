@@ -108,6 +108,7 @@ class Pony(models.Model):
     ('spike', "Spike"),
     ('discord', "Discord"),
     ('octavia_melody', "Octavia"),
+    ('OC', "OC"),
     )
 
     profile = models.ForeignKey(Profile)
