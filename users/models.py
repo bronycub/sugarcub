@@ -99,7 +99,7 @@ class UserPony(models.Model):
     ''' List of ponies with little quotes to display in the user's description '''
 
     profile = models.ForeignKey(Profile)
-    pony    = models.CharField(max_length = 32, choices = favorite_pony)
+    pony    = models.CharField(max_length = 32)
     message = models.CharField(max_length = 64)
 
     def __str__(self):
