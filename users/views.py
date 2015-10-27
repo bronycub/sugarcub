@@ -1,5 +1,5 @@
 from   django.shortcuts                    import render
-from   .models                             import Profile, Pony, Url
+from   .models                             import Profile, UserPony, UserUrl
 from   .forms                              import RegistrationForm, ProfileForm
 from   django.contrib.auth.decorators      import login_required
 from   django.forms.models                 import inlineformset_factory
@@ -42,10 +42,10 @@ def profile(request):
         profile.user = request.user
 
     # inline formset for profile's pony
-    ponyformset = inlineformset_factory(Profile, Pony, fields = ('pony', 'message',), extra = 0)
+    ponyformset = inlineformset_factory(Profile, UserPony, fields = ('pony', 'message',), extra = 0)
 
     # inline formset for profile's url
-    urlformset = inlineformset_factory(Profile, Url, fields = ('url',), extra = 0)
+    urlformset = inlineformset_factory(Profile, UserUrl, fields = ('url',), extra = 0)
 
     if request.method=='POST':
 

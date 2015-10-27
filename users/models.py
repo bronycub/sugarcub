@@ -95,21 +95,8 @@ class Profile(models.Model):
         super().save(*args, **kwargs)
 
 
-class Pony(models.Model):
+class UserPony(models.Model):
     ''' List of ponies with little quotes to display in the user's description '''
-
-    favorite_pony = (
-    ('twilight_sparkle', "Twilight Sparkle"),
-    ('rarity', "Rarity"),
-    ('rainbow_dash', "Rainbow Dash"),
-    ('fluttershy', "Fluttershy"),
-    ('apple_jack', "AppleJack"),
-    ('pinkie_pie', "Pinkie Pie"),
-    ('spike', "Spike"),
-    ('discord', "Discord"),
-    ('octavia_melody', "Octavia"),
-    ('OC', "OC"),
-    )
 
     profile = models.ForeignKey(Profile)
     pony    = models.CharField(max_length = 32, choices = favorite_pony)
@@ -125,7 +112,7 @@ class Pony(models.Model):
         verbose_name_plural = "ponies"
 
 
-class Url(models.Model):
+class UserUrl(models.Model):
     ''' List of urls in the user's description '''
 
     profile = models.ForeignKey(Profile)

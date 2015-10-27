@@ -59,7 +59,7 @@ class UsersModelsTest(TestCase):
         profile.full_clean()
 
     def test_name_pony(self):
-        pony = mommy.make(models.Pony,
+        pony = mommy.make(models.UserPony,
             pony    = 'Fluttershy',
             message = '%s is best pony !',
         )
@@ -67,7 +67,7 @@ class UsersModelsTest(TestCase):
 
         assert 'Fluttershy is best pony !' == pony.__str__()
 
-        pony = mommy.make(models.Pony,
+        pony = mommy.make(models.UserPony,
             pony    = 'Fluttershy',
             message = '%d is best pony !',
         )
@@ -76,7 +76,7 @@ class UsersModelsTest(TestCase):
         assert '%d is best pony !' == pony.__str__()
 
     def test_name_url(self):
-        url = mommy.make(models.Url,
+        url = mommy.make(models.UserUrl,
             url = 'http://equestria.pn',
         )
         url.full_clean()

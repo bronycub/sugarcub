@@ -3,12 +3,12 @@ from .              import models
 
 
 class PonyInline(admin.TabularInline):
-    model = models.Pony
+    model = models.UserPony
     fk_name = 'profile'
 
 
 class UrlInline(admin.TabularInline):
-    model = models.Url
+    model = models.UserUrl
     fk_name = 'profile'
 
 
