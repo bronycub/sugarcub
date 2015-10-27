@@ -29,6 +29,17 @@
                             <p> {{ event.description }} </p>
                           </blockquote>
                         </div>
+                    {% if user.is_authenticated and user.profile.enabled %}
+                      <hr />
+                      <div class="input-group">
+                          <input id="comment-{{ event.id }}" type="text" class="form-control" placeholder="{% trans 'Post a message' %}">
+                          <span class="input-group-addon btn" onclick="submitComment({{ event.id }})"><span class="glyphicon glyphicon-send"/> {% trans 'Post' %}</span>
+                      </div>
+                    {% endif %}
+                      <hr/>
+                      <div id="comment-list-{{ event.id }}" class="list-group-item-text">
+                          {% include 'agenda/comment_list_page.html' with comment_list=event.comment_set.all %}
+                      </div>
                     </div>
                     <div class="col-md-3 text-right">
                       <div class="panel panel-default">
@@ -67,17 +78,7 @@
                       </div>
                     </div>
                 </div>
-            {% if user.is_authenticated and user.profile.enabled %}
-                <hr />
-                <div class="input-group">
-                    <input id="comment-{{ event.id }}" type="text" class="form-control" placeholder="{% trans 'Post a message' %}">
-                    <span class="input-group-addon btn" onclick="submitComment({{ event.id }})"><span class="glyphicon glyphicon-send"/> {% trans 'Post' %}</span>
-                </div>
-            {% endif %}
             <hr />
-            <div id="comment-list-{{ event.id }}" class="list-group-item-text">
-                {% include 'agenda/comment_list_page.html' with comment_list=event.comment_set.all %}
-            </div>
         </div>
     </div>
 </div>
