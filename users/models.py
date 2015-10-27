@@ -95,11 +95,33 @@ class Profile(models.Model):
         super().save(*args, **kwargs)
 
 
+class Pony(models.Model):
+    """List of different pony available"""
+
+    name = models.CharField(max_length = 32)
+    file_name = models.CharField(max_length = 32)
+
+    class Meta:
+        verbose_name_plural = "ponies"
+
+    def __str__(self):
+        return self.name
+
+class Icon(models.Model):
+    """List of different icon available"""
+
+    name = models.CharField(max_length = 32)
+    file_name = models.CharField(max_length = 32)        
+
+    def __str__(self):
+        return self.name
+
+
 class UserPony(models.Model):
     ''' List of ponies with little quotes to display in the user's description '''
 
     profile = models.ForeignKey(Profile)
-    pony    = models.CharField(max_length = 32)
+    pony    = models.ForeignKey(Pony)
     message = models.CharField(max_length = 64)
 
     def __str__(self):
@@ -117,7 +139,7 @@ class UserUrl(models.Model):
 
     profile = models.ForeignKey(Profile)
     url     = models.URLField()
-    icon    = models.CharField(max_length = 16)
+    icon    = models.ForeignKey(Icon)
 
     def __str__(self):
         return self.url
