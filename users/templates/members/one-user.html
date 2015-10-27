@@ -38,11 +38,11 @@
                   </p>
                   <hr />
                   <p>
-                    {% for pony in profile.pony_set.all %}
-                      <img alt="{% static pony.pony %}" src="{% static 'img/ponies/'|add:pony.pony|add:'.png' %}" class="img-thumbnail"/>&nbsp;<span class='label label-info'>{{ pony.message }}</span>
+                    {% for pony in profile.userpony_set.all %}
+                      <img alt="{% static pony.pony.name %}" src="{% static 'img/ponies/'|add:pony.pony.file_name %}" class="img-thumbnail"/>&nbsp;<span class='label label-info'>{{ pony.message }}</span>
                     {% endfor %}
                   </p>
-                  {% if profile.pony_set.all|length > 0 %}
+                  {% if profile.userpony_set.all|length > 0 %}
                     <hr />
                   {% endif %}
                   <div class="list-group col-sm-7">
@@ -65,8 +65,8 @@
                   </div>
                   <div class="panel-body">
                     <div>
-                          {% for url in profile.url_set.all %}
-                              <a href='{{ url.url }}' class='zocial icon {{ url.icon }}'></a>
+                          {% for url in profile.userurl_set.all %}
+                              <a href='{{ url.url }}' class='zocial icon {{ url.icon.name }}'></a>
                           {% endfor %}
                     </div>
                   </div>
