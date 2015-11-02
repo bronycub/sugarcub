@@ -86,6 +86,16 @@
                         }
                     });
                 };
+                submitParticipation = function(id) {
+                    $.ajax({
+                        type: 'post',
+                        url:  '{% url 'agenda:participate' %}',
+                        data:  {event: id},
+                        success: function() {
+
+                        }
+                    });
+                };
             });
         </script>
     {% else %}
@@ -117,6 +127,18 @@
                                     '</div>' +
                                 '</div>'
                             );
+                        }
+                    });
+                };
+                submitParticipation_offline = function(id) {
+                    var username_post = $('#username-participation-' + id).val();
+                    console.log(username_post);
+                    $.ajax({
+                        type: 'post',
+                        url:  '{% url 'agenda:participate' %}',
+                        data:  {event: id, username: username_post},
+                        success: function() {
+                            
                         }
                     });
                 };
