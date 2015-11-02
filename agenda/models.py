@@ -83,7 +83,7 @@ class Participation(models.Model):
 
     user   = models.ForeignKey(User, null = True)
     pseudo = models.CharField(max_length = 31, blank = True)
-    event  = models.OneToOneField(Event)
+    event  = models.ForeignKey(Event)
 
     def __str__(self):
         return str(self.author()) + ' ' + str(self.event)
