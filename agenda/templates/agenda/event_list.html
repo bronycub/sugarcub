@@ -88,5 +88,39 @@
                 };
             });
         </script>
+    {% else %}
+        <script>
+            $(document).ready(function() {
+                submitComment_offline = function(id) {
+                    var username_post = $('#username-' + id).val();
+                    var comment = $('#comment-' + id).val();
+                    $.ajax({
+                        type: 'post',
+                        url:  '{% url 'agenda:comment' %}',
+                        data:  {event: id, text: comment, username: username_post},
+                        success: function() {
+                            $('#comment-' + id).val('');
+                            $('#comment-list-' + id).prepend(
+                                '<div class="comment panel panel-default">' +
+                                    '<div class="panel-heading">' +
+                                        '<img class="img-header thumbnail" alt="avatar" src="' +
+                                            {% if user.profile.avatar.small %}
+                                                '{{ user.profile.avatar.small.url }}' +
+                                            {% else %}
+                                                '{% static 'ressources/logo/icon_bronycub.png' %}' +
+                                            {% endif %}
+                                        '"/>' +
+                                        username_post +
+                                    '</div>' +
+                                    '<div class="panel-body">' +
+                                        comment +
+                                    '</div>' +
+                                '</div>'
+                            );
+                        }
+                    });
+                };
+            });
+        </script>
     {% endif %}
 {% endblock %}

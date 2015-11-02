@@ -42,17 +42,27 @@ class UpdateEventView(UpdateView):
         return super().dispatch(*args, **kwargs)
 
 
-@login_required
 def post_comment(request):
 
     if request.method == 'POST':
-        event = models.Event.objects.get(pk = request.POST.get('event'))
-        comment = models.Comment(
-            author = request.user,
-            text = request.POST.get('text'),
-            event = event
-        )
-        comment.save()
+        if request.user.is_authenticated():
+            event = models.Event.objects.get(pk = request.POST.get('event'))
+            comment = models.Comment(
+                author = request.user,
+                text = request.POST.get('text'),
+                event = event
+            )
+            comment.save()
+
+        else:
+            event = models.Event.objects.get(pk = request.POST.get('event'))
+            comment = models.Comment(
+                pseudo = request.POST.get('username'),
+                text = request.POST.get('text'),
+                event = event
+            )
+            comment.save()
+
 
         return HttpResponse('success')
 
