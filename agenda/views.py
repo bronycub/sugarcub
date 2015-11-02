@@ -69,6 +69,32 @@ def post_comment(request):
     return redirect('agenda:list')
 
 
+def participate(request):
+
+    if request.method == 'POST':
+        if request.user.is_authenticated():
+            event = models.Event.objects.get(pk = request.POST.get('event'))
+            participation = models.Participation(
+                user = request.user,
+                event = event
+            )
+            participation.save()
+
+        else:
+            print(request.POST.get('username'))
+            event = models.Event.objects.get(pk = request.POST.get('event'))
+            participation = models.Participation(
+                pseudo = request.POST.get('username'),
+                event = event
+            )
+            participation.save()
+
+
+        return HttpResponse('success')
+
+    return redirect('agenda:list')
+
+
 def ics_export(request):
     calendar = str(utils.export_calendar())
     response = HttpResponse(calendar, content_type = 'text/calendar; charset=utf-8')

@@ -31,6 +31,11 @@ urlpatterns = [
         name  = 'comment',
     ),
     url(
+        regex = _(r'^participations$'),
+        view  = views.participate,
+        name  = 'participate',
+    ),
+    url(
         regex = _(r'^ics$'),
         view  = views.ics_export,
         name  = 'ics_export',
