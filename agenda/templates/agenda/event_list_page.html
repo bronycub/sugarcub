@@ -29,11 +29,17 @@
                             <p> {{ event.description }} </p>
                           </blockquote>
                         </div>
-                    {% if user.is_authenticated and user.profile.enabled %}
                       <hr />
+                    {% if user.is_authenticated and user.profile.enabled %}
                       <div class="input-group">
                           <input id="comment-{{ event.id }}" type="text" class="form-control" placeholder="{% trans 'Post a message' %}">
-                          <span class="input-group-addon btn" onclick="submitComment({{ event.id }})"><span class="glyphicon glyphicon-send"/> {% trans 'Post' %}</span>
+                          <span class="input-group-addon btn" onclick="submitComment({{ event.id }})" name="online"><span class="glyphicon glyphicon-send"/> {% trans 'Post' %}</span>
+                      </div>
+                    {% else %}
+                      <div class="input-group">
+                          <input id="username-{{ event.id }}" type="text" class="form-control" placeholder="{% trans 'Username' %}">
+                          <input id="comment-{{ event.id }}" type="text" class="form-control" placeholder="{% trans 'Post a message' %}">
+                          <span class="input-group-addon btn" onclick="submitComment_offline({{ event.id }})" name="offline"><span class="glyphicon glyphicon-send"/> {% trans 'Post' %}</span>
                       </div>
                     {% endif %}
                       <hr/>
