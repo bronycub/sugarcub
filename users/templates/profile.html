@@ -44,7 +44,7 @@
                             {% if ponies.can_delete %}
                                 {{ ponyform.id }}
                                 {% bootstrap_field ponyform.pony show_label=false field_class='col-sm-3 col-xs-12' form_group_class='' %}
-                                {% bootstrap_field ponyform.message show_label=false field_class='col-sm-8 col-xs-12' form_group_class='' %}
+                                {% bootstrap_field ponyform.message show_label=false field_class='col-sm-9 col-xs-12' form_group_class='' %}
                                 {% bootstrap_field ponyform.DELETE field_class='col-xs-12'%}
                             {% else %}
                                 {% bootstrap_field ponyform.pony show_label=false field_class='col-sm-3 col-xs-12' form_group_class='' %}
@@ -65,10 +65,12 @@
 
                             {% if urls.can_delete %}
                                 {{ urlform.id }}
-                                {% bootstrap_field urlform.url show_label=false field_class='col-xs-12' %}
+                                {% bootstrap_field urlform.icon show_label=false field_class='col-sm-3 col-xs-12' %}
+                                {% bootstrap_field urlform.url show_label=false field_class='col-sm-9 col-xs-12' %}
                                 {% bootstrap_field urlform.DELETE field_class='col-xs-12' %}
                             {% else %}
-                                {% bootstrap_field urlform.message show_label=false field_class='col-xs-12' %}
+                                {% bootstrap_field urlform.icon show_label=false field_class='col-sm-3 col-xs-12' %}
+                                {% bootstrap_field urlform.message show_label=false field_class='col-sm-9 col-xs-12' %}
                             {% endif %}
 
                         {% endfor %}
