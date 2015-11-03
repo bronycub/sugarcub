@@ -45,7 +45,7 @@ def profile(request):
     ponyformset = inlineformset_factory(Profile, UserPony, form = UserPonyForm, fields = ('pony', 'message',), extra = 0)
 
     # inline formset for profile's url
-    urlformset = inlineformset_factory(Profile, UserUrl, fields = ('url',), extra = 0)
+    urlformset = inlineformset_factory(Profile, UserUrl, fields = ('icon', 'url',), extra = 0)
 
     if request.method=='POST':
 
