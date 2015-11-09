@@ -48,6 +48,7 @@ DEPENDENCIES_APPS = (
     'registration',
     'endless_pagination',
     'absolute',
+    'bootstrap3_datetime',
 )
 
 DEV_DEPENDENCIES_APPS = (
