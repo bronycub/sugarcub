@@ -3,6 +3,7 @@ from registration.forms             import RegistrationFormUniqueEmail
 from multiform                      import MultiModelForm, InvalidArgument
 from .models                        import Profile
 from django.contrib.auth.models     import User
+from bootstrap3_datetime.widgets    import DateTimePicker
 from django.utils.translation       import ugettext_lazy                    as _
 
 
@@ -15,13 +16,15 @@ class UserForm(forms.ModelForm):
 
 class ProfileForm(forms.ModelForm):
 
+    birthday = forms.DateTimeField(widget=DateTimePicker(options={"format": "DD/MM/YYYY"}), label = _("Birthday"))
+
     class Meta:
         model   = Profile
         exclude = ['user', 'enabled', 'address_latitude', 'address_longitude']
         labels = {
             "bio": _("Biography"),
             "phone": _("Phone"),
-            "birthday": _("Birthday"),
+            # "birthday": _("Birthday"),
             "address": _("Address"),
             "city": _("City"),
             "postal_code": _("Postal code"),
