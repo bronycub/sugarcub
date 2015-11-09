@@ -48,7 +48,7 @@
                           {% include 'agenda/comment_list_page.html' with comment_list=event.comment_set.all %}
                       </div>
                     </div>
-                    <div class="col-md-3 text-right">
+                    <div class="col-md-3">
                       <div class="panel panel-default">
                         <div class="panel-heading" style="text-align:left;">
                           <h3 class="panel-title"><strong>{% trans 'Will you participate?' %}</strong></h3>
@@ -70,6 +70,14 @@
                               </div>
                             </div>
                           {% endif %}
+                        </div>
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <h3 class="panel-title"><strong>{% trans 'Participant' %}</strong></h3>
+                        </div>
+                        <div class="panel-body">
+                          {% include 'agenda/participation_list_page.hmtl' with participation_list=event.participation_set.all %}
                         </div>
                       </div>
                       <div class="panel panel-default">
