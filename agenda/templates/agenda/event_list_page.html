@@ -49,6 +49,11 @@
                       </div>
                     </div>
                     <div class="col-md-3 text-right">
+                      {% if user.is_authenticated and user.profile.enabled and event.author == user %}
+                        <div class="panel panel-default">
+                          <a href="" class="btn btn-primary btn-lg btn-block panel-body">{% trans 'Edit event' %}</a>
+                        </div>
+                      {% endif %}
                       <div class="panel panel-default">
                         <div class="panel-heading" style="text-align:left;">
                           <h3 class="panel-title"><strong>{% trans 'Will you participate?' %}</strong></h3>
