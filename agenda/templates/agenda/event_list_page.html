@@ -76,7 +76,7 @@
                         <div class="panel-heading">
                           <h3 class="panel-title"><strong>{% trans 'Participant' %}</strong></h3>
                         </div>
-                        <div class="panel-body">
+                        <div id="participation-list-{{ event.id }}" class="panel-body">
                           {% include 'agenda/participation_list_page.hmtl' with participation_list=event.participation_set.all %}
                         </div>
                       </div>
