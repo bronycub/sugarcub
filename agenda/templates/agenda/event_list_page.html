@@ -51,7 +51,7 @@
                     <div class="col-md-3 text-right">
                       {% if user.is_authenticated and user.profile.enabled and event.author == user %}
                         <div class="panel panel-default">
-                          <a href="" class="btn btn-primary btn-lg btn-block panel-body">{% trans 'Edit event' %}</a>
+                          <a href="{% url 'agenda:update_event' event_id=event.id %}" class="btn btn-primary btn-lg btn-block panel-body">{% trans 'Edit event' %}</a>
                         </div>
                       {% endif %}
                       <div class="panel panel-default">

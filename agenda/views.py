@@ -1,6 +1,8 @@
+from django.shortcuts               import render
 from django.core.urlresolvers       import reverse_lazy
 from django.views.generic.edit      import CreateView, UpdateView
 from .                              import models, forms, utils
+from .forms                         import EventForm
 from endless_pagination.views       import AjaxListView
 from django.http                    import HttpResponse
 from django.shortcuts               import redirect
@@ -101,3 +103,31 @@ def ics_export(request):
     response['Content-Disposition'] = 'attachment; filename=agenda.ics'
     response['Content-Lenght'] = len(calendar)
     return response
+
+
+def UpdateEvent(request, event_id):
+    try:
+        event = models.Event.objects.get(id = event_id)
+    except:
+        return redirect('agenda:list')
+
+    if event.author.id == request.user.id:
+        if request.method=='POST':
+
+            form = EventForm(request.POST, request.FILES, instance = event)
+
+            if form.is_valid():
+                form.save()
+
+                return redirect('agenda:list')
+
+        else:
+            form = EventForm(instance = event)
+
+        return render(request, 'agenda/event_update_form.html', {
+            'event':   event,
+            'form':    form,
+        })
+
+    else:
+        return redirect('agenda:list')
