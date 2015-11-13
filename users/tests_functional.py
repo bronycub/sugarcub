@@ -24,6 +24,27 @@ def test_feature(live_server):
     pass
 
 
+registration_form_data = {
+    'registration-username':  'user_signup_test',
+    'registration-password1': 'password_test',
+    'registration-email':     'fluttershy@equestria.pn',
+    'user-first_name':        'first_test',
+    'user-last_name':         'last_test',
+    'profile-bio':            'test',
+    'profile-phone':          '0123456789',
+    'profile-birthday':       '01/01/1970',
+    'profile-address':        'test',
+}
+
+
+def fill_registration_form(password2, browser):
+    registration_form_data['registration-password2'] = password2
+    for field in registration_form_data.items():
+        browser.fill(*field)
+
+    i_submit(browser)
+
+
 @given('I have valid users')
 def valid_users():
     test_data.create_profiles()
@@ -36,40 +57,12 @@ def i_see_a_form(browser):
 
 @when('I incorrectly fill the registration form')
 def i_incorrectly_fill_registration_form(browser):
-    for field in [
-        ('registration-username',  'user_signup_test'),
-        ('registration-password1', 'password_test'),
-        ('registration-password2', 'password_invalid'),
-        ('registration-email',     'fluttershy@equestria.pn'),
-        ('user-first_name',        'first_test'),
-        ('user-last_name',         'last_test'),
-        ('profile-bio',            'test'),
-        ('profile-phone',          '0123456789'),
-        ('profile-birthday',       '01/01/1970'),
-        ('profile-address',        'test'),
-    ]:
-        browser.fill(*field)
-
-    i_submit(browser)
+    fill_registration_form('password_invalid', browser)
 
 
 @when('I correctly fill the registration form')
 def i_correctly_fill_registration_form(browser):
-    for field in [
-        ('registration-username',  'user_signup_test'),
-        ('registration-password1', 'password_test'),
-        ('registration-password2', 'password_test'),
-        ('registration-email',     'fluttershy@equestria.pn'),
-        ('user-first_name',        'first_test'),
-        ('user-last_name',         'last_test'),
-        ('profile-bio',            'test'),
-        ('profile-phone',          '0123456789'),
-        ('profile-birthday',       '01/01/1970'),
-        ('profile-address',        'test'),
-    ]:
-        browser.fill(*field)
-
-    i_submit(browser)
+    fill_registration_form('password_test', browser)
 
 
 @when('I correctly fill the profile form')

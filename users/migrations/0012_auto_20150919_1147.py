@@ -8,7 +8,7 @@ import django.core.validators
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('users', '0012_auto_20150709_1712'),
+        ('users', '0011_profile_enabled'),
     ]
 
     operations = [
@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='profile',
             name='postal_code',
-            field=models.CharField(default='01000', validators=[django.core.validators.RegexValidator(message='The postal code must be 5 digits.', regex='^\\d[1-9]\\d{3}$')], max_length=5),
+            field=models.CharField(default=33000, max_length=5, validators=[django.core.validators.RegexValidator(message='The postal code must be 5 digits.', regex='^\\d[1-9]\\d{3}$')]),
             preserve_default=False,
         ),
         migrations.AlterField(
@@ -37,6 +37,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='profile',
             name='phone',
-            field=models.CharField(validators=[django.core.validators.RegexValidator(message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.", regex='^\\+?1?\\d{9,15}$')], max_length=15),
+            field=models.CharField(max_length=15, validators=[django.core.validators.RegexValidator(message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.", regex='^\\+?1?\\d{9,15}$')]),
         ),
     ]

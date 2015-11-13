@@ -201,7 +201,7 @@ msgstr "Nous rejoindre"
 
 #: templates/registration/informations.html:6
 msgid "To know before registering"
-msgstr "A savoir avant de s'inscrire"
+msgstr "À savoir avant de s'inscrire"
 
 #: templates/registration/logout.html:14
 msgid "You're now logged out."

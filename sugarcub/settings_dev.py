@@ -8,9 +8,7 @@ SECRET_KEY = '@93eg2!@%a4r@(qh9v#e2xpb@nkv^0=2em%9@k$_+qz9xr$&c@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 TEMPLATE_DEBUG = True
-
 ALLOWED_HOSTS = []
 
 
@@ -20,7 +18,7 @@ ALLOWED_HOSTS = []
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, '..', 'db.sqlite3'),
     }
 }
 
@@ -29,12 +27,12 @@ DATABASES = {
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL  = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, '..', 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Media
 
 MEDIA_URL  = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, '..', 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # Mails
@@ -50,3 +48,4 @@ CACHES = {
         'LOCATION': '/var/tmp/django_cache',
     }
 }
+DEFAULT_FROM_EMAIL  = 'contact@bronycub.org'

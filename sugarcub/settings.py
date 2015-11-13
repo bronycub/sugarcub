@@ -17,13 +17,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
-IS_PROD = os.getenv('DEPLOY_TYPE', 'dev') == 'prod'
-if IS_PROD:
-    from sugarcub.settings_prod import *
-else:
-    from sugarcub.settings_dev import *
-
-
 # Application definition
 
 PROJECT_APPS = (
@@ -93,6 +86,20 @@ ROOT_URLCONF = 'sugarcub.urls'
 
 WSGI_APPLICATION = 'sugarcub.wsgi.application'
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'unix:///shared/redis.sock',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+            'IGNORE_EXCEPTIONS': True,
+        }
+    }
+}
+
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_CACHE_ALIAS = "default"
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
@@ -132,3 +139,9 @@ DAB_FIELD_RENDERER = 'django_admin_bootstrapped.renderers.BootstrapFieldRenderer
 # Per Collective Custom
 
 from sugarcub.custom_settings import *
+
+IS_PROD = os.getenv('DEPLOY_TYPE', 'dev') == 'prod'
+if IS_PROD:
+    from sugarcub.settings_prod import *
+else:
+    from sugarcub.settings_dev import *

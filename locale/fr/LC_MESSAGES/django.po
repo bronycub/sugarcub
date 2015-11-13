@@ -313,3 +313,19 @@ msgid ""
 "\tView function: <code>%(full_name)s</code>. Name: <code>%(url_name)s</"
 "code>.\n"
 msgstr ""
+
+#: sugarcub/urls.py:8
+msgid "admin/doc/"
+msgstr ""
+
+#: sugarcub/urls.py:9
+msgid "admin/"
+msgstr ""
+
+#: sugarcub/urls.py:11
+msgid "bbbff/"
+msgstr ""
+
+#: sugarcub/urls.py:12
+msgid "agenda/"
+msgstr ""
