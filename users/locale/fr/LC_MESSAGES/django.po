@@ -96,7 +96,7 @@ msgstr "Aucun membre enregistré pour le moment ..."
 #: templates/members/one-user.html:77
 msgid ""
 "Your account must be accepted by the admin to see the members informations."
-msgstr "Vous devez être connecté pour voir les informations de ce membre."
+msgstr "Votre compte doit être validé par un administrateur pour avoir accès aux informations des autres membres"
 
 #: templates/members/one-user.html:80 templates/members/one-user.html.py:91
 msgid "Close"
