@@ -1,7 +1,7 @@
 from django                         import forms
 from registration.forms             import RegistrationFormUniqueEmail
 from multiform                      import MultiModelForm, InvalidArgument
-from .models                        import Profile
+from .models                        import Profile, UserPony
 from django.contrib.auth.models     import User
 from django.utils.translation       import ugettext_lazy                    as _
 
@@ -11,6 +11,19 @@ class UserForm(forms.ModelForm):
     class Meta:
         model  = User
         fields = ['first_name', 'last_name']
+
+
+class UserPonyForm(forms.ModelForm):
+
+    class Meta:
+        model = UserPony
+        fields = ['pony', 'message']
+
+    def __init__(self, *args, **kwargs):
+        super(UserPonyForm, self).__init__(*args, **kwargs)
+        self.fields['message'].widget.attrs.update({'placeholder':
+            _('Exemple : Pony is best pegasus/pony/unicorn!')
+        })
 
 
 class ProfileForm(forms.ModelForm):

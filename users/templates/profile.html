@@ -11,95 +11,101 @@
 
     <div class="container">
         <div class="row">
-            <div>
-                <img class="img-rounded img-responsive col-xs-2" src="{% if profile.avatar %}
+            <div class="col-xs-10 col-xs-offset-1">
+                <div class="col-xs-12 col-sm-2">
+                    <img class="img-rounded img-responsive center-block" src="{% if profile.avatar %}
                                                                           {{ profile.avatar.avatar.url }}
                                                                       {% else %}
                                                                           {% static 'ressources/logo/icon_bronycub.png' %}
                                                                       {% endif %}" alt="avatar"/>
-                <h1 class="col-xs-offset-1">{% trans 'SugarCUB </br>My Profile' %}</h1>
-                <hr/>
-                <form enctype="multipart/form-data" class="form-horizontal" method="post">
-                    {% csrf_token %}
-
-                    <!-- Image + biographie (toujours affiché) -->
-                    {% bootstrap_field form.bio layout='horizontal' horizontal_label_class='col-xs-1' horizontal_field_class='col-xs-11' %}
-
-                    <img class="img-rounded img-responsive col-xs-offset-1" width="150px" src="{% if profile.avatar %}
-                                                                     {{ profile.avatar.avatar.url }}
-                                                                 {% else %}
-                                                                     {% static 'ressources/logo/icon_bronycub.png' %}
-                                                                 {% endif %}" alt="avatar"/>
-                    {% bootstrap_field form.avatar layout='horizontal' field_class='col-xs-4' horizontal_label_class='col-xs-1' horizontal_field_class='col-xs-3' %}
-
+                </div>
+                <h1>{% trans 'SugarCUB </br>My Profile' %}</h1>
+                <div class="row">
                     <hr/>
-                    <h3>{% trans 'Favorite pony :' %}</h3>
-                    <!-- favorite pony -->
-                    {{ ponies.management_form }}
-                    {% for ponyform in ponies %}
-                        {% bootstrap_field ponyform.pony show_label=false field_class='col-xs-3' form_group_class='' %}
+                    <form enctype="multipart/form-data" class="form" method="post">
+                        {% csrf_token %}
 
-                        {% if ponies.can_delete %}
-                            {{ ponyform.id }}
-                            {% bootstrap_field ponyform.message show_label=false field_class='col-xs-8' form_group_class='' %}
-                            {% bootstrap_field ponyform.DELETE %}
-                        {% else %}
-                            {% bootstrap_field ponyform.message show_label=false field_class='col-xs-9' %}
-                        {% endif %}
+                        <!-- Image + biographie (toujours affiché) -->
+                        {% bootstrap_field form.bio %}
 
-                    {% endfor %}
+                        <img class="img-rounded img-responsive" width="150px" src="{% if profile.avatar %}
+                                                                         {{ profile.avatar.avatar.url }}
+                                                                     {% else %}
+                                                                         {% static 'ressources/logo/icon_bronycub.png' %}
+                                                                     {% endif %}" alt="avatar"/>
+                        {% bootstrap_field form.avatar %}
 
-                    {% buttons %}
-                        <button type="submit" class="btn btn-primary col-xs-offset-1" name="add_pony">{% bootstrap_icon star %}{% trans 'Add new line' %}</button>
-                    {% endbuttons %}
+                        <hr/>
+                        <h3>{% trans 'Favorite pony :' %}</h3>
+                        <!-- favorite pony -->
+                        {{ ponies.management_form }}
+                        {% for ponyform in ponies %}
+                        
+                            {% if ponies.can_delete %}
+                                {{ ponyform.id }}
+                                {% bootstrap_field ponyform.pony show_label=false field_class='col-sm-3 col-xs-12' form_group_class='' %}
+                                {% bootstrap_field ponyform.message show_label=false field_class='col-sm-9 col-xs-12' form_group_class='' %}
+                                {% bootstrap_field ponyform.DELETE field_class='col-xs-12'%}
+                            {% else %}
+                                {% bootstrap_field ponyform.pony show_label=false field_class='col-sm-3 col-xs-12' form_group_class='' %}
+                                {% bootstrap_field ponyform.message show_label=false field_class='col-sm-9 col-xs-12' %}
+                            {% endif %}
 
-                    <hr/>
-                    <h3>{% trans 'Url :' %}</h3>
-                    <!-- url -->
-                    {{ urls.management_form }}
-                    {% for urlform in urls %}
+                        {% endfor %}
 
-                        {% if urls.can_delete %}
-                            {{ urlform.id }}
-                            {% bootstrap_field urlform.url show_label=false field_class='col-xs-11' form_group_class='' %}
-                            {% bootstrap_field urlform.DELETE %}
-                        {% else %}
-                            {% bootstrap_field urlform.message show_label=false field_class='col-xs-12' %}
-                        {% endif %}
+                        {% buttons %}
+                            <button type="submit" class="btn btn-primary col-xs-offset-1" name="add_pony">{% bootstrap_icon star %}{% trans 'Add new line' %}</button>
+                        {% endbuttons %}
 
-                    {% endfor %}
+                        <hr/>
+                        <h3>{% trans 'Url :' %}</h3>
+                        <!-- url -->
+                        {{ urls.management_form }}
+                        {% for urlform in urls %}
 
-                    {% buttons %}
-                        <button type="submit" class="btn btn-primary col-xs-offset-1" name="add_url">{% bootstrap_icon star %}{% trans 'Add new line' %}</button>
-                    {% endbuttons %}
+                            {% if urls.can_delete %}
+                                {{ urlform.id }}
+                                {% bootstrap_field urlform.icon show_label=false field_class='col-sm-3 col-xs-12' %}
+                                {% bootstrap_field urlform.url show_label=false field_class='col-sm-9 col-xs-12' %}
+                                {% bootstrap_field urlform.DELETE field_class='col-xs-12' %}
+                            {% else %}
+                                {% bootstrap_field urlform.icon show_label=false field_class='col-sm-3 col-xs-12' %}
+                                {% bootstrap_field urlform.message show_label=false field_class='col-sm-9 col-xs-12' %}
+                            {% endif %}
 
-                    <hr/>
-                    <h4>{% trans 'Only members of BronyCUB will be able to see those information :' %}</h4>
-                    <!-- information caché -->
-                    {% bootstrap_field form.phone layout='horizontal' horizontal_label_class='col-xs-1' horizontal_field_class='col-xs-8' form_group_class='' %}
-                    {% bootstrap_field form.phone_enabled %}
+                        {% endfor %}
 
-                    {% bootstrap_field form.birthday layout='horizontal' horizontal_label_class='col-xs-1' horizontal_field_class='col-xs-8' form_group_class='' %}
-                    {% bootstrap_field form.birthday_enabled %}
+                        {% buttons %}
+                            <button type="submit" class="btn btn-primary col-xs-offset-1" name="add_url">{% bootstrap_icon star %}{% trans 'Add new line' %}</button>
+                        {% endbuttons %}
 
-                    {% bootstrap_field form.address layout='horizontal' horizontal_label_class='col-xs-1' horizontal_field_class='col-xs-8' form_group_class='' %}
-                    {% bootstrap_field form.address_enabled %}
-                    {% bootstrap_field form.city layout='horizontal' show_label=false horizontal_label_class='col-xs-1' horizontal_field_class='col-xs-4' form_group_class='' %}
-                    {% bootstrap_field form.postal_code layout='horizontal' horizontal_label_class='col-xs-0' show_label=false horizontal_field_class='col-xs-4' %}
+                        <hr/>
+                        <h4>{% trans 'Only members of BronyCUB will be able to see those information :' %}</h4>
+                        <!-- information caché -->
+                        {% bootstrap_field form.phone label_class='col-sm-1 col-xs-12' field_class='col-sm-11 col-xs-12'%}
+                        {% bootstrap_field form.phone_enabled field_class='col-xs-11 col-xs-offset-1' %}
 
-                    <hr/>
-                    <h4>{% trans 'Hide personnal information :' %}</h4>
-                    
-                    
-                    
-                    {% bootstrap_field form.mail_enabled %}
-                    {% bootstrap_field form.name_enabled %}
+                        {% bootstrap_field form.birthday label_class='col-sm-1 col-xs-12' field_class='col-xs-12 col-sm-11' %}
+                        {% bootstrap_field form.birthday_enabled field_class='col-xs-11 col-xs-offset-1' %}
 
-                    <hr/>
-                    {% buttons %}
-                        <button type="submit" class="btn btn-primary" name="submit">{% bootstrap_icon star %}{% trans 'Update' %}</button>
-                    {% endbuttons %}
-                </form>
+                        {% bootstrap_field form.address label_class='col-xs-12 col-sm-1' field_class='col-xs-12 col-sm-11' %}
+                        {% bootstrap_field form.city show_label=false field_class='col-sm-6 col-sm-offset-1 col-xs-12' %}
+                        {% bootstrap_field form.postal_code show_label=false field_class='col-xs-12 col-sm-5' %}
+                        {% bootstrap_field form.address_enabled field_class='col-xs-11 col-xs-offset-1' %}
+
+                        <hr/>
+                        <h4>{% trans 'Hide personnal information :' %}</h4>
+                        
+                        
+                        {% bootstrap_field form.mail_enabled %}
+                        {% bootstrap_field form.name_enabled %}
+
+                        <hr/>
+                        {% buttons %}
+                            <button type="submit" class="btn btn-primary" name="submit">{% bootstrap_icon star %}{% trans 'Update' %}</button>
+                        {% endbuttons %}
+                    </form>
+                </div>
                 <hr/>
                 <a class="btn btn-primary" href="{% url 'auth_password_change' %}">{% trans 'Change your password' %}</a>
             </div>
