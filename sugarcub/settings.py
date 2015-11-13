@@ -63,7 +63,6 @@ MIDDLEWARE_CLASSES = (
 
 TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
     'core.processors.custom_fields',
-    'core.processors.humanitarian_actions',
     'core.processors.mailing_list',
     'django.core.context_processors.request',
     'absolute.context_processors.absolute',

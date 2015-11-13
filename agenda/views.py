@@ -65,7 +65,6 @@ def post_comment(request):
             )
             comment.save()
 
-
         return HttpResponse('success')
 
     return redirect('agenda:list')
@@ -91,7 +90,6 @@ def participate(request):
             )
             participation.save()
 
-
         return HttpResponse('success')
 
     return redirect('agenda:list')
@@ -112,7 +110,7 @@ def UpdateEvent(request, event_id):
         return redirect('agenda:list')
 
     if event.author.id == request.user.id:
-        if request.method=='POST':
+        if request.method == 'POST':
 
             form = EventForm(request.POST, request.FILES, instance = event)
 

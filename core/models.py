@@ -20,19 +20,3 @@ class Friend(models.Model):
 
     def __str__(self):
         return self.name
-
-
-class Event(models.Model):
-    ''' List of events the collective has planned '''
-
-    title = models.CharField(max_length = 64)
-    host  = models.CharField(max_length = 64)
-    link  = models.URLField()
-    when  = models.DateTimeField()
-    where = models.CharField(max_length = 256)
-
-    def __str__(self):
-        return self.title
-
-    class Meta:
-        ordering = ['-when']

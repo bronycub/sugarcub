@@ -15,8 +15,6 @@ class EventForm(forms.ModelForm):
         labels = {
             "title": _("Title"),
             "description": _("Description"),
-            # "date_begin": _("Start date and hour"),
-            # "date_end": _("End date and hour"),
             "address": _("Address of the event"),
             "event_enabled": _("Means of contact")
         }
