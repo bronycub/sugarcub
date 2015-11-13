@@ -1,7 +1,15 @@
 from   django.db                  import models
 from   django.contrib.auth.models import User
 from   django.core.urlresolvers   import reverse
+from django.utils.translation     import ugettext_lazy as _
 import ics
+
+
+information_enabled = (
+    ('1', _("Show both my phone and my mail")),
+    ('2', _("Show only my mail")),
+    ('3', _("Show only my phone")),
+    )
 
 
 class Event(models.Model):
@@ -9,11 +17,12 @@ class Event(models.Model):
 
     author      = models.ForeignKey(User)
 
-    title       = models.TextField()
+    title       = models.CharField(max_length = 500)
     description = models.TextField()
     date_begin  = models.DateTimeField()
     date_end    = models.DateTimeField()
     address     = models.CharField(max_length = 200)
+    event_enabled = models.CharField(max_length = 10, choices = information_enabled)
 
     class Meta:
         ordering = ['-date_begin', '-date_end']
@@ -74,7 +83,7 @@ class Participation(models.Model):
 
     user   = models.ForeignKey(User, null = True)
     pseudo = models.CharField(max_length = 31, blank = True)
-    event  = models.OneToOneField(Event)
+    event  = models.ForeignKey(Event)
 
     def __str__(self):
         return str(self.author()) + ' ' + str(self.event)

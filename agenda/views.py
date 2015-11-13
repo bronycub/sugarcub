@@ -42,17 +42,53 @@ class UpdateEventView(UpdateView):
         return super().dispatch(*args, **kwargs)
 
 
-@login_required
 def post_comment(request):
 
     if request.method == 'POST':
-        event = models.Event.objects.get(pk = request.POST.get('event'))
-        comment = models.Comment(
-            author = request.user,
-            text = request.POST.get('text'),
-            event = event
-        )
-        comment.save()
+        if request.user.is_authenticated():
+            event = models.Event.objects.get(pk = request.POST.get('event'))
+            comment = models.Comment(
+                author = request.user,
+                text = request.POST.get('text'),
+                event = event
+            )
+            comment.save()
+
+        else:
+            event = models.Event.objects.get(pk = request.POST.get('event'))
+            comment = models.Comment(
+                pseudo = request.POST.get('username'),
+                text = request.POST.get('text'),
+                event = event
+            )
+            comment.save()
+
+
+        return HttpResponse('success')
+
+    return redirect('agenda:list')
+
+
+def participate(request):
+
+    if request.method == 'POST':
+        if request.user.is_authenticated():
+            event = models.Event.objects.get(pk = request.POST.get('event'))
+            participation = models.Participation(
+                user = request.user,
+                event = event
+            )
+            participation.save()
+
+        else:
+            print(request.POST.get('username'))
+            event = models.Event.objects.get(pk = request.POST.get('event'))
+            participation = models.Participation(
+                pseudo = request.POST.get('username'),
+                event = event
+            )
+            participation.save()
+
 
         return HttpResponse('success')
 
