@@ -86,19 +86,19 @@ ROOT_URLCONF = 'sugarcub.urls'
 
 WSGI_APPLICATION = 'sugarcub.wsgi.application'
 
-CACHES = {
-    'default': {
-        'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': 'unix:///shared/redis.sock',
-        'OPTIONS': {
-            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-            'IGNORE_EXCEPTIONS': True,
-        }
-    }
-}
-
-SESSION_ENGINE = "django.contrib.sessions.backends.cache"
-SESSION_CACHE_ALIAS = "default"
+# CACHES = {
+# 	'default': {
+# 		'BACKEND': 'django_redis.cache.RedisCache',
+# 		'LOCATION': 'unix:///shared/redis.sock',
+# 		'OPTIONS': {
+# 			'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+# 			'IGNORE_EXCEPTIONS': True,
+# 		}
+# 	}
+# }
+# 
+# SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+# SESSION_CACHE_ALIAS = "default"
 
 
 # Internationalization
