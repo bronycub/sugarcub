@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-01 14:25+0000\n"
+"POT-Creation-Date: 2015-11-13 10:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,38 +18,67 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: forms.py:12
+#: forms.py:9
+msgid "Start date and hour"
+msgstr "Date et heure de début"
+
+#: forms.py:10
+msgid "End date and hour"
+msgstr "Date et heure de fin"
+
+#: forms.py:16
 msgid "Title"
 msgstr "Nom de l'évènement"
 
-#: forms.py:13
+#: forms.py:17
 msgid "Description"
 msgstr "Description"
 
-#: forms.py:14
-msgid "Date begin"
-msgstr "Date de début"
+#: forms.py:20
+#, fuzzy
+#| msgid "Add an event"
+msgid "Address of the event"
+msgstr "Ajouter un évènement"
 
-#: forms.py:15
-msgid "Date end"
-msgstr "Date de fin"
+#: forms.py:21
+msgid "Means of contact"
+msgstr "Moyen de contact"
 
-#: templates/agenda/comment_list.html:6 templates/agenda/event_form.html:6
+#: models.py:9
+msgid "Show both my phone and my mail"
+msgstr "Montrer mon mail et mon téléphone"
+
+#: models.py:10
+msgid "Show only my mail"
+msgstr "Montrer mon mail"
+
+#: models.py:11
+msgid "Show only my phone"
+msgstr "Montrer mon téléphone"
+
+#: templates/agenda/comment_list.html:6 templates/agenda/event_form.html:7
 #: templates/agenda/event_list.html:8
+#: templates/agenda/event_update_form.html:7
 msgid "Events"
 msgstr "Évènements"
 
-#: templates/agenda/comment_list_page.html:29
-msgid "You must be logged in to see the comments."
-msgstr "Vous devez être connecté pour voir les commentaires."
-
-#: templates/agenda/event_form.html:14 templates/agenda/event_list.html:40
+#: templates/agenda/event_form.html:17 templates/agenda/event_list.html:40
 msgid "Add an event"
 msgstr "Ajouter un évènement"
 
-#: templates/agenda/event_form.html:19
-msgid "Update"
-msgstr "Mettre à jour"
+#: templates/agenda/event_form.html:25 templates/agenda/event_form.html:27
+#: templates/agenda/event_update_form.html:23
+#: templates/agenda/event_update_form.html:25
+msgid ""
+"You can use the button on the right of this field to choose the date and the "
+"time"
+msgstr "Vous pouvez utiliser le bouton à droite pour choisir la date et l'heure"
+
+#: templates/agenda/event_form.html:32
+#, fuzzy
+#| msgid "Add an event"
+msgid "Add event"
+msgstr "Ajouter un évènement"
 
 #: templates/agenda/event_list.html:16 templates/agenda/event_list.html:22
 msgid "Add to your agenda"
@@ -81,32 +110,53 @@ msgid "Address"
 msgstr "Addresse"
 
 #: templates/agenda/event_list_page.html:36
-msgid "Will you participate?"
-msgstr "Participerez-vous?"
-
-#: templates/agenda/event_list_page.html:39
-msgid "I participate !"
-msgstr "Je participe !"
-
-#: templates/agenda/event_list_page.html:40
-msgid "Nope !"
-msgstr "Nope !"
-
-#: templates/agenda/event_list_page.html:45
-msgid "Organizer"
-msgstr "Organisateur"
-
-#: templates/agenda/event_list_page.html:55
-msgid "CONTACT"
-msgstr "CONTACT"
-
-#: templates/agenda/event_list_page.html:63
+#: templates/agenda/event_list_page.html:42
 msgid "Post a message"
 msgstr "Poster un commentaire"
 
-#: templates/agenda/event_list_page.html:64
+#: templates/agenda/event_list_page.html:37
+#: templates/agenda/event_list_page.html:43
+#: templates/agenda/event_list_page.html:73
 msgid "Post"
 msgstr "Envoyer"
+
+#: templates/agenda/event_list_page.html:41
+#: templates/agenda/event_list_page.html:72
+msgid "Username"
+msgstr "Pseudo"
+
+#: templates/agenda/event_list_page.html:54
+#, fuzzy
+#| msgid "Add an event"
+msgid "Edit event"
+msgstr "Ajouter un évènement"
+
+#: templates/agenda/event_list_page.html:59
+msgid "Will you participate?"
+msgstr "Participerez-vous?"
+
+#: templates/agenda/event_list_page.html:64
+#: templates/agenda/event_list_page.html:67
+msgid "I participate !"
+msgstr "Je participe !"
+
+#: templates/agenda/event_list_page.html:82
+msgid "Organizer"
+msgstr "Organisateur"
+
+#: templates/agenda/event_list_page.html:92
+msgid "CONTACT"
+msgstr "CONTACT"
+
+#: templates/agenda/event_update_form.html:15
+#, fuzzy
+#| msgid "Add an event"
+msgid "Update an event"
+msgstr "Ajouter un évènement"
+
+#: templates/agenda/event_update_form.html:30
+msgid "Update"
+msgstr "Mettre à jour"
 
 #: urls.py:14
 msgid "^(?P<event_id>[0-9]+)/comments$"
@@ -125,8 +175,32 @@ msgid "^comment$"
 msgstr "^commentaire$"
 
 #: urls.py:34
+#, fuzzy
+#| msgid "I participate !"
+msgid "^participations$"
+msgstr "Je participe !"
+
+#: urls.py:39
 msgid "^ics$"
 msgstr ""
+
+#: urls.py:44
+#, fuzzy
+#| msgid "^(?P<event_id>[0-9]+)/comments$"
+msgid "^event/update/(?P<event_id>[0-9]+)$"
+msgstr "^(?P<event_id>[0-9]+)/commentaires$"
+
+#~ msgid "Date begin"
+#~ msgstr "Date de début"
+
+#~ msgid "Date end"
+#~ msgstr "Date de fin"
+
+#~ msgid "You must be logged in to see the comments."
+#~ msgstr "Vous devez être connecté pour voir les commentaires."
+
+#~ msgid "Nope !"
+#~ msgstr "Nope !"
 
 #~ msgid "I will be there !"
 #~ msgstr "Je participe !"
