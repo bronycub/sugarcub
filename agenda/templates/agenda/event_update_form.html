@@ -6,15 +6,13 @@
 
 {% block title %}{% trans 'Events' %}{% endblock %}
 
-
-
 {% block body %}
 {{ block.super }}
 
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <h1 class="text-center">{% trans 'Add an event' %}</h1>
+            <h1 class="text-center">{% trans 'Update an event' %}</h1>
             <form enctype="multipart/form-data" class="form-horizontal" method="post">
                 {% csrf_token %}
                 {{ form.media }}
@@ -29,7 +27,7 @@
                 {% bootstrap_field form.event_enabled %}
 
                 {% buttons %}
-                    <button type="submit" class="btn btn-primary">{% bootstrap_icon star %}{% trans 'Add event' %}</button>
+                    <button type="submit" class="btn btn-primary">{% bootstrap_icon star %}{% trans 'Update' %}</button>
                 {% endbuttons %}
             </form>
         </div>

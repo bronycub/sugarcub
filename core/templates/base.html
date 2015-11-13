@@ -17,6 +17,16 @@
                 <link rel="stylesheet" type="text/css" media="screen" href="{% static 'zocial/zocial.css' %}">
                 {% block extrastyle %}{% endblock %}
             {% endblock %}
+            {% block javascripts %}
+                <script type="application/javascript" src="{% static 'js/jquery-1.11.2.min.js' %}"></script>
+                <script type="application/javascript" src="{% static 'js/jquery-setup.js' %}"></script>
+                <script type="application/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+                <script type="application/javascript" src="{% static 'js/jquery.expander.js' %}"></script>
+                <script type="application/javascript" src="{% static 'js/expender.js' %}"></script>
+                <script type="application/javascript" src="{% static 'js/konami.js' %}"></script>
+                {% block extrascripts %}{% endblock %}
+            {% endblock %}
+            
             {% block blockbots %}{% endblock %}
             {% block extrahead %}{% endblock %}
         {% endblock %}
@@ -111,16 +121,5 @@
                 </footer>
             {% endblock %}
         </div>
-
-        {% block javascripts %}
-            <script type="application/javascript" src="{% static 'js/jquery-1.11.2.min.js' %}"></script>
-            <script type="application/javascript" src="{% static 'js/jquery-setup.js' %}"></script>
-            <script type="application/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
-            <script type="application/javascript" src="{% static 'js/jquery.expander.js' %}"></script>
-            <script type="application/javascript" src="{% static 'js/expender.js' %}"></script>
-            <script type="application/javascript" src="{% static 'js/konami.js' %}"></script>
-            {% block extrascripts %}{% endblock %}
-        {% endblock %}
-
     </body>
 </html>
