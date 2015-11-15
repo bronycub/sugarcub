@@ -1,7 +1,7 @@
-from django.conf.urls           import url
-from django.views.generic       import TemplateView
-from .views                     import RegistrationView
-from django.utils.translation   import ugettext_lazy as _
+from django.conf.urls         import url
+from django.views.generic     import TemplateView
+from .views                   import RegistrationView
+from django.utils.translation import ugettext_lazy as _
 
 urlpatterns = [
     url(_(r'^members$'),   'users.views.members',      name = 'members'),

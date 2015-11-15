@@ -25,7 +25,7 @@ def home(request):
         'irc':      irc,
         'quotes':   Quote.objects.all,
         'birthday': Profile.objects.get_birthday(),
-        'new': Profile.objects.get_new_members(),
+        'new':      Profile.objects.get_new_members(),
         'list_new': len(Profile.objects.get_new_members()),
     })
 

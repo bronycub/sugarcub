@@ -1,6 +1,7 @@
 from django                      import forms
 from .                           import models
 from django.contrib.auth.models  import User
+from django.contrib.auth.forms   import AuthenticationForm as BaseAuthenticationForm
 from bootstrap3_datetime.widgets import DateTimePicker
 from django.utils.translation    import ugettext_lazy as _
 
@@ -54,3 +55,8 @@ class ProfileForm(forms.ModelForm):
             _('Write about yourself! how you discover My Little Pony or BronyCUB, '
                 'what you like and dislike...')
         })
+
+
+class AuthenticationForm(BaseAuthenticationForm):
+
+    username = forms.CharField(max_length=256, label = _('Username or email'))

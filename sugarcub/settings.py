@@ -8,7 +8,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 
-from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS, AUTHENTICATION_BACKENDS
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
@@ -96,7 +96,7 @@ WSGI_APPLICATION = 'sugarcub.wsgi.application'
 # 		}
 # 	}
 # }
-# 
+#
 # SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 # SESSION_CACHE_ALIAS = "default"
 
@@ -116,11 +116,12 @@ USE_TZ = True
 
 # Auth configuration
 
-LOGIN_REDIRECT_URL      = '/'
-LOGIN_URL               = '/login'
-LOGOUT_URL              = '/logout'
-ACCOUNT_ACTIVATION_DAYS = 7
-AUTH_PROFILE_MODULE     = 'users.profile'
+LOGIN_REDIRECT_URL       = '/'
+LOGIN_URL                = '/login'
+LOGOUT_URL               = '/logout'
+ACCOUNT_ACTIVATION_DAYS  = 7
+AUTH_PROFILE_MODULE      = 'users.profile'
+AUTHENTICATION_BACKENDS += ('users.utils.EmailOrUsernameModelBackend', )
 
 
 # Registration

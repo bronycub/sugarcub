@@ -1,157 +1,151 @@
-# SugarCUB users app fr localisation file.
-# Copyright (C) 2015 Matthias Devlamynck
-# This file is distributed under the same license as the SugarCUB package.
-# Matthias Devlamynck <matthias.devlamynck@mailoo.org>, 2015
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: SugarCUB 0.1\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-11-15 15:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Matthias Devlamynck <matthias.devlamynck@mailoo.org>\n"
-"Language: French\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: users/forms.py:25
 msgid "Exemple : Pony is best pegasus/pony/unicorn!"
-msgstr "Exemple: Pony est le meilleur pégase / poney / licorne !"
+msgstr ""
 
 #: users/forms.py:33
 msgid "Birthday"
-msgstr "Date de naissance"
+msgstr ""
 
 #: users/forms.py:40
 msgid "Biography"
-msgstr "Biographie"
+msgstr ""
 
 #: users/forms.py:41
 msgid "Phone"
-msgstr "Téléphone"
+msgstr ""
 
 #: users/forms.py:42
 msgid "Address"
-msgstr "Adresse"
+msgstr ""
 
 #: users/forms.py:43
 msgid "City"
-msgstr "Ville"
+msgstr ""
 
 #: users/forms.py:44
 msgid "Postal code"
-msgstr "Code postal"
+msgstr ""
 
 #: users/forms.py:45
 msgid "Hide my firstname and lastname"
-msgstr "Cacher mon prénom et nom"
+msgstr ""
 
 #: users/forms.py:46
 msgid "Hide my phone number"
-msgstr "Cacher mon numéro de téléphone"
+msgstr ""
 
 #: users/forms.py:47
 msgid "Hide my birthday"
-msgstr "Cacher ma date de naissance"
+msgstr ""
 
 #: users/forms.py:48
 msgid "Hide my address"
-msgstr "Cacher mon adresse"
+msgstr ""
 
 #: users/forms.py:49
 msgid "Hide my email"
-msgstr "Cacher mon adresse mail"
+msgstr ""
 
 #: users/forms.py:55
 msgid ""
 "Write about yourself! how you discover My Little Pony or BronyCUB, what you "
 "like and dislike..."
 msgstr ""
-"Ecrivez à propos de vous ! Comment vous avez découvert My Little Pony ou "
-"BronyCUB , ce que vous aimez ou detestez ..."
 
 #: users/forms.py:62
 msgid "Username or email"
-msgstr "Nom d'utilisateur ou email"
+msgstr ""
 
 #: users/models.py:44
 msgid ""
 "Phone number must be entered in the format: '+999999999'. Up to 15 digits "
 "allowed."
 msgstr ""
-"Le numéro de téléphone doit être entré dans le format : '+999999999'. "
-"Jusqu'à 15 chiffres sont autorisés"
 
 #: users/models.py:46
 msgid "The postal code must be 5 digits."
-msgstr "Le code postal doit être de 5 chiffres"
+msgstr ""
 
 #: users/models.py:55
 msgid "The bio should be longer than 150 character"
-msgstr "La bio doit être longue de plus de 150 caractère"
+msgstr ""
 
 #: users/templates/members.html:5
 msgid "Members"
-msgstr "Membres"
+msgstr ""
 
 #: users/templates/members.html:16
 msgid "No members registered yet ..."
-msgstr "Aucun membre enregistré pour le moment ..."
+msgstr ""
 
 #: users/templates/members/one-user.html:79
 msgid ""
 "Your account must be accepted by the admin to see the members informations."
 msgstr ""
-"Votre compte doit être validé par un administrateur pour avoir accès aux "
-"informations des autres membres"
 
 #: users/templates/members/one-user.html:82
 #: users/templates/members/one-user.html:93
 msgid "Close"
-msgstr "Fermer"
+msgstr ""
 
 #: users/templates/members/one-user.html:90
 msgid "You must be connected to see the members informations."
-msgstr "Vous devez être connecté pour voir les informations de ce membre."
+msgstr ""
 
 #: users/templates/profile.html:7
 msgid "Profile"
-msgstr "Profil"
+msgstr ""
 
 #: users/templates/profile.html:22
 msgid "SugarCUB </br>My Profile"
-msgstr "SugarCUB </br>Mon Profil"
+msgstr ""
 
 #: users/templates/profile.html:39
 msgid "Favorite pony :"
-msgstr "Poney Favoris :"
+msgstr ""
 
 #: users/templates/profile.html:57 users/templates/profile.html.py:79
 msgid "Add new line"
-msgstr "Ajouter une nouvelle ligne"
+msgstr ""
 
 #: users/templates/profile.html:61
 msgid "Url :"
-msgstr "Url :"
+msgstr ""
 
 #: users/templates/profile.html:83
 msgid "Only members of BronyCUB will be able to see those information :"
-msgstr "Seul les membres de BronyCUB peuvent voir les informations suivantes :"
+msgstr ""
 
 #: users/templates/profile.html:97
 msgid "Hide personnal information :"
-msgstr "Cacher vos informations personnelles"
+msgstr ""
 
 #: users/templates/profile.html:105
 msgid "Update"
-msgstr "Mettre à jour"
+msgstr ""
 
 #: users/templates/profile.html:110
 msgid "Change your password"
-msgstr "Modifiez votre mot de passe"
+msgstr ""
 
 #: users/templates/registration/activate.html:5
 #: users/templates/registration/activation_complete.html:6
@@ -159,64 +153,61 @@ msgstr "Modifiez votre mot de passe"
 #: users/templates/registration/registration_closed.html:5
 #: users/templates/registration/registration_complete.html:5
 msgid "Account created"
-msgstr "Compte créé"
+msgstr ""
 
 #: users/templates/registration/activate.html:13
 msgid "An error occured while activating your account. Please retry."
 msgstr ""
-"Une erreur est survenue pendant l'activation de votre compte. Veuillez "
-"réessayer."
 
 #: users/templates/registration/activation_complete.html:14
 msgid "Your account is now activated ! Please login and enjoy ! ;)"
 msgstr ""
-"Votre compte est maintenant activé ! Veuillez vous connecter et profiter ! ;)"
 
 #: users/templates/registration/activation_email.txt:4
 #, python-format
 msgid "You're receiving this email because you created an account on %(site)s."
-msgstr "Vous recevez ce mail parce que vous avez créé un compte sur %(site)s."
+msgstr ""
 
 #: users/templates/registration/activation_email.txt:6
 msgid "Please go to the following page to activate your account:"
-msgstr "Veuillez vous rendre sur cette page pour activer votre compte :"
+msgstr ""
 
 #: users/templates/registration/activation_email.txt:11
 #: users/templates/registration/password_reset_email.html:10
 msgid "Thanks for using our site!"
-msgstr "Merci d'utiliser notre site !"
+msgstr ""
 
 #: users/templates/registration/activation_email.txt:13
 #, python-format
 msgid "The %(site)s team"
-msgstr "L'équipe de %(site)s"
+msgstr ""
 
 #: users/templates/registration/activation_email_subject.txt:3
 msgid "Account activation"
-msgstr "Activation du compte"
+msgstr ""
 
 #: users/templates/registration/forms/login.html:6
 #: users/templates/registration/forms/login.html:9
 #: users/templates/registration/login.html:7
 msgid "Login"
-msgstr "Connexion"
+msgstr ""
 
 #: users/templates/registration/forms/login.html:12
 msgid "You forgot your password ?"
-msgstr "Vous avez oublié votre mot de passe ?"
+msgstr ""
 
 #: users/templates/registration/forms/login.html:14
 #: users/templates/registration/registration_form.html:7
 msgid "Signup"
-msgstr "Nous rejoindre"
+msgstr ""
 
 #: users/templates/registration/informations.html:6
 msgid "To know before registering"
-msgstr "À savoir avant de s'inscrire"
+msgstr ""
 
 #: users/templates/registration/logout.html:14
 msgid "You're now logged out."
-msgstr "Vous êtes maintenant déconnecté."
+msgstr ""
 
 #: users/templates/registration/password_reset_email.html:2
 #, python-format
@@ -224,53 +215,46 @@ msgid ""
 "You're receiving this email because you requested a password reset for your "
 "user account at %(site_name)s."
 msgstr ""
-"Vous recevez ce mail parce que vous avez demandé à réinitialiser votre mot "
-"de passe sur %(site_name)s."
 
 #: users/templates/registration/password_reset_email.html:4
 msgid "Please go to the following page and choose a new password:"
 msgstr ""
-"Veuillez vous rendre sur cette page et choisir un nouveau mot de passe :"
 
 #: users/templates/registration/password_reset_email.html:8
 msgid "Your username, in case you've forgotten:"
-msgstr "Votre nom d'utilisateur, si jamais vous l'avez oublié :"
+msgstr ""
 
 #: users/templates/registration/password_reset_email.html:12
 #, python-format
 msgid "The %(site_name)s team"
-msgstr "L'équipe de %(site_name)s"
+msgstr ""
 
 #: users/templates/registration/registration_closed.html:13
 msgid "Sorry but registrations are closed at the moment, try again later /)"
 msgstr ""
-"Désolé mais pour le moment les inscriptions sont fermées, veuillez réessayer "
-"plus tard /)"
 
 #: users/templates/registration/registration_complete.html:14
 msgid ""
 "You signed up successfully ! A mail to activate your account has been sent, "
 "Welcome !"
 msgstr ""
-"Vous avez bien créé votre compte ! Un mail d'activation vient de vous être "
-"envoyé, Bienvenue !"
 
 #: users/templates/registration/registration_form.html:24
 msgid "Send"
-msgstr "Soumettre"
+msgstr ""
 
 #: users/urls.py:7
 msgid "^members$"
-msgstr "^membres$"
+msgstr ""
 
 #: users/urls.py:8
 msgid "^profile$"
-msgstr "^profil$"
+msgstr ""
 
 #: users/urls.py:9
 msgid "^register$"
-msgstr "^inscription$"
+msgstr ""
 
 #: users/urls.py:10
 msgid "^register/informations$"
-msgstr "^inscription/informations$"
+msgstr ""
