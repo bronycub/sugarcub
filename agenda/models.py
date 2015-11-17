@@ -6,9 +6,9 @@ import ics
 
 
 information_enabled = (
-    ('1', _("Show both my phone and my mail")),
-    ('2', _("Show only my mail")),
-    ('3', _("Show only my phone")),
+    ('1', _('Show both my phone and my mail')),
+    ('2', _('Show only my mail')),
+    ('3', _('Show only my phone')),
 )
 
 

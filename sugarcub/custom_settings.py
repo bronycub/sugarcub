@@ -1,7 +1,7 @@
 
-"""
+'''
 Per collective settings
-"""
+'''
 
 COLLECTIVE_NAME = 'BronyCUB'
 

@@ -29,3 +29,9 @@
     </div>
 
 {% endblock %}
+
+{% block extrascripts %}
+    {{ block.super }}
+
+    {{ form.media }}
+{% endblock %}

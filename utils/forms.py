@@ -18,8 +18,8 @@ class FormHelperMixin:
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        if hasattr(self.Meta, "helper_class"):
-            helper_class = getattr(self.Meta, "helper_class")
+        if hasattr(self.Meta, 'helper_class'):
+            helper_class = getattr(self.Meta, 'helper_class')
             kwargs = self.get_helper_kwargs()
             self.helper = helper_class(self, **kwargs)
         else:
@@ -37,8 +37,8 @@ class FormHelperMixin:
 
         kwargs = {}
         for attr, value in self.Meta.__dict__.items():
-            if attr.startswith("helper_") and attr != "helper_class":
-                new_attr = attr.split("_", 1)[1]
+            if attr.startswith('helper_') and attr != 'helper_class':
+                new_attr = attr.split('_', 1)[1]
                 kwargs[new_attr] = value
         return kwargs
 

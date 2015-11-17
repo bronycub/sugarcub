@@ -31,7 +31,12 @@ class UserPonyForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
 
     birthday = forms.DateTimeField(
-        widget=DateTimePicker(options={"format": "DD/MM/YYYY"}),
+        widget = DateTimePicker(
+            options = {
+                'format': 'DD/MM/YYYY',
+                'viewMode': 'years',
+            }
+        ),
         label = _("Birthday")
     )
 
@@ -42,16 +47,16 @@ class ProfileForm(forms.ModelForm):
             'name_enabled', 'phone_enabled', 'birthday_enabled', 'address_enabled', 'mail_enabled'
         ]
         labels = {
-            "bio": _("Biography"),
-            "phone": _("Phone"),
-            "address": _("Address"),
-            "city": _("City"),
-            "postal_code": _("Postal code"),
-            "name_enabled": _("Hide my firstname and lastname"),
-            "phone_enabled": _("Hide my phone number"),
-            "birthday_enabled": _("Hide my birthday"),
-            "address_enabled": _("Hide my address"),
-            "mail_enabled": _("Hide my email"),
+            'bio': _('Biography'),
+            'phone': _('Phone'),
+            'address': _('Address'),
+            'city': _('City'),
+            'postal_code': _('Postal code'),
+            'name_enabled': _('Hide my firstname and lastname'),
+            'phone_enabled': _('Hide my phone number'),
+            'birthday_enabled': _('Hide my birthday'),
+            'address_enabled': _('Hide my address'),
+            'mail_enabled': _('Hide my email'),
         }
 
     def __init__(self, *args, **kwargs):
@@ -76,7 +81,7 @@ class RegistrationForm(MultiModelForm):
         return super(RegistrationForm, self).dispatch_init_instance(name, instance)
 
     def save(self, commit=True, user=None):
-        """Save both forms and attach the user to the profile."""
+        ''' Save both forms and attach the user to the profile. '''
         instances = self._combine('save', call=True, ignore_missing=True, call_kwargs={'commit': False})
 
         user.first_name = instances['user'].first_name

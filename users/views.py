@@ -56,7 +56,7 @@ def profile(request):
             cp['pony-TOTAL_FORMS'] = int(cp['pony-TOTAL_FORMS']) + 1
 
             form = forms.ProfileForm(request.POST, request.FILES, instance = profile)
-            ponies = ponyformset(cp, prefix = "pony")
+            ponies = ponyformset(cp, prefix = 'pony')
             urls = urlformset(request.POST, instance = profile, prefix='url')
 
         # To add a new row for url (avoid using JS)
@@ -65,14 +65,14 @@ def profile(request):
             cp['url-TOTAL_FORMS'] = int(cp['url-TOTAL_FORMS']) + 1
 
             form = forms.ProfileForm(request.POST, request.FILES, instance = profile)
-            ponies = ponyformset(request.POST, instance = profile, prefix = "pony")
+            ponies = ponyformset(request.POST, instance = profile, prefix = 'pony')
             urls = urlformset(cp, prefix='url')
 
         # When submitting information
         if 'submit' in request.POST:
             form = forms.ProfileForm(request.POST, request.FILES, instance = profile)
-            ponies = ponyformset(request.POST, instance = profile, prefix = "pony")
-            urls = urlformset(request.POST, instance = profile, prefix = "url")
+            ponies = ponyformset(request.POST, instance = profile, prefix = 'pony')
+            urls = urlformset(request.POST, instance = profile, prefix = 'url')
 
             if form.is_valid():
                 form.save()
@@ -82,17 +82,17 @@ def profile(request):
             if ponies.is_valid():
                 ponies.save()
 
-                ponies = ponyformset(instance = profile, prefix = "pony")
+                ponies = ponyformset(instance = profile, prefix = 'pony')
 
             if urls.is_valid():
                 urls.save()
 
-                urls = urlformset(instance = profile, prefix = "url")
+                urls = urlformset(instance = profile, prefix = 'url')
 
     else:
         form = forms.ProfileForm(instance = profile)
-        ponies = ponyformset(instance = profile, prefix = "pony")
-        urls = urlformset(instance = profile, prefix = "url")
+        ponies = ponyformset(instance = profile, prefix = 'pony')
+        urls = urlformset(instance = profile, prefix = 'url')
 
     return render(request, 'profile.html', {
         'profile': profile,

@@ -52,7 +52,7 @@ class Profile(models.Model):
     mail_enabled      = models.BooleanField(default = False)
 
     bio_min_size      = MinLengthValidator(150, message=_(
-        "The bio should be longer than 150 character"))
+        'The bio should be longer than 150 character'))
     bio               = models.TextField(validators=[bio_min_size])
     avatar            = StdImageField(blank = True, null = True,
         variations = {'avatar': (100, 100), 'small': (50, 50), 'big': (222, 222)},
@@ -96,19 +96,19 @@ class Profile(models.Model):
 
 
 class Pony(models.Model):
-    """List of different pony available"""
+    ''' List of different pony available '''
 
     name = models.CharField(max_length = 32)
     file_name = models.CharField(max_length = 32)
 
     class Meta:
-        verbose_name_plural = "ponies"
+        verbose_name_plural = 'ponies'
 
     def __str__(self):
         return self.name
 
 class Icon(models.Model):
-    """List of different icon available"""
+    ''' List of different icon available '''
 
     name = models.CharField(max_length = 32)
     file_name = models.CharField(max_length = 32)        
@@ -131,7 +131,7 @@ class UserPony(models.Model):
             return self.message
 
     class Meta:
-        verbose_name_plural = "ponies"
+        verbose_name_plural = 'ponies'
 
 
 class UserUrl(models.Model):
