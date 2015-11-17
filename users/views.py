@@ -8,6 +8,8 @@ import random
 
 class RegistrationView(BaseRegistrationView):
 
+    form_class = forms.RegistrationForm
+
     def register(self, request, **cleaned_data):
         return super(RegistrationView, self).register(request, **cleaned_data['registration'])
 

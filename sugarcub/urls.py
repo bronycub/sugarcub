@@ -3,8 +3,9 @@ from django.contrib           import admin
 from django.conf              import settings
 from django.conf.urls.static  import static
 from django.utils.translation import ugettext_lazy as _
-from users.forms              import AuthenticationForm
 from django.contrib.auth      import views as auth_views
+from users.forms              import AuthenticationForm
+
 
 urls = [
     url(_(r'admin/doc/'), include('django.contrib.admindocs.urls')),
@@ -24,6 +25,7 @@ urls = [
         name='auth_login'),
     url(r'',              include('registration.backends.default.urls')),
 ]
+
 
 urlpatterns = i18n.i18n_patterns(*urls)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

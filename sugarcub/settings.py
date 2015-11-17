@@ -121,7 +121,7 @@ LOGIN_URL                = '/login'
 LOGOUT_URL               = '/logout'
 ACCOUNT_ACTIVATION_DAYS  = 7
 AUTH_PROFILE_MODULE      = 'users.profile'
-AUTHENTICATION_BACKENDS += ('users.utils.EmailOrUsernameModelBackend', )
+AUTHENTICATION_BACKENDS += ('users.utils.EmailModelBackend', )
 
 
 # Registration

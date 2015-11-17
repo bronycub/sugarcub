@@ -1,9 +1,11 @@
 from django                      import forms
 from .                           import models
 from django.contrib.auth.models  import User
-from django.contrib.auth.forms   import AuthenticationForm as BaseAuthenticationForm
 from bootstrap3_datetime.widgets import DateTimePicker
 from django.utils.translation    import ugettext_lazy as _
+from multiform                   import MultiModelForm, InvalidArgument
+from registration.forms          import RegistrationFormUniqueEmail
+from django.contrib.auth.forms   import AuthenticationForm as _AuthenticationForm
 
 
 class UserForm(forms.ModelForm):
@@ -35,7 +37,10 @@ class ProfileForm(forms.ModelForm):
 
     class Meta:
         model   = models.Profile
-        exclude = ['user', 'enabled', 'address_latitude', 'address_longitude']
+        fields = [
+            'bio', 'phone', 'birthday', 'address', 'city', 'postal_code',
+            'name_enabled', 'phone_enabled', 'birthday_enabled', 'address_enabled', 'mail_enabled'
+        ]
         labels = {
             "bio": _("Biography"),
             "phone": _("Phone"),
@@ -57,6 +62,34 @@ class ProfileForm(forms.ModelForm):
         })
 
 
-class AuthenticationForm(BaseAuthenticationForm):
+class RegistrationForm(MultiModelForm):
+
+    base_forms = [
+        ('registration', RegistrationFormUniqueEmail),
+        ('user',         UserForm),
+        ('profile',      ProfileForm),
+    ]
+
+    def dispatch_init_instance(self, name, instance):
+        if name == 'registration':
+            return InvalidArgument
+        return super(RegistrationForm, self).dispatch_init_instance(name, instance)
+
+    def save(self, commit=True, user=None):
+        """Save both forms and attach the user to the profile."""
+        instances = self._combine('save', call=True, ignore_missing=True, call_kwargs={'commit': False})
+
+        user.first_name = instances['user'].first_name
+        user.last_name  = instances['user'].last_name
+        instances['user'] = user
+
+        instances['profile'].user = user
+        instances['profile'].save()
+        instances['user'].save()
+
+        return instances
+
+
+class AuthenticationForm(_AuthenticationForm):
 
     username = forms.CharField(max_length=256, label = _('Username or email'))
