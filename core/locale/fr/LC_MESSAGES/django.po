@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SugarCUB 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-15 15:07+0000\n"
+"POT-Creation-Date: 2015-11-24 18:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Matthias Devlamynck <matthias.devlamynck@mailoo.org>\n"
 "Language: French\n"
@@ -17,63 +17,63 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: core/templates/agenda.html:6 core/templates/base.html:51
+#: core/templates/agenda.html:6 core/templates/base.html:52
 msgid "Agenda"
 msgstr "Agenda"
 
-#: core/templates/base.html:50
+#: core/templates/base.html:51
 msgid "Members"
 msgstr "Membres"
 
-#: core/templates/base.html:52 core/templates/hq.html:6
+#: core/templates/base.html:53 core/templates/hq.html:6
 msgid "HQ"
 msgstr "QG"
 
-#: core/templates/base.html:53
+#: core/templates/base.html:54
 msgid "Medias"
 msgstr "Médias"
 
-#: core/templates/base.html:54 core/templates/map.html:11
+#: core/templates/base.html:55 core/templates/map.html:11
 msgid "Map"
 msgstr "Carte"
 
-#: core/templates/base.html:55 core/templates/friends.html:6
+#: core/templates/base.html:56 core/templates/friends.html:6
 msgid "Friends"
 msgstr "Nos amis"
 
-#: core/templates/base.html:58
+#: core/templates/base.html:59
 msgid "Tchat"
 msgstr "Tchat"
 
-#: core/templates/base.html:59
+#: core/templates/base.html:60
 msgid "Visio"
 msgstr "Visio"
 
-#: core/templates/base.html:60
+#: core/templates/base.html:61
 msgid "Ticket"
 msgstr "Ticket"
 
-#: core/templates/base.html:76
+#: core/templates/base.html:77
 msgid "Profile"
 msgstr "Profil"
 
-#: core/templates/base.html:78
+#: core/templates/base.html:79
 msgid "Admin"
 msgstr "Admin"
 
-#: core/templates/base.html:80
+#: core/templates/base.html:81
 msgid "Logout"
 msgstr "Déconnexion"
 
-#: core/templates/base.html:84
+#: core/templates/base.html:85
 msgid "Login"
 msgstr "Connexion"
 
-#: core/templates/base.html:85
+#: core/templates/base.html:86
 msgid "Signup"
 msgstr "Nous rejoindre ?"
 
-#: core/templates/base.html:114
+#: core/templates/base.html:115
 msgid "Contact us :"
 msgstr "Contactez-nous :"
 

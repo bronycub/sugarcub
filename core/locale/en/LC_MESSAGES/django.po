@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-15 15:07+0000\n"
+"POT-Creation-Date: 2015-11-24 18:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,63 +17,63 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: core/templates/agenda.html:6 core/templates/base.html:51
+#: core/templates/agenda.html:6 core/templates/base.html:52
 msgid "Agenda"
 msgstr ""
 
-#: core/templates/base.html:50
+#: core/templates/base.html:51
 msgid "Members"
 msgstr ""
 
-#: core/templates/base.html:52 core/templates/hq.html:6
+#: core/templates/base.html:53 core/templates/hq.html:6
 msgid "HQ"
 msgstr ""
 
-#: core/templates/base.html:53
+#: core/templates/base.html:54
 msgid "Medias"
 msgstr ""
 
-#: core/templates/base.html:54 core/templates/map.html:11
+#: core/templates/base.html:55 core/templates/map.html:11
 msgid "Map"
 msgstr ""
 
-#: core/templates/base.html:55 core/templates/friends.html:6
+#: core/templates/base.html:56 core/templates/friends.html:6
 msgid "Friends"
 msgstr ""
 
-#: core/templates/base.html:58
+#: core/templates/base.html:59
 msgid "Tchat"
 msgstr ""
 
-#: core/templates/base.html:59
+#: core/templates/base.html:60
 msgid "Visio"
 msgstr ""
 
-#: core/templates/base.html:60
+#: core/templates/base.html:61
 msgid "Ticket"
 msgstr ""
 
-#: core/templates/base.html:76
+#: core/templates/base.html:77
 msgid "Profile"
 msgstr ""
 
-#: core/templates/base.html:78
+#: core/templates/base.html:79
 msgid "Admin"
 msgstr ""
 
-#: core/templates/base.html:80
+#: core/templates/base.html:81
 msgid "Logout"
 msgstr ""
 
-#: core/templates/base.html:84
+#: core/templates/base.html:85
 msgid "Login"
 msgstr ""
 
-#: core/templates/base.html:85
+#: core/templates/base.html:86
 msgid "Signup"
 msgstr ""
 
-#: core/templates/base.html:114
+#: core/templates/base.html:115
 msgid "Contact us :"
 msgstr ""
 

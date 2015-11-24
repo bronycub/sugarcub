@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SugarCUB 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-15 15:07+0000\n"
+"POT-Creation-Date: 2015-11-24 18:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Matthias Devlamynck <matthias.devlamynck@mailoo.org>\n"
 "Language: French\n"
@@ -17,55 +17,55 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: users/forms.py:25
+#: users/forms.py:27
 msgid "Exemple : Pony is best pegasus/pony/unicorn!"
 msgstr "Exemple: Pony est le meilleur pégase / poney / licorne !"
 
-#: users/forms.py:33
+#: users/forms.py:40
 msgid "Birthday"
 msgstr "Date de naissance"
 
-#: users/forms.py:40
+#: users/forms.py:50
 msgid "Biography"
 msgstr "Biographie"
 
-#: users/forms.py:41
+#: users/forms.py:51
 msgid "Phone"
 msgstr "Téléphone"
 
-#: users/forms.py:42
+#: users/forms.py:52
 msgid "Address"
 msgstr "Adresse"
 
-#: users/forms.py:43
+#: users/forms.py:53
 msgid "City"
 msgstr "Ville"
 
-#: users/forms.py:44
+#: users/forms.py:54
 msgid "Postal code"
 msgstr "Code postal"
 
-#: users/forms.py:45
+#: users/forms.py:55
 msgid "Hide my firstname and lastname"
 msgstr "Cacher mon prénom et nom"
 
-#: users/forms.py:46
+#: users/forms.py:56
 msgid "Hide my phone number"
 msgstr "Cacher mon numéro de téléphone"
 
-#: users/forms.py:47
+#: users/forms.py:57
 msgid "Hide my birthday"
 msgstr "Cacher ma date de naissance"
 
-#: users/forms.py:48
+#: users/forms.py:58
 msgid "Hide my address"
 msgstr "Cacher mon adresse"
 
-#: users/forms.py:49
+#: users/forms.py:59
 msgid "Hide my email"
 msgstr "Cacher mon adresse mail"
 
-#: users/forms.py:55
+#: users/forms.py:65
 msgid ""
 "Write about yourself! how you discover My Little Pony or BronyCUB, what you "
 "like and dislike..."
@@ -73,7 +73,7 @@ msgstr ""
 "Ecrivez à propos de vous ! Comment vous avez découvert My Little Pony ou "
 "BronyCUB , ce que vous aimez ou detestez ..."
 
-#: users/forms.py:62
+#: users/forms.py:100
 msgid "Username or email"
 msgstr "Nom d'utilisateur ou email"
 
@@ -259,18 +259,18 @@ msgstr ""
 msgid "Send"
 msgstr "Soumettre"
 
-#: users/urls.py:7
+#: users/urls.py:8
 msgid "^members$"
 msgstr "^membres$"
 
-#: users/urls.py:8
+#: users/urls.py:9
 msgid "^profile$"
 msgstr "^profil$"
 
-#: users/urls.py:9
+#: users/urls.py:10
 msgid "^register$"
 msgstr "^inscription$"
 
-#: users/urls.py:10
+#: users/urls.py:11
 msgid "^register/informations$"
 msgstr "^inscription/informations$"
