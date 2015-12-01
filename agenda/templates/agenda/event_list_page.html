@@ -2,6 +2,7 @@
 
 {% load i18n %}
 {% load endless %}
+{% load comment_field %}
 
 {% url 'agenda:list' as event_url %}
 {% lazy_paginate event_list with event_url %}
@@ -30,19 +31,7 @@
                           </blockquote>
                         </div>
                       <hr />
-
-                    {% if user.is_authenticated and user.profile.enabled %}
-                      <div class="input-group">
-                          <input id="comment-{{ event.id }}" type="text" class="form-control" placeholder="{% trans 'Post a message' %}">
-                          <span class="input-group-addon btn" onclick="submitComment({{ event.id }})"><span class="glyphicon glyphicon-send"/> {% trans 'Post' %}</span>
-                      </div>
-                    {% else %}
-                      <div class="input-group">
-                          <input id="username-{{ event.id }}" type="text" class="form-control" placeholder="{% trans 'Username' %}">
-                          <input id="comment-{{ event.id }}" type="text" class="form-control" placeholder="{% trans 'Post a message' %}">
-                          <span class="input-group-addon btn" onclick="submitComment_offline({{ event.id }})"><span class="glyphicon glyphicon-send"/> {% trans 'Post' %}</span>
-                      </div>
-                    {% endif %}
+                        {% comment_form %}
                       <hr/>
                       <div id="comment-list-{{ event.id }}" class="list-group-item-text">
                           {% include 'agenda/comment_list_page.html' with comment_list=event.comment_set.all %}
