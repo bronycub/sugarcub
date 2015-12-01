@@ -1,4 +1,4 @@
-from django.conf.urls         import url
+from django.conf.urls         import url, include
 from .                        import views, models
 from endless_pagination.views import AjaxListView
 from django.utils.translation import ugettext_lazy as _

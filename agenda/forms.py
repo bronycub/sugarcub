@@ -2,6 +2,8 @@ from django                      import forms
 from .                           import models
 from bootstrap3_datetime.widgets import DateTimePicker
 from django.utils.translation    import ugettext_lazy as _
+from captcha.fields              import CaptchaField
+
 
 
 class EventForm(forms.ModelForm):
@@ -38,6 +40,7 @@ class EventForm(forms.ModelForm):
 
 class CommentForm(forms.ModelForm):
 
+    captcha = CaptchaField()
     class Meta:
         model  = models.Comment
-        fields = ['text']
+        fields = ['text', 'pseudo']

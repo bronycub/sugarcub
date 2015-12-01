@@ -42,6 +42,7 @@ DEPENDENCIES_APPS = (
     'endless_pagination',
     'absolute',
     'bootstrap3_datetime',
+    'captcha',
 )
 
 DEV_DEPENDENCIES_APPS = (
