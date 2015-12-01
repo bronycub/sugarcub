@@ -2,7 +2,7 @@ from django.shortcuts               import render
 from django.core.urlresolvers       import reverse_lazy
 from django.views.generic.edit      import CreateView, UpdateView
 from .                              import models, forms, utils
-from .forms                         import EventForm
+from .forms                         import EventForm, CommentForm
 from endless_pagination.views       import AjaxListView
 from django.http                    import HttpResponse
 from django.shortcuts               import redirect
@@ -11,6 +11,8 @@ from django.utils.decorators        import method_decorator
 
 
 class CommentAjaxListView(AjaxListView):
+
+    form_class    = forms.CommentForm
 
     def get_queryset(self):
         return models.Comment.objects.filter(event = self.kwargs['event_id'])
@@ -47,25 +49,27 @@ class UpdateEventView(UpdateView):
 def post_comment(request):
 
     if request.method == 'POST':
-        if request.user.is_authenticated():
-            event = models.Event.objects.get(pk = request.POST.get('event'))
-            comment = models.Comment(
-                author = request.user,
-                text = request.POST.get('text'),
-                event = event
-            )
-            comment.save()
+        if request.POST.get('text') != "":
+            if request.user.is_authenticated():
+                event = models.Event.objects.get(pk = request.POST.get('event'))
+                comment = models.Comment(
+                    author = request.user,
+                    text = request.POST.get('text'),
+                    event = event
+                )
+                comment.save()
 
-        else:
-            event = models.Event.objects.get(pk = request.POST.get('event'))
-            comment = models.Comment(
-                pseudo = request.POST.get('username'),
-                text = request.POST.get('text'),
-                event = event
-            )
-            comment.save()
+            else:
+                if request.POST.get('username') != "":
+                    event = models.Event.objects.get(pk = request.POST.get('event'))
+                    comment = models.Comment(
+                        pseudo = request.POST.get('username'),
+                        text = request.POST.get('text'),
+                        event = event
+                    )
+                    comment.save()
 
-        return HttpResponse('success')
+            return HttpResponse('success')
 
     return redirect('agenda:list')
 
@@ -73,24 +77,25 @@ def post_comment(request):
 def participate(request):
 
     if request.method == 'POST':
-        if request.user.is_authenticated():
-            event = models.Event.objects.get(pk = request.POST.get('event'))
-            participation = models.Participation(
-                user = request.user,
-                event = event
-            )
-            participation.save()
+        if request.POST.get('text') != "":
+            if request.user.is_authenticated():
+                event = models.Event.objects.get(pk = request.POST.get('event'))
+                participation = models.Participation(
+                    user = request.user,
+                    event = event
+                )
+                participation.save()
 
-        else:
-            print(request.POST.get('username'))
-            event = models.Event.objects.get(pk = request.POST.get('event'))
-            participation = models.Participation(
-                pseudo = request.POST.get('username'),
-                event = event
-            )
-            participation.save()
+            else:
+                if request.POST.get('username') != "":
+                    event = models.Event.objects.get(pk = request.POST.get('event'))
+                    participation = models.Participation(
+                        pseudo = request.POST.get('username'),
+                        event = event
+                    )
+                    participation.save()
 
-        return HttpResponse('success')
+            return HttpResponse('success')
 
     return redirect('agenda:list')
 
