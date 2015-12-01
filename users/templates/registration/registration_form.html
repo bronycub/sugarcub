@@ -6,19 +6,6 @@
 
 {% block title %}{% trans 'Signup' %}{% endblock %}
 
-{% block extrastyle %}
-    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/datepicker.css' %}">
-{% endblock %}
-
-{% block extrascripts %}
-    <script type="application/javascript" src="{% static 'js/bootstrap-datepicker.js' %}"></script>
-    <script type="application/javascript">
-        $(document).ready(function(){
-            $('#id_profile-birthday').datepicker({'format': 'dd/mm/yyyy'})
-        })
-    </script>
-{% endblock %}
-
 {% block body %}
     {{ block.super }}
 
@@ -41,4 +28,10 @@
         </div>
     </div>
 
+{% endblock %}
+
+{% block extrascripts %}
+    {{ block.super }}
+
+    {{ form.media }}
 {% endblock %}

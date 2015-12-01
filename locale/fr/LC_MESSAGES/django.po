@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-19 18:51+0000\n"
+"POT-Creation-Date: 2015-11-24 18:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -313,3 +313,19 @@ msgid ""
 "\tView function: <code>%(full_name)s</code>. Name: <code>%(url_name)s</"
 "code>.\n"
 msgstr ""
+
+#: sugarcub/urls.py:11
+msgid "admin/doc/"
+msgstr "admin/doc/"
+
+#: sugarcub/urls.py:12
+msgid "admin/"
+msgstr "admin/"
+
+#: sugarcub/urls.py:14
+msgid "bbbff/"
+msgstr "bbbff/"
+
+#: sugarcub/urls.py:15
+msgid "agenda/"
+msgstr "agenda/"

@@ -1,0 +1,177 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-11-24 18:21+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: core/templates/agenda.html:6 core/templates/base.html:52
+msgid "Agenda"
+msgstr ""
+
+#: core/templates/base.html:51
+msgid "Members"
+msgstr ""
+
+#: core/templates/base.html:53 core/templates/hq.html:6
+msgid "HQ"
+msgstr ""
+
+#: core/templates/base.html:54
+msgid "Medias"
+msgstr ""
+
+#: core/templates/base.html:55 core/templates/map.html:11
+msgid "Map"
+msgstr ""
+
+#: core/templates/base.html:56 core/templates/friends.html:6
+msgid "Friends"
+msgstr ""
+
+#: core/templates/base.html:59
+msgid "Tchat"
+msgstr ""
+
+#: core/templates/base.html:60
+msgid "Visio"
+msgstr ""
+
+#: core/templates/base.html:61
+msgid "Ticket"
+msgstr ""
+
+#: core/templates/base.html:77
+msgid "Profile"
+msgstr ""
+
+#: core/templates/base.html:79
+msgid "Admin"
+msgstr ""
+
+#: core/templates/base.html:81
+msgid "Logout"
+msgstr ""
+
+#: core/templates/base.html:85
+msgid "Login"
+msgstr ""
+
+#: core/templates/base.html:86
+msgid "Signup"
+msgstr ""
+
+#: core/templates/base.html:115
+msgid "Contact us :"
+msgstr ""
+
+#: core/templates/friends.html:31
+msgid "No friends at the moment ..."
+msgstr ""
+
+#: core/templates/home.html:6
+msgid "Home"
+msgstr ""
+
+#: core/templates/home.html:35
+msgid "BronyCUB, What is it ?"
+msgstr ""
+
+#: core/templates/home.html:38
+msgid ""
+"BronyCUB is a collective from the <strong>U</strong>rban <strong>C</"
+"strong>ommunity of <strong>B</strong>ordeaux (<strong>CUB</strong> in "
+"french) in the Gironde."
+msgstr ""
+
+#: core/templates/home.html:40
+msgid "this collective try to gather fans to orgenize various meet-up."
+msgstr ""
+
+#: core/templates/home.html:45 core/templates/home.html.py:51
+msgid "More info ..."
+msgstr ""
+
+#: core/templates/home.html:54
+msgid "A Brony ? Can we eat it ? whatisit ?"
+msgstr ""
+
+#: core/templates/home.html:58
+msgid "Why ?"
+msgstr ""
+
+#: core/templates/home.html:62
+msgid "Close"
+msgstr ""
+
+#: core/templates/home.html:70
+msgid "What is happening in BronyCUB?"
+msgstr ""
+
+#: core/templates/home.html:74
+msgid "It's the birthday of "
+msgstr ""
+
+#: core/templates/home.html:74
+msgid " today, Happy Birthday!"
+msgstr ""
+
+#: core/templates/home.html:79
+msgid "This month : "
+msgstr ""
+
+#: core/templates/home.html:84
+msgid "join us! Give "
+msgstr ""
+
+#: core/templates/home.html:86
+msgid "them"
+msgstr ""
+
+#: core/templates/home.html:88
+msgid "him/her"
+msgstr ""
+
+#: core/templates/home.html:90
+msgid " a warm welcome!"
+msgstr ""
+
+#: core/templates/home.html:92
+msgid "nobody join us, how sad..."
+msgstr ""
+
+#: core/templates/home.html:99
+msgid "Join us"
+msgstr ""
+
+#: core/templates/map.html:23
+msgid "Access HQ"
+msgstr ""
+
+#: core/templates/map.html:24
+msgid "Map of France"
+msgstr ""
+
+#: core/urls.py:7
+msgid "^hq$"
+msgstr ""
+
+#: core/urls.py:8
+msgid "^map$"
+msgstr ""
+
+#: core/urls.py:9
+msgid "^friends$"
+msgstr ""

@@ -1,4 +1,4 @@
-"""
+'''
 Django settings for sugarcub project.
 
 For more information on this file, see
@@ -6,9 +6,9 @@ https://docs.djangoproject.com/en/1.7/topics/settings/
 
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.7/ref/settings/
-"""
+'''
 
-from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS, AUTHENTICATION_BACKENDS
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
@@ -16,13 +16,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
-
-IS_PROD = os.getenv('DEPLOY_TYPE', 'dev') == 'prod'
-if IS_PROD:
-    from sugarcub.settings_prod import *
-else:
-    from sugarcub.settings_dev import *
-
 
 # Application definition
 
@@ -48,6 +41,7 @@ DEPENDENCIES_APPS = (
     'registration',
     'endless_pagination',
     'absolute',
+    'bootstrap3_datetime',
 )
 
 DEV_DEPENDENCIES_APPS = (
@@ -69,7 +63,6 @@ MIDDLEWARE_CLASSES = (
 
 TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
     'core.processors.custom_fields',
-    'core.processors.humanitarian_actions',
     'core.processors.mailing_list',
     'django.core.context_processors.request',
     'absolute.context_processors.absolute',
@@ -93,6 +86,20 @@ ROOT_URLCONF = 'sugarcub.urls'
 
 WSGI_APPLICATION = 'sugarcub.wsgi.application'
 
+# CACHES = {
+# 	'default': {
+# 		'BACKEND': 'django_redis.cache.RedisCache',
+# 		'LOCATION': 'unix:///shared/redis.sock',
+# 		'OPTIONS': {
+# 			'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+# 			'IGNORE_EXCEPTIONS': True,
+# 		}
+# 	}
+# }
+#
+# SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+# SESSION_CACHE_ALIAS = 'default'
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
@@ -109,11 +116,12 @@ USE_TZ = True
 
 # Auth configuration
 
-LOGIN_REDIRECT_URL      = '/'
-LOGIN_URL               = '/login'
-LOGOUT_URL              = '/logout'
-ACCOUNT_ACTIVATION_DAYS = 7
-AUTH_PROFILE_MODULE     = 'users.profile'
+LOGIN_REDIRECT_URL       = '/'
+LOGIN_URL                = '/login'
+LOGOUT_URL               = '/logout'
+ACCOUNT_ACTIVATION_DAYS  = 7
+AUTH_PROFILE_MODULE      = 'users.profile'
+AUTHENTICATION_BACKENDS += ('users.utils.EmailModelBackend', )
 
 
 # Registration
@@ -132,3 +140,9 @@ DAB_FIELD_RENDERER = 'django_admin_bootstrapped.renderers.BootstrapFieldRenderer
 # Per Collective Custom
 
 from sugarcub.custom_settings import *
+
+IS_PROD = os.getenv('DEPLOY_TYPE', 'dev') == 'prod'
+if IS_PROD:
+    from sugarcub.settings_prod import *
+else:
+    from sugarcub.settings_dev import *

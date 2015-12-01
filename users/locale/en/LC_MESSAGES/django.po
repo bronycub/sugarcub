@@ -1,0 +1,260 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-11-24 18:21+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: users/forms.py:27
+msgid "Exemple : Pony is best pegasus/pony/unicorn!"
+msgstr ""
+
+#: users/forms.py:40
+msgid "Birthday"
+msgstr ""
+
+#: users/forms.py:50
+msgid "Biography"
+msgstr ""
+
+#: users/forms.py:51
+msgid "Phone"
+msgstr ""
+
+#: users/forms.py:52
+msgid "Address"
+msgstr ""
+
+#: users/forms.py:53
+msgid "City"
+msgstr ""
+
+#: users/forms.py:54
+msgid "Postal code"
+msgstr ""
+
+#: users/forms.py:55
+msgid "Hide my firstname and lastname"
+msgstr ""
+
+#: users/forms.py:56
+msgid "Hide my phone number"
+msgstr ""
+
+#: users/forms.py:57
+msgid "Hide my birthday"
+msgstr ""
+
+#: users/forms.py:58
+msgid "Hide my address"
+msgstr ""
+
+#: users/forms.py:59
+msgid "Hide my email"
+msgstr ""
+
+#: users/forms.py:65
+msgid ""
+"Write about yourself! how you discover My Little Pony or BronyCUB, what you "
+"like and dislike..."
+msgstr ""
+
+#: users/forms.py:100
+msgid "Username or email"
+msgstr ""
+
+#: users/models.py:44
+msgid ""
+"Phone number must be entered in the format: '+999999999'. Up to 15 digits "
+"allowed."
+msgstr ""
+
+#: users/models.py:46
+msgid "The postal code must be 5 digits."
+msgstr ""
+
+#: users/models.py:55
+msgid "The bio should be longer than 150 character"
+msgstr ""
+
+#: users/templates/members.html:5
+msgid "Members"
+msgstr ""
+
+#: users/templates/members.html:16
+msgid "No members registered yet ..."
+msgstr ""
+
+#: users/templates/members/one-user.html:79
+msgid ""
+"Your account must be accepted by the admin to see the members informations."
+msgstr ""
+
+#: users/templates/members/one-user.html:82
+#: users/templates/members/one-user.html:93
+msgid "Close"
+msgstr ""
+
+#: users/templates/members/one-user.html:90
+msgid "You must be connected to see the members informations."
+msgstr ""
+
+#: users/templates/profile.html:7
+msgid "Profile"
+msgstr ""
+
+#: users/templates/profile.html:22
+msgid "SugarCUB </br>My Profile"
+msgstr ""
+
+#: users/templates/profile.html:39
+msgid "Favorite pony :"
+msgstr ""
+
+#: users/templates/profile.html:57 users/templates/profile.html.py:79
+msgid "Add new line"
+msgstr ""
+
+#: users/templates/profile.html:61
+msgid "Url :"
+msgstr ""
+
+#: users/templates/profile.html:83
+msgid "Only members of BronyCUB will be able to see those information :"
+msgstr ""
+
+#: users/templates/profile.html:97
+msgid "Hide personnal information :"
+msgstr ""
+
+#: users/templates/profile.html:105
+msgid "Update"
+msgstr ""
+
+#: users/templates/profile.html:110
+msgid "Change your password"
+msgstr ""
+
+#: users/templates/registration/activate.html:5
+#: users/templates/registration/activation_complete.html:6
+#: users/templates/registration/logout.html:6
+#: users/templates/registration/registration_closed.html:5
+#: users/templates/registration/registration_complete.html:5
+msgid "Account created"
+msgstr ""
+
+#: users/templates/registration/activate.html:13
+msgid "An error occured while activating your account. Please retry."
+msgstr ""
+
+#: users/templates/registration/activation_complete.html:14
+msgid "Your account is now activated ! Please login and enjoy ! ;)"
+msgstr ""
+
+#: users/templates/registration/activation_email.txt:4
+#, python-format
+msgid "You're receiving this email because you created an account on %(site)s."
+msgstr ""
+
+#: users/templates/registration/activation_email.txt:6
+msgid "Please go to the following page to activate your account:"
+msgstr ""
+
+#: users/templates/registration/activation_email.txt:11
+#: users/templates/registration/password_reset_email.html:10
+msgid "Thanks for using our site!"
+msgstr ""
+
+#: users/templates/registration/activation_email.txt:13
+#, python-format
+msgid "The %(site)s team"
+msgstr ""
+
+#: users/templates/registration/activation_email_subject.txt:3
+msgid "Account activation"
+msgstr ""
+
+#: users/templates/registration/forms/login.html:6
+#: users/templates/registration/forms/login.html:9
+#: users/templates/registration/login.html:7
+msgid "Login"
+msgstr ""
+
+#: users/templates/registration/forms/login.html:12
+msgid "You forgot your password ?"
+msgstr ""
+
+#: users/templates/registration/forms/login.html:14
+#: users/templates/registration/registration_form.html:7
+msgid "Signup"
+msgstr ""
+
+#: users/templates/registration/informations.html:6
+msgid "To know before registering"
+msgstr ""
+
+#: users/templates/registration/logout.html:14
+msgid "You're now logged out."
+msgstr ""
+
+#: users/templates/registration/password_reset_email.html:2
+#, python-format
+msgid ""
+"You're receiving this email because you requested a password reset for your "
+"user account at %(site_name)s."
+msgstr ""
+
+#: users/templates/registration/password_reset_email.html:4
+msgid "Please go to the following page and choose a new password:"
+msgstr ""
+
+#: users/templates/registration/password_reset_email.html:8
+msgid "Your username, in case you've forgotten:"
+msgstr ""
+
+#: users/templates/registration/password_reset_email.html:12
+#, python-format
+msgid "The %(site_name)s team"
+msgstr ""
+
+#: users/templates/registration/registration_closed.html:13
+msgid "Sorry but registrations are closed at the moment, try again later /)"
+msgstr ""
+
+#: users/templates/registration/registration_complete.html:14
+msgid ""
+"You signed up successfully ! A mail to activate your account has been sent, "
+"Welcome !"
+msgstr ""
+
+#: users/templates/registration/registration_form.html:24
+msgid "Send"
+msgstr ""
+
+#: users/urls.py:8
+msgid "^members$"
+msgstr ""
+
+#: users/urls.py:9
+msgid "^profile$"
+msgstr ""
+
+#: users/urls.py:10
+msgid "^register$"
+msgstr ""
+
+#: users/urls.py:11
+msgid "^register/informations$"
+msgstr ""

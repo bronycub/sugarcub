@@ -40,4 +40,9 @@ urlpatterns = [
         view  = views.ics_export,
         name  = 'ics_export',
     ),
+    url(
+        regex = _(r'^event/update/(?P<event_id>[0-9]+)$'),
+        view  = views.UpdateEvent,
+        name  = 'update_event',
+    ),
 ]

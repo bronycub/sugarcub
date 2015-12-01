@@ -16,3 +16,6 @@ db.sqlite3
 
 # Deploy generated files
 /server/shared
+
+# Virtualenv
+.env

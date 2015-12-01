@@ -1,5 +1,5 @@
-from django                    import template
-from django.contrib.auth.forms import AuthenticationForm
+from django import template
+from ..forms import AuthenticationForm
 
 
 register = template.Library()

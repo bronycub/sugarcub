@@ -17,6 +17,17 @@
                 <link rel="stylesheet" type="text/css" media="screen" href="{% static 'zocial/zocial.css' %}">
                 {% block extrastyle %}{% endblock %}
             {% endblock %}
+            {% block javascripts %}
+                <script type="application/javascript" src="{% static 'js/jquery-1.11.2.min.js' %}"></script>
+                <script type="application/javascript" src="{% static 'js/jquery-setup.js' %}"></script>
+                <script type="application/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+                <script type="application/javascript" src="{% static 'js/jquery.expander.js' %}"></script>
+                <script type="application/javascript" src="{% static 'js/expender.js' %}"></script>
+                <script type="application/javascript" src="{% static 'js/konami.js' %}"></script>
+                <script type="application/javascript" src="{% static 'js/datetimepicker.js' %}"></script>
+                {% block extrascripts %}{% endblock %}
+            {% endblock %}
+            
             {% block blockbots %}{% endblock %}
             {% block extrahead %}{% endblock %}
         {% endblock %}
@@ -47,7 +58,6 @@
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a href="https://kiwiirc.com/client?settings=3ebf3eb7a40c2b03f47b918eb2f7087a" target="_blank"><i class="fa fa-comment fa-1x"></i>&nbsp;{% trans 'Tchat' %}</a></li>
                                 <li><a href="https://vroom.im/bronycub" target="_blank"><i class="fa fa-video-camera fa-1x"></i>&nbsp;{% trans 'Visio' %}</a></li>
-                                <li><a href="https://plug.dj/bronycub" target="_blank"><i class="fa fa-headphones fa-1x"></i>&nbsp;{% trans 'DJ' %}</a></li>
                                 <li><a href="https://bronycub.freshdesk.com/support/tickets/new" target="_blank"><i class="fa fa-ticket fa-1x"></i>&nbsp;{% trans 'Ticket' %}</a></li>
                                 {% if user.is_authenticated %}
                                     <li role="presentation" class="dropdown">
@@ -111,16 +121,5 @@
                 </footer>
             {% endblock %}
         </div>
-
-        {% block javascripts %}
-            <script type="application/javascript" src="{% static 'js/jquery-1.11.2.min.js' %}"></script>
-            <script type="application/javascript" src="{% static 'js/jquery-setup.js' %}"></script>
-            <script type="application/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
-            <script type="application/javascript" src="{% static 'js/jquery.expander.js' %}"></script>
-            <script type="application/javascript" src="{% static 'js/expender.js' %}"></script>
-            <script type="application/javascript" src="{% static 'js/konami.js' %}"></script>
-            {% block extrascripts %}{% endblock %}
-        {% endblock %}
-
     </body>
 </html>

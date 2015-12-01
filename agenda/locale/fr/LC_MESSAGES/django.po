@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-11 16:41+0000\n"
+"POT-Creation-Date: 2015-11-24 18:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,31 +18,29 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: agenda/forms.py:12
+#: agenda/forms.py:16
+msgid "Start date and hour"
+msgstr "Date et heure de début"
+
+#: agenda/forms.py:25
+msgid "End date and hour"
+msgstr "Date et heure de fin"
+
+#: agenda/forms.py:32
 msgid "Title"
 msgstr "Nom de l'évènement"
 
-#: agenda/forms.py:13
+#: agenda/forms.py:33
 msgid "Description"
 msgstr "Description"
 
-#: agenda/forms.py:14
-#, fuzzy
-#| msgid "Add an event"
+#: agenda/forms.py:34
 msgid "Address of the event"
-msgstr "Ajouter un évènement"
+msgstr "Adresse de l'évènement"
 
-#: agenda/forms.py:15
-msgid "Start date"
-msgstr "Date de début"
-
-#: agenda/forms.py:16
-msgid "End date"
-msgstr "Date de fin"
-
-#: agenda/forms.py:17
+#: agenda/forms.py:35
 msgid "Means of contact"
-msgstr "Moyen de contact"
+msgstr "Moyens de contact"
 
 #: agenda/models.py:9
 msgid "Show both my phone and my mail"
@@ -57,19 +55,30 @@ msgid "Show only my phone"
 msgstr "Montrer uniquement mon téléphone"
 
 #: agenda/templates/agenda/comment_list.html:6
-#: agenda/templates/agenda/event_form.html:6
+#: agenda/templates/agenda/event_form.html:7
 #: agenda/templates/agenda/event_list.html:8
+#: agenda/templates/agenda/event_update_form.html:7
 msgid "Events"
 msgstr "Évènements"
 
-#: agenda/templates/agenda/event_form.html:14
+#: agenda/templates/agenda/event_form.html:17
 #: agenda/templates/agenda/event_list.html:40
 msgid "Add an event"
 msgstr "Ajouter un évènement"
 
-#: agenda/templates/agenda/event_form.html:19
-msgid "Update"
-msgstr "Mettre à jour"
+#: agenda/templates/agenda/event_form.html:25
+#: agenda/templates/agenda/event_form.html:27
+#: agenda/templates/agenda/event_update_form.html:23
+#: agenda/templates/agenda/event_update_form.html:25
+msgid ""
+"You can use the button on the right of this field to choose the date and the "
+"time"
+msgstr ""
+"Vous pouvez utiliser le bouton à droite du champ pour sélectionner la date et l'heure"
+
+#: agenda/templates/agenda/event_form.html:32
+msgid "Add event"
+msgstr "Ajouter un évènement"
 
 #: agenda/templates/agenda/event_list.html:16
 #: agenda/templates/agenda/event_list.html:22
@@ -127,12 +136,24 @@ msgid "I participate !"
 msgstr "Je participe !"
 
 #: agenda/templates/agenda/event_list_page.html:77
+msgid "Participant"
+msgstr "Participants"
+
+#: agenda/templates/agenda/event_list_page.html:85
 msgid "Organizer"
 msgstr "Organisateur"
 
-#: agenda/templates/agenda/event_list_page.html:87
+#: agenda/templates/agenda/event_list_page.html:95
 msgid "CONTACT"
 msgstr "CONTACT"
+
+#: agenda/templates/agenda/event_update_form.html:15
+msgid "Update an event"
+msgstr "Mettre à jour un évènement"
+
+#: agenda/templates/agenda/event_update_form.html:30
+msgid "Update"
+msgstr "Mettre à jour"
 
 #: agenda/urls.py:14
 msgid "^(?P<event_id>[0-9]+)/comments$"
@@ -151,11 +172,13 @@ msgid "^comment$"
 msgstr "^commentaire$"
 
 #: agenda/urls.py:34
-#, fuzzy
-#| msgid "I participate !"
 msgid "^participations$"
-msgstr "Je participe !"
+msgstr "^participations$"
 
 #: agenda/urls.py:39
 msgid "^ics$"
-msgstr ""
+msgstr "^ics$"
+
+#: agenda/urls.py:44
+msgid "^event/update/(?P<event_id>[0-9]+)$"
+msgstr "^evenement/modification/(?P<event_id>[0-9]+)$"

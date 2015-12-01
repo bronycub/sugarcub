@@ -52,7 +52,7 @@ class Profile(models.Model):
     mail_enabled      = models.BooleanField(default = False)
 
     bio_min_size      = MinLengthValidator(150, message=_(
-        "The bio should be longer than 150 character"))
+        'The bio should be longer than 150 character'))
     bio               = models.TextField(validators=[bio_min_size])
     avatar            = StdImageField(blank = True, null = True,
         variations = {'avatar': (100, 100), 'small': (50, 50), 'big': (222, 222)},
@@ -96,10 +96,32 @@ class Profile(models.Model):
 
 
 class Pony(models.Model):
+    ''' List of different pony available '''
+
+    name = models.CharField(max_length = 32)
+    file_name = models.CharField(max_length = 32)
+
+    class Meta:
+        verbose_name_plural = 'ponies'
+
+    def __str__(self):
+        return self.name
+
+class Icon(models.Model):
+    ''' List of different icon available '''
+
+    name = models.CharField(max_length = 32)
+    file_name = models.CharField(max_length = 32)        
+
+    def __str__(self):
+        return self.name
+
+
+class UserPony(models.Model):
     ''' List of ponies with little quotes to display in the user's description '''
 
     profile = models.ForeignKey(Profile)
-    pony    = models.CharField(max_length = 32)
+    pony    = models.ForeignKey(Pony)
     message = models.CharField(max_length = 64)
 
     def __str__(self):
@@ -109,15 +131,15 @@ class Pony(models.Model):
             return self.message
 
     class Meta:
-        verbose_name_plural = "ponies"
+        verbose_name_plural = 'ponies'
 
 
-class Url(models.Model):
+class UserUrl(models.Model):
     ''' List of urls in the user's description '''
 
     profile = models.ForeignKey(Profile)
     url     = models.URLField()
-    icon    = models.CharField(max_length = 16)
+    icon    = models.ForeignKey(Icon)
 
     def __str__(self):
         return self.url
