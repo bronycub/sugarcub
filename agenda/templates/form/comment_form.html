@@ -4,8 +4,7 @@
 {% if user.is_authenticated and user.profile.enabled %}
   <div class="input-group">
       {% csrf_token %}
-      {% bootstrap_field comment_form.text %}
-      {% bootstrap_field comment_form.captcha %}
+      {% bootstrap_field comment_form.text show_label=false %}
       <span class="input-group-addon btn" onclick="submitComment({{ event.id }})"><span class="glyphicon glyphicon-send"/> {% trans 'Post' %}</span>
   </div>
 {% else %}

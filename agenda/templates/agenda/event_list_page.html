@@ -31,7 +31,7 @@
                           </blockquote>
                         </div>
                       <hr />
-                        {% comment_form %}
+                        {% comment_form prefix=event.id %}
                       <hr/>
                       <div id="comment-list-{{ event.id }}" class="list-group-item-text">
                           {% include 'agenda/comment_list_page.html' with comment_list=event.comment_set.all %}

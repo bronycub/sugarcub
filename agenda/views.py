@@ -59,6 +59,7 @@ def post_comment(request):
             comment.save()
 
         else:
+            if captcha.is_valid():
                 event = models.Event.objects.get(pk = request.POST.get('event'))
                 comment = models.Comment(
                     pseudo = request.POST.get('username'),
@@ -84,12 +85,12 @@ def participate(request):
             participation.save()
 
         else:
-                event = models.Event.objects.get(pk = request.POST.get('event'))
-                participation = models.Participation(
-                    pseudo = request.POST.get('username'),
-                    event = event
-                )
-                participation.save()
+            event = models.Event.objects.get(pk = request.POST.get('event'))
+            participation = models.Participation(
+                pseudo = request.POST.get('username'),
+                event = event
+            )
+            participation.save()
 
         return HttpResponse('success')
 
