@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SugarCUB 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-24 18:21+0000\n"
+"POT-Creation-Date: 2015-12-13 17:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Matthias Devlamynck <matthias.devlamynck@mailoo.org>\n"
 "Language: French\n"
@@ -121,35 +121,35 @@ msgstr "Vous devez être connecté pour voir les informations de ce membre."
 msgid "Profile"
 msgstr "Profil"
 
-#: users/templates/profile.html:22
+#: users/templates/profile.html:21
 msgid "SugarCUB </br>My Profile"
 msgstr "SugarCUB </br>Mon Profil"
 
-#: users/templates/profile.html:39
+#: users/templates/profile.html:38
 msgid "Favorite pony :"
 msgstr "Poney Favoris :"
 
-#: users/templates/profile.html:57 users/templates/profile.html.py:79
+#: users/templates/profile.html:56 users/templates/profile.html.py:78
 msgid "Add new line"
 msgstr "Ajouter une nouvelle ligne"
 
-#: users/templates/profile.html:61
+#: users/templates/profile.html:60
 msgid "Url :"
 msgstr "Url :"
 
-#: users/templates/profile.html:83
+#: users/templates/profile.html:82
 msgid "Only members of BronyCUB will be able to see those information :"
 msgstr "Seul les membres de BronyCUB peuvent voir les informations suivantes :"
 
-#: users/templates/profile.html:97
+#: users/templates/profile.html:96
 msgid "Hide personnal information :"
 msgstr "Cacher vos informations personnelles"
 
-#: users/templates/profile.html:105
+#: users/templates/profile.html:104
 msgid "Update"
 msgstr "Mettre à jour"
 
-#: users/templates/profile.html:110
+#: users/templates/profile.html:109
 msgid "Change your password"
 msgstr "Modifiez votre mot de passe"
 
