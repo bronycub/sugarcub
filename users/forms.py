@@ -43,7 +43,7 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model   = models.Profile
         fields = [
-            'bio', 'phone', 'birthday', 'address', 'city', 'postal_code',
+            'bio', 'avatar', 'phone', 'birthday', 'address', 'city', 'postal_code',
             'name_enabled', 'phone_enabled', 'birthday_enabled', 'address_enabled', 'mail_enabled'
         ]
         labels = {
