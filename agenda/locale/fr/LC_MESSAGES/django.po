@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-15 19:09+0000\n"
+"POT-Creation-Date: 2015-12-25 15:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,6 +41,15 @@ msgstr "Adresse de l'évènement"
 #: agenda/forms.py:35
 msgid "Means of contact"
 msgstr "Moyens de contact"
+
+#: agenda/forms.py:41
+msgid ""
+"Explain the event, add as much information you can : time, localisation , if "
+"people need stuff... the more information the better!"
+msgstr ""
+"Expliquer l'évènement, ajouter autant d'information que possible : horraire, "
+"lieu, si les gens on besoin d'affaire... Un maximum d'information est un "
+"plus!"
 
 #: agenda/models.py:9
 msgid "Show both my phone and my mail"
@@ -118,33 +127,37 @@ msgstr "Poster un commentaire"
 
 #: agenda/templates/agenda/event_list_page.html:37
 #: agenda/templates/agenda/event_list_page.html:43
-#: agenda/templates/agenda/event_list_page.html:68
+#: agenda/templates/agenda/event_list_page.html:73
 msgid "Post"
 msgstr "Envoyer"
 
 #: agenda/templates/agenda/event_list_page.html:41
-#: agenda/templates/agenda/event_list_page.html:67
+#: agenda/templates/agenda/event_list_page.html:72
 msgid "Username"
 msgstr "Pseudo"
 
 #: agenda/templates/agenda/event_list_page.html:54
+msgid "Edit event"
+msgstr "Modifier un évènement"
+
+#: agenda/templates/agenda/event_list_page.html:59
 msgid "Will you participate?"
 msgstr "Participerez-vous?"
 
-#: agenda/templates/agenda/event_list_page.html:59
-#: agenda/templates/agenda/event_list_page.html:62
+#: agenda/templates/agenda/event_list_page.html:64
+#: agenda/templates/agenda/event_list_page.html:67
 msgid "I participate !"
 msgstr "Je participe !"
 
-#: agenda/templates/agenda/event_list_page.html:77
+#: agenda/templates/agenda/event_list_page.html:82
 msgid "Participant"
 msgstr "Participants"
 
-#: agenda/templates/agenda/event_list_page.html:85
+#: agenda/templates/agenda/event_list_page.html:90
 msgid "Organizer"
 msgstr "Organisateur"
 
-#: agenda/templates/agenda/event_list_page.html:95
+#: agenda/templates/agenda/event_list_page.html:100
 msgid "CONTACT"
 msgstr "CONTACT"
 

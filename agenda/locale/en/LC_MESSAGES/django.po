@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-15 19:09+0000\n"
+"POT-Creation-Date: 2015-12-25 15:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,6 +39,12 @@ msgstr ""
 
 #: agenda/forms.py:35
 msgid "Means of contact"
+msgstr ""
+
+#: agenda/forms.py:41
+msgid ""
+"Explain the event, add as much information you can : time, localisation , if "
+"people need stuff... the more information the better!"
 msgstr ""
 
 #: agenda/models.py:9
@@ -115,33 +121,37 @@ msgstr ""
 
 #: agenda/templates/agenda/event_list_page.html:37
 #: agenda/templates/agenda/event_list_page.html:43
-#: agenda/templates/agenda/event_list_page.html:68
+#: agenda/templates/agenda/event_list_page.html:73
 msgid "Post"
 msgstr ""
 
 #: agenda/templates/agenda/event_list_page.html:41
-#: agenda/templates/agenda/event_list_page.html:67
+#: agenda/templates/agenda/event_list_page.html:72
 msgid "Username"
 msgstr ""
 
 #: agenda/templates/agenda/event_list_page.html:54
-msgid "Will you participate?"
+msgid "Edit event"
 msgstr ""
 
 #: agenda/templates/agenda/event_list_page.html:59
-#: agenda/templates/agenda/event_list_page.html:62
+msgid "Will you participate?"
+msgstr ""
+
+#: agenda/templates/agenda/event_list_page.html:64
+#: agenda/templates/agenda/event_list_page.html:67
 msgid "I participate !"
 msgstr ""
 
-#: agenda/templates/agenda/event_list_page.html:77
+#: agenda/templates/agenda/event_list_page.html:82
 msgid "Participant"
 msgstr ""
 
-#: agenda/templates/agenda/event_list_page.html:85
+#: agenda/templates/agenda/event_list_page.html:90
 msgid "Organizer"
 msgstr ""
 
-#: agenda/templates/agenda/event_list_page.html:95
+#: agenda/templates/agenda/event_list_page.html:100
 msgid "CONTACT"
 msgstr ""
 

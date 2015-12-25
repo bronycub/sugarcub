@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SugarCUB 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-15 19:09+0000\n"
+"POT-Creation-Date: 2015-12-25 15:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Matthias Devlamynck <matthias.devlamynck@mailoo.org>\n"
 "Language: French\n"
@@ -53,18 +53,21 @@ msgstr "Montrer mon prénom et nom (Si caché seul votre pseudo sera visible)."
 #: users/forms.py:56
 msgid "Show my phone number (When hidden your will only be rechable by email"
 msgstr ""
-"Montrer mon numéro de téléphone (Si caché vous ne serez joignable que par email)."
+"Montrer mon numéro de téléphone (Si caché vous ne serez joignable que par "
+"email)."
 
 #: users/forms.py:57
 msgid ""
 "Show my birthday (When hidden nobody will know your age or your birthday)"
 msgstr ""
-"Montrer ma date de naissance (Si caché personne ne connaîtra ni votre âge ni votre "
-"anniversaire)."
+"Montrer ma date de naissance (Si caché personne ne connaîtra ni votre âge ni "
+"votre anniversaire)."
 
 #: users/forms.py:58
 msgid "Show my address (When hidde nyou will not appear on the members map"
-msgstr "Montrer mon adresse (Si caché vous n'apparaîtrez pas sur la carte des membres)."
+msgstr ""
+"Montrer mon adresse (Si caché vous n'apparaîtrez pas sur la carte des "
+"membres)."
 
 #: users/forms.py:59
 msgid "Show my email"

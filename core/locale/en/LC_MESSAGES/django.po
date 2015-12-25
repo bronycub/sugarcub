@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-15 19:09+0000\n"
+"POT-Creation-Date: 2015-12-25 15:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,16 @@ msgstr ""
 
 #: core/templates/agenda.html:6 core/templates/base.html:52
 msgid "Agenda"
+msgstr ""
+
+#: core/templates/banner.html:5
+msgid "Your profile is uncomplete, remember to complete it!"
+msgstr ""
+
+#: core/templates/banner.html:8
+msgid ""
+"Your profile is still unapproved by an admin. Until it is, some part of the "
+"site will not be avaible for you"
 msgstr ""
 
 #: core/templates/base.html:51
@@ -73,7 +83,7 @@ msgstr ""
 msgid "Signup"
 msgstr ""
 
-#: core/templates/base.html:115
+#: core/templates/base.html:122
 msgid "Contact us :"
 msgstr ""
 
