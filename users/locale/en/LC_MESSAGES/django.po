@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-24 18:21+0000\n"
+"POT-Creation-Date: 2015-12-13 17:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -115,35 +115,35 @@ msgstr ""
 msgid "Profile"
 msgstr ""
 
-#: users/templates/profile.html:22
+#: users/templates/profile.html:21
 msgid "SugarCUB </br>My Profile"
 msgstr ""
 
-#: users/templates/profile.html:39
+#: users/templates/profile.html:38
 msgid "Favorite pony :"
 msgstr ""
 
-#: users/templates/profile.html:57 users/templates/profile.html.py:79
+#: users/templates/profile.html:56 users/templates/profile.html.py:78
 msgid "Add new line"
 msgstr ""
 
-#: users/templates/profile.html:61
+#: users/templates/profile.html:60
 msgid "Url :"
 msgstr ""
 
-#: users/templates/profile.html:83
+#: users/templates/profile.html:82
 msgid "Only members of BronyCUB will be able to see those information :"
 msgstr ""
 
-#: users/templates/profile.html:97
+#: users/templates/profile.html:96
 msgid "Hide personnal information :"
 msgstr ""
 
-#: users/templates/profile.html:105
+#: users/templates/profile.html:104
 msgid "Update"
 msgstr ""
 
-#: users/templates/profile.html:110
+#: users/templates/profile.html:109
 msgid "Change your password"
 msgstr ""
 
