@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SugarCUB 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-24 18:21+0000\n"
+"POT-Creation-Date: 2015-12-15 19:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Matthias Devlamynck <matthias.devlamynck@mailoo.org>\n"
 "Language: French\n"
@@ -46,24 +46,29 @@ msgid "Postal code"
 msgstr "Code postal"
 
 #: users/forms.py:55
-msgid "Hide my firstname and lastname"
-msgstr "Cacher mon prénom et nom"
+msgid ""
+"Show my firstname and lastname (When hidden only your pseudo will be visible)"
+msgstr "Montrer mon prénom et nom (Si caché seul votre pseudo sera visible)."
 
 #: users/forms.py:56
-msgid "Hide my phone number"
-msgstr "Cacher mon numéro de téléphone"
+msgid "Show my phone number (When hidden your will only be rechable by email"
+msgstr ""
+"Montrer mon numéro de téléphone (Si caché vous ne serez joignable que par email)."
 
 #: users/forms.py:57
-msgid "Hide my birthday"
-msgstr "Cacher ma date de naissance"
+msgid ""
+"Show my birthday (When hidden nobody will know your age or your birthday)"
+msgstr ""
+"Montrer ma date de naissance (Si caché personne ne connaîtra ni votre âge ni votre "
+"anniversaire)."
 
 #: users/forms.py:58
-msgid "Hide my address"
-msgstr "Cacher mon adresse"
+msgid "Show my address (When hidde nyou will not appear on the members map"
+msgstr "Montrer mon adresse (Si caché vous n'apparaîtrez pas sur la carte des membres)."
 
 #: users/forms.py:59
-msgid "Hide my email"
-msgstr "Cacher mon adresse mail"
+msgid "Show my email"
+msgstr "Montrer mon adresse mail."
 
 #: users/forms.py:65
 msgid ""
@@ -141,15 +146,15 @@ msgstr "Url :"
 msgid "Only members of BronyCUB will be able to see those information :"
 msgstr "Seul les membres de BronyCUB peuvent voir les informations suivantes :"
 
-#: users/templates/profile.html:97
+#: users/templates/profile.html:98
 msgid "Hide personnal information :"
 msgstr "Cacher vos informations personnelles"
 
-#: users/templates/profile.html:105
+#: users/templates/profile.html:106
 msgid "Update"
 msgstr "Mettre à jour"
 
-#: users/templates/profile.html:110
+#: users/templates/profile.html:111
 msgid "Change your password"
 msgstr "Modifiez votre mot de passe"
 
@@ -255,7 +260,7 @@ msgstr ""
 "Vous avez bien créé votre compte ! Un mail d'activation vient de vous être "
 "envoyé, Bienvenue !"
 
-#: users/templates/registration/registration_form.html:24
+#: users/templates/registration/registration_form.html:40
 msgid "Send"
 msgstr "Soumettre"
 
@@ -274,3 +279,12 @@ msgstr "^inscription$"
 #: users/urls.py:11
 msgid "^register/informations$"
 msgstr "^inscription/informations$"
+
+#~ msgid "Hide my phone number"
+#~ msgstr "Cacher mon numéro de téléphone"
+
+#~ msgid "Hide my birthday"
+#~ msgstr "Cacher ma date de naissance"
+
+#~ msgid "Hide my address"
+#~ msgstr "Cacher mon adresse"

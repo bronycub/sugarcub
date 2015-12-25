@@ -52,11 +52,11 @@ class ProfileForm(forms.ModelForm):
             'address': _('Address'),
             'city': _('City'),
             'postal_code': _('Postal code'),
-            'name_enabled': _('Hide my firstname and lastname'),
-            'phone_enabled': _('Hide my phone number'),
-            'birthday_enabled': _('Hide my birthday'),
-            'address_enabled': _('Hide my address'),
-            'mail_enabled': _('Hide my email'),
+            'name_enabled': _('Show my firstname and lastname (When hidden only your pseudo will be visible)'),
+            'phone_enabled': _('Show my phone number (When hidden your will only be rechable by email'),
+            'birthday_enabled': _('Show my birthday (When hidden nobody will know your age or your birthday)'),
+            'address_enabled': _('Show my address (When hidde nyou will not appear on the members map'),
+            'mail_enabled': _('Show my email'),
         }
 
     def __init__(self, *args, **kwargs):
