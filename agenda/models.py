@@ -81,8 +81,8 @@ class Participation(models.Model):
     Participation is made by author if logged in, else by pseudo
     '''
 
-    user   = models.ForeignKey(User, null = True)
-    pseudo = models.CharField(max_length = 31, blank = True)
+    user   = models.ForeignKey(User, null = True, blank = True)
+    pseudo = models.CharField(max_length = 31, blank = True, null=True)
     event  = models.ForeignKey(Event)
 
     def __str__(self):
@@ -90,3 +90,10 @@ class Participation(models.Model):
 
     def author(self):
         return self.user if self.user else self.pseudo
+
+    class Meta:
+
+        unique_together = (
+            ('user', 'event'),
+            ('pseudo', 'event'),
+        )
