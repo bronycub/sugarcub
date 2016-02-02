@@ -1,0 +1,20 @@
+{% load static %}
+
+{% load i18n %}
+
+<div class="col-sm-6 col-md-4">
+    <a data-toggle="modal" data-target="#modal-{{profile.user.username}}" class="member-link">
+        <div class="thumbnail panel-member">
+            <span>
+                <img class="img-rounded img-avatar" alt="avatar" src="
+                    {% if profile.avatar %}
+                        {{ profile.avatar.avatar.url }}
+                    {% else %}
+                        {% static 'ressources/logo/icon_bronycub.png' %}
+                    {% endif %}">
+            </span>
+            <h3 class="username-member">{{ profile.user.username }}</h3>
+        </div>
+    </a>
+</div>
+{% include 'members/one-user-modal.html' with profile=profile %}
