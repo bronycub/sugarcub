@@ -8,15 +8,15 @@ build:
     script:
         - docker-compose build
 
-#test:
-#    stage: test
-#    script:
-#        - docker-compose run --rm -u 1001 django ./manage.py collectstatic --noinput
-#        - docker-compose run --rm -u 1001 django py.test
-
 deploy:
     stage: deploy
     only:
         - dev
     script:
         - docker/run-deploy.sh $(git rev-parse HEAD)
+
+#test:
+#    stage: test
+#    script:
+#        - docker-compose run --rm -u 1001 django ./manage.py collectstatic --noinput
+#        - docker-compose run --rm -u 1001 django py.test
