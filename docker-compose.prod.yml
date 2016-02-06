@@ -1,27 +1,31 @@
 postgre:
     image: postgres:9.4
+    restart: always
 redis:
     image: redis:3.0
+    restart: always
 django:
     build: .
     dockerfile: docker/python-prod
     command: uwsgi --emperor '/uwsgi/instances/*/uwsgi.ini' --nagios
     volumes:
-        - .:/srv/code
+        - .:/srv/app
     ports:
         - "8000:80"
     links:
         - redis
         - postgre
-celery:
-    build: .
-    dockerfile: docker/python-prod
-    command: celery -A sugarcub worker -l info
-    volumes:
-        - .:/srv/code
-    links:
-        - redis
-        - postgre
+    restart: always
+#celery:
+#    build: .
+#    dockerfile: docker/python-prod
+#    command: celery -A sugarcub worker -l info
+#    volumes:
+#        - .:/srv/app
+#    links:
+#        - redis
+#        - postgre
+#    restart: always
 #mailman:
 #    build: .
 #    dockerfile: docker/mailman
@@ -29,3 +33,4 @@ celery:
 #    links:
 #        - redis
 #        - postgre
+#    restart: always

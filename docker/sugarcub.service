@@ -1,0 +1,11 @@
+[Unit]
+Description=SugarCUB
+
+[Service]
+ExecStart=/usr/bin/env docker-compose -p sugarcub -f /var/www/sugarcub up -d
+ExecStop=/usr/bin/env docker-compose -p sugarcub -f /var/www/sugarcub kill
+ExecReload=/usr/bin/env docker-compose -p sugarcub -f /var/www/sugarcub up -d
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
