@@ -1,0 +1,31 @@
+postgre:
+    image: postgres:9.4
+redis:
+    image: redis:3.0
+django:
+    build: .
+    dockerfile: docker/python-dev
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+        - .:/srv/code
+    ports:
+        - "8000:80"
+    links:
+        - redis
+        - postgre
+celery:
+    build: .
+    dockerfile: docker/python-dev
+    command: celery -A sugarcub worker -l info --autoreload
+    volumes:
+        - .:/srv/code
+    links:
+        - redis
+        - postgre
+#mailman:
+#    build: .
+#    dockerfile: docker/mailman
+#    command: ./bin/mailman-web-django-admin runserver 0.0.0.0:8000
+#    links:
+#        - redis
+#        - postgre

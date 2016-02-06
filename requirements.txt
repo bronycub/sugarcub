@@ -1,0 +1,14 @@
+arrow==0.4.2
+Django==1.8.1
+Pillow==2.8.1
+django-absolute==0.3
+django-admin-bootstrapped==2.5.0
+django-bootstrap3-datetimepicker==2.2.3
+django-bootstrap3==5.4.0
+django-endless-pagination==2.0
+django-registration-redux==1.1
+django-stdimage==1.2.2
+git+https://github.com/mdevlamynck/django-multiform.git@pr-api#egg=django-multiform
+ics==0.3.1
+django-websocket-redis==0.4.4
+requests==2.7.0
