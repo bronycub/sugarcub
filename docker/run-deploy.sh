@@ -9,7 +9,7 @@ else
 fi
 
 USER='root'
-HOST='localhost'
+HOST='195.154.77.200'
 BASE_DIR='/var/www/sugarcub'
 
 if [ -L $0 ] ; then
