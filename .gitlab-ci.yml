@@ -12,6 +12,7 @@ deploy:
     stage: deploy
     only:
         - dev
+        - docker-compose
     script:
         - docker/run-deploy.sh $(git rev-parse HEAD)
 
