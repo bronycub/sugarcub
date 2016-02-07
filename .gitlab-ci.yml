@@ -1,12 +1,18 @@
 stages:
-    - build
+    - test
     - deploy
-#    - test
 
-build:
-    stage: build
+test_dev:
+    stage: test
     script:
-        - docker-compose build
+        - docker-compose -p sugarcub build
+#        - docker-compose -p sugarcub run --rm django ./manage.py collectstatic --noinput
+#        - docker-compose -p sugarcub run --rm django py.test
+
+test_prod:
+    stage: test
+    script:
+        - docker-compose -f docker-compose.prod.yml -p sugarcub build
 
 deploy:
     stage: deploy
@@ -15,9 +21,3 @@ deploy:
         - docker-compose
     script:
         - docker/run-deploy.sh $(git rev-parse HEAD)
-
-#test:
-#    stage: test
-#    script:
-#        - docker-compose run --rm -u 1001 django ./manage.py collectstatic --noinput
-#        - docker-compose run --rm -u 1001 django py.test
