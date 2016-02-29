@@ -1,0 +1,10 @@
+{% load i18n %}
+
+{% if user.is_authenticated %}
+    {% if not user.profile.avatar %}
+        <div class="alert alert-dismissible alert-warning">{% trans 'Your profile is uncomplete, remember to complete it!' %}</div>
+    {% endif %}
+    {% if not user.profile.enabled %}
+        <div class="alert alert-dismissible alert-danger">{% trans 'Your profile is still unapproved by an admin. Until it is, some part of the site will not be avaible for you' %}</div>
+    {% endif %}
+{% endif %}

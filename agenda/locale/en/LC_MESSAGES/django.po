@@ -41,13 +41,13 @@ msgstr ""
 msgid "Means of contact"
 msgstr ""
 
-#: forms.py:41
+#: agenda/forms.py:41
 msgid ""
 "Explain the event, add as much information you can : time, localisation , if "
 "people need stuff... the more information the better!"
 msgstr ""
 
-#: models.py:9
+#: agenda/models.py:9
 msgid "Show both my phone and my mail"
 msgstr ""
 

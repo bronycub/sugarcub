@@ -103,6 +103,9 @@
                                     '"/>' +
                                 '</div>'
                             );
+                        },
+                        error: function() {
+                            alert('{% trans 'Erreur : Vous participez déjà à cet évènement!' %}');
                         }
                     });
                 };
@@ -160,6 +163,9 @@
                                     '"/>' +
                                 '</div>'                        
                             );
+                        },
+                        error: function() {
+                            alert("{% trans "Erreur : Vous participez déjà à cet évènement! Si ce n'est pas vous, quelqu'un à déjà pris ce pseudo!" %}");
                         }
                     });
                 };

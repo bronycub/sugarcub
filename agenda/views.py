@@ -88,7 +88,10 @@ def participate(request):
                 user = request.user,
                 event = event
             )
-            participation.save()
+            try:
+                participation.save()
+            except:
+                return HttpResponse(status_code = '500', charset = 'error')
 
         else:
             event = models.Event.objects.get(pk = request.POST.get('event'))
@@ -96,7 +99,10 @@ def participate(request):
                 pseudo = request.POST.get('username'),
                 event = event
             )
-            participation.save()
+            try:
+                participation.save()
+            except:
+                return HttpResponse(status_code = '500', charset = 'error')
 
         return HttpResponse('success')
 

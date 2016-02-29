@@ -2,21 +2,6 @@
 
 {% load i18n %}
 
-<div class="col-sm-6 col-md-4">
-    <a data-toggle="modal" data-target="#modal-{{profile.user.username}}" class="member-link">
-        <div class="thumbnail panel-member">
-            <span>
-                <img class="img-rounded img-avatar" alt="avatar" src="
-                    {% if profile.avatar %}
-                        {{ profile.avatar.avatar.url }}
-                    {% else %}
-                        {% static 'ressources/logo/icon_bronycub.png' %}
-                    {% endif %}">
-            </span>
-            <h3 class="username-member">{{ profile.user.username }}</h3>
-        </div>
-    </a>
-</div>
 <div id="modal-{{profile.user.username}}" class="modal fade" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         {% if user.is_authenticated and user.profile.enabled %}

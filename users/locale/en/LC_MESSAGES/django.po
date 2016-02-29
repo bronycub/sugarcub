@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-24 18:21+0000\n"
+"POT-Creation-Date: 2015-12-25 15:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,23 +46,25 @@ msgid "Postal code"
 msgstr ""
 
 #: users/forms.py:55
-msgid "Hide my firstname and lastname"
+msgid ""
+"Show my firstname and lastname (When hidden only your pseudo will be visible)"
 msgstr ""
 
 #: users/forms.py:56
-msgid "Hide my phone number"
+msgid "Show my phone number (When hidden your will only be rechable by email"
 msgstr ""
 
 #: users/forms.py:57
-msgid "Hide my birthday"
+msgid ""
+"Show my birthday (When hidden nobody will know your age or your birthday)"
 msgstr ""
 
 #: users/forms.py:58
-msgid "Hide my address"
+msgid "Show my address (When hidde nyou will not appear on the members map"
 msgstr ""
 
 #: users/forms.py:59
-msgid "Hide my email"
+msgid "Show my email"
 msgstr ""
 
 #: users/forms.py:65
@@ -135,15 +137,15 @@ msgstr ""
 msgid "Only members of BronyCUB will be able to see those information :"
 msgstr ""
 
-#: users/templates/profile.html:97
+#: users/templates/profile.html:98
 msgid "Hide personnal information :"
 msgstr ""
 
-#: users/templates/profile.html:105
+#: users/templates/profile.html:106
 msgid "Update"
 msgstr ""
 
-#: users/templates/profile.html:110
+#: users/templates/profile.html:111
 msgid "Change your password"
 msgstr ""
 
@@ -239,7 +241,7 @@ msgid ""
 "Welcome !"
 msgstr ""
 
-#: users/templates/registration/registration_form.html:24
+#: users/templates/registration/registration_form.html:40
 msgid "Send"
 msgstr ""
 

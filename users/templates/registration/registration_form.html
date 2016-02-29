@@ -17,9 +17,25 @@
         </div>
         <div class="row">
             <div class="col-md-8 col-md-offset-2 col-xs-12">
-                <form enctype="multipart/form-data" class="form well" method="post">
+                <form enctype="multipart/form-data" class="form form-horizontal well" method="post">
                     {% csrf_token %}
-                    {% bootstrap_form form %}
+                    {% bootstrap_field form.registration.username layout="horizontal" %}
+                    {% bootstrap_field form.registration.email layout="horizontal" %}
+                    {% bootstrap_field form.registration.password1 layout="horizontal" %}
+                    {% bootstrap_field form.registration.password2 layout="horizontal" %}
+                    {% bootstrap_field form.user.first_name layout="horizontal" %}
+                    {% bootstrap_field form.user.last_name layout="horizontal" %}
+                    {% bootstrap_field form.profile.bio layout="horizontal" %}
+                    {% bootstrap_field form.profile.avatar layout="horizontal" %}
+                    {% bootstrap_field form.profile.phone layout="horizontal" %}
+                    {% bootstrap_field form.profile.birthday layout="horizontal" %}
+                    {% bootstrap_field form.profile.address layout="horizontal" %}
+                    {% bootstrap_field form.profile.city layout="horizontal" %}
+                    {% bootstrap_field form.profile.postal_code layout="horizontal" %}
+                    {% bootstrap_field form.profile.name_enabled layout="horizontal" %}
+                    {% bootstrap_field form.profile.phone_enabled layout="horizontal" %}
+                    {% bootstrap_field form.profile.address_enabled layout="horizontal" %}
+                    {% bootstrap_field form.profile.mail_enabled layout="horizontal" %}
                     {% buttons %}
                         <button type="submit" class="btn btn-primary">{% bootstrap_icon star %}{% trans 'Send' %}</button>
                     {% endbuttons %}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SugarCUB 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-24 18:21+0000\n"
+"POT-Creation-Date: 2015-12-25 15:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Matthias Devlamynck <matthias.devlamynck@mailoo.org>\n"
 "Language: French\n"
@@ -20,6 +20,18 @@ msgstr ""
 #: core/templates/agenda.html:6 core/templates/base.html:52
 msgid "Agenda"
 msgstr "Agenda"
+
+#: core/templates/banner.html:5
+msgid "Your profile is uncomplete, remember to complete it!"
+msgstr "Votre profil est incomplet, pensez à le remplir!"
+
+#: core/templates/banner.html:8
+msgid ""
+"Your profile is still unapproved by an admin. Until it is, some part of the "
+"site will not be avaible for you"
+msgstr ""
+"Votre profil n'est toujours pas approuver par un admin. Tant que cela n'est "
+"pas fait, certaine partie du site vous serons innacéssible"
 
 #: core/templates/base.html:51
 msgid "Members"
@@ -73,7 +85,7 @@ msgstr "Connexion"
 msgid "Signup"
 msgstr "Nous rejoindre ?"
 
-#: core/templates/base.html:115
+#: core/templates/base.html:122
 msgid "Contact us :"
 msgstr "Contactez-nous :"
 
