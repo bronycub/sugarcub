@@ -48,7 +48,12 @@ class UpdateEventView(UpdateView):
 
 def post_comment(request):
 
-    if request.method == 'POST':
+    
+    if request.POST:
+        data = {'pseudo': request.POST.get('pseudo'),
+                'text': request.POST.get('text'),
+                'captcha': request.POST.get('captcha')}
+        captcha = CommentForm(data)
         if request.user.is_authenticated():
             event = models.Event.objects.get(pk = request.POST.get('event'))
             comment = models.Comment(
@@ -67,10 +72,11 @@ def post_comment(request):
                     event = event
                 )
                 comment.save()
+            else:
+                return HttpResponse('error')
+
 
         return HttpResponse('success')
-
-    return redirect('agenda:list')
 
 
 def participate(request):

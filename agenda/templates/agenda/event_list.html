@@ -114,11 +114,11 @@
                 submitComment_offline = function(id) {
                     var username_post = $('#id_'+id+'-pseudo').val();
                     var comment = $('#id_'+id+'-text').val();
-                    var captcha_post = $('id_'+id+'-captcha_1');
+                    var captcha_post = $('#id_'+id+'-captcha_1').val();
                     $.ajax({
                         type: 'post',
                         url:  '{% url 'agenda:comment' %}',
-                        data:  {event: id, text: comment, username: username_post, captcha: captcha_post},
+                        data:  {event: id, text: comment, pseudo: username_post, captcha: captcha_post},
                         success: function() {
                             $('#comment-' + id).val('');
                             $('#comment-list-' + id).prepend(
