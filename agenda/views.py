@@ -74,21 +74,27 @@ def participate(request):
 
     if request.method == 'POST':
         if request.user.is_authenticated():
+            captcha = field.
             event = models.Event.objects.get(pk = request.POST.get('event'))
             participation = models.Participation(
                 user = request.user,
                 event = event
             )
-            participation.save()
+            try:
+                participation.save()
+            except:
+                return HttpResponse(status_code = '500', charset = 'error')
 
         else:
-            print(request.POST.get('username'))
             event = models.Event.objects.get(pk = request.POST.get('event'))
             participation = models.Participation(
                 pseudo = request.POST.get('username'),
                 event = event
             )
-            participation.save()
+            try:
+                participation.save()
+            except:
+                return HttpResponse(status_code = '500', charset = 'error')
 
         return HttpResponse('success')
 
