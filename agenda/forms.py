@@ -51,3 +51,10 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model  = models.Comment
         fields = ['text', 'pseudo']
+
+class ParticipationForm(forms.ModelForm):
+
+    captcha = CaptchaField()
+    class Meta:
+        model = models.Participation
+        fields = ['pseudo']

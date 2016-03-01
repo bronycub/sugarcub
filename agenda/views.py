@@ -8,6 +8,7 @@ from django.http                    import HttpResponse
 from django.shortcuts               import redirect
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators        import method_decorator
+import json
 
 
 class CommentAjaxListView(AjaxListView):
@@ -50,10 +51,7 @@ def post_comment(request):
 
     
     if request.POST:
-        data = {'pseudo': request.POST.get('pseudo'),
-                'text': request.POST.get('text'),
-                'captcha': request.POST.get('captcha')}
-        captcha = CommentForm(data)
+        captcha = CommentForm(request.POST)
         if request.user.is_authenticated():
             event = models.Event.objects.get(pk = request.POST.get('event'))
             comment = models.Comment(
@@ -67,13 +65,13 @@ def post_comment(request):
             if captcha.is_valid():
                 event = models.Event.objects.get(pk = request.POST.get('event'))
                 comment = models.Comment(
-                    pseudo = request.POST.get('username'),
+                    pseudo = request.POST.get('pseudo'),
                     text = request.POST.get('text'),
                     event = event
                 )
                 comment.save()
             else:
-                return HttpResponse('error')
+                return HttpResponse(json.dumps(captcha.errors), status=400)
 
 
         return HttpResponse('success')
@@ -91,7 +89,7 @@ def participate(request):
             try:
                 participation.save()
             except:
-                return HttpResponse(status_code = '500', charset = 'error')
+                return HttpResponse(json.dumps(captcha.errors), status=400)
 
         else:
             event = models.Event.objects.get(pk = request.POST.get('event'))
@@ -102,7 +100,7 @@ def participate(request):
             try:
                 participation.save()
             except:
-                return HttpResponse(status_code = '500', charset = 'error')
+                return HttpResponse(json.dumps(captcha.errors), status=400)
 
         return HttpResponse('success')
 

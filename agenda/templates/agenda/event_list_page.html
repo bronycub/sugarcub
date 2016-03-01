@@ -3,6 +3,7 @@
 {% load i18n %}
 {% load endless %}
 {% load comment_field %}
+{% load participation_field %}
 
 {% url 'agenda:list' as event_url %}
 {% lazy_paginate event_list with event_url %}
@@ -48,22 +49,7 @@
                           <h3 class="panel-title"><strong>{% trans 'Will you participate?' %}</strong></h3>
                         </div>
                         <div class="panel-body" style="text-align:center;">
-
-                          {% if user.is_authenticated and user.profile.enabled  %}
-                            <button class="btn btn-success btn-md" onclick="submitParticipation({{ event.id }})"><strong><i class="fa fa-thumbs-up"></i> {% trans 'I participate !' %} </strong></button>
-                          
-                          {% else %}
-                            <a data-toggle="modal" data-target="#modal-{{ event.id }}" class="btn btn-success btn-md">{% trans 'I participate !' %}</a>
-                            <!-- Modal for offline -->
-                            <div id="modal-{{ event.id }}" class="modal fade" role="dialog" aria-hidden="true">
-                              <div class="modal-dialog modal-lg">
-                                <div class="input-group">
-                                  <input id="username-participation-{{ event.id }}" type="text" class="form-control" placeholder="{% trans 'Username' %}">
-                                  <span class="input-group-addon btn" onclick="submitParticipation_offline({{ event.id }})" data-dismiss="modal"><span class="glyphicon glyphicon-send"/> {% trans 'Post' %}</span>
-                                </div>
-                              </div>
-                            </div>
-                          {% endif %}
+                          {% participation_form prefix=event.id %}
                         </div>
                       </div>
                       <div class="panel panel-default">
