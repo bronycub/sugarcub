@@ -4,17 +4,38 @@
 {% load endless %}
 
 {% for participant in participation_list %}
-    <a data-toggle="modal" data-target="#modal-{{participant.user.username}}" class="member-link">
-		<div class="col-md-4">
-		    <img class="img-responsive thumbnail" alt="avatar" src="
-		        {% if participant.user.profile.avatar.small %}
-		            {{ participant.user.profile.avatar.small.url }}
-		        {% else %}
-		            {% static 'ressources/logo/icon_bronycub.png' %}
-		        {% endif %}
-		    "/>
+	{% if participant.user == null %}
+		<div id="modal-{{participant.pseudo}}" class="modal fade" role="dialog" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="container-fluid modal-content modal-lg">
+					<h4>Pseudo : {{ participant.pseudo }}</h4>
+				</div>
+			</div>
 		</div>
-	</a>
-    {% include '../../users/templates/members/one-user-modal.html' with profile=participant.user.profile %}
+		<a data-toggle="modal" data-target="#modal-{{participant.pseudo}}" class="member-link">
+			<div class="col-md-4">
+			    <img class="img-responsive thumbnail" alt="avatar" src="
+			        {% if participant.user.profile.avatar.small %}
+			            {{ participant.user.profile.avatar.small.url }}
+			        {% else %}
+			            {% static 'ressources/logo/icon_bronycub.png' %}
+			        {% endif %}
+			    "/>
+			</div>
+		</a>
+	{% else %}
+		<a data-toggle="modal" data-target="#modal-{{participant.user.username}}" class="member-link">
+			<div class="col-md-4">
+			    <img class="img-responsive thumbnail" alt="avatar" src="
+			        {% if participant.user.profile.avatar.small %}
+			            {{ participant.user.profile.avatar.small.url }}
+			        {% else %}
+			            {% static 'ressources/logo/icon_bronycub.png' %}
+			        {% endif %}
+			    "/>
+			</div>
+		</a>
+		{% include '../../users/templates/members/one-user-modal.html' with profile=participant.user.profile %}
+	{% endif %}
 {% endfor %}
 {% show_more 'more comments' %}
