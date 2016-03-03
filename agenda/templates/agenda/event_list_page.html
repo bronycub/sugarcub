@@ -4,6 +4,7 @@
 {% load endless %}
 {% load comment_field %}
 {% load participation_field %}
+{% load agenda_extra %}
 
 {% url 'agenda:list' as event_url %}
 {% lazy_paginate event_list with event_url %}
@@ -32,7 +33,10 @@
                           </blockquote>
                         </div>
                       <hr />
-                        {% comment_form prefix=event.id %}
+                        {% with ''|addstr:event.id|addstr:'_comment' as eventId %}
+                          {% comment_form prefix=eventId %}
+                        {% endwith %}
+                        
                       <hr/>
                       <div id="comment-list-{{ event.id }}" class="list-group-item-text">
                           {% include 'agenda/comment_list_page.html' with comment_list=event.comment_set.all %}
@@ -49,7 +53,9 @@
                           <h3 class="panel-title"><strong>{% trans 'Will you participate?' %}</strong></h3>
                         </div>
                         <div class="panel-body" style="text-align:center;">
-                          {% participation_form prefix=event.id %}
+                          {% with ''|addstr:event.id|addstr:'_participation' as eventId %}
+                            {% participation_form prefix=eventId %}
+                          {% endwith %}
                         </div>
                       </div>
                       <div class="panel panel-default">

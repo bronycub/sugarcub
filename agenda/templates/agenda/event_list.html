@@ -59,7 +59,7 @@
         <script>
             $(document).ready(function() {
                 submitComment = function(id) {
-                    var comment = $('#id_'+id+'-text').val();
+                    var comment = $('#id_'+id+'_comment-text').val();
                     $.ajax({
                         type: 'post',
                         url:  '{% url 'agenda:comment' %}',
@@ -115,10 +115,10 @@
         <script>
             $(document).ready(function() {
                 submitComment_offline = function(id) {
-                    var username_post = $('#id_'+id+'-pseudo').val();
-                    var comment = $('#id_'+id+'-text').val();
-                    var captcha_0 = $('#id_'+id+'-captcha_0').val();
-                    var captcha_1 = $('#id_'+id+'-captcha_1').val();
+                    var username_post = $('#id_'+id+'_comment-pseudo').val();
+                    var comment = $('#id_'+id+'_comment-text').val();
+                    var captcha_0 = $('#id_'+id+'_comment-captcha_0').val();
+                    var captcha_1 = $('#id_'+id+'_comment-captcha_1').val();
                     $.ajax({
                         type: 'post',
                         url:  '{% url 'agenda:comment' %}',
@@ -146,12 +146,14 @@
                     });
                 };
                 submitParticipation_offline = function(id) {
-                    var username_post = $('#username-participation-' + id).val();
+                    var username_post = $('#id_'+id+'_participation-pseudo').val();
+                    var captcha_0 = $('#id_'+id+'_participation-captcha_0').val();
+                    var captcha_1 = $('#id_'+id+'_participation-captcha_1').val();
                     console.log(username_post);
                     $.ajax({
                         type: 'post',
                         url:  '{% url 'agenda:participate' %}',
-                        data:  {event: id, username: username_post},
+                        data:  {event: id, pseudo: username_post, captcha_0: captcha_0,captcha_1: captcha_1},
                         success: function() {
                             $('#participation-list-' + id).prepend(
                                 '<div class="col-md-4">' +

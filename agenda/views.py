@@ -2,7 +2,7 @@ from django.shortcuts               import render
 from django.core.urlresolvers       import reverse_lazy
 from django.views.generic.edit      import CreateView, UpdateView
 from .                              import models, forms, utils
-from .forms                         import EventForm, CommentForm
+from .forms                         import EventForm, CommentForm, ParticipationForm
 from endless_pagination.views       import AjaxListView
 from django.http                    import HttpResponse
 from django.shortcuts               import redirect
@@ -80,6 +80,7 @@ def post_comment(request):
 def participate(request):
 
     if request.method == 'POST':
+        captcha = ParticipationForm(request.POST)
         if request.user.is_authenticated():
             event = models.Event.objects.get(pk = request.POST.get('event'))
             participation = models.Participation(
@@ -92,15 +93,16 @@ def participate(request):
                 return HttpResponse(json.dumps(captcha.errors), status=400)
 
         else:
-            event = models.Event.objects.get(pk = request.POST.get('event'))
-            participation = models.Participation(
-                pseudo = request.POST.get('username'),
-                event = event
-            )
-            try:
-                participation.save()
-            except:
-                return HttpResponse(json.dumps(captcha.errors), status=400)
+            if captcha.is_valid():
+                event = models.Event.objects.get(pk = request.POST.get('event'))
+                participation = models.Participation(
+                    pseudo = request.POST.get('pseudo'),
+                    event = event
+                )
+                try:
+                    participation.save()
+                except:
+                    return HttpResponse(json.dumps(captcha.errors), status=400)
 
         return HttpResponse('success')
 
