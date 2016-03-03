@@ -1,4 +1,4 @@
-from django.conf.urls         import url, include
+from django.conf.urls         import url
 from .                        import views, models
 from endless_pagination.views import AjaxListView
 from django.utils.translation import ugettext_lazy as _
@@ -42,7 +42,7 @@ urlpatterns = [
     ),
     url(
         regex = _(r'^event/update/(?P<event_id>[0-9]+)$'),
-        view  = views.UpdateEvent,
+        view  = views.update_event,
         name  = 'update_event',
     ),
 ]

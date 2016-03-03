@@ -9,7 +9,7 @@ register = template.Library()
 def comment_form(context, form = None, prefix = ''):
     t = template.loader.get_template('form/comment_form.html')
     if not form:
-    	form = CommentForm(prefix = prefix)
+        form = CommentForm(prefix = prefix)
 
     context['comment_form'] = form
     return t.render(context)

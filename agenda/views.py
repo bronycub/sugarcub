@@ -49,7 +49,6 @@ class UpdateEventView(UpdateView):
 
 def post_comment(request):
 
-    
     if request.POST:
         captcha = CommentForm(request.POST)
         if request.user.is_authenticated():
@@ -72,7 +71,6 @@ def post_comment(request):
                 comment.save()
             else:
                 return HttpResponse(json.dumps(captcha.errors), status=400)
-
 
         return HttpResponse('success')
 
@@ -117,7 +115,7 @@ def ics_export(request):
     return response
 
 
-def UpdateEvent(request, event_id):
+def update_event(request, event_id):
     try:
         event = models.Event.objects.get(id = event_id)
     except:

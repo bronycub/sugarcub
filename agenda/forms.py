@@ -5,7 +5,6 @@ from django.utils.translation    import ugettext_lazy as _
 from captcha.fields              import CaptchaField
 
 
-
 class EventForm(forms.ModelForm):
 
     date_begin = forms.DateTimeField(
@@ -48,13 +47,16 @@ class EventForm(forms.ModelForm):
 class CommentForm(forms.ModelForm):
 
     captcha = CaptchaField()
+
     class Meta:
         model  = models.Comment
         fields = ['text', 'pseudo']
 
+
 class ParticipationForm(forms.ModelForm):
 
     captcha = CaptchaField()
+
     class Meta:
         model = models.Participation
         fields = ['pseudo']

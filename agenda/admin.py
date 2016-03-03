@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .              import models
 
+
 class CommentInline(admin.TabularInline):
     model = models.Comment
     fk_name = 'event'
