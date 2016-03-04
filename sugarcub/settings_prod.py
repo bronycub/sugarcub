@@ -16,30 +16,6 @@ with open(os.path.join(BASE_DIR, '..', '..', 'host'), 'r') as hostFile:
     ALLOWED_HOSTS  = HOST.split()
 
 
-# Database
-# https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, '..', '..', 'database', 'db.sqlite3'),
-    }
-}
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.7/howto/static-files/
-
-STATIC_URL  = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, '..', 'static')
-
-
-# Media
-
-MEDIA_URL  = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, '..', '..', 'media')
-
-
 # Mails
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

@@ -86,19 +86,44 @@ ROOT_URLCONF = 'sugarcub.urls'
 
 WSGI_APPLICATION = 'sugarcub.wsgi.application'
 
-# CACHES = {
-# 	'default': {
-# 		'BACKEND': 'django_redis.cache.RedisCache',
-# 		'LOCATION': 'unix:///shared/redis.sock',
-# 		'OPTIONS': {
-# 			'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-# 			'IGNORE_EXCEPTIONS': True,
-# 		}
-# 	}
-# }
-#
-# SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
-# SESSION_CACHE_ALIAS = 'default'
+
+# Database
+# https://docs.djangoproject.com/en/1.7/ref/settings/#databases
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, '..', 'data', 'db.sqlite3'),
+    }
+}
+
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.7/howto/static-files/
+
+STATIC_URL  = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, '..', 'static')
+
+
+# Media
+
+MEDIA_URL  = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, '..', 'data', 'media')
+
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'unix:///shared/redis.sock',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+            'IGNORE_EXCEPTIONS': True,
+        }
+    }
+}
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+SESSION_CACHE_ALIAS = 'default'
 
 
 # Internationalization

@@ -1,36 +1,61 @@
-postgre:
-    image: postgres:9.4
-    restart: always
-redis:
-    image: redis:3.0
-    restart: always
-django:
-    build: .
-    dockerfile: docker/python-dev
-    command: python manage.py runserver 0.0.0.0:8000
-    volumes:
-        - .:/srv/app
-    ports:
-        - "8000:80"
-    links:
-        - redis
-        - postgre
-    restart: always
-#celery:
-#    build: .
-#    dockerfile: docker/python-dev
-#    command: celery -A sugarcub worker -l info --autoreload
-#    volumes:
-#        - .:/srv/app
-#    links:
-#        - redis
-#        - postgre
-#    restart: always
-#mailman:
-#    build: .
-#    dockerfile: docker/mailman
-#    command: ./bin/mailman-web-django-admin runserver 0.0.0.0:8000
-#    links:
-#        - redis
-#        - postgre
-#    restart: always
+version: "2"
+
+services:
+    postgres:
+        image: postgres:9.4
+        restart: always
+        volumes:
+            - postgres-data:/var/lib/postgresql/data
+        networks:
+            - back
+    redis:
+        image: redis:3.0
+        restart: always
+        volumes:
+            - redis-data:/data
+        networks:
+            - back
+    django:
+        build:
+            context: .
+            dockerfile: docker/python-dev
+        command: python manage.py runserver 0.0.0.0:8000
+        restart: always
+        volumes:
+            - .:/srv/app/code
+            - app-data:/srv/app/data
+        ports:
+            - "8000:80"
+        links:
+            - redis
+            - postgres
+        networks:
+            - front
+            - back
+    celery:
+        build:
+            context: .
+            dockerfile: docker/python-dev
+        command: celery -A sugarcub worker -l info --autoreload
+        restart: always
+        volumes:
+            - .:/srv/app/code
+        links:
+            - redis
+            - postgres
+        volumes:
+            - postgres-data:/var/lib/postgresql/data
+            - app-data:/srv/app/data
+        networks:
+            - front
+            - back
+
+volumes:
+    app-code: ~
+    app-data: ~
+    postgres-data: ~
+    redis-data: ~
+
+networks:
+    front: ~
+    back: ~

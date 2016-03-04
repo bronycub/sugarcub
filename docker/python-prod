@@ -7,9 +7,11 @@ RUN apt-get update -y && apt-get install -y npm gettext
 RUN cd /usr/bin && ln -s nodejs node
 RUN npm install -g yuglify uglify-js
 
-RUN mkdir -p /srv/app
-WORKDIR /srv/app
-ADD requirements.txt /srv/app
+RUN mkdir -p /srv/app/code /srv/app/data && chown 1000 /srv/app -R
+WORKDIR /srv/app/code
+ADD requirements.txt /srv/app/code
 RUN pip install -r requirements.txt
 
 RUN pip install uwsgi
+
+USER 1000
