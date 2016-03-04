@@ -2,6 +2,9 @@
 
 {% load i18n %}
 {% load endless %}
+{% load comment_field %}
+{% load participation_field %}
+{% load agenda_extra %}
 
 {% url 'agenda:list' as event_url %}
 {% lazy_paginate event_list with event_url %}
@@ -9,7 +12,7 @@
  <div class="event list-group" role="tablist" aria-multiselectable="true">
         <div class="list-group-item" role="tab" id="headingOne">
             <div class="list-group-item-heading">
-                <a data-toggle="collapse" data-parent="#event_list" href="#{{event.id}}" aria-expanded="false" aria-controls="collapseOne">
+                <a class="no_blue" data-toggle="collapse" data-parent="#event_list" href="#{{event.id}}" aria-expanded="false" aria-controls="collapseOne">
                     <h4><span class="label label-default">{{ event.date_begin|date }}</span> <i class="fa fa-caret-right"></i> <strong>{{ event.title }}</strong></h4>
                 </a>
             </div>
@@ -30,19 +33,10 @@
                           </blockquote>
                         </div>
                       <hr />
-
-                    {% if user.is_authenticated and user.profile.enabled %}
-                      <div class="input-group">
-                          <input id="comment-{{ event.id }}" type="text" class="form-control" placeholder="{% trans 'Post a message' %}">
-                          <span class="input-group-addon btn" onclick="submitComment({{ event.id }})"><span class="glyphicon glyphicon-send"/> {% trans 'Post' %}</span>
-                      </div>
-                    {% else %}
-                      <div class="input-group">
-                          <input id="username-{{ event.id }}" type="text" class="form-control" placeholder="{% trans 'Username' %}">
-                          <input id="comment-{{ event.id }}" type="text" class="form-control" placeholder="{% trans 'Post a message' %}">
-                          <span class="input-group-addon btn" onclick="submitComment_offline({{ event.id }})"><span class="glyphicon glyphicon-send"/> {% trans 'Post' %}</span>
-                      </div>
-                    {% endif %}
+                        {% with ''|addstr:event.id|addstr:'_comment' as eventId %}
+                          {% comment_form prefix=eventId %}
+                        {% endwith %}
+                        
                       <hr/>
                       <div id="comment-list-{{ event.id }}" class="list-group-item-text">
                           {% include 'agenda/comment_list_page.html' with comment_list=event.comment_set.all %}
@@ -59,22 +53,9 @@
                           <h3 class="panel-title"><strong>{% trans 'Will you participate?' %}</strong></h3>
                         </div>
                         <div class="panel-body" style="text-align:center;">
-
-                          {% if user.is_authenticated and user.profile.enabled  %}
-                            <button class="btn btn-success btn-md" onclick="submitParticipation({{ event.id }})"><strong><i class="fa fa-thumbs-up"></i> {% trans 'I participate !' %} </strong></button>
-                          
-                          {% else %}
-                            <a data-toggle="modal" data-target="#modal-{{ event.id }}" class="btn btn-success btn-md">{% trans 'I participate !' %}</a>
-                            <!-- Modal for offline -->
-                            <div id="modal-{{ event.id }}" class="modal fade" role="dialog" aria-hidden="true">
-                              <div class="modal-dialog modal-lg">
-                                <div class="input-group">
-                                  <input id="username-participation-{{ event.id }}" type="text" class="form-control" placeholder="{% trans 'Username' %}">
-                                  <span class="input-group-addon btn" onclick="submitParticipation_offline({{ event.id }})" data-dismiss="modal"><span class="glyphicon glyphicon-send"/> {% trans 'Post' %}</span>
-                                </div>
-                              </div>
-                            </div>
-                          {% endif %}
+                          {% with ''|addstr:event.id|addstr:'_participation' as eventId %}
+                            {% participation_form prefix=eventId %}
+                          {% endwith %}
                         </div>
                       </div>
                       <div class="panel panel-default">
@@ -82,7 +63,7 @@
                           <h3 class="panel-title"><strong>{% trans 'Participant' %}</strong></h3>
                         </div>
                         <div id="participation-list-{{ event.id }}" class="panel-body">
-                          {% include 'agenda/participation_list_page.hmtl' with participation_list=event.participation_set.all %}
+                          {% include 'agenda/participation_list_page.html' with participation_list=event.participation_set.all %}
                         </div>
                       </div>
                       <div class="panel panel-default">

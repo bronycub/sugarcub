@@ -8,6 +8,7 @@ from users.forms              import AuthenticationForm
 
 
 urls = [
+    url(r'^captcha/', include('captcha.urls')),
     url(_(r'admin/doc/'), include('django.contrib.admindocs.urls')),
     url(_(r'admin/'),     include(admin.site.urls)),
 

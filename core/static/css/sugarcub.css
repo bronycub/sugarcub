@@ -302,3 +302,11 @@ a {
 .panel-min-height {
   min-height: 200px;
 }
+
+/*
+ * To remove the blue when we over agenda link
+ */
+.no_blue:hover, .no_blue:link, .no_blue:visited, .no_blue:active, .no_blue:focus {
+  color: #DD4814;
+  text-decoration-color: #DD4814;
+}
