@@ -2,15 +2,18 @@ from django.shortcuts               import render
 from django.core.urlresolvers       import reverse_lazy
 from django.views.generic.edit      import CreateView, UpdateView
 from .                              import models, forms, utils
-from .forms                         import EventForm
+from .forms                         import EventForm, CommentForm, ParticipationForm
 from endless_pagination.views       import AjaxListView
 from django.http                    import HttpResponse
 from django.shortcuts               import redirect
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators        import method_decorator
+import json
 
 
 class CommentAjaxListView(AjaxListView):
+
+    form_class    = forms.CommentForm
 
     def get_queryset(self):
         return models.Comment.objects.filter(event = self.kwargs['event_id'])
@@ -46,7 +49,8 @@ class UpdateEventView(UpdateView):
 
 def post_comment(request):
 
-    if request.method == 'POST':
+    if request.POST:
+        captcha = CommentForm(request.POST)
         if request.user.is_authenticated():
             event = models.Event.objects.get(pk = request.POST.get('event'))
             comment = models.Comment(
@@ -57,38 +61,46 @@ def post_comment(request):
             comment.save()
 
         else:
-            event = models.Event.objects.get(pk = request.POST.get('event'))
-            comment = models.Comment(
-                pseudo = request.POST.get('username'),
-                text = request.POST.get('text'),
-                event = event
-            )
-            comment.save()
+            if captcha.is_valid():
+                event = models.Event.objects.get(pk = request.POST.get('event'))
+                comment = models.Comment(
+                    pseudo = request.POST.get('pseudo'),
+                    text = request.POST.get('text'),
+                    event = event
+                )
+                comment.save()
+            else:
+                return HttpResponse(json.dumps(captcha.errors), status=400)
 
         return HttpResponse('success')
-
-    return redirect('agenda:list')
 
 
 def participate(request):
 
     if request.method == 'POST':
+        captcha = ParticipationForm(request.POST)
         if request.user.is_authenticated():
             event = models.Event.objects.get(pk = request.POST.get('event'))
             participation = models.Participation(
                 user = request.user,
                 event = event
             )
-            participation.save()
+            try:
+                participation.save()
+            except:
+                return HttpResponse(json.dumps(captcha.errors), status=400)
 
         else:
-            print(request.POST.get('username'))
-            event = models.Event.objects.get(pk = request.POST.get('event'))
-            participation = models.Participation(
-                pseudo = request.POST.get('username'),
-                event = event
-            )
-            participation.save()
+            if captcha.is_valid():
+                event = models.Event.objects.get(pk = request.POST.get('event'))
+                participation = models.Participation(
+                    pseudo = request.POST.get('pseudo'),
+                    event = event
+                )
+                try:
+                    participation.save()
+                except:
+                    return HttpResponse(json.dumps(captcha.errors), status=400)
 
         return HttpResponse('success')
 
@@ -103,7 +115,7 @@ def ics_export(request):
     return response
 
 
-def UpdateEvent(request, event_id):
+def update_event(request, event_id):
     try:
         event = models.Event.objects.get(id = event_id)
     except:

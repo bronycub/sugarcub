@@ -11,39 +11,39 @@
 {{ block.super }}
 
 <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <a data-toggle="modal" data-target="#modal" class="btn btn-primary"><i class="fa fa-calendar-plus-o">&nbsp;</i>{% trans 'Add to your agenda' %}</a>
-                <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="plusinfos" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <h4 class="modal-title"><i class="fa fa-calendar-plus">&nbsp;</i>{% trans 'Add to your agenda' %}</h4>
+    <div class="row">
+        <div class="col-md-6">
+            <a data-toggle="modal" data-target="#modal" class="btn btn-primary"><i class="fa fa-calendar-plus-o">&nbsp;</i>{% trans 'Add to your agenda' %}</a>
+            <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="plusinfos" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title"><i class="fa fa-calendar-plus">&nbsp;</i>{% trans 'Add to your agenda' %}</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p><strong>{% trans 'To add the agenda in your favorite software use the address:' %}</strong></p>
+                            <div class="input-group">
+                              <span class="input-group-addon"><i class="fa fa-link"></i></span>
+                              <input type="text" class="form-control" value="{% absolute 'agenda:ics_export' %}">
                             </div>
-                            <div class="modal-body">
-                                <p><strong>{% trans 'To add the agenda in your favorite software use the address:' %}</strong></p>
-                                <div class="input-group">
-                                  <span class="input-group-addon"><i class="fa fa-link"></i></span>
-                                  <input type="text" class="form-control" value="{% absolute 'agenda:ics_export' %}">
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
-                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
                         </div>
                     </div>
                 </div>
             </div>
-            {% if user.is_authenticated and user.profile.enabled %}
-                <div class="col-md-6 text-right">
-                    <a class="btn btn-success" href="{% url 'agenda:event' %}"><strong><i class="fa fa-star"></i>&nbsp;{% trans 'Add an event' %}&nbsp;<i class="fa fa-star"></i></strong></a>
-                </div>
-            {% endif %}
-            <div class="col-xs-12">
-                <hr/>
-                <div class="endless_page_template" id="event_list">
-                    {% include 'agenda/event_list_page.html' %}
+        </div>
+        {% if user.is_authenticated and user.profile.enabled %}
+            <div class="col-md-6 text-right">
+                <a class="btn btn-success" href="{% url 'agenda:event' %}"><strong><i class="fa fa-star"></i>&nbsp;{% trans 'Add an event' %}&nbsp;<i class="fa fa-star"></i></strong></a>
+            </div>
+        {% endif %}
+        <div class="col-xs-12">
+            <hr/>
+            <div class="endless_page_template" id="event_list">
+                {% include 'agenda/event_list_page.html' %}
             </div>
         </div>
     </div>
@@ -59,7 +59,7 @@
         <script>
             $(document).ready(function() {
                 submitComment = function(id) {
-                    var comment = $('#comment-' + id).val();
+                    var comment = $('#id_'+id+'_comment-text').val();
                     $.ajax({
                         type: 'post',
                         url:  '{% url 'agenda:comment' %}',
@@ -103,6 +103,9 @@
                                     '"/>' +
                                 '</div>'
                             );
+                        },
+                        error: function() {
+                            alert('{% trans 'Erreur : Vous participez déjà à cet évènement!' %}');
                         }
                     });
                 };
@@ -112,12 +115,14 @@
         <script>
             $(document).ready(function() {
                 submitComment_offline = function(id) {
-                    var username_post = $('#username-' + id).val();
-                    var comment = $('#comment-' + id).val();
+                    var username_post = $('#id_'+id+'_comment-pseudo').val();
+                    var comment = $('#id_'+id+'_comment-text').val();
+                    var captcha_0 = $('#id_'+id+'_comment-captcha_0').val();
+                    var captcha_1 = $('#id_'+id+'_comment-captcha_1').val();
                     $.ajax({
                         type: 'post',
                         url:  '{% url 'agenda:comment' %}',
-                        data:  {event: id, text: comment, username: username_post},
+                        data:  {event: id, text: comment, pseudo: username_post, captcha_0: captcha_0,captcha_1: captcha_1},
                         success: function() {
                             $('#comment-' + id).val('');
                             $('#comment-list-' + id).prepend(
@@ -141,12 +146,14 @@
                     });
                 };
                 submitParticipation_offline = function(id) {
-                    var username_post = $('#username-participation-' + id).val();
+                    var username_post = $('#id_'+id+'_participation-pseudo').val();
+                    var captcha_0 = $('#id_'+id+'_participation-captcha_0').val();
+                    var captcha_1 = $('#id_'+id+'_participation-captcha_1').val();
                     console.log(username_post);
                     $.ajax({
                         type: 'post',
                         url:  '{% url 'agenda:participate' %}',
-                        data:  {event: id, username: username_post},
+                        data:  {event: id, pseudo: username_post, captcha_0: captcha_0,captcha_1: captcha_1},
                         success: function() {
                             $('#participation-list-' + id).prepend(
                                 '<div class="col-md-4">' +
@@ -159,6 +166,9 @@
                                     '"/>' +
                                 '</div>'                        
                             );
+                        },
+                        error: function() {
+                            alert("{% trans "Erreur : Vous participez déjà à cet évènement! Si ce n'est pas vous, quelqu'un à déjà pris ce pseudo!" %}");
                         }
                     });
                 };

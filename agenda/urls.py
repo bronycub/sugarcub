@@ -42,7 +42,7 @@ urlpatterns = [
     ),
     url(
         regex = _(r'^event/update/(?P<event_id>[0-9]+)$'),
-        view  = views.UpdateEvent,
+        view  = views.update_event,
         name  = 'update_event',
     ),
 ]
