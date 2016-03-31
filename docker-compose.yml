@@ -6,6 +6,8 @@ services:
         restart: always
         volumes:
             - postgres-data:/var/lib/postgresql/data
+        ports:
+            - "5432:5432"
         networks:
             - back
     redis:
@@ -25,7 +27,7 @@ services:
             - .:/srv/app/code
             - app-data:/srv/app/data
         ports:
-            - "8000:80"
+            - "8000:8000"
         links:
             - redis
             - postgres
@@ -40,12 +42,10 @@ services:
         restart: always
         volumes:
             - .:/srv/app/code
+            - app-data:/srv/app/data
         links:
             - redis
             - postgres
-        volumes:
-            - postgres-data:/var/lib/postgresql/data
-            - app-data:/srv/app/data
         networks:
             - front
             - back

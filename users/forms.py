@@ -22,7 +22,7 @@ class UserPonyForm(forms.ModelForm):
         fields = ['pony', 'message']
 
     def __init__(self, *args, **kwargs):
-        super(UserPonyForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.fields['message'].widget.attrs.update({'placeholder':
             _('Exemple : Pony is best pegasus/pony/unicorn!')
         })
@@ -60,7 +60,7 @@ class ProfileForm(forms.ModelForm):
         }
 
     def __init__(self, *args, **kwargs):
-        super(ProfileForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.fields['bio'].widget.attrs.update({'placeholder':
             _('Write about yourself! how you discover My Little Pony or BronyCUB, '
                 'what you like and dislike...')
@@ -78,7 +78,7 @@ class RegistrationForm(MultiModelForm):
     def dispatch_init_instance(self, name, instance):
         if name == 'registration':
             return InvalidArgument
-        return super(RegistrationForm, self).dispatch_init_instance(name, instance)
+        return super().dispatch_init_instance(name, instance)
 
     def save(self, commit=True, user=None):
         ''' Save both forms and attach the user to the profile. '''

@@ -4,6 +4,7 @@ from   django.contrib.auth.decorators      import login_required
 from   django.forms.models                 import inlineformset_factory
 from   registration.backends.default.views import RegistrationView as BaseRegistrationView
 import random
+import logging
 
 
 class RegistrationView(BaseRegistrationView):
@@ -11,18 +12,21 @@ class RegistrationView(BaseRegistrationView):
     form_class = forms.RegistrationForm
 
     def register(self, request, **cleaned_data):
-        return super(RegistrationView, self).register(request, **cleaned_data['registration'])
+        logging.error('test')
+        return super().register(request, **cleaned_data['registration'])
 
     def form_valid(self, request, form):
         self.form = form
-        return super(RegistrationView, self).form_valid(request, form)
+        logging.error(form.__dict__)
+        return super().form_valid(request, form)
 
     def get_success_url(self, request=None, user=None):
         self.form.save(user = user)
-        return super(RegistrationView, self).get_success_url(request, user)
+        return super().get_success_url(request, user)
 
 
 def members(request):
+
     users = list(models.Profile.objects.get_active_users())
     random.shuffle(users)
 
@@ -33,6 +37,7 @@ def members(request):
 
 @login_required
 def profile(request):
+
     # Get the user's profile
     try:
         profile = models.Profile.objects.get(user = request.user.id)

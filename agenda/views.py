@@ -13,7 +13,7 @@ import json
 
 class CommentAjaxListView(AjaxListView):
 
-    form_class    = forms.CommentForm
+    form_class = forms.CommentForm
 
     def get_queryset(self):
         return models.Comment.objects.filter(event = self.kwargs['event_id'])

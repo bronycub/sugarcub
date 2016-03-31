@@ -1,10 +1,12 @@
-from django.db                  import models
-from django.contrib.auth.models import User
-from stdimage.models            import StdImageField
-from stdimage.utils             import UploadToUUID
-from django.core.validators     import RegexValidator, MinLengthValidator
-from django.utils.translation   import ugettext_lazy as _
-from datetime                   import date
+from   django.db                  import models
+from   django.contrib.auth.models import User
+from   stdimage.models            import StdImageField
+from   stdimage.utils             import UploadToUUID
+from   django.core.validators     import RegexValidator, MinLengthValidator
+from   django.utils.translation   import ugettext_lazy as _
+from   datetime                   import date, timedelta
+from   contextlib                 import suppress
+from   celery                     import shared_task
 import requests
 
 
@@ -26,13 +28,10 @@ class ProfileManager(models.Manager):
             enabled = True, user__is_active = True)
 
     def get_new_members(self):
-        ''' Return all profile with birthday today '''
-        if ((date.today().month - 1) <= 0):
-            new_member_date = date(date.today().year, 12, date.today().day)
-        else:
-            new_member_date = date(date.today().year, date.today().month - 1, date.today().day)
+        ''' Return profile registered within the last 30 days '''
 
-        return self.model.objects.filter(user__date_joined__range=(new_member_date, date.today()),
+        return self.model.objects.filter(
+            user__date_joined__range=(date.today() - timedelta(days=30), date.today()),
             enabled = True, user__is_active = True)
 
 
@@ -76,10 +75,11 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
+    @shared_task
     def get_gps_position(self):
         ''' Update latitude and longitude form address using nominatim api '''
 
-        try:
+        with suppress(Exception):
             doc = requests.get(
                 'https://nominatim.openstreetmap.org/search',
                 {'q': self.address + ' ' + self.city, 'format': 'json'}
@@ -87,18 +87,16 @@ class Profile(models.Model):
 
             self.address_latitude = float(doc[0]['lat'])
             self.address_longitude = float(doc[0]['lon'])
-        except:
-            pass
 
     def save(self, *args, **kwargs):
-        self.get_gps_position()
+        self.get_gps_position.delay()
         super().save(*args, **kwargs)
 
 
 class Pony(models.Model):
     ''' List of different pony available '''
 
-    name = models.CharField(max_length = 32)
+    name      = models.CharField(max_length = 32)
     file_name = models.CharField(max_length = 32)
 
     class Meta:
@@ -111,7 +109,7 @@ class Pony(models.Model):
 class Icon(models.Model):
     ''' List of different icon available '''
 
-    name = models.CharField(max_length = 32)
+    name      = models.CharField(max_length = 32)
     file_name = models.CharField(max_length = 32)
 
     def __str__(self):

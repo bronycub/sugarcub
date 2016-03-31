@@ -19,3 +19,6 @@ db.sqlite3
 
 # Virtualenv
 .env
+
+# PyCharm
+.idea

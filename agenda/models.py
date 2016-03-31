@@ -15,13 +15,13 @@ information_enabled = (
 class Event(models.Model):
     ''' Represent an event in the agenda '''
 
-    author      = models.ForeignKey(User)
+    author        = models.ForeignKey(User)
 
-    title       = models.CharField(max_length = 500)
-    description = models.TextField()
-    date_begin  = models.DateTimeField()
-    date_end    = models.DateTimeField()
-    address     = models.CharField(max_length = 200)
+    title         = models.CharField(max_length = 500)
+    description   = models.TextField()
+    date_begin    = models.DateTimeField()
+    date_end      = models.DateTimeField()
+    address       = models.CharField(max_length = 200)
     event_enabled = models.CharField(max_length = 10, choices = information_enabled)
 
     class Meta:
