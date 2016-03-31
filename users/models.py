@@ -4,7 +4,7 @@ from stdimage.models            import StdImageField
 from stdimage.utils             import UploadToUUID
 from django.core.validators     import RegexValidator, MinLengthValidator
 from django.utils.translation   import ugettext_lazy as _
-from datetime                   import date
+from datetime                   import date, timedelta
 import requests
 
 
@@ -26,37 +26,9 @@ class ProfileManager(models.Manager):
             enabled = True, user__is_active = True)
 
     def get_new_members(self):
-        ''' Return all profile with birthday today '''
+        ''' Return all profile who join us this month '''
 
-        # Month with 31 day dict
-        dayDict = {
-            # On traite le cas de Janvier autrement
-            1 : False,
-            2 : False,
-            # On traite le cas de mars autrement
-            3 : False,
-            4 : False,
-            5 : True,
-            6 : False,
-            7 : True,
-            8 : True,
-            9 : False,
-            10 : True,
-            11 : False,
-            12 : True
-        }
-
-        if (date.today().month <= 1):
-            new_member_date = date(date.today().year, 12, date.today().day)
-        else:
-            if (date.today().month == 3 and date.today().day >= 28):
-                new_member_date = date(date.today().year, date.today().month - 1, date.today().day - 4)
-            elif (dayDict[date.today().month]() and date.today().day == 31):
-                new_member_date = date(date.today().year, date.today().month - 1, date.today().day - 1)
-            else:
-                new_member_date = date(date.today().year, date.today().month - 1, date.today().day)
-
-        return self.model.objects.filter(user__date_joined__range=(new_member_date, date.today()),
+        return self.model.objects.filter(user__date_joined__range=(date.today() - timedelta(days=30), date.today()),
             enabled = True, user__is_active = True)
 
 
