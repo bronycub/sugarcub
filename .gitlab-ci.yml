@@ -1,18 +1,24 @@
 stages:
+    - build
     - test
     - deploy
+
+build_base:
+    stage: build
+    script:
+        - docker build -t python-base -f docker/python-base ./
 
 test_dev:
     stage: test
     script:
         - docker-compose -p sugarcub build
-#        - docker-compose -p sugarcub run --rm django ./manage.py collectstatic --noinput
-#        - docker-compose -p sugarcub run --rm django py.test
+        - docker-compose -p sugarcub run --rm django ./manage.py collectstatic --noinput
+        - docker-compose -p sugarcub run --rm django py.test
 
-test_prod:
+build_prod:
     stage: test
     script:
-        - docker-compose -f docker-compose.prod.yml -p sugarcub build
+        - docker-compose -f docker-compose.yml -f docker-compose.prod.yml -p sugarcubprod build
 
 deploy:
     stage: deploy

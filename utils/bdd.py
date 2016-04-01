@@ -78,6 +78,21 @@ def i_dont_see(browser, text):
     assert not browser.is_text_present(text)
 
 
+@given(parsers.cfparse("Todo"))
+def given_todo():
+    pass
+
+
+@when(parsers.cfparse("Todo"))
+def when_todo():
+    pass
+
+
+@then(parsers.cfparse("Todo"))
+def then_todo():
+    assert True
+
+
 @then('form has errors')
 def form_has_error(browser):
     assert (browser.is_element_present_by_css('.alert-danger') or

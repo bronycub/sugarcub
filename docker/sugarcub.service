@@ -2,9 +2,9 @@
 Description=SugarCUB
 
 [Service]
-ExecStart=/usr/bin/env docker-compose -p sugarcub -f /var/www/sugarcub up -d
-ExecStop=/usr/bin/env docker-compose -p sugarcub -f /var/www/sugarcub kill
-ExecReload=/usr/bin/env docker-compose -p sugarcub -f /var/www/sugarcub up -d
+ExecStart=/usr/bin/env docker-compose -p sugarcub -f /var/www/sugarcub/docker-compose.yml -f /var/www/sugarcub/docker-compose.prod.yml up -d
+ExecStop=/usr/bin/env docker-compose -p sugarcub -f /var/www/sugarcub/docker-compose.yml -f /var/www/sugarcub/docker-compose.prod.yml down
+ExecReload=/usr/bin/env docker-compose -p sugarcub -f /var/www/sugarcub/docker-compose.yml -f /var/www/sugarcub/docker-compose.prod.yml up -d
 RemainAfterExit=yes
 
 [Install]

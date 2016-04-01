@@ -1,19 +1,31 @@
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import random
+import string
+
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-with open(os.path.join(BASE_DIR, '..', '..', '.secret'), 'r') as secretFile:
-    SECRET_KEY = secretFile.readline().strip(' \t\n\r')
+try:
+    with open(os.path.join(BASE_DIR, '..', 'data', '.secret'), 'r') as secretFile:
+        SECRET_KEY = secretFile.readline().strip(' \t\n\r')
+except Exception:
+    with open(os.path.join(BASE_DIR, '..', 'data', '.secret'), 'w') as secretFile:
+        SECRET_KEY = ''.join((
+            random.choice(string.ascii_letters + string.digits + string.punctuation) for _ in range(64))
+        )
+        secretFile.write(SECRET_KEY)
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG          = False
-TEMPLATE_DEBUG = False
+TEMPLATE_DEBUG = DEBUG
 
-with open(os.path.join(BASE_DIR, '..', '..', 'host'), 'r') as hostFile:
-    HOST = hostFile.readline().strip('\t\n\r')
-    ALLOWED_HOSTS  = HOST.split()
+with open(os.path.join(BASE_DIR, '..', 'data', 'host'), 'r') as hostFile:
+    host          = hostFile.readline().strip('\t\n\r')
+    ALLOWED_HOSTS = host.split()
 
 
 # Mails

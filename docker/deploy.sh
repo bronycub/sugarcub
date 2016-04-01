@@ -16,5 +16,4 @@ fi
 
 cd "$DIR"
 
-docker-compose -p sugarcub build
 systemctl reload sugarcub

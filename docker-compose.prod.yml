@@ -1,36 +1,40 @@
-postgre:
-    image: postgres:9.4
-    restart: always
-redis:
-    image: redis:3.0
-    restart: always
-django:
-    build: .
-    dockerfile: docker/python-prod
-    command: uwsgi --emperor '/uwsgi/instances/*/uwsgi.ini' --nagios
-    volumes:
-        - .:/srv/app
-    ports:
-        - "8000:80"
-    links:
-        - redis
-        - postgre
-    restart: always
-#celery:
-#    build: .
-#    dockerfile: docker/python-prod
-#    command: celery -A sugarcub worker -l info
-#    volumes:
-#        - .:/srv/app
-#    links:
-#        - redis
-#        - postgre
-#    restart: always
-#mailman:
-#    build: .
-#    dockerfile: docker/mailman
-#    command: ./bin/mailman-web-django-admin runserver 0.0.0.0:8000
-#    links:
-#        - redis
-#        - postgre
-#    restart: always
+version: "2"
+
+services:
+    nginx:
+        build:
+            context: .
+            dockerfile: docker/nginx
+        restart: always
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - nginx:/etc/nginx/conf.d/
+            - app:/srv/app/data
+        networks:
+            - front
+    django:
+        build:
+            context: .
+            dockerfile: docker/python-prod
+        command: ./deploy.sh
+        volumes:
+            - app:/srv/app/data
+        links:
+            - redis
+            - postgres
+        environment:
+            - DEPLOY_TYPE=prod
+        ports: []
+    celery:
+        build:
+            context: .
+            dockerfile: docker/python-prod
+        environment:
+            - DEPLOY_TYPE=prod
+        volumes:
+            - app:/srv/app/data
+
+volumes:
+    nginx: ~

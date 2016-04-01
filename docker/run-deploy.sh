@@ -22,6 +22,6 @@ cd "$DIR"
 
 ssh $USER@$HOST "mkdir -p $BASE_DIR"
 scp ./deploy.sh $USER@$HOST:"$BASE_DIR"
-scp ../docker-compose.prod.yml $USER@$HOST:"$BASE_DIR/docker-compose.yml"
+scp ../docker-compose.yml ../docker-compose.prod.yml $USER@$HOST:"$BASE_DIR"
 ssh $USER@$HOST "chmod u+x $BASE_DIR/deploy.sh"
 ssh $USER@$HOST "$BASE_DIR"/deploy.sh "$COMMIT_ID"

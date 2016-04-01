@@ -1,5 +1,7 @@
+from pytest_bdd import scenario
 from utils.bdd  import *
 
 
-def test_scenario():
+@scenario('features/bbbff.feature', 'Todo')
+def test_feature(live_server):
     pass
