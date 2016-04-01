@@ -1,4 +1,4 @@
-FROM python-base:latest
+FROM sugarcub-python-base:latest
 MAINTAINER Matthias DEVLAMYNCK
 
 RUN pip install uwsgi

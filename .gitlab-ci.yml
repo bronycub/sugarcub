@@ -6,7 +6,7 @@ stages:
 build_base:
     stage: build
     script:
-        - docker build -t python-base -f docker/python-base ./
+        - docker build -t sugarcub-python-base -f docker/python-base ./
 
 test_dev:
     stage: test
