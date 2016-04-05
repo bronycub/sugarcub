@@ -59,4 +59,4 @@ class ParticipationForm(forms.ModelForm):
 
     class Meta:
         model = models.Participation
-        fields = ['pseudo']
+        fields = ['pseudo', 'contact']
