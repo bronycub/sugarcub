@@ -10,6 +10,11 @@
 				<div class="container-fluid modal-content modal-lg">
 					<h4>Pseudo : {{ participant.pseudo }}</h4>
 				</div>
+				{% if user.is_authenticated and user.profile.enabled and event.author == user %}
+				<div class="container-fluid modal-content modal-lg">
+					<h4>Contact : {{ participant.contact }}</h4>
+				</div>
+				{% endif %}
 			</div>
 		</div>
 		<a data-toggle="modal" data-target="#modal-{{participant.pseudo}}" class="member-link">

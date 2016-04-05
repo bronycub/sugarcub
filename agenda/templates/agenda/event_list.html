@@ -93,15 +93,17 @@
                         data:  {event: id},
                         success: function() {
                             $('#participation-list-' + id).prepend(
-                                '<div class="col-md-4">' +
-                                    '<img class="img-responsive thumbnail" alt="avatar" src="' +
-                                        {% if participation.user.profile.avatar.small %}
-                                            '{{ participation.user.profile.avatar.small.url }}' +
-                                        {% else %}
-                                            '{% static 'ressources/logo/icon_bronycub.png' %}' +
-                                        {% endif %}
-                                    '"/>' +
-                                '</div>'
+                                '<a data-toggle="modal" data-target="#modal-{{participant.user.username}}" class="member-link">' +
+                                    '<div class="col-md-4">' +
+                                        '<img class="img-responsive thumbnail" alt="avatar" src="' +
+                                            {% if user.profile.avatar.small %}
+                                                '{{ user.profile.avatar.small.url }}' +
+                                            {% else %}
+                                                '{% static 'ressources/logo/icon_bronycub.png' %}' +
+                                            {% endif %}
+                                        '"/>' +
+                                    '</div>' +
+                                '</a>'
                             );
                         },
                         error: function() {
@@ -129,11 +131,7 @@
                                 '<div class="comment panel panel-default">' +
                                     '<div class="panel-heading">' +
                                         '<img class="img-header thumbnail" alt="avatar" src="' +
-                                            {% if user.profile.avatar.small %}
-                                                '{{ user.profile.avatar.small.url }}' +
-                                            {% else %}
                                                 '{% static 'ressources/logo/icon_bronycub.png' %}' +
-                                            {% endif %}
                                         '"/>' +
                                         username_post +
                                     '</div>' +
@@ -147,24 +145,23 @@
                 };
                 submitParticipation_offline = function(id) {
                     var username_post = $('#id_'+id+'_participation-pseudo').val();
+                    var contact_post = $('#id_'+id+'_participation-contact').val();
                     var captcha_0 = $('#id_'+id+'_participation-captcha_0').val();
                     var captcha_1 = $('#id_'+id+'_participation-captcha_1').val();
                     console.log(username_post);
                     $.ajax({
                         type: 'post',
                         url:  '{% url 'agenda:participate' %}',
-                        data:  {event: id, pseudo: username_post, captcha_0: captcha_0,captcha_1: captcha_1},
+                        data:  {event: id, pseudo: username_post, contact: contact_post, captcha_0: captcha_0,captcha_1: captcha_1},
                         success: function() {
                             $('#participation-list-' + id).prepend(
-                                '<div class="col-md-4">' +
-                                    '<img class="img-responsive thumbnail" alt="avatar" src="' +
-                                        {% if participation.user.profile.avatar.small %}
-                                            '{{ participation.user.profile.avatar.small.url }}' +
-                                        {% else %}
-                                            '{% static 'ressources/logo/icon_bronycub.png' %}' +
-                                        {% endif %}
-                                    '"/>' +
-                                '</div>'                        
+                                '<a data-toggle="modal" data-target="#modal-{{participant.user.username}}" class="member-link">' +
+                                    '<div class="col-md-4">' +
+                                        '<img class="img-responsive thumbnail" alt="avatar" src="' +
+                                                '{% static 'ressources/logo/icon_bronycub.png' %}' +
+                                        '"/>' +
+                                    '</div>' +
+                                '</a>'                      
                             );
                         },
                         error: function() {

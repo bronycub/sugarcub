@@ -17,6 +17,8 @@
       <div class="input-group">
         {% csrf_token %}
         {% bootstrap_field participation_form.pseudo show_label=false %}
+        <div class="alert alert-dismissible alert-warning">{% trans 'Add a way for us to contact you! (mail or phone for exemple). Only the organizer and the admin will be able to see it' %}</div>
+        {% bootstrap_field participation_form.contact show_label=false %}
         {% bootstrap_field participation_form.captcha show_label=false %}
         <span class="input-group-addon btn" onclick="submitParticipation_offline({{ event.id }})" data-dismiss="modal"><span class="glyphicon glyphicon-send"/> {% trans 'Post' %}</span>
       </div>
