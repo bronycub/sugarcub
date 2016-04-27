@@ -12,8 +12,8 @@ test_dev:
     stage: test
     script:
         - docker-compose -p sugarcub build
-        - docker-compose -p sugarcub run --rm django ./manage.py collectstatic --noinput
-        - docker-compose -p sugarcub run --rm django py.test
+        - docker-compose -p sugarcub -u $(id -u gitlab-runner) run --rm django ./manage.py collectstatic --noinput
+        - docker-compose -p sugarcub -u $(id -u gitlab-runner) run --rm django py.test
 
 build_prod:
     stage: test
