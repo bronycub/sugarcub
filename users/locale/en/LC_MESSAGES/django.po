@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-25 15:44+0000\n"
+"POT-Creation-Date: 2016-04-28 13:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,17 +77,17 @@ msgstr ""
 msgid "Username or email"
 msgstr ""
 
-#: users/models.py:44
+#: users/models.py:43
 msgid ""
 "Phone number must be entered in the format: '+999999999'. Up to 15 digits "
 "allowed."
 msgstr ""
 
-#: users/models.py:46
+#: users/models.py:45
 msgid "The postal code must be 5 digits."
 msgstr ""
 
-#: users/models.py:55
+#: users/models.py:54
 msgid "The bio should be longer than 150 character"
 msgstr ""
 
@@ -99,17 +99,17 @@ msgstr ""
 msgid "No members registered yet ..."
 msgstr ""
 
-#: users/templates/members/one-user.html:79
+#: users/templates/members/one-user-modal.html:64
 msgid ""
 "Your account must be accepted by the admin to see the members informations."
 msgstr ""
 
-#: users/templates/members/one-user.html:82
-#: users/templates/members/one-user.html:93
+#: users/templates/members/one-user-modal.html:67
+#: users/templates/members/one-user-modal.html:78
 msgid "Close"
 msgstr ""
 
-#: users/templates/members/one-user.html:90
+#: users/templates/members/one-user-modal.html:75
 msgid "You must be connected to see the members informations."
 msgstr ""
 
@@ -137,15 +137,15 @@ msgstr ""
 msgid "Only members of BronyCUB will be able to see those information :"
 msgstr ""
 
-#: users/templates/profile.html:98
+#: users/templates/profile.html:94
 msgid "Hide personnal information :"
 msgstr ""
 
-#: users/templates/profile.html:106
+#: users/templates/profile.html:105
 msgid "Update"
 msgstr ""
 
-#: users/templates/profile.html:111
+#: users/templates/profile.html:110
 msgid "Change your password"
 msgstr ""
 
@@ -211,6 +211,31 @@ msgstr ""
 msgid "You're now logged out."
 msgstr ""
 
+#: users/templates/registration/password_reset_done.html:6
+msgid "Home"
+msgstr ""
+
+#: users/templates/registration/password_reset_done.html:7
+msgid "Password reset"
+msgstr ""
+
+#: users/templates/registration/password_reset_done.html:11
+#: users/templates/registration/password_reset_done.html:12
+msgid "Password reset successful"
+msgstr ""
+
+#: users/templates/registration/password_reset_done.html:17
+msgid ""
+"We've emailed you instructions for setting your password, if an account "
+"exists with the email you entered. You should receive them shortly."
+msgstr ""
+
+#: users/templates/registration/password_reset_done.html:18
+msgid ""
+"If you don't receive an email, please make sure you've entered the address "
+"you registered with, and check your spam folder."
+msgstr ""
+
 #: users/templates/registration/password_reset_email.html:2
 #, python-format
 msgid ""
@@ -241,7 +266,7 @@ msgid ""
 "Welcome !"
 msgstr ""
 
-#: users/templates/registration/registration_form.html:40
+#: users/templates/registration/registration_form.html:41
 msgid "Send"
 msgstr ""
 

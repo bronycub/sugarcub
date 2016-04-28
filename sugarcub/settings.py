@@ -68,7 +68,6 @@ TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
     'core.processors.mailing_list',
     'django.core.context_processors.request',
     'absolute.context_processors.absolute',
-    'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.static',
 )
 
@@ -121,7 +120,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, '..', 'data', 'media')
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fr-fr'
 
 TIME_ZONE = 'UTC'
 
@@ -149,7 +148,7 @@ REGISTRATION_AUTO_LOGIN = True
 # Celery
 
 BROKER_URL            = 'redis://redis:6379/0'
-CELERY_RESULT_BACKEND = 'redis://redis:6379/1'
+CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
 
 CELERY_TASK_SERIALIZER   = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
