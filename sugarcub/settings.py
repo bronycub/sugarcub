@@ -155,6 +155,7 @@ CELERY_RESULT_SERIALIZER = 'json'
 CELERY_ACCEPT_CONTENT    = ['json']
 CELERY_TIMEZONE          = TIME_ZONE
 CELERY_ENABLE_UTC        = True
+CELERY_IMPORTS           = ('users.models', 'users.utils',)
 
 
 # Session

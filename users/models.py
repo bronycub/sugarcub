@@ -75,22 +75,24 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
-    @shared_task
-    def get_gps_position(self):
-        ''' Update latitude and longitude form address using nominatim api '''
-
-        with suppress(Exception):
-            doc = requests.get(
-                'https://nominatim.openstreetmap.org/search',
-                {'q': self.address + ' ' + self.city, 'format': 'json'}
-            ).json()
-
-            self.address_latitude = float(doc[0]['lat'])
-            self.address_longitude = float(doc[0]['lon'])
-
     def save(self, *args, **kwargs):
-        self.get_gps_position.delay()
         super().save(*args, **kwargs)
+        get_gps_position.delay(self.id)
+
+
+@shared_task
+def get_gps_position(profile_id):
+    ''' Update latitude and longitude form address using nominatim api '''
+    profile = Profile.objects.get(pk = profile_id)
+
+    with suppress(Exception):
+        doc = requests.get(
+            'https://nominatim.openstreetmap.org/search',
+            {'q': profile.address + ' ' + profile.city, 'format': 'json'}
+        ).json()
+
+        profile.address_latitude = float(doc[0]['lat'])
+        profile.address_longitude = float(doc[0]['lon'])
 
 
 class Pony(models.Model):

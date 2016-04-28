@@ -1,5 +1,5 @@
 from   django.shortcuts                    import render
-from   .                                   import models, forms
+from   .                                   import models, forms, utils
 from   django.contrib.auth.decorators      import login_required
 from   django.forms.models                 import inlineformset_factory
 from   registration.backends.default.views import RegistrationView as BaseRegistrationView
@@ -13,7 +13,8 @@ class RegistrationView(BaseRegistrationView):
 
     def register(self, form):
         user = super().register(form['registration'])
-        form.save(user = user)
+        profile = form.save(user = user)['profile']
+        utils.send_admin_registration_notification.delay(profile.id)
         return user
 
 

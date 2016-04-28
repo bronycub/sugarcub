@@ -33,10 +33,12 @@ with open(os.path.join(BASE_DIR, '..', 'data', 'host'), 'r') as hostFile:
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # TODO Allow for easy setup in BO
-EMAIL_HOST          = '172.17.42.1'
-EMAIL_PORT          = 25
-EMAIL_HOST_USER     = ''
-EMAIL_HOST_PASSWORD = ''
-EMAIL_USE_TLS       = False
-EMAIL_USE_SSL       = False
-DEFAULT_FROM_EMAIL  = 'contact@' + ALLOWED_HOSTS[0]
+EMAIL_HOST           = '172.17.42.1'
+EMAIL_PORT           = 25
+EMAIL_HOST_USER      = ''
+EMAIL_HOST_PASSWORD  = ''
+EMAIL_USE_TLS        = False
+EMAIL_USE_SSL        = False
+DEFAULT_FROM_EMAIL   = 'contact@' + ALLOWED_HOSTS[0]
+EMAIL_SUBJECT_PREFIX = '[BronyCUB]'
+ADMINS               = [('Admin BronyCUB', 'bronycub@gmail.com')]
