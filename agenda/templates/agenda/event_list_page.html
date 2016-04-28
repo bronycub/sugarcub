@@ -58,14 +58,7 @@
                           {% endwith %}
                         </div>
                       </div>
-                      <div class="panel panel-default">
-                        <div class="panel-heading">
-                          <h3 class="panel-title"><strong>{% trans 'Participant' %}</strong></h3>
-                        </div>
-                        <div id="participation-list-{{ event.id }}" class="panel-body">
                           {% include 'agenda/participation_list_page.html' with participation_list=event.participation_set.all %}
-                        </div>
-                      </div>
                       <div class="panel panel-default">
                         <div class="panel-heading" style="text-align:left;">
                           <h3 class="panel-title"><strong>{% trans 'Organizer' %}</strong></h3>
