@@ -32,13 +32,14 @@
                     {% bootstrap_field form.profile.address layout="horizontal" %}
                     {% bootstrap_field form.profile.city layout="horizontal" %}
                     {% bootstrap_field form.profile.postal_code layout="horizontal" %}
+                    <div class="alert alert-warning">{% trans '<strong>Important</strong> : Bien que vos informations ne sont accessibles que aux membres du collectif, les options ci-dessous vous offre la possibilité de vous rendre anonyme. Cela signifiera alors que vos amis ne pourrons pas avoir accès ces informations et seront par conséquent très tristes.' %}</div>
                     {% bootstrap_field form.profile.name_enabled layout="horizontal" %}
                     {% bootstrap_field form.profile.phone_enabled layout="horizontal" %}
                     {% bootstrap_field form.profile.birthday_enabled layout="horizontal" %}
                     {% bootstrap_field form.profile.address_enabled layout="horizontal" %}
                     {% bootstrap_field form.profile.mail_enabled layout="horizontal" %}
                     {% buttons %}
-                        <button type="submit" class="btn btn-primary">{% bootstrap_icon star %}{% trans 'Send' %}</button>
+                    <div  class="col-md-offset-2 col-md-10"><button type="submit" class="btn btn-primary">{% bootstrap_icon star %}{% trans 'Send' %}</button></div>
                     {% endbuttons %}
                 </form>
             </div>
