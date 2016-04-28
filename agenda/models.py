@@ -94,6 +94,7 @@ class Participation(models.Model):
 
     class Meta:
 
+        ordering = ['pseudo']
         unique_together = (
             ('user', 'event'),
             ('pseudo', 'event'),
