@@ -15,6 +15,7 @@
                 <link rel="stylesheet" type="text/css" media="screen" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
                 <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/sugarcub.css' %}">
                 <link rel="stylesheet" type="text/css" media="screen" href="{% static 'zocial/zocial.css' %}">
+                <link rel="stylesheet" type="text/css" media="screen" href="{% static 'cookieconsent2/build/dark-floating.css' %}">
                 {% block extrastyle %}{% endblock %}
             {% endblock %}
             {% block javascripts %}
@@ -25,6 +26,22 @@
                 <script type="application/javascript" src="{% static 'js/expender.js' %}"></script>
                 <script type="application/javascript" src="{% static 'js/konami.js' %}"></script>
                 <script type="application/javascript" src="{% static 'js/datetimepicker.js' %}"></script>
+                <script>
+                    window.cookieconsent_options = {
+                        theme: false,
+                        message: 'Ce site utilise des cookies pour vous assurez une meilleure expérience possible.',
+                        dismiss: 'OK :)',
+                        markup: [
+                            '<div class="cc_banner-wrapper">',
+                                '<div class="cc_banner cc_container cc_container--open">',
+                                    '<a href="#null" data-cc-event="click:dismiss" target="_blank" class="cc_btn cc_btn_accept_all">OK /)</a>',
+                                    '<p class="cc_message">Ce site utilise des cookies pour vous assurez une meilleure expérience possible.</p>',
+                                '</div>',
+                            '</div>'
+                        ]
+                    };
+                </script>
+                <script type="application/javascript" src="{% static 'cookieconsent2/build/cookieconsent.min.js' %}"></script>
                 {% block extrascripts %}{% endblock %}
             {% endblock %}
             
