@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SugarCUB 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-28 13:30+0000\n"
+"POT-Creation-Date: 2016-04-29 13:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Matthias Devlamynck <matthias.devlamynck@mailoo.org>\n"
 "Language: French\n"
@@ -16,6 +16,42 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: core/apps.py:7
+msgid "Base"
+msgstr "Base"
+
+#: core/models.py:8 core/models.py:11
+msgid "quote"
+msgstr "citation"
+
+#: core/models.py:12
+msgid "quotes"
+msgstr "citations"
+
+#: core/models.py:21
+msgid "name"
+msgstr "nom"
+
+#: core/models.py:22
+msgid "description"
+msgstr "description"
+
+#: core/models.py:23
+msgid "image"
+msgstr "image"
+
+#: core/models.py:24
+msgid "url"
+msgstr "url"
+
+#: core/models.py:27
+msgid "friend"
+msgstr "ami"
+
+#: core/models.py:28
+msgid "friends"
+msgstr "amis"
 
 #: core/templates/agenda.html:6 core/templates/base.html:52
 msgid "Agenda"

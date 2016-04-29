@@ -57,7 +57,7 @@
                   </div>
                 </div>
             </div>
-        {% elif not user.profile.enabled %}
+        {% elif user.is_authenticated and not user.profile.enabled %}
             <div class="container-fluid">
                 <div class="alert alert-danger">
                     <div class="row modal-body">

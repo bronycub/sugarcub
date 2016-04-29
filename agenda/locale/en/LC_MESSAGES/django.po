@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-28 13:30+0000\n"
+"POT-Creation-Date: 2016-04-29 13:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: agenda/apps.py:7
+msgid "Agenda"
+msgstr ""
 
 #: agenda/forms.py:17
 msgid "Start date and hour"
@@ -57,6 +61,70 @@ msgstr ""
 
 #: agenda/models.py:11
 msgid "Show only my phone"
+msgstr ""
+
+#: agenda/models.py:18 agenda/models.py:65 agenda/models.py:88
+msgid "user"
+msgstr ""
+
+#: agenda/models.py:20
+msgid "title"
+msgstr ""
+
+#: agenda/models.py:21
+msgid "description"
+msgstr ""
+
+#: agenda/models.py:22
+msgid "date begin"
+msgstr ""
+
+#: agenda/models.py:23
+msgid "date end"
+msgstr ""
+
+#: agenda/models.py:24
+msgid "address"
+msgstr ""
+
+#: agenda/models.py:25
+msgid "event enabled"
+msgstr ""
+
+#: agenda/models.py:29 agenda/models.py:67 agenda/models.py:90
+msgid "event"
+msgstr ""
+
+#: agenda/models.py:30
+msgid "events"
+msgstr ""
+
+#: agenda/models.py:66 agenda/models.py:89
+msgid "unregistered user"
+msgstr ""
+
+#: agenda/models.py:69
+msgid "text"
+msgstr ""
+
+#: agenda/models.py:70
+msgid "date"
+msgstr ""
+
+#: agenda/models.py:74
+msgid "comment"
+msgstr ""
+
+#: agenda/models.py:75
+msgid "comments"
+msgstr ""
+
+#: agenda/models.py:93
+msgid "participation"
+msgstr ""
+
+#: agenda/models.py:94
+msgid "participations"
 msgstr ""
 
 #: agenda/templates/agenda/comment_list.html:6

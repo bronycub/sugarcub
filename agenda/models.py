@@ -15,17 +15,19 @@ information_enabled = (
 class Event(models.Model):
     ''' Represent an event in the agenda '''
 
-    author        = models.ForeignKey(User)
+    author        = models.ForeignKey(User, verbose_name = _('user'))
 
-    title         = models.CharField(max_length = 500)
-    description   = models.TextField()
-    date_begin    = models.DateTimeField()
-    date_end      = models.DateTimeField()
-    address       = models.CharField(max_length = 200)
-    event_enabled = models.CharField(max_length = 10, choices = information_enabled)
+    title         = models.CharField(_('title'), max_length = 500)
+    description   = models.TextField(_('description'))
+    date_begin    = models.DateTimeField(_('date begin'))
+    date_end      = models.DateTimeField(_('date end'))
+    address       = models.CharField(_('address'), max_length = 200)
+    event_enabled = models.CharField(_('event enabled'), max_length = 10, choices = information_enabled)
 
     class Meta:
-        ordering = ['-date_begin', '-date_end']
+        ordering            = ['-date_begin', '-date_end']
+        verbose_name        = _('event')
+        verbose_name_plural = _('events')
 
     def get_absolute_url(self):
         return reverse('event', kwargs={'pk': self.pk})
@@ -60,18 +62,20 @@ class Comment(models.Model):
     Comment is posted by author if logged in, else by pseudo
     '''
 
-    author = models.ForeignKey(User, blank = True, null = True)
-    pseudo = models.CharField(max_length = 30, blank = True, null = True)
-    event  = models.ForeignKey(Event)
+    author = models.ForeignKey(User, verbose_name = _('user'), blank = True, null = True)
+    pseudo = models.CharField(_('unregistered user'), max_length = 30, blank = True, null = True)
+    event  = models.ForeignKey(Event, verbose_name = _('event'))
 
-    text   = models.TextField()
-    date   = models.DateTimeField(auto_now_add = True)
+    text   = models.TextField(_('text'))
+    date   = models.DateTimeField(_('date'), auto_now_add = True)
+
+    class Meta:
+        ordering            = ['-date']
+        verbose_name        = _('comment')
+        verbose_name_plural = _('comments')
 
     def __str__(self):
         return self.text
-
-    class Meta:
-        ordering = ['-date']
 
 
 class Participation(models.Model):
@@ -81,19 +85,20 @@ class Participation(models.Model):
     Participation is made by author if logged in, else by pseudo
     '''
 
-    user   = models.ForeignKey(User, null = True, blank = True)
-    pseudo = models.CharField(max_length = 31, blank = True, null=True)
-    event  = models.ForeignKey(Event)
+    user   = models.ForeignKey(User, verbose_name = _('user'), null = True, blank = True)
+    pseudo = models.CharField(_('unregistered user'), max_length = 31, blank = True, null=True)
+    event  = models.ForeignKey(Event, verbose_name = _('event'))
+
+    class Meta:
+        verbose_name        = _('participation')
+        verbose_name_plural = _('participations')
+        unique_together     = (
+            ('user', 'event'),
+            ('pseudo', 'event'),
+        )
 
     def __str__(self):
         return str(self.author()) + ' ' + str(self.event)
 
     def author(self):
         return self.user if self.user else self.pseudo
-
-    class Meta:
-
-        unique_together = (
-            ('user', 'event'),
-            ('pseudo', 'event'),
-        )

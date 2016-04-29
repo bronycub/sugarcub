@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-28 13:30+0000\n"
+"POT-Creation-Date: 2016-04-29 13:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,28 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: users/admin.py:20
+#, python-format
+msgid "%s profiles were enabled."
+msgstr ""
+
+#: users/admin.py:24
+#, python-format
+msgid "%s profiles were disabled."
+msgstr ""
+
+#: users/admin.py:26
+msgid "Enable the selected profiles"
+msgstr ""
+
+#: users/admin.py:27
+msgid "Disable the selected profiles"
+msgstr ""
+
+#: users/apps.py:7
+msgid "Users"
+msgstr ""
 
 #: users/forms.py:27
 msgid "Exemple : Pony is best pegasus/pony/unicorn!"
@@ -87,8 +109,120 @@ msgstr ""
 msgid "The postal code must be 5 digits."
 msgstr ""
 
+#: users/models.py:47
+msgid "user"
+msgstr ""
+
+#: users/models.py:49
+msgid "enabled"
+msgstr ""
+
+#: users/models.py:50
+msgid "name enabled"
+msgstr ""
+
+#: users/models.py:51
+msgid "mail enabled"
+msgstr ""
+
 #: users/models.py:54
 msgid "The bio should be longer than 150 character"
+msgstr ""
+
+#: users/models.py:55
+msgid "bio"
+msgstr ""
+
+#: users/models.py:56
+msgid "avatar"
+msgstr ""
+
+#: users/models.py:61
+msgid "phone"
+msgstr ""
+
+#: users/models.py:62
+msgid "phone enabled"
+msgstr ""
+
+#: users/models.py:64
+msgid "birthday"
+msgstr ""
+
+#: users/models.py:65
+msgid "birthday enabled"
+msgstr ""
+
+#: users/models.py:67
+msgid "address"
+msgstr ""
+
+#: users/models.py:68
+msgid "city"
+msgstr ""
+
+#: users/models.py:69
+msgid "postal code"
+msgstr ""
+
+#: users/models.py:70
+msgid "address enabled"
+msgstr ""
+
+#: users/models.py:72
+msgid "longitude"
+msgstr ""
+
+#: users/models.py:73
+msgid "latitude"
+msgstr ""
+
+#: users/models.py:76 users/models.py:134
+msgid "profile"
+msgstr ""
+
+#: users/models.py:77
+msgid "profiles"
+msgstr ""
+
+#: users/models.py:106 users/models.py:120
+msgid "name"
+msgstr ""
+
+#: users/models.py:107 users/models.py:121
+msgid "file name"
+msgstr ""
+
+#: users/models.py:110 users/models.py:135 users/models.py:139
+msgid "pony"
+msgstr ""
+
+#: users/models.py:111 users/models.py:140
+msgid "ponies"
+msgstr ""
+
+#: users/models.py:124 users/models.py:154
+msgid "icon"
+msgstr ""
+
+#: users/models.py:125
+msgid "icons"
+msgstr ""
+
+#: users/models.py:136
+msgid "message"
+msgstr ""
+
+#: users/models.py:152
+msgid "profil"
+msgstr ""
+
+#: users/models.py:153 users/models.py:157
+msgid "url"
+msgstr ""
+
+#: users/models.py:158
+msgid "urls"
 msgstr ""
 
 #: users/templates/members.html:5
@@ -188,6 +322,10 @@ msgstr ""
 msgid "Account activation"
 msgstr ""
 
+#: users/templates/registration/email-admin-notification.html:3
+msgid "A new user just registered."
+msgstr ""
+
 #: users/templates/registration/forms/login.html:6
 #: users/templates/registration/forms/login.html:9
 #: users/templates/registration/login.html:7
@@ -266,7 +404,16 @@ msgid ""
 "Welcome !"
 msgstr ""
 
-#: users/templates/registration/registration_form.html:41
+#: users/templates/registration/registration_form.html:35
+msgid ""
+"<strong>Important</strong> : Bien que vos informations ne sont accessibles "
+"que aux membres du collectif, les options ci-dessous vous offre la "
+"possibilité de vous rendre anonyme. Cela signifiera alors que vos amis ne "
+"pourrons pas avoir accès ces informations et seront par conséquent très "
+"tristes."
+msgstr ""
+
+#: users/templates/registration/registration_form.html:42
 msgid "Send"
 msgstr ""
 
@@ -284,4 +431,8 @@ msgstr ""
 
 #: users/urls.py:11
 msgid "^register/informations$"
+msgstr ""
+
+#: users/utils.py:31
+msgid "Nouvelle inscription"
 msgstr ""

@@ -44,33 +44,37 @@ class Profile(models.Model):
     zipcode_regex     = RegexValidator(regex=r'^\d[1-9]\d{3}$', message=_(
         "The postal code must be 5 digits."))
 
-    user              = models.OneToOneField(User)
+    user              = models.OneToOneField(User, verbose_name = _('user'))
 
-    enabled           = models.BooleanField(default = False)
-    name_enabled      = models.BooleanField(default = True)
-    mail_enabled      = models.BooleanField(default = True)
+    enabled           = models.BooleanField(_('enabled'), default = False)
+    name_enabled      = models.BooleanField(_('name enabled'), default = True)
+    mail_enabled      = models.BooleanField(_('mail enabled'), default = True)
 
     bio_min_size      = MinLengthValidator(150, message=_(
         'The bio should be longer than 150 character'))
-    bio               = models.TextField(validators=[bio_min_size])
-    avatar            = StdImageField(blank = True, null = True,
+    bio               = models.TextField(_('bio'), validators=[bio_min_size])
+    avatar            = StdImageField(_('avatar'), blank = True, null = True,
         variations = {'avatar': (100, 100), 'small': (50, 50), 'big': (222, 222)},
         upload_to  = UploadToUUID(path = 'avatars'),
     )
 
-    phone             = models.CharField(validators=[phone_regex], max_length=15)
-    phone_enabled     = models.BooleanField(default = True)
+    phone             = models.CharField(_('phone'), validators=[phone_regex], max_length=15)
+    phone_enabled     = models.BooleanField(_('phone enabled'), default = True)
 
-    birthday          = models.DateField()
-    birthday_enabled  = models.BooleanField(default = True)
+    birthday          = models.DateField(_('birthday'))
+    birthday_enabled  = models.BooleanField(_('birthday enabled'), default = True)
 
-    address           = models.CharField(max_length=200)
-    city              = models.CharField(max_length=30)
-    postal_code       = models.CharField(max_length=5, validators=[zipcode_regex])
-    address_enabled   = models.BooleanField(default = True)
+    address           = models.CharField(_('address'), max_length=200)
+    city              = models.CharField(_('city'), max_length=30)
+    postal_code       = models.CharField(_('postal code'), max_length=5, validators=[zipcode_regex])
+    address_enabled   = models.BooleanField(_('address enabled'), default = True)
 
-    address_longitude = models.FloatField(blank = True, null = True)
-    address_latitude  = models.FloatField(blank = True, null = True)
+    address_longitude = models.FloatField(_('longitude'), blank = True, null = True)
+    address_latitude  = models.FloatField(_('latitude'), blank = True, null = True)
+
+    class Meta:
+        verbose_name        = _('profile')
+        verbose_name_plural = _('profiles')
 
     def __str__(self):
         return self.user.username
@@ -83,6 +87,7 @@ class Profile(models.Model):
 @shared_task
 def get_gps_position(profile_id):
     ''' Update latitude and longitude form address using nominatim api '''
+
     profile = Profile.objects.get(pk = profile_id)
 
     with suppress(Exception):
@@ -98,11 +103,12 @@ def get_gps_position(profile_id):
 class Pony(models.Model):
     ''' List of different pony available '''
 
-    name      = models.CharField(max_length = 32)
-    file_name = models.CharField(max_length = 32)
+    name      = models.CharField(_('name'), max_length = 32)
+    file_name = models.CharField(_('file name'), max_length = 32)
 
     class Meta:
-        verbose_name_plural = 'ponies'
+        verbose_name        = _('pony')
+        verbose_name_plural = _('ponies')
 
     def __str__(self):
         return self.name
@@ -111,8 +117,12 @@ class Pony(models.Model):
 class Icon(models.Model):
     ''' List of different icon available '''
 
-    name      = models.CharField(max_length = 32)
-    file_name = models.CharField(max_length = 32)
+    name      = models.CharField(_('name'), max_length = 32)
+    file_name = models.CharField(_('file name'), max_length = 32)
+
+    class Meta:
+        verbose_name        = _('icon')
+        verbose_name_plural = _('icons')
 
     def __str__(self):
         return self.name
@@ -121,9 +131,13 @@ class Icon(models.Model):
 class UserPony(models.Model):
     ''' List of ponies with little quotes to display in the user's description '''
 
-    profile = models.ForeignKey(Profile)
-    pony    = models.ForeignKey(Pony)
-    message = models.CharField(max_length = 64)
+    profile = models.ForeignKey(Profile, verbose_name = _('profile'))
+    pony    = models.ForeignKey(Pony, verbose_name = _('pony'))
+    message = models.CharField(_('message'), max_length = 64)
+
+    class Meta:
+        verbose_name        = _('pony')
+        verbose_name_plural = _('ponies')
 
     def __str__(self):
         try:
@@ -131,16 +145,17 @@ class UserPony(models.Model):
         except TypeError:
             return self.message
 
-    class Meta:
-        verbose_name_plural = 'ponies'
-
 
 class UserUrl(models.Model):
     ''' List of urls in the user's description '''
 
-    profile = models.ForeignKey(Profile)
-    url     = models.URLField()
-    icon    = models.ForeignKey(Icon)
+    profile = models.ForeignKey(Profile, verbose_name = _('profil'))
+    url     = models.URLField(_('url'))
+    icon    = models.ForeignKey(Icon, verbose_name = _('icon'))
+
+    class Meta:
+        verbose_name        = _('url')
+        verbose_name_plural = _('urls')
 
     def __str__(self):
         return self.url
