@@ -28,6 +28,6 @@ def send_admin_registration_notification(profile_id):
     profile = models.Profile.objects.get(pk = profile_id)
 
     mail_admins(
-        _('Nouvelle inscription'),
+        _('New registration'),
         html_message = render_to_string('registration/email-admin-notification.html', {'profile': profile})
     )

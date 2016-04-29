@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-29 13:11+0000\n"
+"POT-Creation-Date: 2016-04-29 13:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,6 +138,14 @@ msgstr "participations"
 msgid "Events"
 msgstr "Évènements"
 
+#: agenda/templates/agenda/email-admin-notification.html:3
+msgid "A event was just registered."
+msgstr "Un nouvel évènement vient d'être crée."
+
+#: agenda/templates/agenda/email-admin-notification.html:5
+msgid "created"
+msgstr "à créé"
+
 #: agenda/templates/agenda/event_form.html:17
 #: agenda/templates/agenda/event_list.html:40
 msgid "Add an event"
@@ -264,6 +272,15 @@ msgstr "^ics$"
 #: agenda/urls.py:44
 msgid "^event/update/(?P<event_id>[0-9]+)$"
 msgstr "^evenement/modification/(?P<event_id>[0-9]+)$"
+
+#: agenda/utils.py:29
+msgid "New event"
+msgstr "Nouvel évènement"
+
+#, fuzzy
+#~| msgid "Description"
+#~ msgid "Nouvelle inscription"
+#~ msgstr "Description"
 
 #~ msgid "pseudo"
 #~ msgstr "pseudo"
