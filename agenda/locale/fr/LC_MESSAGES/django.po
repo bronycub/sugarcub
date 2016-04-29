@@ -208,7 +208,7 @@ msgstr "Addresse"
 
 #: agenda/templates/agenda/event_list_page.html:48
 msgid "Edit event"
-msgstr "Modifier un évènement"
+msgstr "Modifier l'évènement"
 
 #: agenda/templates/agenda/event_list_page.html:53
 msgid "Will you participate?"
