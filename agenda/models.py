@@ -85,11 +85,13 @@ class Participation(models.Model):
     Participation is made by author if logged in, else by pseudo
     '''
 
-    user   = models.ForeignKey(User, verbose_name = _('user'), null = True, blank = True)
-    pseudo = models.CharField(_('unregistered user'), max_length = 31, blank = True, null=True)
-    event  = models.ForeignKey(Event, verbose_name = _('event'))
+    user    = models.ForeignKey(User, verbose_name = _('user'), null = True, blank = True)
+    pseudo  = models.CharField(_('unregistered user'), max_length = 31, blank = True, null=True)
+    contact = models.CharField(_('contact'), max_length = 31, blank = True, null = True)
+    event   = models.ForeignKey(Event, verbose_name = _('event'))
 
     class Meta:
+        ordering            = ['pseudo']
         verbose_name        = _('participation')
         verbose_name_plural = _('participations')
         unique_together     = (

@@ -97,7 +97,8 @@ def participate(request):
                 event = models.Event.objects.get(pk = request.POST.get('event'))
                 participation = models.Participation(
                     pseudo = request.POST.get('pseudo'),
-                    event = event
+                    event = event,
+                    contact = request.POST.get('contact'),
                 )
                 try:
                     participation.save()

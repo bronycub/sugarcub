@@ -58,24 +58,17 @@
                           {% endwith %}
                         </div>
                       </div>
-                      <div class="panel panel-default">
-                        <div class="panel-heading">
-                          <h3 class="panel-title"><strong>{% trans 'Participant' %}</strong></h3>
-                        </div>
-                        <div id="participation-list-{{ event.id }}" class="panel-body">
                           {% include 'agenda/participation_list_page.html' with participation_list=event.participation_set.all %}
-                        </div>
-                      </div>
                       <div class="panel panel-default">
                         <div class="panel-heading" style="text-align:left;">
                           <h3 class="panel-title"><strong>{% trans 'Organizer' %}</strong></h3>
                         </div>
                         <div class="panel-body" style="text-align:center;">
                           <img class="img-rounded thumbnail img-responsive" width="222px" src="{% if event.author.profile.avatar.big %}
-                                                                                     {{ event.author.profile.avatar.avatar.url }}
-                                                                                 {% else %}
-                                                                                     {% static 'ressources/logo/icon_bronycub.png' %}
-                                                                                 {% endif %}">
+                                 {{ event.author.profile.avatar.avatar.url }}
+                             {% else %}
+                                 {% static 'ressources/logo/icon_bronycub.png' %}
+                             {% endif %}">
                           <h3>{{ event.author.username }}</h3>
                           <br />
                           <h4><strong><i class="fa fa-comments"></i>&nbsp;{% trans 'CONTACT' %}</strong></h4>
