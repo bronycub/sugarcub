@@ -43,6 +43,7 @@ DEPENDENCIES_APPS = (
     'absolute',
     'bootstrap3_datetime',
     'captcha',
+    'ws4redis',
 )
 
 DEV_DEPENDENCIES_APPS = (
@@ -67,7 +68,6 @@ TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
     'core.processors.mailing_list',
     'django.core.context_processors.request',
     'absolute.context_processors.absolute',
-    'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.static',
 )
 
@@ -87,25 +87,40 @@ ROOT_URLCONF = 'sugarcub.urls'
 
 WSGI_APPLICATION = 'sugarcub.wsgi.application'
 
-# CACHES = {
-# 	'default': {
-# 		'BACKEND': 'django_redis.cache.RedisCache',
-# 		'LOCATION': 'unix:///shared/redis.sock',
-# 		'OPTIONS': {
-# 			'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-# 			'IGNORE_EXCEPTIONS': True,
-# 		}
-# 	}
-# }
-#
-# SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
-# SESSION_CACHE_ALIAS = 'default'
+
+# Database
+# https://docs.djangoproject.com/en/1.7/ref/settings/#databases
+
+DATABASES = {
+    'default': {
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': os.path.join(BASE_DIR, '..', 'data', 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'HOST': 'postgres',
+        'PORT': 5432,
+    }
+}
+
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.7/howto/static-files/
+
+STATIC_URL  = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, '..', 'data', 'static')
+
+
+# Media
+
+MEDIA_URL  = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, '..', 'data', 'media')
 
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fr-fr'
 
 TIME_ZONE = 'UTC'
 
@@ -128,6 +143,35 @@ AUTHENTICATION_BACKENDS += ('users.utils.EmailModelBackend', )
 # Registration
 
 REGISTRATION_AUTO_LOGIN = True
+
+
+# Celery
+
+BROKER_URL            = 'redis://redis:6379/0'
+CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
+
+CELERY_TASK_SERIALIZER   = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_ACCEPT_CONTENT    = ['json']
+CELERY_TIMEZONE          = TIME_ZONE
+CELERY_ENABLE_UTC        = True
+CELERY_IMPORTS           = ('users.models', 'users.utils',)
+
+
+# Session
+
+SESSION_ENGINE     = 'redis_sessions.session'
+SESSION_REDIS_HOST = 'redis'
+
+
+# Cache
+
+CACHES = {
+    'default': {
+        'BACKEND': 'redis_cache.RedisCache',
+        'LOCATION': 'redis:6379',
+    },
+}
 
 
 # Admin

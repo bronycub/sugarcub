@@ -12,8 +12,8 @@ class ParticipationInline(admin.TabularInline):
     fk_name = 'event'
 
 
-class ProfileAdmin(admin.ModelAdmin):
-    inlines = [CommentInline, ParticipationInline]
+class EventAdmin(admin.ModelAdmin):
+    inlines = [ParticipationInline, CommentInline]
 
 
-admin.site.register(models.Event, ProfileAdmin)
+admin.site.register(models.Event, EventAdmin)

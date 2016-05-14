@@ -1,1 +1,2 @@
-# Create your tests here.
+def test_todo():
+    assert True

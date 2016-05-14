@@ -1,43 +1,31 @@
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import random
+import string
+
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-with open(os.path.join(BASE_DIR, '..', '..', '.secret'), 'r') as secretFile:
-    SECRET_KEY = secretFile.readline().strip(' \t\n\r')
+try:
+    with open(os.path.join(BASE_DIR, '..', 'data', '.secret'), 'r') as secretFile:
+        SECRET_KEY = secretFile.readline().strip(' \t\n\r')
+except Exception:
+    with open(os.path.join(BASE_DIR, '..', 'data', '.secret'), 'w') as secretFile:
+        SECRET_KEY = ''.join((
+            random.choice(string.ascii_letters + string.digits + string.punctuation) for _ in range(64))
+        )
+        secretFile.write(SECRET_KEY)
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG          = False
-TEMPLATE_DEBUG = False
+TEMPLATE_DEBUG = DEBUG
 
-with open(os.path.join(BASE_DIR, '..', '..', 'host'), 'r') as hostFile:
-    HOST = hostFile.readline().strip('\t\n\r')
-    ALLOWED_HOSTS  = HOST.split()
-
-
-# Database
-# https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, '..', '..', 'database', 'db.sqlite3'),
-    }
-}
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.7/howto/static-files/
-
-STATIC_URL  = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, '..', 'static')
-
-
-# Media
-
-MEDIA_URL  = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, '..', '..', 'media')
+with open(os.path.join(BASE_DIR, '..', 'data', 'host'), 'r') as hostFile:
+    host          = hostFile.readline().strip('\t\n\r')
+    ALLOWED_HOSTS = host.split()
 
 
 # Mails
@@ -45,10 +33,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, '..', '..', 'media')
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # TODO Allow for easy setup in BO
-EMAIL_HOST          = '172.17.42.1'
-EMAIL_PORT          = 25
-EMAIL_HOST_USER     = ''
-EMAIL_HOST_PASSWORD = ''
-EMAIL_USE_TLS       = False
-EMAIL_USE_SSL       = False
-DEFAULT_FROM_EMAIL  = 'contact@' + ALLOWED_HOSTS[0]
+EMAIL_HOST           = '172.17.42.1'
+EMAIL_PORT           = 25
+EMAIL_HOST_USER      = ''
+EMAIL_HOST_PASSWORD  = ''
+EMAIL_USE_TLS        = False
+EMAIL_USE_SSL        = False
+DEFAULT_FROM_EMAIL   = 'contact@' + ALLOWED_HOSTS[0]
+EMAIL_SUBJECT_PREFIX = '[BronyCUB]'
+ADMINS               = [('Admin BronyCUB', 'bronycub@gmail.com')]

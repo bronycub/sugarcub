@@ -1,0 +1,11 @@
+[Unit]
+Description=SugarCUB
+
+[Service]
+ExecStart=/usr/bin/env docker-compose -p sugarcubprod -f /var/www/sugarcub/docker-compose.yml -f /var/www/sugarcub/docker-compose.prod.yml up -d
+ExecStop=/usr/bin/env docker-compose -p sugarcubprod -f /var/www/sugarcub/docker-compose.yml -f /var/www/sugarcub/docker-compose.prod.yml down
+ExecReload=/usr/bin/env docker-compose -p sugarcubprod _-f /var/www/sugarcub/docker-compose.yml -f /var/www/sugarcub/docker-compose.prod.yml up -d
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

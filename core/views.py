@@ -31,10 +31,12 @@ def home(request):
 
 
 def agenda(request):
+
     return render(request, 'agenda.html')
 
 
 def map(request):
+
     return render(request, 'map.html', {
         'fillPage':        True,
         'profiles':        Profile.objects.get_active_users(),
@@ -43,6 +45,7 @@ def map(request):
 
 
 def friends(request):
+
     friends = Friend.objects.all()
 
     if friends.count() > 2:

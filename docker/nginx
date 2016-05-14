@@ -1,0 +1,6 @@
+FROM nginx:1.9
+MAINTAINER Matthias DEVLAMYNCK
+
+RUN rm /etc/nginx/conf.d/default.conf && mkdir -p /srv/app/data
+
+ADD nginx.conf /etc/nginx/conf.d

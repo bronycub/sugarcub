@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-25 15:44+0000\n"
+"POT-Creation-Date: 2016-04-29 13:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,28 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: users/admin.py:20
+#, python-format
+msgid "%s profiles were enabled."
+msgstr ""
+
+#: users/admin.py:24
+#, python-format
+msgid "%s profiles were disabled."
+msgstr ""
+
+#: users/admin.py:26
+msgid "Enable the selected profiles"
+msgstr ""
+
+#: users/admin.py:27
+msgid "Disable the selected profiles"
+msgstr ""
+
+#: users/apps.py:7
+msgid "Users"
+msgstr ""
 
 #: users/forms.py:27
 msgid "Exemple : Pony is best pegasus/pony/unicorn!"
@@ -77,18 +99,130 @@ msgstr ""
 msgid "Username or email"
 msgstr ""
 
-#: users/models.py:44
+#: users/models.py:43
 msgid ""
 "Phone number must be entered in the format: '+999999999'. Up to 15 digits "
 "allowed."
 msgstr ""
 
-#: users/models.py:46
+#: users/models.py:45
 msgid "The postal code must be 5 digits."
 msgstr ""
 
-#: users/models.py:55
+#: users/models.py:47
+msgid "user"
+msgstr ""
+
+#: users/models.py:49
+msgid "enabled"
+msgstr ""
+
+#: users/models.py:50
+msgid "name enabled"
+msgstr ""
+
+#: users/models.py:51
+msgid "mail enabled"
+msgstr ""
+
+#: users/models.py:54
 msgid "The bio should be longer than 150 character"
+msgstr ""
+
+#: users/models.py:55
+msgid "bio"
+msgstr ""
+
+#: users/models.py:56
+msgid "avatar"
+msgstr ""
+
+#: users/models.py:61
+msgid "phone"
+msgstr ""
+
+#: users/models.py:62
+msgid "phone enabled"
+msgstr ""
+
+#: users/models.py:64
+msgid "birthday"
+msgstr ""
+
+#: users/models.py:65
+msgid "birthday enabled"
+msgstr ""
+
+#: users/models.py:67
+msgid "address"
+msgstr ""
+
+#: users/models.py:68
+msgid "city"
+msgstr ""
+
+#: users/models.py:69
+msgid "postal code"
+msgstr ""
+
+#: users/models.py:70
+msgid "address enabled"
+msgstr ""
+
+#: users/models.py:72
+msgid "longitude"
+msgstr ""
+
+#: users/models.py:73
+msgid "latitude"
+msgstr ""
+
+#: users/models.py:76 users/models.py:134
+msgid "profile"
+msgstr ""
+
+#: users/models.py:77
+msgid "profiles"
+msgstr ""
+
+#: users/models.py:106 users/models.py:120
+msgid "name"
+msgstr ""
+
+#: users/models.py:107 users/models.py:121
+msgid "file name"
+msgstr ""
+
+#: users/models.py:110 users/models.py:135 users/models.py:139
+msgid "pony"
+msgstr ""
+
+#: users/models.py:111 users/models.py:140
+msgid "ponies"
+msgstr ""
+
+#: users/models.py:124 users/models.py:154
+msgid "icon"
+msgstr ""
+
+#: users/models.py:125
+msgid "icons"
+msgstr ""
+
+#: users/models.py:136
+msgid "message"
+msgstr ""
+
+#: users/models.py:152
+msgid "profil"
+msgstr ""
+
+#: users/models.py:153 users/models.py:157
+msgid "url"
+msgstr ""
+
+#: users/models.py:158
+msgid "urls"
 msgstr ""
 
 #: users/templates/members.html:5
@@ -99,17 +233,17 @@ msgstr ""
 msgid "No members registered yet ..."
 msgstr ""
 
-#: users/templates/members/one-user.html:79
+#: users/templates/members/one-user-modal.html:64
 msgid ""
 "Your account must be accepted by the admin to see the members informations."
 msgstr ""
 
-#: users/templates/members/one-user.html:82
-#: users/templates/members/one-user.html:93
+#: users/templates/members/one-user-modal.html:67
+#: users/templates/members/one-user-modal.html:78
 msgid "Close"
 msgstr ""
 
-#: users/templates/members/one-user.html:90
+#: users/templates/members/one-user-modal.html:75
 msgid "You must be connected to see the members informations."
 msgstr ""
 
@@ -137,15 +271,15 @@ msgstr ""
 msgid "Only members of BronyCUB will be able to see those information :"
 msgstr ""
 
-#: users/templates/profile.html:98
+#: users/templates/profile.html:94
 msgid "Hide personnal information :"
 msgstr ""
 
-#: users/templates/profile.html:106
+#: users/templates/profile.html:105
 msgid "Update"
 msgstr ""
 
-#: users/templates/profile.html:111
+#: users/templates/profile.html:110
 msgid "Change your password"
 msgstr ""
 
@@ -188,6 +322,10 @@ msgstr ""
 msgid "Account activation"
 msgstr ""
 
+#: users/templates/registration/email-admin-notification.html:3
+msgid "A new user just registered."
+msgstr ""
+
 #: users/templates/registration/forms/login.html:6
 #: users/templates/registration/forms/login.html:9
 #: users/templates/registration/login.html:7
@@ -209,6 +347,31 @@ msgstr ""
 
 #: users/templates/registration/logout.html:14
 msgid "You're now logged out."
+msgstr ""
+
+#: users/templates/registration/password_reset_done.html:6
+msgid "Home"
+msgstr ""
+
+#: users/templates/registration/password_reset_done.html:7
+msgid "Password reset"
+msgstr ""
+
+#: users/templates/registration/password_reset_done.html:11
+#: users/templates/registration/password_reset_done.html:12
+msgid "Password reset successful"
+msgstr ""
+
+#: users/templates/registration/password_reset_done.html:17
+msgid ""
+"We've emailed you instructions for setting your password, if an account "
+"exists with the email you entered. You should receive them shortly."
+msgstr ""
+
+#: users/templates/registration/password_reset_done.html:18
+msgid ""
+"If you don't receive an email, please make sure you've entered the address "
+"you registered with, and check your spam folder."
 msgstr ""
 
 #: users/templates/registration/password_reset_email.html:2
@@ -241,7 +404,16 @@ msgid ""
 "Welcome !"
 msgstr ""
 
-#: users/templates/registration/registration_form.html:40
+#: users/templates/registration/registration_form.html:35
+msgid ""
+"<strong>Important</strong> : Bien que vos informations ne sont accessibles "
+"que aux membres du collectif, les options ci-dessous vous offre la "
+"possibilité de vous rendre anonyme. Cela signifiera alors que vos amis ne "
+"pourrons pas avoir accès ces informations et seront par conséquent très "
+"tristes."
+msgstr ""
+
+#: users/templates/registration/registration_form.html:42
 msgid "Send"
 msgstr ""
 
@@ -259,4 +431,8 @@ msgstr ""
 
 #: users/urls.py:11
 msgid "^register/informations$"
+msgstr ""
+
+#: users/utils.py:31
+msgid "New registration"
 msgstr ""

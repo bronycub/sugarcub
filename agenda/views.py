@@ -13,7 +13,7 @@ import json
 
 class CommentAjaxListView(AjaxListView):
 
-    form_class    = forms.CommentForm
+    form_class = forms.CommentForm
 
     def get_queryset(self):
         return models.Comment.objects.filter(event = self.kwargs['event_id'])
@@ -32,6 +32,8 @@ class CreateEventView(CreateView):
     def form_valid(self, form):
         instance = form.save(commit = False)
         instance.author = self.request.user
+        instance.save()
+        utils.send_admin_event_notification.delay(instance.id)
         return super().form_valid(form)
 
 

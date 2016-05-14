@@ -1,0 +1,8 @@
+FROM sugarcub-python-base:latest
+MAINTAINER Matthias DEVLAMYNCK
+
+RUN npm install -g phantomjs-prebuilt
+ADD dev_requirements.txt /srv/app/code
+RUN pip install -r dev_requirements.txt
+
+USER python

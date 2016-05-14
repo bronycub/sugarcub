@@ -1,5 +1,6 @@
-from django.contrib import admin
-from .              import models
+from django.contrib           import admin
+from .                        import models
+from django.utils.translation import ugettext as _
 
 
 class PonyInline(admin.TabularInline):
@@ -16,14 +17,14 @@ class ProfileAdmin(admin.ModelAdmin):
 
     def enable_profile(self, request, queryset):
         rows_updated = queryset.update(enabled = True)
-        self.message_user(request, '%s profiles were enabled.', rows_updated)
+        self.message_user(request, _('%s profiles were enabled.'), rows_updated)
 
     def disable_profile(self, request, queryset):
         rows_updated = queryset.update(enabled = False)
-        self.message_user(request, '%s profiles were disabled.', rows_updated)
+        self.message_user(request, _('%s profiles were disabled.'), rows_updated)
 
-    enable_profile.short_description  = 'Enable the selected profiles.'
-    disable_profile.short_description = 'Disable the selected profiles.'
+    enable_profile.short_description  = _('Enable the selected profiles')
+    disable_profile.short_description = _('Disable the selected profiles')
 
     actions = [enable_profile, disable_profile]
     inlines = [PonyInline, UrlInline]

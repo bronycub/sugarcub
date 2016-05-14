@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-15 18:47+0000\n"
+"POT-Creation-Date: 2016-04-29 13:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,31 +17,35 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: forms.py:16
+#: agenda/apps.py:7
+msgid "Agenda"
+msgstr ""
+
+#: agenda/forms.py:17
 msgid "Start date and hour"
 msgstr ""
 
-#: forms.py:25
+#: agenda/forms.py:26
 msgid "End date and hour"
 msgstr ""
 
-#: forms.py:32
+#: agenda/forms.py:33
 msgid "Title"
 msgstr ""
 
-#: forms.py:33
+#: agenda/forms.py:34
 msgid "Description"
 msgstr ""
 
-#: forms.py:34
+#: agenda/forms.py:35
 msgid "Address of the event"
 msgstr ""
 
-#: forms.py:35
+#: agenda/forms.py:36
 msgid "Means of contact"
 msgstr ""
 
-#: agenda/forms.py:41
+#: agenda/forms.py:42
 msgid ""
 "Explain the event, add as much information you can : time, localisation , if "
 "people need stuff... the more information the better!"
@@ -51,138 +55,218 @@ msgstr ""
 msgid "Show both my phone and my mail"
 msgstr ""
 
-#: models.py:10
+#: agenda/models.py:10
 msgid "Show only my mail"
 msgstr ""
 
-#: models.py:11
+#: agenda/models.py:11
 msgid "Show only my phone"
 msgstr ""
 
-#: templates/agenda/comment_list.html:6 templates/agenda/event_form.html:7
-#: templates/agenda/event_list.html:8
-#: templates/agenda/event_update_form.html:7
+#: agenda/models.py:18 agenda/models.py:65 agenda/models.py:88
+msgid "user"
+msgstr ""
+
+#: agenda/models.py:20
+msgid "title"
+msgstr ""
+
+#: agenda/models.py:21
+msgid "description"
+msgstr ""
+
+#: agenda/models.py:22
+msgid "date begin"
+msgstr ""
+
+#: agenda/models.py:23
+msgid "date end"
+msgstr ""
+
+#: agenda/models.py:24
+msgid "address"
+msgstr ""
+
+#: agenda/models.py:25
+msgid "event enabled"
+msgstr ""
+
+#: agenda/models.py:29 agenda/models.py:67 agenda/models.py:90
+msgid "event"
+msgstr ""
+
+#: agenda/models.py:30
+msgid "events"
+msgstr ""
+
+#: agenda/models.py:66 agenda/models.py:89
+msgid "unregistered user"
+msgstr ""
+
+#: agenda/models.py:69
+msgid "text"
+msgstr ""
+
+#: agenda/models.py:70
+msgid "date"
+msgstr ""
+
+#: agenda/models.py:74
+msgid "comment"
+msgstr ""
+
+#: agenda/models.py:75
+msgid "comments"
+msgstr ""
+
+#: agenda/models.py:93
+msgid "participation"
+msgstr ""
+
+#: agenda/models.py:94
+msgid "participations"
+msgstr ""
+
+#: agenda/templates/agenda/comment_list.html:6
+#: agenda/templates/agenda/event_form.html:7
+#: agenda/templates/agenda/event_list.html:8
+#: agenda/templates/agenda/event_update_form.html:7
 msgid "Events"
 msgstr ""
 
-#: templates/agenda/event_form.html:17 templates/agenda/event_list.html:40
+#: agenda/templates/agenda/email-admin-notification.html:3
+msgid "A event was just registered."
+msgstr ""
+
+#: agenda/templates/agenda/email-admin-notification.html:5
+msgid "created"
+msgstr ""
+
+#: agenda/templates/agenda/event_form.html:17
+#: agenda/templates/agenda/event_list.html:40
 msgid "Add an event"
 msgstr ""
 
-#: templates/agenda/event_form.html:25 templates/agenda/event_form.html:27
-#: templates/agenda/event_update_form.html:23
-#: templates/agenda/event_update_form.html:25
+#: agenda/templates/agenda/event_form.html:25
+#: agenda/templates/agenda/event_form.html:27
+#: agenda/templates/agenda/event_update_form.html:23
+#: agenda/templates/agenda/event_update_form.html:25
 msgid ""
 "You can use the button on the right of this field to choose the date and the "
 "time"
 msgstr ""
 
-#: templates/agenda/event_form.html:32
+#: agenda/templates/agenda/event_form.html:32
 msgid "Add event"
 msgstr ""
 
-#: templates/agenda/event_list.html:16 templates/agenda/event_list.html:22
+#: agenda/templates/agenda/event_list.html:16
+#: agenda/templates/agenda/event_list.html:22
 msgid "Add to your agenda"
 msgstr ""
 
-#: templates/agenda/event_list.html:25
+#: agenda/templates/agenda/event_list.html:25
 msgid "To add the agenda in your favorite software use the address:"
 msgstr ""
 
-#: templates/agenda/event_list.html:32
+#: agenda/templates/agenda/event_list.html:32
 msgid "Close"
 msgstr ""
 
-#: templates/agenda/event_list_page.html:20
+#: agenda/templates/agenda/event_list.html:108
+msgid "Erreur : Vous participez déjà à cet évènement!"
+msgstr ""
+
+#: agenda/templates/agenda/event_list.html:171
+msgid ""
+"Erreur : Vous participez déjà à cet évènement! Si ce n'est pas vous, "
+"quelqu'un à déjà pris ce pseudo!"
+msgstr ""
+
+#: agenda/templates/agenda/event_list_page.html:23
 msgid "From"
 msgstr ""
 
-#: templates/agenda/event_list_page.html:21
-#: templates/agenda/event_list_page.html:23
+#: agenda/templates/agenda/event_list_page.html:24
+#: agenda/templates/agenda/event_list_page.html:26
 msgid "At"
 msgstr ""
 
-#: templates/agenda/event_list_page.html:22
+#: agenda/templates/agenda/event_list_page.html:25
 msgid "To"
 msgstr ""
 
-#: templates/agenda/event_list_page.html:24
+#: agenda/templates/agenda/event_list_page.html:27
 msgid "Address"
 msgstr ""
 
-#: templates/agenda/event_list_page.html:36
-#: templates/agenda/event_list_page.html:42
-msgid "Post a message"
-msgstr ""
-
-#: templates/agenda/event_list_page.html:37
-#: templates/agenda/event_list_page.html:43
-#: templates/agenda/event_list_page.html:73
-msgid "Post"
-msgstr ""
-
-#: templates/agenda/event_list_page.html:41
-#: templates/agenda/event_list_page.html:72
-msgid "Username"
-msgstr ""
-
-#: templates/agenda/event_list_page.html:54
+#: agenda/templates/agenda/event_list_page.html:48
 msgid "Edit event"
 msgstr ""
 
-#: templates/agenda/event_list_page.html:59
+#: agenda/templates/agenda/event_list_page.html:53
 msgid "Will you participate?"
 msgstr ""
 
-#: templates/agenda/event_list_page.html:64
-#: templates/agenda/event_list_page.html:67
-msgid "I participate !"
-msgstr ""
-
-#: templates/agenda/event_list_page.html:82
+#: agenda/templates/agenda/event_list_page.html:63
 msgid "Participant"
 msgstr ""
 
-#: templates/agenda/event_list_page.html:90
+#: agenda/templates/agenda/event_list_page.html:71
 msgid "Organizer"
 msgstr ""
 
-#: templates/agenda/event_list_page.html:100
+#: agenda/templates/agenda/event_list_page.html:81
 msgid "CONTACT"
 msgstr ""
 
-#: templates/agenda/event_update_form.html:15
+#: agenda/templates/agenda/event_update_form.html:15
 msgid "Update an event"
 msgstr ""
 
-#: templates/agenda/event_update_form.html:30
+#: agenda/templates/agenda/event_update_form.html:30
 msgid "Update"
 msgstr ""
 
-#: urls.py:14
+#: agenda/templates/form/comment_form.html:8
+#: agenda/templates/form/comment_form.html:16
+#: agenda/templates/form/participation_form.html:16
+msgid "Post"
+msgstr ""
+
+#: agenda/templates/form/participation_form.html:5
+#: agenda/templates/form/participation_form.html:8
+msgid "I participate !"
+msgstr ""
+
+#: agenda/urls.py:14
 msgid "^(?P<event_id>[0-9]+)/comments$"
 msgstr ""
 
-#: urls.py:19
+#: agenda/urls.py:19
 msgid "^event$"
 msgstr ""
 
-#: urls.py:24
+#: agenda/urls.py:24
 msgid "^event/(?P<pk>[\\d]+)$"
 msgstr ""
 
-#: urls.py:29
+#: agenda/urls.py:29
 msgid "^comment$"
 msgstr ""
 
-#: urls.py:34
+#: agenda/urls.py:34
 msgid "^participations$"
 msgstr ""
 
-#: urls.py:39
+#: agenda/urls.py:39
 msgid "^ics$"
 msgstr ""
 
-#: urls.py:44
+#: agenda/urls.py:44
 msgid "^event/update/(?P<event_id>[0-9]+)$"
+msgstr ""
+
+#: agenda/utils.py:29
+msgid "New event"
 msgstr ""

@@ -1,0 +1,14 @@
+{% load i18n %}{% autoescape off %}
+
+{% trans 'A event was just registered.' %}<br/>
+<br/>
+<h1>{{ event.author }} {% trans 'created' %} {{ event.title }}</h1>
+<br/>
+<ul>
+    <li>{{ profile.author }}</li>
+    <li>{{ profile.description }}</li>
+    <li>{{ profile.date_begin }} - {{ profile.date_end }}</li>
+    <li>{{ profile.address }}</li>
+</ul>
+
+{% endautoescape %}

@@ -37,7 +37,7 @@ class EventForm(forms.ModelForm):
         }
 
     def __init__(self, *args, **kwargs):
-        super(EventForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.fields['description'].widget.attrs.update({'placeholder':
             _('Explain the event, add as much information you can : time, localisation '
                 ', if people need stuff... the more information the better!')

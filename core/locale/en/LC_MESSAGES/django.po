@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-25 15:44+0000\n"
+"POT-Creation-Date: 2016-04-29 13:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,42 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: core/apps.py:7
+msgid "Base"
+msgstr ""
+
+#: core/models.py:8 core/models.py:11
+msgid "quote"
+msgstr ""
+
+#: core/models.py:12
+msgid "quotes"
+msgstr ""
+
+#: core/models.py:21
+msgid "name"
+msgstr ""
+
+#: core/models.py:22
+msgid "description"
+msgstr ""
+
+#: core/models.py:23
+msgid "image"
+msgstr ""
+
+#: core/models.py:24
+msgid "url"
+msgstr ""
+
+#: core/models.py:27
+msgid "friend"
+msgstr ""
+
+#: core/models.py:28
+msgid "friends"
+msgstr ""
 
 #: core/templates/agenda.html:6 core/templates/base.html:52
 msgid "Agenda"

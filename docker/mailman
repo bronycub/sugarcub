@@ -1,0 +1,27 @@
+FROM debian:jessie
+MAINTAINER Matthias DEVLAMYNCK
+
+RUN apt-get update && \
+    apt-get install -y bzr python3-dev python3-pip python-dev python-pip python-virtualenv
+
+RUN apt-get install -y nodejs npm && \
+    npm install -g less && \
+    ln -s /usr/bin/nodejs /usr/bin/node
+
+RUN mkdir -p /srv/mailman3
+WORKDIR /srv/mailman3
+
+RUN bzr branch lp:mailman-bundler
+
+RUN pip install zc.buildout
+WORKDIR /srv/mailman3/mailman-bundler
+RUN buildout
+
+RUN virtualenv .env
+RUN . .env/bin/activate
+
+EXPOSE 8000
+
+RUN ./bin/mailman-post-update
+RUN ./bin/mailman-web-django-admin createsuperuser
+RUN ./bin/mailman start
