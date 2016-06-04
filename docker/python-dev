@@ -1,5 +1,17 @@
-FROM sugarcub-python-base:latest
+FROM python:3.5
 MAINTAINER Matthias DEVLAMYNCK
+
+ENV PYTHONUNBUFFERED 1
+
+RUN groupadd -r python && useradd -u 1000 -r -g python python
+RUN apt-get update -y && apt-get install -y npm gettext
+RUN cd /usr/bin && ln -s nodejs node
+RUN npm install -g yuglify uglify-js
+
+RUN mkdir -p /srv/app/code /srv/app/data && chown python:python /srv/app -R
+WORKDIR /srv/app/code
+ADD requirements.txt /srv/app/code
+RUN pip install -r requirements.txt
 
 RUN npm install -g phantomjs-prebuilt
 ADD dev_requirements.txt /srv/app/code
