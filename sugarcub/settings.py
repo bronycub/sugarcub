@@ -39,7 +39,7 @@ DEPENDENCIES_APPS = (
     'django.contrib.staticfiles',
     'multiform',
     'registration',
-    'endless_pagination',
+    'el_pagination',
     'absolute',
     'bootstrap3_datetime',
     'captcha',
@@ -63,13 +63,13 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.admindocs.middleware.XViewMiddleware',
 )
 
-TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
+TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + [
     'core.processors.custom_fields',
     'core.processors.mailing_list',
     'django.core.context_processors.request',
     'absolute.context_processors.absolute',
     'django.core.context_processors.static',
-)
+]
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'core',  'templates'),
