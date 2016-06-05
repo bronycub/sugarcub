@@ -35,6 +35,7 @@ DEPENDENCIES_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'multiform',
@@ -63,12 +64,25 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.admindocs.middleware.XViewMiddleware',
 )
 
+
+# Templates
+
 TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + [
     'core.processors.custom_fields',
     'core.processors.mailing_list',
     'django.core.context_processors.request',
     'absolute.context_processors.absolute',
     'django.core.context_processors.static',
+]
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': TEMPLATE_CONTEXT_PROCESSORS
+        }
+    },
 ]
 
 TEMPLATE_DIRS = (
@@ -185,6 +199,11 @@ BOOTSTRAP3 = {
     'horizontal_label_class': 'col-md-2',
     'horizontal_field_class': 'col-md-10'
 }
+
+
+# Sites Framework
+
+SITE_ID = 1
 
 
 # Tests

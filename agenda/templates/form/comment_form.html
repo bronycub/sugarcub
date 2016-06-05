@@ -10,9 +10,12 @@
 {% else %}
   <div class="input-group">
       {% csrf_token %}
+
+      {% autoescape off %}
       {% bootstrap_field comment_form.pseudo show_label=false %}
       {% bootstrap_field comment_form.text show_label=false %}
       {% bootstrap_field comment_form.captcha show_label=false %}
+      {% endautoescape %}
       <span class="input-group-addon btn" onclick="submitComment_offline({{ event.id }})"><span class="glyphicon glyphicon-send"/> {% trans 'Post' %}</span>
   </div>
 {% endif %}

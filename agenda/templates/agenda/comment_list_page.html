@@ -1,7 +1,7 @@
 {% load static %}
 
 {% load i18n %}
-{% load endless %}
+{% load el_pagination_tags %}
 
 {% url 'agenda:comment_list' comment_list.0.event.id as comment_url %}
 {% lazy_paginate 3,10 comment_list with comment_url %}
