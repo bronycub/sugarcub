@@ -19,7 +19,6 @@
                 {% csrf_token %}
                 {{ form.media }}
 
-                {% autoescape off %}
                 {% bootstrap_field form.title %}
                 {% bootstrap_field form.description %}
                 {% bootstrap_field form.date_begin %}
@@ -32,7 +31,6 @@
                 {% buttons %}
                     <button type="submit" class="btn btn-primary">{% bootstrap_icon star %}{% trans 'Add event' %}</button>
                 {% endbuttons %}
-                {% endautoescape %}
             </form>
         </div>
     </div>

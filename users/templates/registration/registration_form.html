@@ -19,7 +19,6 @@
             <div class="col-md-8 col-md-offset-2 col-xs-12">
                 <form enctype="multipart/form-data" class="form form-horizontal well" method="post">
                     {% csrf_token %}
-                    {% autoescape off %}
                     {% bootstrap_field form.registration.username layout="horizontal" %}
                     {% bootstrap_field form.registration.email layout="horizontal" %}
                     {% bootstrap_field form.registration.password1 layout="horizontal" %}
@@ -42,7 +41,6 @@
                     {% buttons %}
                     <div  class="col-md-offset-2 col-md-10"><button type="submit" class="btn btn-primary">{% bootstrap_icon star %}{% trans 'Send' %}</button></div>
                     {% endbuttons %}
-                    {% endautoescape %}
                 </form>
             </div>
         </div>
