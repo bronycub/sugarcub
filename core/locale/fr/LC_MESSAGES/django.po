@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SugarCUB 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-29 13:43+0000\n"
+"POT-Creation-Date: 2016-06-08 16:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Matthias Devlamynck <matthias.devlamynck@mailoo.org>\n"
 "Language: French\n"
@@ -53,7 +53,7 @@ msgstr "ami"
 msgid "friends"
 msgstr "amis"
 
-#: core/templates/agenda.html:6 core/templates/base.html:52
+#: core/templates/agenda.html:6 core/templates/base.html:68
 msgid "Agenda"
 msgstr "Agenda"
 
@@ -69,59 +69,59 @@ msgstr ""
 "Votre profil n'est toujours pas approuvé par un admin. Tant que cela n'est "
 "pas fait, certaines parties du site vous seront innacessibles."
 
-#: core/templates/base.html:51
+#: core/templates/base.html:67
 msgid "Members"
 msgstr "Membres"
 
-#: core/templates/base.html:53 core/templates/hq.html:6
+#: core/templates/base.html:69 core/templates/hq.html:6
 msgid "HQ"
 msgstr "QG"
 
-#: core/templates/base.html:54
+#: core/templates/base.html:70
 msgid "Medias"
 msgstr "Médias"
 
-#: core/templates/base.html:55 core/templates/map.html:11
+#: core/templates/base.html:71 core/templates/map.html:11
 msgid "Map"
 msgstr "Carte"
 
-#: core/templates/base.html:56 core/templates/friends.html:6
+#: core/templates/base.html:72 core/templates/friends.html:6
 msgid "Friends"
 msgstr "Nos amis"
 
-#: core/templates/base.html:59
+#: core/templates/base.html:75
 msgid "Tchat"
 msgstr "Tchat"
 
-#: core/templates/base.html:60
+#: core/templates/base.html:76
 msgid "Visio"
 msgstr "Visio"
 
-#: core/templates/base.html:61
+#: core/templates/base.html:77
 msgid "Ticket"
 msgstr "Ticket"
 
-#: core/templates/base.html:77
+#: core/templates/base.html:93
 msgid "Profile"
 msgstr "Profil"
 
-#: core/templates/base.html:79
+#: core/templates/base.html:95
 msgid "Admin"
 msgstr "Admin"
 
-#: core/templates/base.html:81
+#: core/templates/base.html:97
 msgid "Logout"
 msgstr "Déconnexion"
 
-#: core/templates/base.html:85
+#: core/templates/base.html:101
 msgid "Login"
 msgstr "Connexion"
 
-#: core/templates/base.html:86
+#: core/templates/base.html:102
 msgid "Signup"
 msgstr "Nous rejoindre ?"
 
-#: core/templates/base.html:122
+#: core/templates/base.html:138
 msgid "Contact us :"
 msgstr "Contactez-nous :"
 
@@ -152,7 +152,7 @@ msgstr ""
 "Ce collectif a pour ambition de réunir les fans pour organiser diverses "
 "rencontres."
 
-#: core/templates/home.html:45 core/templates/home.html.py:51
+#: core/templates/home.html:45 core/templates/home.html:51
 msgid "More info ..."
 msgstr "Plus d'info ..."
 
@@ -216,14 +216,14 @@ msgstr "Acceder au QG"
 msgid "Map of France"
 msgstr "Carte de France"
 
-#: core/urls.py:7
+#: core/urls.py:8
 msgid "^hq$"
 msgstr "^qg$"
 
-#: core/urls.py:8
+#: core/urls.py:9
 msgid "^map$"
 msgstr "^carte$"
 
-#: core/urls.py:9
+#: core/urls.py:10
 msgid "^friends$"
 msgstr "^amis$"

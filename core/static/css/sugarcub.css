@@ -18,10 +18,10 @@ html, body {
 
 #content {
 	min-height: 100%;
-	padding-top: 70px; 
+	padding-top: 70px;
 	padding-bottom: 180px;
 	position: relative;
-} 
+}
 
 @media(max-width:992px) {
 	#content {
@@ -234,7 +234,7 @@ a {
     	overflow-x: hidden !important;
     }
 
-    .navbar-collapse.collapse.in { 
+    .navbar-collapse.collapse.in {
         display: block!important;
     }
     .collapsing {
@@ -281,7 +281,7 @@ a {
   white-space: nowrap;
 }
 
-.member-link:hover { 
+.member-link:hover {
   cursor: pointer;
   text-decoration: none;
   color: #DD4814;
@@ -308,5 +308,6 @@ a {
  */
 .no_blue:hover, .no_blue:link, .no_blue:visited, .no_blue:active, .no_blue:focus {
   color: #DD4814;
-  text-decoration-color: #DD4814;
+	text-decoration-color: #DD4814;
+	text-decoration: none;
 }

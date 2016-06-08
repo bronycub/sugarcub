@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-29 13:43+0000\n"
+"POT-Creation-Date: 2016-06-08 16:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -91,7 +91,7 @@ msgstr ""
 msgid "event enabled"
 msgstr ""
 
-#: agenda/models.py:29 agenda/models.py:67 agenda/models.py:90
+#: agenda/models.py:29 agenda/models.py:67 agenda/models.py:91
 msgid "event"
 msgstr ""
 
@@ -119,11 +119,15 @@ msgstr ""
 msgid "comments"
 msgstr ""
 
-#: agenda/models.py:93
+#: agenda/models.py:90
+msgid "contact"
+msgstr ""
+
+#: agenda/models.py:95
 msgid "participation"
 msgstr ""
 
-#: agenda/models.py:94
+#: agenda/models.py:96
 msgid "participations"
 msgstr ""
 
@@ -173,11 +177,11 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: agenda/templates/agenda/event_list.html:108
+#: agenda/templates/agenda/event_list.html:110
 msgid "Erreur : Vous participez déjà à cet évènement!"
 msgstr ""
 
-#: agenda/templates/agenda/event_list.html:171
+#: agenda/templates/agenda/event_list.html:168
 msgid ""
 "Erreur : Vous participez déjà à cet évènement! Si ce n'est pas vous, "
 "quelqu'un à déjà pris ce pseudo!"
@@ -208,15 +212,11 @@ msgstr ""
 msgid "Will you participate?"
 msgstr ""
 
-#: agenda/templates/agenda/event_list_page.html:63
-msgid "Participant"
-msgstr ""
-
-#: agenda/templates/agenda/event_list_page.html:71
+#: agenda/templates/agenda/event_list_page.html:64
 msgid "Organizer"
 msgstr ""
 
-#: agenda/templates/agenda/event_list_page.html:81
+#: agenda/templates/agenda/event_list_page.html:74
 msgid "CONTACT"
 msgstr ""
 
@@ -228,15 +228,29 @@ msgstr ""
 msgid "Update"
 msgstr ""
 
+#: agenda/templates/agenda/participation_list_page.html:8
+msgid "Participant"
+msgstr ""
+
 #: agenda/templates/form/comment_form.html:8
-#: agenda/templates/form/comment_form.html:16
-#: agenda/templates/form/participation_form.html:16
+#: agenda/templates/form/comment_form.html:17
+#: agenda/templates/form/participation_form.html:23
 msgid "Post"
 msgstr ""
 
-#: agenda/templates/form/participation_form.html:5
 #: agenda/templates/form/participation_form.html:8
+msgid "I no longer participate"
+msgstr ""
+
+#: agenda/templates/form/participation_form.html:10
+#: agenda/templates/form/participation_form.html:13
 msgid "I participate !"
+msgstr ""
+
+#: agenda/templates/form/participation_form.html:20
+msgid ""
+"Add a way for us to contact you! (mail or phone). Only the organizer will be "
+"able to see it"
 msgstr ""
 
 #: agenda/urls.py:14
