@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-08 15:50+0000\n"
+"POT-Creation-Date: 2016-06-08 16:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -249,8 +249,8 @@ msgstr ""
 
 #: agenda/templates/form/participation_form.html:20
 msgid ""
-"Add a way for us to contact you! (mail or phone for exemple). Only the "
-"organizer and the admin will be able to see it"
+"Add a way for us to contact you! (mail or phone). Only the organizer will be "
+"able to see it"
 msgstr ""
 
 #: agenda/urls.py:14
