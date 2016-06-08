@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-29 13:43+0000\n"
+"POT-Creation-Date: 2016-06-08 15:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -95,7 +95,7 @@ msgstr "addresse"
 msgid "event enabled"
 msgstr "évènement activé"
 
-#: agenda/models.py:29 agenda/models.py:67 agenda/models.py:90
+#: agenda/models.py:29 agenda/models.py:67 agenda/models.py:91
 msgid "event"
 msgstr "évènement"
 
@@ -123,11 +123,17 @@ msgstr "commentaire"
 msgid "comments"
 msgstr "commentaires"
 
-#: agenda/models.py:93
+#: agenda/models.py:90
+#, fuzzy
+#| msgid "Means of contact"
+msgid "contact"
+msgstr "Moyens de contact"
+
+#: agenda/models.py:95
 msgid "participation"
 msgstr "participations"
 
-#: agenda/models.py:94
+#: agenda/models.py:96
 msgid "participations"
 msgstr "participations"
 
@@ -179,11 +185,11 @@ msgstr "Pour ajouter dans votre logiciel préféré utilisez l'adresse :"
 msgid "Close"
 msgstr "Fermer"
 
-#: agenda/templates/agenda/event_list.html:108
+#: agenda/templates/agenda/event_list.html:110
 msgid "Erreur : Vous participez déjà à cet évènement!"
 msgstr ""
 
-#: agenda/templates/agenda/event_list.html:171
+#: agenda/templates/agenda/event_list.html:168
 msgid ""
 "Erreur : Vous participez déjà à cet évènement! Si ce n'est pas vous, "
 "quelqu'un à déjà pris ce pseudo!"
@@ -214,15 +220,11 @@ msgstr "Modifier l'évènement"
 msgid "Will you participate?"
 msgstr "Participerez-vous?"
 
-#: agenda/templates/agenda/event_list_page.html:63
-msgid "Participant"
-msgstr "Participants"
-
-#: agenda/templates/agenda/event_list_page.html:71
+#: agenda/templates/agenda/event_list_page.html:64
 msgid "Organizer"
 msgstr "Organisateur"
 
-#: agenda/templates/agenda/event_list_page.html:81
+#: agenda/templates/agenda/event_list_page.html:74
 msgid "CONTACT"
 msgstr "CONTACT"
 
@@ -234,16 +236,30 @@ msgstr "Mettre à jour un évènement"
 msgid "Update"
 msgstr "Mettre à jour"
 
+#: agenda/templates/agenda/participation_list_page.html:8
+msgid "Participant"
+msgstr "Participants"
+
 #: agenda/templates/form/comment_form.html:8
-#: agenda/templates/form/comment_form.html:16
-#: agenda/templates/form/participation_form.html:16
+#: agenda/templates/form/comment_form.html:17
+#: agenda/templates/form/participation_form.html:23
 msgid "Post"
 msgstr "Envoyer"
 
-#: agenda/templates/form/participation_form.html:5
 #: agenda/templates/form/participation_form.html:8
+msgid "I no longer participate"
+msgstr "Je ne participe plus"
+
+#: agenda/templates/form/participation_form.html:10
+#: agenda/templates/form/participation_form.html:13
 msgid "I participate !"
 msgstr "Je participe !"
+
+#: agenda/templates/form/participation_form.html:20
+msgid ""
+"Add a way for us to contact you! (mail or phone for exemple). Only the "
+"organizer and the admin will be able to see it"
+msgstr ""
 
 #: agenda/urls.py:14
 msgid "^(?P<event_id>[0-9]+)/comments$"

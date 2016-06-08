@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-29 13:43+0000\n"
+"POT-Creation-Date: 2016-06-08 15:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,7 +53,7 @@ msgstr ""
 msgid "friends"
 msgstr ""
 
-#: core/templates/agenda.html:6 core/templates/base.html:52
+#: core/templates/agenda.html:6 core/templates/base.html:68
 msgid "Agenda"
 msgstr ""
 
@@ -67,59 +67,59 @@ msgid ""
 "site will not be avaible for you"
 msgstr ""
 
-#: core/templates/base.html:51
+#: core/templates/base.html:67
 msgid "Members"
 msgstr ""
 
-#: core/templates/base.html:53 core/templates/hq.html:6
+#: core/templates/base.html:69 core/templates/hq.html:6
 msgid "HQ"
 msgstr ""
 
-#: core/templates/base.html:54
+#: core/templates/base.html:70
 msgid "Medias"
 msgstr ""
 
-#: core/templates/base.html:55 core/templates/map.html:11
+#: core/templates/base.html:71 core/templates/map.html:11
 msgid "Map"
 msgstr ""
 
-#: core/templates/base.html:56 core/templates/friends.html:6
+#: core/templates/base.html:72 core/templates/friends.html:6
 msgid "Friends"
 msgstr ""
 
-#: core/templates/base.html:59
+#: core/templates/base.html:75
 msgid "Tchat"
 msgstr ""
 
-#: core/templates/base.html:60
+#: core/templates/base.html:76
 msgid "Visio"
 msgstr ""
 
-#: core/templates/base.html:61
+#: core/templates/base.html:77
 msgid "Ticket"
 msgstr ""
 
-#: core/templates/base.html:77
+#: core/templates/base.html:93
 msgid "Profile"
 msgstr ""
 
-#: core/templates/base.html:79
+#: core/templates/base.html:95
 msgid "Admin"
 msgstr ""
 
-#: core/templates/base.html:81
+#: core/templates/base.html:97
 msgid "Logout"
 msgstr ""
 
-#: core/templates/base.html:85
+#: core/templates/base.html:101
 msgid "Login"
 msgstr ""
 
-#: core/templates/base.html:86
+#: core/templates/base.html:102
 msgid "Signup"
 msgstr ""
 
-#: core/templates/base.html:122
+#: core/templates/base.html:138
 msgid "Contact us :"
 msgstr ""
 
@@ -146,7 +146,7 @@ msgstr ""
 msgid "this collective try to gather fans to orgenize various meet-up."
 msgstr ""
 
-#: core/templates/home.html:45 core/templates/home.html.py:51
+#: core/templates/home.html:45 core/templates/home.html:51
 msgid "More info ..."
 msgstr ""
 
@@ -210,14 +210,14 @@ msgstr ""
 msgid "Map of France"
 msgstr ""
 
-#: core/urls.py:7
+#: core/urls.py:8
 msgid "^hq$"
 msgstr ""
 
-#: core/urls.py:8
+#: core/urls.py:9
 msgid "^map$"
 msgstr ""
 
-#: core/urls.py:9
+#: core/urls.py:10
 msgid "^friends$"
 msgstr ""
