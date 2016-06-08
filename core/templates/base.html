@@ -43,13 +43,13 @@
                 <script type="application/javascript" src="{% static 'cookieconsent2/build/cookieconsent.min.js' %}"></script>
                 {% block extrascripts %}{% endblock %}
             {% endblock %}
-            
+
             {% block blockbots %}{% endblock %}
             {% block extrahead %}{% endblock %}
         {% endblock %}
     </head>
     <body>
-        
+
         {% block header %}
             <header>
                 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -67,7 +67,7 @@
                                 <li><a href="{% url 'users:members' %}"><i class="fa fa-user fa-1x"></i>&nbsp;{% trans 'Members' %}</a></li>
                                 <li><a href="{% url 'agenda:list' %}"><i class="fa fa-calendar fa-1x"></i>&nbsp;{% trans 'Agenda' %}</a></li>
                                 <li><a href="{% url 'core:hq' %}"><i class="fa fa-glass fa-1x"></i>&nbsp;{% trans 'HQ' %}</a></li>
-                                <li><a href="https://plus.google.com/photos/+Heuz%C3%A9Florent/albums/5919043632414199089?authkey=CJOh4YWuw6_rVA{# url '' #}"><i class="fa fa-picture-o fa-1x"></i>&nbsp;{% trans 'Medias' %}</a></li>
+                                <li><a href="https://goo.gl/photos/VisPhiPgauSD8QXn7{# url '' #}"><i class="fa fa-picture-o fa-1x"></i>&nbsp;{% trans 'Medias' %}</a></li>
                                 <li><a href="{% url 'core:map' %}"><i class="fa fa-map-marker fa-1x"></i>&nbsp;{% trans 'Map' %}</a></li>
                                 <li><a href="{% url 'core:friends' %}"><i class="fa fa-heart fa-1x"></i>&nbsp;{% trans 'Friends' %}</a></li>
                             </ul>
