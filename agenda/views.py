@@ -3,7 +3,7 @@ from django.core.urlresolvers       import reverse_lazy
 from django.views.generic.edit      import CreateView, UpdateView
 from .                              import models, forms, utils
 from .forms                         import EventForm, CommentForm, ParticipationForm
-from el_pagination.views       import AjaxListView
+from el_pagination.views            import AjaxListView
 from django.http                    import HttpResponse
 from django.shortcuts               import redirect
 from django.contrib.auth.decorators import login_required
