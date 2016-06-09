@@ -13,7 +13,7 @@
         <div class="list-group-item" role="tab" id="headingOne">
             <div class="list-group-item-heading">
                 <a class="no_blue" data-toggle="collapse" data-parent="#event_list" href="#{{event.id}}" aria-expanded="false" aria-controls="collapseOne">
-                    <h4><span class="label label-default">{{ event.date_begin|date }}</span> <i class="fa fa-caret-right"></i> <strong>{{ event.title }}</strong></h4>
+                    <h4><span class="label label-{% if event.date_end|hours_ago:24 %}primary{% else %}default{% endif %}">{{ event.date_begin|date }}</span> <i class="fa fa-caret-right"></i> <strong>{{ event.title }}</strong></h4>
                 </a>
             </div>
             <div id="{{event.id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
@@ -36,7 +36,7 @@
                         {% with ''|addstr:event.id|addstr:'_comment' as eventId %}
                           {% comment_form prefix=eventId %}
                         {% endwith %}
-                        
+
                       <hr/>
                       <div id="comment-list-{{ event.id }}" class="list-group-item-text">
                           {% include 'agenda/comment_list_page.html' with comment_list=event.comment_set.all %}
