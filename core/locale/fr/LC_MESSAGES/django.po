@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SugarCUB 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-11 15:15+0000\n"
+"POT-Creation-Date: 2016-06-11 15:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Matthias Devlamynck <matthias.devlamynck@mailoo.org>\n"
 "Language: French\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: core/apps.py:7
 msgid "Base"
-msgstr "Base"
+msgstr "Base (cœur du site)"
 
 #: core/models.py:8 core/models.py:11
 msgid "quote"
@@ -52,327 +52,6 @@ msgstr "ami"
 #: core/models.py:28
 msgid "friends"
 msgstr "amis"
-
-#: core/templates/admin/change_form.html:19
-#: core/templates/admin_doc/bookmarklets.html:6
-#: core/templates/admin_doc/index.html:6
-#: core/templates/admin_doc/missing_docutils.html:6
-#: core/templates/admin_doc/model_detail.html:14
-#: core/templates/admin_doc/model_index.html:8
-#: core/templates/admin_doc/template_detail.html:6
-#: core/templates/admin_doc/template_filter_index.html:7
-#: core/templates/admin_doc/template_tag_index.html:7
-#: core/templates/admin_doc/view_detail.html:6
-#: core/templates/admin_doc/view_index.html:7 core/templates/home.html:6
-msgid "Home"
-msgstr "Accueil"
-
-#: core/templates/admin/change_form.html:22
-msgid "Add"
-msgstr ""
-
-#: core/templates/admin/change_form.html:34
-msgid "History"
-msgstr ""
-
-#: core/templates/admin/change_form.html:36
-msgid "View on site"
-msgstr ""
-
-#: core/templates/admin/change_form.html:51
-msgid "Fields in <strong>bold</strong> are required."
-msgstr "Les champs en <strong>gras</strong> sont requis."
-
-#: core/templates/admin/change_form.html:54
-msgid "Please correct the error below."
-msgstr ""
-
-#: core/templates/admin/change_form.html:54
-msgid "Please correct the errors below."
-msgstr ""
-
-#: core/templates/admin_doc/bookmarklets.html:7
-#: core/templates/admin_doc/index.html:7
-#: core/templates/admin_doc/index.html:10
-#: core/templates/admin_doc/index.html:14
-#: core/templates/admin_doc/missing_docutils.html:7
-#: core/templates/admin_doc/missing_docutils.html:14
-#: core/templates/admin_doc/model_detail.html:15
-#: core/templates/admin_doc/model_index.html:9
-#: core/templates/admin_doc/template_detail.html:7
-#: core/templates/admin_doc/template_filter_index.html:8
-#: core/templates/admin_doc/template_tag_index.html:8
-#: core/templates/admin_doc/view_detail.html:7
-#: core/templates/admin_doc/view_index.html:8
-msgid "Documentation"
-msgstr ""
-
-#: core/templates/admin_doc/bookmarklets.html:8
-#: core/templates/admin_doc/index.html:29
-msgid "Bookmarklets"
-msgstr ""
-
-#: core/templates/admin_doc/bookmarklets.html:11
-msgid "Documentation bookmarklets"
-msgstr ""
-
-#: core/templates/admin_doc/bookmarklets.html:15
-msgid ""
-"\n"
-"<p class=\"help\">To install bookmarklets, drag the link to your bookmarks\n"
-"toolbar, or right-click the link and add it to your bookmarks. Now you can\n"
-"select the bookmarklet from any page in the site.  Note that some of these\n"
-"bookmarklets require you to be viewing the site from a computer designated\n"
-"as \"internal\" (talk to your system administrator if you aren't sure if\n"
-"your computer is \"internal\").</p>\n"
-msgstr ""
-
-#: core/templates/admin_doc/bookmarklets.html:25
-msgid "Documentation for this page"
-msgstr ""
-
-#: core/templates/admin_doc/bookmarklets.html:26
-msgid ""
-"Jumps you from any page to the documentation for the view that generates "
-"that page."
-msgstr ""
-
-#: core/templates/admin_doc/bookmarklets.html:28
-msgid "Show object ID"
-msgstr ""
-
-#: core/templates/admin_doc/bookmarklets.html:29
-msgid ""
-"Shows the content-type and unique ID for pages that represent a single "
-"object."
-msgstr ""
-
-#: core/templates/admin_doc/bookmarklets.html:31
-msgid "Edit this object (current window)"
-msgstr ""
-
-#: core/templates/admin_doc/bookmarklets.html:32
-msgid "Jumps to the admin page for pages that represent a single object."
-msgstr ""
-
-#: core/templates/admin_doc/bookmarklets.html:34
-msgid "Edit this object (new window)"
-msgstr ""
-
-#: core/templates/admin_doc/bookmarklets.html:35
-msgid "As above, but opens the admin page in a new window."
-msgstr ""
-
-#: core/templates/admin_doc/index.html:17
-#: core/templates/admin_doc/template_tag_index.html:9
-msgid "Tags"
-msgstr ""
-
-#: core/templates/admin_doc/index.html:18
-msgid "List of all the template tags and their functions."
-msgstr ""
-
-#: core/templates/admin_doc/index.html:20
-#: core/templates/admin_doc/template_filter_index.html:9
-msgid "Filters"
-msgstr ""
-
-#: core/templates/admin_doc/index.html:21
-msgid ""
-"Filters are actions which can be applied to variables in a template to alter "
-"the output."
-msgstr ""
-
-#: core/templates/admin_doc/index.html:23
-#: core/templates/admin_doc/model_detail.html:16
-#: core/templates/admin_doc/model_index.html:10
-#: core/templates/admin_doc/model_index.html:14
-msgid "Models"
-msgstr ""
-
-#: core/templates/admin_doc/index.html:24
-msgid ""
-"Models are descriptions of all the objects in the system and their "
-"associated fields. Each model has a list of fields which can be accessed as "
-"template variables"
-msgstr ""
-
-#: core/templates/admin_doc/index.html:26
-#: core/templates/admin_doc/view_detail.html:8
-#: core/templates/admin_doc/view_index.html:9
-#: core/templates/admin_doc/view_index.html:12
-msgid "Views"
-msgstr ""
-
-#: core/templates/admin_doc/index.html:27
-msgid ""
-"Each page on the public site is generated by a view. The view defines which "
-"template is used to generate the page and which objects are available to "
-"that template."
-msgstr ""
-
-#: core/templates/admin_doc/index.html:30
-msgid "Tools for your browser to quickly access admin functionality."
-msgstr ""
-
-#: core/templates/admin_doc/missing_docutils.html:10
-msgid "Please install docutils"
-msgstr ""
-
-#: core/templates/admin_doc/missing_docutils.html:17
-#, python-format
-msgid ""
-"The admin documentation system requires Python's <a href=\"%(link)s"
-"\">docutils</a> library."
-msgstr ""
-
-#: core/templates/admin_doc/missing_docutils.html:19
-#, python-format
-msgid ""
-"Please ask your administrators to install <a href=\"%(link)s\">docutils</a>."
-msgstr ""
-
-#: core/templates/admin_doc/model_detail.html:21
-#, python-format
-msgid "Model: %(name)s"
-msgstr ""
-
-#: core/templates/admin_doc/model_detail.html:34
-msgid "Field"
-msgstr ""
-
-#: core/templates/admin_doc/model_detail.html:35
-msgid "Type"
-msgstr ""
-
-#: core/templates/admin_doc/model_detail.html:36
-msgid "Description"
-msgstr "Description"
-
-#: core/templates/admin_doc/model_detail.html:51
-msgid "Back to Model Documentation"
-msgstr ""
-
-#: core/templates/admin_doc/model_index.html:18
-msgid "Model documentation"
-msgstr ""
-
-#: core/templates/admin_doc/model_index.html:43
-msgid "Model groups"
-msgstr ""
-
-#: core/templates/admin_doc/template_detail.html:8
-msgid "Templates"
-msgstr ""
-
-#: core/templates/admin_doc/template_detail.html:13
-#, python-format
-msgid "Template: %(name)s"
-msgstr ""
-
-#: core/templates/admin_doc/template_detail.html:16
-#, python-format
-msgid "Template: \"%(name)s\""
-msgstr ""
-
-#: core/templates/admin_doc/template_detail.html:18
-#, python-format
-msgid "Search path for template \"%(name)s\":"
-msgstr ""
-
-#: core/templates/admin_doc/template_detail.html:21
-msgid "(does not exist)"
-msgstr ""
-
-#: core/templates/admin_doc/template_detail.html:25
-msgid "Back to Documentation"
-msgstr ""
-
-#: core/templates/admin_doc/template_filter_index.html:12
-msgid "Template filters"
-msgstr ""
-
-#: core/templates/admin_doc/template_filter_index.html:16
-msgid "Template filter documentation"
-msgstr ""
-
-#: core/templates/admin_doc/template_filter_index.html:22
-#: core/templates/admin_doc/template_filter_index.html:43
-msgid "Built-in filters"
-msgstr ""
-
-#: core/templates/admin_doc/template_filter_index.html:23
-#, python-format
-msgid ""
-"To use these filters, put <code>%(code)s</code> in your template before "
-"using the filter."
-msgstr ""
-
-#: core/templates/admin_doc/template_tag_index.html:12
-msgid "Template tags"
-msgstr ""
-
-#: core/templates/admin_doc/template_tag_index.html:16
-msgid "Template tag documentation"
-msgstr ""
-
-#: core/templates/admin_doc/template_tag_index.html:22
-#: core/templates/admin_doc/template_tag_index.html:43
-msgid "Built-in tags"
-msgstr ""
-
-#: core/templates/admin_doc/template_tag_index.html:23
-#, python-format
-msgid ""
-"To use these tags, put <code>%(code)s</code> in your template before using "
-"the tag."
-msgstr ""
-
-#: core/templates/admin_doc/view_detail.html:12
-#, python-format
-msgid "View: %(name)s"
-msgstr ""
-
-#: core/templates/admin_doc/view_detail.html:23
-msgid "Context:"
-msgstr "Contexte :"
-
-#: core/templates/admin_doc/view_detail.html:28
-msgid "Templates:"
-msgstr ""
-
-#: core/templates/admin_doc/view_detail.html:32
-msgid "Back to Views Documentation"
-msgstr ""
-
-#: core/templates/admin_doc/view_index.html:16
-msgid "View documentation"
-msgstr ""
-
-#: core/templates/admin_doc/view_index.html:22
-msgid "Jump to namespace"
-msgstr ""
-
-#: core/templates/admin_doc/view_index.html:27
-msgid "Empty namespace"
-msgstr ""
-
-#: core/templates/admin_doc/view_index.html:40
-#, python-format
-msgid "Views by namespace %(name)s"
-msgstr ""
-
-#: core/templates/admin_doc/view_index.html:42
-msgid "Views by empty namespace"
-msgstr ""
-
-#: core/templates/admin_doc/view_index.html:49
-#, python-format
-msgid ""
-"\n"
-"    View function: <code>%(full_name)s</code>. Name: <code>%(url_name)s</"
-"code>.\n"
-msgstr ""
 
 #: core/templates/agenda.html:6 core/templates/base.html:68
 msgid "Agenda"
@@ -454,6 +133,10 @@ msgstr ""
 msgid "No friends at the moment..."
 msgstr "Aucun ami pour le moment ..."
 
+#: core/templates/home.html:6
+msgid "Home"
+msgstr "Accueil"
+
 #: core/templates/home.html:35
 msgid "BronyCUB, What is it ?"
 msgstr "BronyCUB, Qu'est-ce que c'est ?"
@@ -474,7 +157,7 @@ msgstr ""
 "rencontres."
 
 #: core/templates/home.html:45 core/templates/home.html:51
-msgid "More info ..."
+msgid "More info..."
 msgstr "Plus d'info ..."
 
 #: core/templates/home.html:54

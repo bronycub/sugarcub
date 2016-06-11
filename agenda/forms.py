@@ -52,7 +52,7 @@ class CommentForm(forms.ModelForm):
         model  = models.Comment
         fields = ['text', 'pseudo']
         labels = {
-            'text': _('Add a comment about the event ...')
+            'text': _('Add a comment about the event...')
         }
 
 

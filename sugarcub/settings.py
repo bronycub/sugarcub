@@ -50,7 +50,7 @@ DEPENDENCIES_APPS = (
 DEV_DEPENDENCIES_APPS = (
 )
 
-INSTALLED_APPS = PROJECT_APPS + ('sugarcub',) + DEPENDENCIES_APPS
+INSTALLED_APPS = ('sugarcub',) + DEPENDENCIES_APPS + PROJECT_APPS
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

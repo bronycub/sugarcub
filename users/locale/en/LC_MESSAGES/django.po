@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-11 15:15+0000\n"
+"POT-Creation-Date: 2016-06-11 15:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,21 +17,21 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: users/admin.py:20
+#: users/admin.py:23
 #, python-format
 msgid "%s profiles were enabled."
 msgstr ""
 
-#: users/admin.py:24
+#: users/admin.py:27
 #, python-format
 msgid "%s profiles were disabled."
 msgstr ""
 
-#: users/admin.py:26
+#: users/admin.py:29
 msgid "Enable the selected profiles"
 msgstr ""
 
-#: users/admin.py:27
+#: users/admin.py:30
 msgid "Disable the selected profiles"
 msgstr ""
 
@@ -193,24 +193,32 @@ msgstr ""
 msgid "file name"
 msgstr ""
 
-#: users/models.py:110 users/models.py:135 users/models.py:139
-msgid "pony"
+#: users/models.py:110
+msgid "pony icon"
 msgstr ""
 
-#: users/models.py:111 users/models.py:140
-msgid "ponies"
+#: users/models.py:111
+msgid "pony icons"
 msgstr ""
 
-#: users/models.py:124 users/models.py:154
-msgid "icon"
+#: users/models.py:124
+msgid "site icon"
 msgstr ""
 
 #: users/models.py:125
-msgid "icons"
+msgid "site icons"
+msgstr ""
+
+#: users/models.py:135 users/models.py:139
+msgid "pony"
 msgstr ""
 
 #: users/models.py:136
 msgid "message"
+msgstr ""
+
+#: users/models.py:140
+msgid "ponies"
 msgstr ""
 
 #: users/models.py:152
@@ -219,6 +227,10 @@ msgstr ""
 
 #: users/models.py:153 users/models.py:157
 msgid "url"
+msgstr ""
+
+#: users/models.py:154
+msgid "icon"
 msgstr ""
 
 #: users/models.py:158
@@ -230,7 +242,7 @@ msgid "Members"
 msgstr ""
 
 #: users/templates/members.html:16
-msgid "No members registered yet ..."
+msgid "No members registered yet..."
 msgstr ""
 
 #: users/templates/members/one-user-modal.html:64
