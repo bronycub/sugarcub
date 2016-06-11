@@ -51,6 +51,9 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model  = models.Comment
         fields = ['text', 'pseudo']
+        labels = {
+            'text': _('Add a comment about the event ...')
+        }
 
 
 class ParticipationForm(forms.ModelForm):
