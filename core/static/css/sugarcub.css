@@ -36,6 +36,15 @@ footer {
 	width: 100%;
 }
 
+footer h4 {
+	margin-top: 0;
+}
+
+footer .powered-by {
+	margin-top: 10px;
+	margin-bottom: 0;
+}
+
 /*****************************************
  * Colors & Theme stuff
  ****************************************/

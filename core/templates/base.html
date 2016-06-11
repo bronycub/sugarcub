@@ -127,7 +127,7 @@
             {% block footer %}
                 <footer class="container-fluid">
                     <div class="row">
-                        <div class="col-xs-12 col-md-6 col-md-offset-2">
+                        <div class="col-xs-12 col-md-7 col-md-offset-1">
                             <div class="well">
                                 <a href="http://asbf.fr" target="_blank"><img src="http://wiki.asbf.fr/_media/wiki/badge_acteur_solidaire.png" alt="logo_asbf" height="60px" style="float:left; padding-right:20px;" /></a>
                                 <p>Depuis 2015, BronyCUB est Acteur Solidaire de l'association <a href="http://asbf.fr" target="_blank">ASBF</a> réunissant tous les Bronies Francophone solidairement pour des actions humanitaires. Ainsi, notre collectif agit sur Bordeaux au nom de cette association.</p>
@@ -138,7 +138,10 @@
                                 <i class="fa fa-envelope"></i>&nbsp;&nbsp;{% trans 'Contact us :' %}
                                 <img src="{% static 'img/derpy.gif' %}" width="50" alt="DerpyHooves"/>
                             </h4>
-                            <a class="btn btn-primary btn-lg" href="mailto:{{ mailing_list }}">{{ mailing_list }}</a>
+                                <a class="btn btn-primary btn-lg" href="mailto:{{ mailing_list }}">{{ mailing_list }}</a>
+                              <p class="powered-by">
+                                <a href="http://sugarcub.org">{% trans 'Powered by' %} <img src="http://sugarcub.org/img/logo_sugarcub.png" alt="Logo SugarCUB" height="30px"></a>
+                              </p>
                         </div>
                     </div>
                 </footer>

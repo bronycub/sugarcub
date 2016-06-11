@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SugarCUB 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-09 12:29+0000\n"
+"POT-Creation-Date: 2016-06-11 11:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Matthias Devlamynck <matthias.devlamynck@mailoo.org>\n"
 "Language: French\n"
@@ -70,8 +70,10 @@ msgstr ""
 "pas fait, certaines parties du site vous seront innacessibles."
 
 #: core/templates/base.html:67
+#, fuzzy
+#| msgid "New members"
 msgid "Members"
-msgstr "Membres"
+msgstr "Nouveaux membres"
 
 #: core/templates/base.html:69 core/templates/hq.html:6
 msgid "HQ"
@@ -125,7 +127,13 @@ msgstr "Nous rejoindre ?"
 msgid "Contact us :"
 msgstr "Contactez-nous :"
 
+#: core/templates/base.html:143
+msgid "Powered by"
+msgstr ""
+
 #: core/templates/friends.html:31
+#, fuzzy
+#| msgid "No friends at the moment..."
 msgid "No friends at the moment ..."
 msgstr "Aucun ami pour le moment ..."
 
@@ -157,6 +165,8 @@ msgid "More info ..."
 msgstr "Plus d'info ..."
 
 #: core/templates/home.html:54
+#, fuzzy
+#| msgid "A Brony ? Can we eat it ? Whatisit ?"
 msgid "A Brony ? Can we eat it ? whatisit ?"
 msgstr "Un Brony ? Ça ce mange ? Kécéssé ?"
 
@@ -169,42 +179,46 @@ msgid "Close"
 msgstr "Fermer"
 
 #: core/templates/home.html:70
-msgid "What is happening in BronyCUB?"
-msgstr "Que se passe t'il à BronyCUB?"
+msgid "The collective news"
+msgstr "Actualités du collectif"
 
 #: core/templates/home.html:74
 msgid "It's the birthday of "
 msgstr "C'est l'anniversaire de "
 
 #: core/templates/home.html:74
-msgid " today, Happy Birthday!"
-msgstr " aujourd'hui, Bon Anniversaire!"
+msgid " today!"
+msgstr " aujourd'hui !"
 
-#: core/templates/home.html:79
-msgid "This month : "
-msgstr "Ce mois-ci : "
+#: core/templates/home.html:78
+msgid "New members"
+msgstr "Nouveaux membres"
 
-#: core/templates/home.html:84
-msgid "join us! Give "
-msgstr "nous on rejoins! donnons-"
+#: core/templates/home.html:81
+msgid "This month, "
+msgstr "Ce mois-ci, "
 
 #: core/templates/home.html:86
+msgid "join us! Give "
+msgstr "nous on rejoins ! Donnons-"
+
+#: core/templates/home.html:88
 msgid "them"
 msgstr "leur"
 
-#: core/templates/home.html:88
+#: core/templates/home.html:90
 msgid "him/her"
 msgstr "lui"
 
-#: core/templates/home.html:90
-msgid " a warm welcome!"
-msgstr " un accueil chaleureux!"
-
 #: core/templates/home.html:92
-msgid "nobody join us, how sad..."
-msgstr "personne ne nous a rejoins, comme c'est triste..."
+msgid " a warm welcome!"
+msgstr " un accueil chaleureux !"
 
-#: core/templates/home.html:99
+#: core/templates/home.html:94
+msgid "nobody join us, how sad..."
+msgstr "personne ne nous a rejoins, comme c'est triste ..."
+
+#: core/templates/home.html:103
 msgid "Join us"
 msgstr "Rejoignez-nous"
 

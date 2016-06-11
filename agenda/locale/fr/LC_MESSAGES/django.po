@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-09 12:29+0000\n"
+"POT-Creation-Date: 2016-06-11 11:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,6 +54,10 @@ msgstr ""
 "Expliquer l'évènement, ajouter autant d'information que possible : horraire, "
 "lieu, si les gens on besoin d'affaire... Un maximum d'information est un "
 "plus!"
+
+#: agenda/forms.py:55
+msgid "Add a comment about the event ..."
+msgstr "Ajouter un commentaire sur l'événement ..."
 
 #: agenda/models.py:9
 msgid "Show both my phone and my mail"
@@ -218,7 +222,7 @@ msgstr "Modifier l'évènement"
 
 #: agenda/templates/agenda/event_list_page.html:53
 msgid "Will you participate?"
-msgstr "Participerez-vous?"
+msgstr "Participerez-vous ?"
 
 #: agenda/templates/agenda/event_list_page.html:64
 msgid "Organizer"
