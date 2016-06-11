@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-11 14:24+0000\n"
+"POT-Creation-Date: 2016-06-11 15:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,327 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: sugarcub/templates/admin/change_form.html:19
+#: sugarcub/templates/admin_doc/bookmarklets.html:6
+#: sugarcub/templates/admin_doc/index.html:6
+#: sugarcub/templates/admin_doc/missing_docutils.html:6
+#: sugarcub/templates/admin_doc/model_detail.html:14
+#: sugarcub/templates/admin_doc/model_index.html:8
+#: sugarcub/templates/admin_doc/template_detail.html:6
+#: sugarcub/templates/admin_doc/template_filter_index.html:7
+#: sugarcub/templates/admin_doc/template_tag_index.html:7
+#: sugarcub/templates/admin_doc/view_detail.html:6
+#: sugarcub/templates/admin_doc/view_index.html:7
+msgid "Home"
+msgstr ""
+
+#: sugarcub/templates/admin/change_form.html:22
+msgid "Add"
+msgstr ""
+
+#: sugarcub/templates/admin/change_form.html:34
+msgid "History"
+msgstr ""
+
+#: sugarcub/templates/admin/change_form.html:36
+msgid "View on site"
+msgstr ""
+
+#: sugarcub/templates/admin/change_form.html:51
+msgid "Fields in <strong>bold</strong> are required."
+msgstr "Les champs en <strong>bold</strong> sont requis."
+
+#: sugarcub/templates/admin/change_form.html:54
+msgid "Please correct the error below."
+msgstr "Veuillez corriger l'erreur ci-dessous."
+
+#: sugarcub/templates/admin/change_form.html:54
+msgid "Please correct the errors below."
+msgstr "Veuillez corriger les erreurs ci-dessous."
+
+#: sugarcub/templates/admin_doc/bookmarklets.html:7
+#: sugarcub/templates/admin_doc/index.html:7
+#: sugarcub/templates/admin_doc/index.html:10
+#: sugarcub/templates/admin_doc/index.html:14
+#: sugarcub/templates/admin_doc/missing_docutils.html:7
+#: sugarcub/templates/admin_doc/missing_docutils.html:14
+#: sugarcub/templates/admin_doc/model_detail.html:15
+#: sugarcub/templates/admin_doc/model_index.html:9
+#: sugarcub/templates/admin_doc/template_detail.html:7
+#: sugarcub/templates/admin_doc/template_filter_index.html:8
+#: sugarcub/templates/admin_doc/template_tag_index.html:8
+#: sugarcub/templates/admin_doc/view_detail.html:7
+#: sugarcub/templates/admin_doc/view_index.html:8
+msgid "Documentation"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/bookmarklets.html:8
+#: sugarcub/templates/admin_doc/index.html:29
+msgid "Bookmarklets"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/bookmarklets.html:11
+msgid "Documentation bookmarklets"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/bookmarklets.html:15
+msgid ""
+"\n"
+"<p class=\"help\">To install bookmarklets, drag the link to your bookmarks\n"
+"toolbar, or right-click the link and add it to your bookmarks. Now you can\n"
+"select the bookmarklet from any page in the site.  Note that some of these\n"
+"bookmarklets require you to be viewing the site from a computer designated\n"
+"as \"internal\" (talk to your system administrator if you aren't sure if\n"
+"your computer is \"internal\").</p>\n"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/bookmarklets.html:25
+msgid "Documentation for this page"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/bookmarklets.html:26
+msgid ""
+"Jumps you from any page to the documentation for the view that generates "
+"that page."
+msgstr ""
+
+#: sugarcub/templates/admin_doc/bookmarklets.html:28
+msgid "Show object ID"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/bookmarklets.html:29
+msgid ""
+"Shows the content-type and unique ID for pages that represent a single "
+"object."
+msgstr ""
+
+#: sugarcub/templates/admin_doc/bookmarklets.html:31
+msgid "Edit this object (current window)"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/bookmarklets.html:32
+msgid "Jumps to the admin page for pages that represent a single object."
+msgstr ""
+
+#: sugarcub/templates/admin_doc/bookmarklets.html:34
+msgid "Edit this object (new window)"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/bookmarklets.html:35
+msgid "As above, but opens the admin page in a new window."
+msgstr ""
+
+#: sugarcub/templates/admin_doc/index.html:17
+#: sugarcub/templates/admin_doc/template_tag_index.html:9
+msgid "Tags"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/index.html:18
+msgid "List of all the template tags and their functions."
+msgstr ""
+
+#: sugarcub/templates/admin_doc/index.html:20
+#: sugarcub/templates/admin_doc/template_filter_index.html:9
+msgid "Filters"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/index.html:21
+msgid ""
+"Filters are actions which can be applied to variables in a template to alter "
+"the output."
+msgstr ""
+
+#: sugarcub/templates/admin_doc/index.html:23
+#: sugarcub/templates/admin_doc/model_detail.html:16
+#: sugarcub/templates/admin_doc/model_index.html:10
+#: sugarcub/templates/admin_doc/model_index.html:14
+msgid "Models"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/index.html:24
+msgid ""
+"Models are descriptions of all the objects in the system and their "
+"associated fields. Each model has a list of fields which can be accessed as "
+"template variables"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/index.html:26
+#: sugarcub/templates/admin_doc/view_detail.html:8
+#: sugarcub/templates/admin_doc/view_index.html:9
+#: sugarcub/templates/admin_doc/view_index.html:12
+msgid "Views"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/index.html:27
+msgid ""
+"Each page on the public site is generated by a view. The view defines which "
+"template is used to generate the page and which objects are available to "
+"that template."
+msgstr ""
+
+#: sugarcub/templates/admin_doc/index.html:30
+msgid "Tools for your browser to quickly access admin functionality."
+msgstr ""
+
+#: sugarcub/templates/admin_doc/missing_docutils.html:10
+msgid "Please install docutils"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/missing_docutils.html:17
+#, python-format
+msgid ""
+"The admin documentation system requires Python's <a href=\"%(link)s"
+"\">docutils</a> library."
+msgstr ""
+
+#: sugarcub/templates/admin_doc/missing_docutils.html:19
+#, python-format
+msgid ""
+"Please ask your administrators to install <a href=\"%(link)s\">docutils</a>."
+msgstr ""
+
+#: sugarcub/templates/admin_doc/model_detail.html:21
+#, python-format
+msgid "Model: %(name)s"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/model_detail.html:34
+msgid "Field"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/model_detail.html:35
+msgid "Type"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/model_detail.html:36
+msgid "Description"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/model_detail.html:51
+msgid "Back to Model Documentation"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/model_index.html:18
+msgid "Model documentation"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/model_index.html:43
+msgid "Model groups"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/template_detail.html:8
+msgid "Templates"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/template_detail.html:13
+#, python-format
+msgid "Template: %(name)s"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/template_detail.html:16
+#, python-format
+msgid "Template: \"%(name)s\""
+msgstr ""
+
+#: sugarcub/templates/admin_doc/template_detail.html:18
+#, python-format
+msgid "Search path for template \"%(name)s\":"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/template_detail.html:21
+msgid "(does not exist)"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/template_detail.html:25
+msgid "Back to Documentation"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/template_filter_index.html:12
+msgid "Template filters"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/template_filter_index.html:16
+msgid "Template filter documentation"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/template_filter_index.html:22
+#: sugarcub/templates/admin_doc/template_filter_index.html:43
+msgid "Built-in filters"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/template_filter_index.html:23
+#, python-format
+msgid ""
+"To use these filters, put <code>%(code)s</code> in your template before "
+"using the filter."
+msgstr ""
+
+#: sugarcub/templates/admin_doc/template_tag_index.html:12
+msgid "Template tags"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/template_tag_index.html:16
+msgid "Template tag documentation"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/template_tag_index.html:22
+#: sugarcub/templates/admin_doc/template_tag_index.html:43
+msgid "Built-in tags"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/template_tag_index.html:23
+#, python-format
+msgid ""
+"To use these tags, put <code>%(code)s</code> in your template before using "
+"the tag."
+msgstr ""
+
+#: sugarcub/templates/admin_doc/view_detail.html:12
+#, python-format
+msgid "View: %(name)s"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/view_detail.html:23
+msgid "Context:"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/view_detail.html:28
+msgid "Templates:"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/view_detail.html:32
+msgid "Back to Views Documentation"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/view_index.html:16
+msgid "View documentation"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/view_index.html:22
+msgid "Jump to namespace"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/view_index.html:27
+msgid "Empty namespace"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/view_index.html:40
+#, python-format
+msgid "Views by namespace %(name)s"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/view_index.html:42
+msgid "Views by empty namespace"
+msgstr ""
+
+#: sugarcub/templates/admin_doc/view_index.html:49
+#, python-format
+msgid ""
+"\n"
+"\tView function: <code>%(full_name)s</code>. Name: <code>%(url_name)s</"
+"code>.\n"
+msgstr ""
 
 #: sugarcub/urls.py:12
 msgid "admin/doc/"
@@ -33,12 +354,3 @@ msgstr "bbbff/"
 #: sugarcub/urls.py:16
 msgid "agenda/"
 msgstr "agenda/"
-
-#~ msgid "Fields in <strong>bold</strong> are required."
-#~ msgstr "Les champs en <strong>bold</strong> sont requis."
-
-#~ msgid "Please correct the error below."
-#~ msgstr "Veuillez corriger l'erreur ci-dessous."
-
-#~ msgid "Please correct the errors below."
-#~ msgstr "Veuillez corriger les erreurs ci-dessous."

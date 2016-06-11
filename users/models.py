@@ -107,8 +107,8 @@ class Pony(models.Model):
     file_name = models.CharField(_('file name'), max_length = 32)
 
     class Meta:
-        verbose_name        = _('pony')
-        verbose_name_plural = _('ponies')
+        verbose_name        = _('pony icon')
+        verbose_name_plural = _('pony icons')
 
     def __str__(self):
         return self.name
@@ -121,8 +121,8 @@ class Icon(models.Model):
     file_name = models.CharField(_('file name'), max_length = 32)
 
     class Meta:
-        verbose_name        = _('icon')
-        verbose_name_plural = _('icons')
+        verbose_name        = _('site icon')
+        verbose_name_plural = _('site icons')
 
     def __str__(self):
         return self.name

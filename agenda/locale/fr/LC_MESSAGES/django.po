@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-11 14:24+0000\n"
+"POT-Creation-Date: 2016-06-11 15:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -56,7 +56,7 @@ msgstr ""
 "plus!"
 
 #: agenda/forms.py:55
-msgid "Add a comment about the event ..."
+msgid "Add a comment about the event..."
 msgstr "Ajouter un commentaire sur l'événement ..."
 
 #: agenda/models.py:9
@@ -128,10 +128,8 @@ msgid "comments"
 msgstr "commentaires"
 
 #: agenda/models.py:90
-#, fuzzy
-#| msgid "Means of contact"
 msgid "contact"
-msgstr "Moyens de contact"
+msgstr "contact"
 
 #: agenda/models.py:95
 msgid "participation"
@@ -297,17 +295,3 @@ msgstr "^evenement/modification/(?P<event_id>[0-9]+)$"
 #: agenda/utils.py:29
 msgid "New event"
 msgstr "Nouvel évènement"
-
-#, fuzzy
-#~| msgid "Description"
-#~ msgid "Nouvelle inscription"
-#~ msgstr "Description"
-
-#~ msgid "pseudo"
-#~ msgstr "pseudo"
-
-#~ msgid "Post a message"
-#~ msgstr "Poster un commentaire"
-
-#~ msgid "Username"
-#~ msgstr "Pseudo"
