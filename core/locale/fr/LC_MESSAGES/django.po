@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SugarCUB 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-11 11:06+0000\n"
+"POT-Creation-Date: 2016-06-11 11:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Matthias Devlamynck <matthias.devlamynck@mailoo.org>\n"
 "Language: French\n"
@@ -126,6 +126,10 @@ msgstr "Nous rejoindre ?"
 #: core/templates/base.html:138
 msgid "Contact us :"
 msgstr "Contactez-nous :"
+
+#: core/templates/base.html:143
+msgid "Powered by"
+msgstr ""
 
 #: core/templates/friends.html:31
 #, fuzzy

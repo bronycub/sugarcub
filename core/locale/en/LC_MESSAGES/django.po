@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-11 11:06+0000\n"
+"POT-Creation-Date: 2016-06-11 11:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -121,6 +121,10 @@ msgstr ""
 
 #: core/templates/base.html:138
 msgid "Contact us :"
+msgstr ""
+
+#: core/templates/base.html:143
+msgid "Powered by"
 msgstr ""
 
 #: core/templates/friends.html:31
