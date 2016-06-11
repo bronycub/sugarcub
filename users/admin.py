@@ -1,9 +1,6 @@
 from django.contrib             import admin
 from .                          import models
 from django.utils.translation   import ugettext as _
-from django.contrib.auth.models import User
-from django.contrib.auth.admin  import UserAdmin as BaseUserAdmin
-from registration.models        import RegistrationProfile
 
 
 class PonyInline(admin.TabularInline):
@@ -33,19 +30,6 @@ class ProfileAdmin(admin.ModelAdmin):
     inlines = [PonyInline, UrlInline]
 
 
-class RegistrationInlines(admin.StackedInline):
-    model = RegistrationProfile
-    fk_name = 'user'
-
-
-class UserAdmin(BaseUserAdmin):
-    inlines = BaseUserAdmin.inlines + [RegistrationInlines, ]
-
-
 admin.site.register(models.Profile, ProfileAdmin)
 admin.site.register(models.Pony)
 admin.site.register(models.Icon)
-
-admin.site.unregister(RegistrationProfile)
-admin.site.unregister(User)
-admin.site.register(User, UserAdmin)

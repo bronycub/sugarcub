@@ -19,14 +19,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # Application definition
 
-PROJECT_APPS = (
-    'core',
+INSTALLED_APPS = (
+    'sugarcub',
     'users',
     'bbbff',
     'agenda',
-)
 
-DEPENDENCIES_APPS = (
     'stdimage',
     'bootstrap3',
     'django_admin_bootstrapped',
@@ -45,12 +43,9 @@ DEPENDENCIES_APPS = (
     'bootstrap3_datetime',
     'captcha',
     'ws4redis',
-)
 
-DEV_DEPENDENCIES_APPS = (
+    'core',
 )
-
-INSTALLED_APPS = ('sugarcub',) + DEPENDENCIES_APPS + PROJECT_APPS
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -81,13 +76,20 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': TEMPLATE_CONTEXT_PROCESSORS
-        },
+        }
     },
 ]
 
-STATICFILES_DIRS = [
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'core',  'templates'),
+    os.path.join(BASE_DIR, 'admin', 'templates'),
+    os.path.join(BASE_DIR, 'users', 'templates'),
+)
+
+
+STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'admin',  'static'),
-]
+)
 
 
 ROOT_URLCONF = 'sugarcub.urls'
@@ -131,7 +133,7 @@ LANGUAGE_CODE = 'fr-fr'
 
 TIME_ZONE = 'UTC'
 
-USE_I20N = True
+USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True

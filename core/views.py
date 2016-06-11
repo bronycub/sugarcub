@@ -22,7 +22,7 @@ def home(request):
         except:
             irc = ''
 
-    quotes = Quote.objects.all()
+    quotes = list(Quote.objects.all())
     random.shuffle(quotes)
 
     return render(request, 'home.html', {
