@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SugarCUB 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-11 09:28+0000\n"
+"POT-Creation-Date: 2016-06-11 09:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Matthias Devlamynck <matthias.devlamynck@mailoo.org>\n"
 "Language: French\n"
@@ -126,6 +126,8 @@ msgid "Contact us :"
 msgstr "Contactez-nous :"
 
 #: core/templates/friends.html:31
+#, fuzzy
+#| msgid "No friends at the moment..."
 msgid "No friends at the moment ..."
 msgstr "Aucun ami pour le moment ..."
 
@@ -157,6 +159,8 @@ msgid "More info ..."
 msgstr "Plus d'info ..."
 
 #: core/templates/home.html:54
+#, fuzzy
+#| msgid "A Brony ? Can we eat it ? Whatisit ?"
 msgid "A Brony ? Can we eat it ? whatisit ?"
 msgstr "Un Brony ? Ça ce mange ? Kécéssé ?"
 
@@ -169,8 +173,8 @@ msgid "Close"
 msgstr "Fermer"
 
 #: core/templates/home.html:70
-msgid "What is happening in BronyCUB?"
-msgstr "Que se passe t'il à BronyCUB?"
+msgid "The collective news"
+msgstr "Actualités du collectif"
 
 #: core/templates/home.html:74
 msgid "It's the birthday of "
@@ -178,7 +182,7 @@ msgstr "C'est l'anniversaire de "
 
 #: core/templates/home.html:74
 msgid " today, Happy Birthday!"
-msgstr " aujourd'hui, Bon Anniversaire!"
+msgstr " aujourd'hui, Bon Anniversaire !"
 
 #: core/templates/home.html:79
 msgid "This month : "
@@ -186,7 +190,7 @@ msgstr "Ce mois-ci : "
 
 #: core/templates/home.html:84
 msgid "join us! Give "
-msgstr "nous on rejoins! donnons-"
+msgstr "nous on rejoins ! donnons-"
 
 #: core/templates/home.html:86
 msgid "them"
@@ -198,11 +202,11 @@ msgstr "lui"
 
 #: core/templates/home.html:90
 msgid " a warm welcome!"
-msgstr " un accueil chaleureux!"
+msgstr " un accueil chaleureux !"
 
 #: core/templates/home.html:92
 msgid "nobody join us, how sad..."
-msgstr "personne ne nous a rejoins, comme c'est triste..."
+msgstr "personne ne nous a rejoins, comme c'est triste ..."
 
 #: core/templates/home.html:99
 msgid "Join us"

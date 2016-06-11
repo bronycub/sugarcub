@@ -67,7 +67,7 @@
                     <!-- /Question -->
                 </div>
             {% else %}
-                <h2>{% trans 'What is happening in BronyCUB?' %}</h2>
+                <h2>{% trans 'The collective news' %}</h2>
                 <div class="jumbotron">
                     <article>
                         {% for user in birthday %}
@@ -79,7 +79,7 @@
                         {% trans 'This month : ' %}
                             {% if list_new >= 1 %}
                                 {% for user in new %}
-                                    <b>{{ user.user.username }}</b>, 
+                                    <b>{{ user.user.username }}</b>,
                                 {% endfor %}
                                     {% trans 'join us! Give ' %}
                                         {% if list_new > 1 %}
