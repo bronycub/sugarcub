@@ -24,8 +24,8 @@ class ProfileManager(models.Manager):
     def get_birthday(self):
         ''' Return all profile with birthday today '''
 
-        return self.model.objects.filter(birthday__day=date.today().day, birthday__month=date.today().month,
-            enabled = True, user__is_active = True)
+        return self.model.objects.filter(birthday__day = date.today().day, birthday__month = date.today().month,
+            enabled = True, user__is_active = True, birthday_enabled = True)
 
     def get_new_members(self):
         ''' Return profile registered within the last 30 days '''

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-11 09:50+0000\n"
+"POT-Creation-Date: 2016-06-11 11:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -171,34 +171,38 @@ msgid "It's the birthday of "
 msgstr ""
 
 #: core/templates/home.html:74
-msgid " today, Happy Birthday!"
+msgid " today!"
 msgstr ""
 
-#: core/templates/home.html:79
-msgid "This month : "
+#: core/templates/home.html:78
+msgid "New members"
 msgstr ""
 
-#: core/templates/home.html:84
-msgid "join us! Give "
+#: core/templates/home.html:81
+msgid "This month, "
 msgstr ""
 
 #: core/templates/home.html:86
-msgid "them"
+msgid "join us! Give "
 msgstr ""
 
 #: core/templates/home.html:88
-msgid "him/her"
+msgid "them"
 msgstr ""
 
 #: core/templates/home.html:90
-msgid " a warm welcome!"
+msgid "him/her"
 msgstr ""
 
 #: core/templates/home.html:92
+msgid " a warm welcome!"
+msgstr ""
+
+#: core/templates/home.html:94
 msgid "nobody join us, how sad..."
 msgstr ""
 
-#: core/templates/home.html:99
+#: core/templates/home.html:103
 msgid "Join us"
 msgstr ""
 
