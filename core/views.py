@@ -5,6 +5,7 @@ from   users.models      import Profile
 from   django.core.cache import cache
 import urllib.request
 import re
+import random
 
 
 def home(request):
@@ -21,9 +22,12 @@ def home(request):
         except:
             irc = ''
 
+    quotes = Quote.objects.all
+    random.shuffle(quotes)
+
     return render(request, 'home.html', {
         'irc':      irc,
-        'quotes':   Quote.objects.all,
+        'quotes':   quotes,
         'birthday': Profile.objects.get_birthday(),
         'new':      Profile.objects.get_new_members(),
         'list_new': len(Profile.objects.get_new_members()),
