@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-11 11:39+0000\n"
+"POT-Creation-Date: 2016-06-11 14:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -155,8 +155,7 @@ msgstr ""
 msgid "Add an event"
 msgstr ""
 
-#: agenda/templates/agenda/event_form.html:25
-#: agenda/templates/agenda/event_form.html:27
+#: agenda/templates/agenda/event_form.html:34
 #: agenda/templates/agenda/event_update_form.html:23
 #: agenda/templates/agenda/event_update_form.html:25
 msgid ""
@@ -164,7 +163,7 @@ msgid ""
 "time"
 msgstr ""
 
-#: agenda/templates/agenda/event_form.html:32
+#: agenda/templates/agenda/event_form.html:40
 msgid "Add event"
 msgstr ""
 
