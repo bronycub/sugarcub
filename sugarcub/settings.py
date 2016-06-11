@@ -81,20 +81,13 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': TEMPLATE_CONTEXT_PROCESSORS
-        }
+        },
     },
 ]
 
-TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, 'core',  'templates'),
-    os.path.join(BASE_DIR, 'admin', 'templates'),
-    os.path.join(BASE_DIR, 'users', 'templates'),
-)
-
-
-STATICFILES_DIRS = (
+STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'admin',  'static'),
-)
+]
 
 
 ROOT_URLCONF = 'sugarcub.urls'
@@ -138,7 +131,7 @@ LANGUAGE_CODE = 'fr-fr'
 
 TIME_ZONE = 'UTC'
 
-USE_I18N = True
+USE_I20N = True
 USE_L10N = True
 
 USE_TZ = True
