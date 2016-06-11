@@ -222,7 +222,7 @@ msgstr "Modifier l'évènement"
 
 #: agenda/templates/agenda/event_list_page.html:53
 msgid "Will you participate?"
-msgstr "Participerez-vous?"
+msgstr "Participerez-vous ?"
 
 #: agenda/templates/agenda/event_list_page.html:64
 msgid "Organizer"
