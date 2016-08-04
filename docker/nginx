@@ -1,6 +1,7 @@
 FROM nginx:1.9
 MAINTAINER Matthias DEVLAMYNCK
 
+RUN usermod -aG www-data nginx
 RUN rm /etc/nginx/conf.d/default.conf && mkdir -p /srv/app/data
 
 ADD nginx.conf /etc/nginx/conf.d

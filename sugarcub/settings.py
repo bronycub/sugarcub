@@ -87,9 +87,9 @@ TEMPLATE_DIRS = (
 )
 
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'admin',  'static'),
-)
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, 'admin',  'static'),
+# )
 
 
 ROOT_URLCONF = 'sugarcub.urls'

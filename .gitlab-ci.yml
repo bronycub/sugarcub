@@ -1,29 +1,29 @@
 stages:
-    - build
     - test
     - deploy
-
-build_base:
-    stage: build
-    script:
-        - docker build -t sugarcub-python-base -f docker/python-base ./
-
-test_dev:
-    stage: test
-    script:
-        - docker-compose -p sugarcub build
-        - docker-compose -p sugarcub -u $(id -u gitlab-runner) run --rm django ./manage.py collectstatic --noinput
-        - docker-compose -p sugarcub -u $(id -u gitlab-runner) run --rm django py.test
 
 build_prod:
     stage: test
     script:
-        - docker-compose -f docker-compose.yml -f docker-compose.prod.yml -p sugarcubprod build
+        - docker-compose -f docker-compose.yml -f docker-compose.prod.yml -p sugarcub${CI_BUILD_REF_NAME}prod build --force-rm
+
+test:
+    stage: test
+    script:
+        - docker-compose -f docker-compose.yml -f docker-compose.ci.yml -p sugarcub${CI_BUILD_REF_NAME}test build --force-rm
+        - docker-compose -p sugarcub${CI_BUILD_REF_NAME}test -u $(id -u gitlab-runner) run --rm django py.test
+
+test_dev:
+    stage: test
+    script:
+        - docker-compose -f docker-compose.yml -f docker-compose.ci.yml -p sugarcub${CI_BUILD_REF_NAME}test build --force-rm
+        - docker-compose -p sugarcub${CI_BUILD_REF_NAME}test -u $(id -u gitlab-runner) run --rm django py.test
 
 deploy:
     stage: deploy
     only:
         - dev
-        - docker-compose
+        - release/*
+        - master
     script:
-        - docker/run-deploy.sh $(git rev-parse HEAD)
+        - docker-compose -f docker-compose.yml -f docker-compose.prod.yml -p sugarcub${CI_BUILD_REF_NAME}prod up -d

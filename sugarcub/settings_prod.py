@@ -23,9 +23,7 @@ except Exception:
 DEBUG          = False
 TEMPLATE_DEBUG = DEBUG
 
-with open(os.path.join(BASE_DIR, '..', 'data', 'host'), 'r') as hostFile:
-    host          = hostFile.readline().strip('\t\n\r')
-    ALLOWED_HOSTS = host.split()
+ALLOWED_HOSTS  = os.getenv('ALLOWED_HOSTS', 'sugarcub.org,bronycub.org').split(',')
 
 
 # Mails

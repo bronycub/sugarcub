@@ -1,31 +1,14 @@
 version: "2"
 
 services:
-    postgres:
-        image: postgres:9.4
-        restart: always
-        volumes:
-            - postgres:/var/lib/postgresql/data
-        networks:
-            - back
-    redis:
-        image: redis:3.0
-        restart: always
-        volumes:
-            - redis:/data
-        networks:
-            - back
+
     django:
         build:
             context: .
             dockerfile: docker/python-dev
-        command: python manage.py runserver 0.0.0.0:8000
         restart: always
         volumes:
-            - .:/srv/app/code
-            - app:/srv/app/data
-        ports:
-            - "8000:8000"
+            - app_data:/srv/app/data
         links:
             - redis
             - postgres
@@ -36,6 +19,7 @@ services:
             - postgres
             - redis
             - celery
+
     celery:
         build:
             context: .
@@ -43,8 +27,7 @@ services:
         command: celery -A sugarcub worker -l info --autoreload
         restart: always
         volumes:
-            - .:/srv/app/code
-            - app:/srv/app/data
+            - app_data:/srv/app/data
         links:
             - redis
             - postgres
@@ -55,10 +38,26 @@ services:
             - postgres
             - redis
 
+    postgres:
+        image: postgres:9.4
+        restart: always
+        volumes:
+            - postgres_data:/var/lib/postgresql/data
+        networks:
+            - back
+
+    redis:
+        image: redis:3.0
+        restart: always
+        volumes:
+            - redis_data:/data
+        networks:
+            - back
+
 volumes:
-    app: ~
-    postgres: ~
-    redis: ~
+    app_data: ~
+    postgres_data: ~
+    redis_data: ~
 
 networks:
     front: ~

@@ -1,0 +1,14 @@
+version: "2"
+
+services:
+
+    django:
+        command: bash -c 'python3 ./manage.py compilemessages && python3 ./manage.py collectstatic --noinput && python3 ./manage.py migrate --noinput && python manage.py runserver 0.0.0.0:80'
+        volumes:
+            - .:/srv/app/code
+        environment:
+            - VIRTUAL_HOST=sugarcub.loc
+
+    celery:
+        volumes:
+            - .:/srv/app/code

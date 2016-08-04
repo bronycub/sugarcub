@@ -3,18 +3,15 @@ MAINTAINER Matthias DEVLAMYNCK
 
 ENV PYTHONUNBUFFERED 1
 
-RUN groupadd -r python && useradd -u 1000 -r -g python python
-RUN apt-get update -y && apt-get install -y npm gettext
-RUN cd /usr/bin && ln -s nodejs node
-RUN npm install -g yuglify uglify-js
+RUN useradd -u 1000 -r -g www-data python
+RUN apt-get update -y && apt-get install -y npm gettext && rm -rf /var/lib/apt/lists/* && \
+    cd /usr/bin && ln -s nodejs node && npm install -g yuglify uglify-js phantomjs-prebuilt
 
-RUN mkdir -p /srv/app/code /srv/app/data && chown python:python /srv/app -R
+RUN mkdir -p /srv/app/code /srv/app/data
 WORKDIR /srv/app/code
-ADD requirements.txt /srv/app/code
-RUN pip install -r requirements.txt
+ADD requirements.txt dev_requirements.txt /srv/app/code/
+RUN pip install -r requirements.txt -r dev_requirements.txt
 
-RUN npm install -g phantomjs-prebuilt
-ADD dev_requirements.txt /srv/app/code
-RUN pip install -r dev_requirements.txt
-
+ADD ./ /srv/app/code
+RUN chown python:www-data /srv/app -R
 USER python
