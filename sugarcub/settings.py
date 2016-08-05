@@ -8,7 +8,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.7/ref/settings/
 '''
 
-from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS, AUTHENTICATION_BACKENDS
+from django.conf.global_settings import AUTHENTICATION_BACKENDS
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
@@ -59,33 +59,35 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.admindocs.middleware.XViewMiddleware',
 )
 
-
-# Templates
-
-TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + [
-    'core.processors.custom_fields',
-    'core.processors.mailing_list',
-    'django.core.context_processors.request',
-    'absolute.context_processors.absolute',
-    'django.core.context_processors.static',
-]
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            os.path.join(BASE_DIR, 'core',  'templates'),
+            os.path.join(BASE_DIR, 'admin', 'templates'),
+            os.path.join(BASE_DIR, 'users', 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
-            'context_processors': TEMPLATE_CONTEXT_PROCESSORS
+            'context_processors': [
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'django.template.context_processors.request',
+                'django.contrib.messages.context_processors.messages',
+                'core.processors.custom_fields',
+                'core.processors.mailing_list',
+                'django.core.context_processors.request',
+                'absolute.context_processors.absolute',
+                'django.core.context_processors.static',
+            ],
+            'debug': False
         }
     },
 ]
-
-TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, 'core',  'templates'),
-    os.path.join(BASE_DIR, 'admin', 'templates'),
-    os.path.join(BASE_DIR, 'users', 'templates'),
-)
-
 
 # STATICFILES_DIRS = (
 #     os.path.join(BASE_DIR, 'admin',  'static'),
@@ -214,3 +216,4 @@ if IS_PROD:
     from sugarcub.settings_prod import *
 else:
     from sugarcub.settings_dev import *
+    TEMPLATES[0]['OPTIONS']['debug'] = DEBUG
