@@ -159,8 +159,10 @@ REGISTRATION_AUTO_LOGIN = True
 
 # Celery
 
-BROKER_URL            = 'redis://redis:6379/0'
-CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
+REDIS_HOST = os.getenv('REDIS_HOST', 'redis')
+
+BROKER_URL            = 'redis://{}:6379/0'.format(REDIS_HOST)
+CELERY_RESULT_BACKEND = 'redis://{}:6379/0'.format(REDIS_HOST)
 
 CELERY_TASK_SERIALIZER   = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
@@ -173,7 +175,7 @@ CELERY_IMPORTS           = ('users.models', 'users.utils',)
 # Session
 
 SESSION_ENGINE     = 'redis_sessions.session'
-SESSION_REDIS_HOST = 'redis'
+SESSION_REDIS_HOST = REDIS_HOST
 
 
 # Cache
@@ -181,7 +183,7 @@ SESSION_REDIS_HOST = 'redis'
 CACHES = {
     'default': {
         'BACKEND': 'redis_cache.RedisCache',
-        'LOCATION': 'redis:6379',
+        'LOCATION': '{}:6379'.format(REDIS_HOST),
     },
 }
 
