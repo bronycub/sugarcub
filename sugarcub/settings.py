@@ -110,6 +110,9 @@ DATABASES = {
     }
 }
 
+if os.getenv('SQL_PASSWORD'):
+    DATABASES['default']['PASSWORD'] = os.getenv('SQL_PASSWORD')
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
