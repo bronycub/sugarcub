@@ -80,9 +80,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'core.processors.custom_fields',
                 'core.processors.mailing_list',
-                'django.core.context_processors.request',
                 'absolute.context_processors.absolute',
-                'django.core.context_processors.static',
             ],
             'debug': False
         }
