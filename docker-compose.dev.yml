@@ -3,16 +3,18 @@ version: "2"
 services:
 
     django:
-        command: bash -c 'python3 ./manage.py compilemessages && python3 ./manage.py collectstatic --noinput && python3 ./manage.py migrate --noinput && python manage.py runserver 0.0.0.0:80'
+        command: bash -c 'python3 ./manage.py compilemessages && python3 ./manage.py collectstatic --noinput && python3 ./manage.py migrate --noinput && python manage.py runserver 0.0.0.0:8000'
         volumes:
             - .:/srv/app/code
         environment:
             - VIRTUAL_HOST=sugarcub.loc
-            - VIRTUAL_PORT=80
+            - VIRTUAL_PORT=8000
         networks:
             - front
             - back
             - proxy
+        expose:
+            - 8000
 
     celery:
         volumes:
