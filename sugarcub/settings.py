@@ -8,7 +8,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.7/ref/settings/
 '''
 
-from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS, AUTHENTICATION_BACKENDS
+from django.conf.global_settings import AUTHENTICATION_BACKENDS
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
@@ -59,33 +59,33 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.admindocs.middleware.XViewMiddleware',
 )
 
-
-# Templates
-
-TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + [
-    'core.processors.custom_fields',
-    'core.processors.mailing_list',
-    'django.core.context_processors.request',
-    'absolute.context_processors.absolute',
-    'django.core.context_processors.static',
-]
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            os.path.join(BASE_DIR, 'core',  'templates'),
+            os.path.join(BASE_DIR, 'admin', 'templates'),
+            os.path.join(BASE_DIR, 'users', 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
-            'context_processors': TEMPLATE_CONTEXT_PROCESSORS
+            'context_processors': [
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'django.template.context_processors.request',
+                'django.contrib.messages.context_processors.messages',
+                'core.processors.custom_fields',
+                'core.processors.mailing_list',
+                'absolute.context_processors.absolute',
+            ],
+            'debug': False
         }
     },
 ]
-
-TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, 'core',  'templates'),
-    os.path.join(BASE_DIR, 'admin', 'templates'),
-    os.path.join(BASE_DIR, 'users', 'templates'),
-)
-
 
 # STATICFILES_DIRS = (
 #     os.path.join(BASE_DIR, 'admin',  'static'),
@@ -102,15 +102,16 @@ WSGI_APPLICATION = 'sugarcub.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': os.path.join(BASE_DIR, '..', 'data', 'db.sqlite3'),
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'HOST': 'postgres',
+        'NAME': os.getenv('SQL_DB', 'postgres'),
+        'USER': os.getenv('SQL_USER', 'postgres'),
+        'HOST': os.getenv('SQL_HOST', 'postgres'),
         'PORT': 5432,
     }
 }
+
+if os.getenv('SQL_PASSWORD'):
+    DATABASES['default']['PASSWORD'] = os.getenv('SQL_PASSWORD')
 
 
 # Static files (CSS, JavaScript, Images)
@@ -156,8 +157,10 @@ REGISTRATION_AUTO_LOGIN = True
 
 # Celery
 
-BROKER_URL            = 'redis://redis:6379/0'
-CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
+REDIS_HOST = os.getenv('REDIS_HOST', 'redis')
+
+BROKER_URL            = 'redis://{}:6379/0'.format(REDIS_HOST)
+CELERY_RESULT_BACKEND = 'redis://{}:6379/0'.format(REDIS_HOST)
 
 CELERY_TASK_SERIALIZER   = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
@@ -170,7 +173,7 @@ CELERY_IMPORTS           = ('users.models', 'users.utils',)
 # Session
 
 SESSION_ENGINE     = 'redis_sessions.session'
-SESSION_REDIS_HOST = 'redis'
+SESSION_REDIS_HOST = REDIS_HOST
 
 
 # Cache
@@ -178,7 +181,7 @@ SESSION_REDIS_HOST = 'redis'
 CACHES = {
     'default': {
         'BACKEND': 'redis_cache.RedisCache',
-        'LOCATION': 'redis:6379',
+        'LOCATION': '{}:6379'.format(REDIS_HOST),
     },
 }
 
@@ -213,3 +216,4 @@ if IS_PROD:
     from sugarcub.settings_prod import *
 else:
     from sugarcub.settings_dev import *
+    TEMPLATES[0]['OPTIONS']['debug'] = DEBUG
