@@ -8,9 +8,9 @@ SugarCUB is a customizable web site with the purpose to allow any one to easily 
 SugarCUB est un site web configurable avec l'objectif de permettre à n'importe qui de créer son propre site pour son collectif brony. C'est aussi simple que de l'installer et de le configuer selon vos gouts. C'est aussi un logicel libre donc si vous trouvez un bug ou que vous souhaitez l'améliorer, venez simplement nous en parler /). Encore mieux si vous êtes un programmeur, l'aide est toujours la bienvenue !
 
 # Infos
-To gather information on this project, how to play around and even contribute if you wish, please refer to the [wiki](wikis/home).
+To gather information on this project, how to play around and even contribute if you wish, please refer to the [wiki](https://gitlab.com/mdevlamynck/sugarcub/wikis/home).
 
-Pour obtenir des informations sur ce projet, comment s'en servir et pourquoi pas y contribuer si vous en avez l'envie, veuillez vous référer au [wiki](wikis/home).
+Pour obtenir des informations sur ce projet, comment s'en servir et pourquoi pas y contribuer si vous en avez l'envie, veuillez vous référer au [wiki](https://gitlab.com/mdevlamynck/sugarcub/wikis/home).
 
 # License / Licence
 
