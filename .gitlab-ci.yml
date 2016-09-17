@@ -12,6 +12,8 @@ test:
     script:
         - docker-compose -f docker-compose.yml -f docker-compose.ci.yml -p sugarcub${CI_BUILD_REF_NAME}test build --force-rm
         - docker-compose -f docker-compose.yml -f docker-compose.ci.yml -p sugarcub${CI_BUILD_REF_NAME}test run -u $(id -u gitlab-runner) --rm django py.test
+    after_script:
+        - docker-compose -f docker-compose.yml -f docker-compose.ci.yml -p sugarcub${CI_BUILD_REF_NAME}test down
 
 deploy:
     stage: deploy
