@@ -14,7 +14,7 @@ services:
             - front
             - proxy
         environment:
-            - VIRTUAL_HOST=dev.bronycub.org
+            - VIRTUAL_HOST=sugarcub.bronycub.org
             - VIRTUAL_PORT=80
 
     django:
@@ -25,7 +25,7 @@ services:
         command: bash -c 'python3 ./manage.py compilemessages && python3 ./manage.py collectstatic --noinput && python3 ./manage.py migrate --noinput && uwsgi --ini /srv/app/code/uwsgi.ini'
         environment:
             - DEPLOY_TYPE=prod
-            - ALLOWED_HOSTS=dev.bronycub.org
+            - ALLOWED_HOSTS=sugarcub.bronycub.org
 
     celery:
         # Switch to the image without the tests dependencies
@@ -35,7 +35,7 @@ services:
             dockerfile: docker/python-prod
         environment:
             - DEPLOY_TYPE=prod
-            - ALLOWED_HOSTS=dev.bronycub.org
+            - ALLOWED_HOSTS=sugarcub.bronycub.org
 
 networks:
     proxy:
