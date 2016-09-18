@@ -320,3 +320,10 @@ a {
 	text-decoration-color: #DD4814;
 	text-decoration: none;
 }
+
+/*
+ * Interpret line return for texts like the bio
+ */
+.pre-line {
+	white-space: pre-line;
+}
