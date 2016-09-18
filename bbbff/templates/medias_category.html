@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block title %}{% trans 'BBBFF' %}{% endblock %}
+
+{% block body %}
+{{ block.super }}
+
+<div class="container">
+    <div class="row">
+      1 | BronyCUB -> afffiche contenu dossier "bronycub"<br />
+      2 | Fandom -> afffiche contenu dossier "fandom"<br />
+      [3 | Canon] -> afffiche contenu dossier "canon" si connecté<br />
+      [4 | Envoi de fichiers] -> formulaire d'upload qui stock les datas dans dossier "uploads"<br />
+    </div>
+</div>
+
+{% endblock %}
