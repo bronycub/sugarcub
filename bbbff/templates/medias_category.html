@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+{% load static %}
 {% load i18n %}
 
 {% block title %}{% trans 'BBBFF' %}{% endblock %}
@@ -8,12 +9,53 @@
 {{ block.super }}
 
 <div class="container">
-    <div class="row">
-      1 | BronyCUB -> afffiche contenu dossier "bronycub"<br />
-      2 | Fandom -> afffiche contenu dossier "fandom"<br />
-      [3 | Canon] -> afffiche contenu dossier "canon" si connecté<br />
-      [4 | Envoi de fichiers] -> formulaire d'upload qui stock les datas dans dossier "uploads"<br />
+    <div class="col-md-6 text-center">
+        <div class="panel panel-info">
+            <div class="panel-heading">BronyCUB (public)</div>
+          <div class="panel-body panel-min-height">
+            <a href="#" target="_blank">
+              <img src="{% static 'img/logo_min.png' %}" alt="logo_bronycub" class="img-responsive center-block">
+            </a>
+            <p>Les photos/vidéos du collectif !</p>
+          </div>
+        </div>
     </div>
+    <div class="col-md-6 text-center">
+        <div class="panel panel-info">
+            <div class="panel-heading">Fandom (public)</div>
+          <div class="panel-body panel-min-height">
+            <a href="#" target="_blank">
+              <img src="{% static 'img/logo_min.png' %}" alt="logo_bronycub" class="img-responsive center-block">
+            </a>
+            <p>Créations communautaires à partager.</p>
+          </div>
+        </div>
+    </div>
+    <div class="col-md-6 text-center">
+        <div class="panel panel-danger">
+            <div class="panel-heading">Canon (privée)</div>
+          <div class="panel-body panel-min-height">
+            <a href="#" target="_blank">
+                <img src="{% static 'img/logo_min.png' %}" alt="logo_bronycub" class="img-responsive center-block">
+            </a>
+            <p>Collection Friendship is Magic gérée par le collectif.</p>
+          </div>
+        </div>
+    </div>
+    <div class="col-md-6 text-center">
+        <div class="panel panel-danger">
+            <div class="panel-heading">Envoi de fichiers (privée)</div>
+          <div class="panel-body panel-min-height">
+            <a href="#" target="_blank">
+                <img src="{% static 'img/logo_min.png' %}" alt="logo_bronycub" class="img-responsive center-block">
+            </a>
+            <p>Envoyez vos medias au collectif directement ici :</p>
+            <button type="submit" class="btn btn-success pull-right"><i class="fa fa-upload"></i> Envoyer</button>
+            <input type="file" class="btn btn-danger">
+          </div>
+        </div>
+    </div>
+
 </div>
 
 {% endblock %}
