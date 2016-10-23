@@ -51,7 +51,7 @@
                   <div class="panel-body">
                     <div>
                           {% for url in profile.userurl_set.all %}
-                              <a href='{{ url.url }}' class='zocial icon {{ url.icon.name }}'></a>
+                              <a href='{{ url.url }}' class='zocial icon {{ url.icon.name | lower }}'></a>
                           {% endfor %}
                     </div>
                   </div>
