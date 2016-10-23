@@ -24,7 +24,7 @@ services:
         build:
             context: .
             dockerfile: docker/python-dev
-        command: celery -A sugarcub worker -l info --autoreload
+        command: celery -A sugarcub worker -l info
         restart: always
         volumes:
             - app_data:/srv/app/data
