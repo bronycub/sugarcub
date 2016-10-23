@@ -146,7 +146,7 @@ PIPELINE = {
                 'css/sugarcub-admin.css',
                 'css/bronycub.css',
             ),
-            'output_filename': 'css/pluchovor.css',
+            'output_filename': 'css/sugarcub.css',
             'extra_context': {
                 'media': 'screen,projection',
             },
@@ -168,7 +168,7 @@ PIPELINE = {
                 'js/expander.js',
                 'js/konami.js',
             ),
-            'output_filename': 'js/pluchovor.js',
+            'output_filename': 'js/sugarcub.js',
         }
     },
     'JS_COMPRESSOR': 'pipeline.compressors.uglifyjs.UglifyJSCompressor',
