@@ -82,6 +82,10 @@ footer a:hover {
 	background-color: #772953;
 }
 
+h2.colored {
+	color: #772953;
+}
+
 .navbar-inverse .navbar-brand {
 	color: #FFF;
 }
@@ -305,6 +309,10 @@ a {
   border-right: solid 1px #E5E5E5;
 }
 
+.username {
+	font-size: 28px;
+}
+
 /*
  * To set each friends to a min-height
  */
@@ -319,4 +327,27 @@ a {
   color: #DD4814;
 	text-decoration-color: #DD4814;
 	text-decoration: none;
+}
+
+/*
+ * Interpret line return for texts like the bio
+ */
+.pre-line {
+	white-space: pre-line;
+}
+
+/*
+ * ASBF logo
+ */
+.asbf {
+	float: left;
+	padding-left: 20px;
+}
+
+/*
+ * Konami
+ */
+.konami-video {
+	width: 640px;
+	height: 385px;
 }

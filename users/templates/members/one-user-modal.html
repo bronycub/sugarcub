@@ -15,10 +15,10 @@
                                     {% static 'ressources/logo/icon_bronycub.png' %}
                                 {% endif %}
                             ">
-                  <strong style="font-size:28px;">{{ profile.user.username }}</strong>
+                  <strong class="username">{{ profile.user.username }}</strong>
                 </div>
                 <div class="modal-body">
-                  <p style="word-wrap: break-word;">
+                  <p class="pre-line">
                     {{ profile.bio }}
                   </p>
                   <hr />
@@ -51,7 +51,7 @@
                   <div class="panel-body">
                     <div>
                           {% for url in profile.userurl_set.all %}
-                              <a href='{{ url.url }}' class='zocial icon {{ url.icon.name }}'></a>
+                              <a href='{{ url.url }}' class='zocial icon {{ url.icon.name | lower }}'></a>
                           {% endfor %}
                     </div>
                   </div>

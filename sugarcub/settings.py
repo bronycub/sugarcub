@@ -224,20 +224,23 @@ CELERY_ENABLE_UTC        = True
 CELERY_IMPORTS           = ('users.models', 'users.utils',)
 
 
-# Session
-
-SESSION_ENGINE     = 'redis_sessions.session'
-SESSION_REDIS_HOST = REDIS_HOST
-
-
 # Cache
 
 CACHES = {
     'default': {
-        'BACKEND': 'redis_cache.RedisCache',
-        'LOCATION': '{}:6379'.format(REDIS_HOST),
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://{}:6379/0'.format(REDIS_HOST),
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
     },
 }
+
+
+# Session
+
+SESSION_ENGINE      = 'django.contrib.sessions.backends.cache'
+SESSION_CACHE_ALIAS = 'default'
 
 
 # Admin
