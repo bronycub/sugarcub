@@ -159,6 +159,7 @@ PIPELINE = {
             'source_filenames': (
                 'vendor/jquery/dist/jquery.min.js',
                 'vendor/jquery-expander/jquery.expander.min.js',
+                'vendor/datetimepicker/jquery.datetimepicker.min.js',
                 'vendor/bootstrap/dist/js/bootstrap.min.js',
                 'vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js',
                 'vendor/bootstrap-datepicker/dist/locale/bootstrap-datepicker.fr.min.js',

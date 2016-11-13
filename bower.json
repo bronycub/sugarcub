@@ -14,6 +14,7 @@
     "leaflet": "0",
     "css-social-buttons": "zocial#1",
     "bootstrap-datepicker": "1",
-    "jquery-expander": "1"
+    "jquery-expander": "1",
+    "datetimepicker": "^2.5.4"
   }
 }
