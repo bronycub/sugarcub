@@ -8,11 +8,14 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.7/ref/settings/
 '''
 
-from django.conf.global_settings import AUTHENTICATION_BACKENDS
+from django.conf.global_settings import AUTHENTICATION_BACKENDS, STATICFILES_FINDERS
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
+IS_PROD = os.getenv('DEPLOY_TYPE', 'dev') == 'prod'
+DEBUG = not IS_PROD
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
@@ -43,12 +46,14 @@ INSTALLED_APPS = (
     'bootstrap3_datetime',
     'captcha',
     'ws4redis',
+    'pipeline',
 
     'core',
 )
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'pipeline.middleware.MinifyHTMLMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -120,6 +125,55 @@ if os.getenv('SQL_PASSWORD'):
 STATIC_URL  = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, '..', 'data', 'static')
 
+STATICFILES_FINDERS = STATICFILES_FINDERS + [
+    'pipeline.finders.PipelineFinder',
+    'pipeline.finders.ManifestFinder',
+]
+STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
+PIPELINE = {
+    'PIPELINE_ENABLED': IS_PROD,
+    'COMPILERS': ('pipeline.compilers.sass.SASSCompiler',),
+    'STYLESHEETS': {
+        'css': {
+            'source_filenames': (
+                'vendor/bootstrap/dist/css/bootstrap.min.css',
+                'vendor/bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css',
+                'vendor/cookieconsent2/build/dark-floating.css',
+                'vendor/css-social-buttons/css/zocial.css',
+                'vendor/font-awesome/css/font-awesome.min.css',
+                'vendor/leaflet/dist/leaflet.css',
+                'css/sugarcub.css',
+                'css/sugarcub-admin.css',
+                'css/bronycub.css',
+            ),
+            'output_filename': 'css/sugarcub.css',
+            'extra_context': {
+                'media': 'screen,projection',
+            },
+        },
+    },
+    'CSS_COMPRESSOR': 'pipeline.compressors.yuglify.YuglifyCompressor',
+
+    'JAVASCRIPT': {
+        'js': {
+            'source_filenames': (
+                'vendor/jquery/dist/jquery.min.js',
+                'vendor/jquery-expander/jquery.expander.min.js',
+                'vendor/bootstrap/dist/js/bootstrap.min.js',
+                'vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js',
+                'vendor/bootstrap-datepicker/dist/locale/bootstrap-datepicker.fr.min.js',
+                'vendor/cookieconsent2/build/cookieconsent.min.js',
+                'vendor/leaflet/dist/leaflet.js',
+                'js/dj.js',
+                'js/expander.js',
+                'js/konami.js',
+            ),
+            'output_filename': 'js/sugarcub.js',
+        }
+    },
+    'JS_COMPRESSOR': 'pipeline.compressors.uglifyjs.UglifyJSCompressor',
+}
+
 
 # Media
 
@@ -170,20 +224,23 @@ CELERY_ENABLE_UTC        = True
 CELERY_IMPORTS           = ('users.models', 'users.utils',)
 
 
-# Session
-
-SESSION_ENGINE     = 'redis_sessions.session'
-SESSION_REDIS_HOST = REDIS_HOST
-
-
 # Cache
 
 CACHES = {
     'default': {
-        'BACKEND': 'redis_cache.RedisCache',
-        'LOCATION': '{}:6379'.format(REDIS_HOST),
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://{}:6379/0'.format(REDIS_HOST),
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
     },
 }
+
+
+# Session
+
+SESSION_ENGINE      = 'django.contrib.sessions.backends.cache'
+SESSION_CACHE_ALIAS = 'default'
 
 
 # Admin
@@ -204,6 +261,28 @@ BOOTSTRAP3 = {
 SITE_ID = 1
 
 
+# Logging
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '/srv/app/data/debug.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
+
+
 # Tests
 
 
@@ -211,7 +290,6 @@ SITE_ID = 1
 
 from sugarcub.custom_settings import *
 
-IS_PROD = os.getenv('DEPLOY_TYPE', 'dev') == 'prod'
 if IS_PROD:
     from sugarcub.settings_prod import *
 else:

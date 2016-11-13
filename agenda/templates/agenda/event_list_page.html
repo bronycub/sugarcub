@@ -29,7 +29,7 @@
                           </strong>
                           <br />
                           <blockquote>
-                            <p style="word-wrap: break-word;"> {{ event.description }} </p>
+                            <p class="pre-line"> {{ event.description }} </p>
                           </blockquote>
                         </div>
                       <hr />
@@ -49,10 +49,10 @@
                         </div>
                       {% endif %}
                       <div class="panel panel-default">
-                        <div class="panel-heading" style="text-align:left;">
+                        <div class="panel-heading text-left">
                           <h3 class="panel-title"><strong>{% trans 'Will you participate?' %}</strong></h3>
                         </div>
-                        <div class="panel-body" style="text-align:center;">
+                        <div class="panel-body text-center">
                           {% with ''|addstr:event.id|addstr:'_participation' as eventId %}
                             {% participation_form prefix=eventId %}
                           {% endwith %}
@@ -60,10 +60,10 @@
                       </div>
                           {% include 'agenda/participation_list_page.html' with participation_list=event.participation_set.all %}
                       <div class="panel panel-default">
-                        <div class="panel-heading" style="text-align:left;">
+                        <div class="panel-heading text-left">
                           <h3 class="panel-title"><strong>{% trans 'Organizer' %}</strong></h3>
                         </div>
-                        <div class="panel-body" style="text-align:center;">
+                        <div class="panel-body text-center">
                           <img class="img-rounded thumbnail img-responsive" width="222px" src="{% if event.author.profile.avatar.big %}
                                  {{ event.author.profile.avatar.avatar.url }}
                              {% else %}

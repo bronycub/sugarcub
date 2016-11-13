@@ -1,0 +1,19 @@
+{
+  "name": "sugarcub",
+  "authors": [
+    "Matthias Devlamynck <matthias.devlamynck@mailoo.org>"
+  ],
+  "license": "GPLv3",
+  "ignore": [
+    "**/.*"
+  ],
+  "dependencies": {
+    "bootstrap": "3",
+    "cookieconsent2": "1",
+    "font-awesome": "4",
+    "leaflet": "0",
+    "css-social-buttons": "zocial#1",
+    "bootstrap-datepicker": "1",
+    "jquery-expander": "1"
+  }
+}
