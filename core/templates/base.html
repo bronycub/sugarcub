@@ -15,6 +15,26 @@
                 {% block extrastyle %}{% endblock %}
             {% endblock %}
 
+            {% javascript 'js' %}
+            {% block javascripts %}
+                <script>
+                    window.cookieconsent_options = {
+                        theme: false,
+                        message: 'Ce site utilise des cookies pour vous assurez une meilleure expérience possible.',
+                        dismiss: 'OK :)',
+                        markup: [
+                            '<div class="cc_banner-wrapper">',
+                                '<div class="cc_banner cc_container cc_container--open">',
+                                    '<a href="#null" data-cc-event="click:dismiss" target="_blank" class="cc_btn cc_btn_accept_all">OK /)</a>',
+                                    '<p class="cc_message">Ce site utilise des cookies pour vous assurez une meilleure expérience possible.</p>',
+                                '</div>',
+                            '</div>'
+                        ]
+                    };
+                </script>
+                {% block extrascripts %}{% endblock %}
+            {% endblock %}
+
             {% block blockbots %}{% endblock %}
             {% block extrahead %}{% endblock %}
         {% endblock %}
@@ -118,24 +138,5 @@
                 </footer>
             {% endblock %}
         </div>
-        {% javascript 'js' %}
-        {% block javascripts %}
-            <script>
-                window.cookieconsent_options = {
-                    theme: false,
-                    message: 'Ce site utilise des cookies pour vous assurez une meilleure expérience possible.',
-                    dismiss: 'OK :)',
-                    markup: [
-                        '<div class="cc_banner-wrapper">',
-                            '<div class="cc_banner cc_container cc_container--open">',
-                                '<a href="#null" data-cc-event="click:dismiss" target="_blank" class="cc_btn cc_btn_accept_all">OK /)</a>',
-                                '<p class="cc_message">Ce site utilise des cookies pour vous assurez une meilleure expérience possible.</p>',
-                            '</div>',
-                        '</div>'
-                    ]
-                };
-            </script>
-            {% block extrascripts %}{% endblock %}
-        {% endblock %}
     </body>
 </html>
