@@ -12,7 +12,7 @@
     "cookieconsent2": "1",
     "font-awesome": "4",
     "leaflet": "0",
-    "css-social-buttons": "zocial#1",
+    "css-social-buttons": "smcllns/css-social-buttons#master",
     "bootstrap-datepicker": "1",
     "jquery-expander": "1",
     "datetimepicker": "^2.5.4"

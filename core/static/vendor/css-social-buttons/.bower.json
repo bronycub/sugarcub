@@ -20,14 +20,14 @@
     "src/",
     "templates/"
   ],
-  "version": "1.2.0",
-  "_release": "1.2.0",
+  "_release": "83c2bf8963",
   "_resolution": {
-    "type": "version",
-    "tag": "v1.2.0",
-    "commit": "4cb5a72a376610fa38acae21f8666268ba6f5af4"
+    "type": "branch",
+    "branch": "master",
+    "commit": "83c2bf89638873cf3747b17dcf89b0f7172fb668"
   },
-  "_source": "https://github.com/samcollins/css-social-buttons.git",
-  "_target": "1",
-  "_originalSource": "zocial"
+  "_source": "https://github.com/smcllns/css-social-buttons.git",
+  "_target": "master",
+  "_originalSource": "smcllns/css-social-buttons",
+  "_direct": true
 }
