@@ -7,7 +7,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = '@93eg2!@%a4r@(qh9v#e2xpb@nkv^0=2em%9@k$_+qz9xr$&c@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['sugarcub.loc']
 
 
 # Mails
