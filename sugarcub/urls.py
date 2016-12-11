@@ -11,6 +11,7 @@ urls = [
     url(r'^captcha/', include('captcha.urls')),
     url(_(r'admin/doc/'), include('django.contrib.admindocs.urls')),
     url(_(r'admin/'),     include(admin.site.urls)),
+    url(_(r'support/'),   include('helpdesk.urls')),
 
     url(_(r'bbbff/'),     include('bbbff.urls',  namespace='bbbff')),
     url(_(r'agenda/'),    include('agenda.urls', namespace='agenda')),

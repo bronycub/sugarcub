@@ -7,6 +7,8 @@ django-admin-bootstrapped>=2.5,<3
 django-bootstrap3-datetimepicker-2>=2.4,<3
 django-bootstrap3>=7.0,<8
 django-el-pagination>=2.0,<3
+django-helpdesk>=0.1,<1
+django-markdown-deux>=1.0,<2
 django-pipeline==1.6.0
 django-redis>=4.3,<5
 django-registration-redux>=1.2,<2

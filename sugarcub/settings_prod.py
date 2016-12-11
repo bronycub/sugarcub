@@ -27,7 +27,7 @@ ALLOWED_HOSTS  = os.getenv('ALLOWED_HOSTS', 'sugarcub.org,bronycub.org').split('
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # TODO Allow for easy setup in BO
-EMAIL_HOST           = 'dockerhost'
+EMAIL_HOST           = os.getenv('HOST_IP', '172.17.42.1')
 EMAIL_PORT           = 25
 EMAIL_HOST_USER      = ''
 EMAIL_HOST_PASSWORD  = ''
