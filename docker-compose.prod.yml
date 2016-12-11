@@ -22,7 +22,7 @@ services:
         build:
             context: .
             dockerfile: docker/python-prod
-        command: bash -c 'python3 ./manage.py compilemessages && python3 ./manage.py collectstatic --noinput && python3 ./manage.py migrate --noinput && uwsgi --ini /srv/app/code/uwsgi.ini'
+        command: bash -c 'docker/dockerhost.sh && python3 ./manage.py compilemessages && python3 ./manage.py collectstatic --noinput && python3 ./manage.py migrate --noinput && uwsgi --ini /srv/app/code/uwsgi.ini'
         environment:
             - DEPLOY_TYPE=prod
             - ALLOWED_HOSTS=sugarcub.bronycub.org
