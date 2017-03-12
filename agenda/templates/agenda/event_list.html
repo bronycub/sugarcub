@@ -3,7 +3,6 @@
 {% load i18n %}
 {% load el_pagination_tags %}
 {% load static %}
-{% load absolute %}
 
 {% block title %}{% trans 'Events' %}{% endblock %}
 
@@ -25,7 +24,7 @@
                             <p><strong>{% trans 'To add the agenda in your favorite software use the address:' %}</strong></p>
                             <div class="input-group">
                               <span class="input-group-addon"><i class="fa fa-link"></i></span>
-                              <input type="text" class="form-control" value="{% absolute 'agenda:ics_export' %}">
+                              <input type="text" class="form-control" value="{{ request.build_absolute_uri }}{% url 'agenda:ics_export' %}">
                             </div>
                         </div>
                         <div class="modal-footer">

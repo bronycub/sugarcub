@@ -36,14 +36,12 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'multiform',
     'registration',
     'el_pagination',
-    'absolute',
     'bootstrap3_datetime',
     'captcha',
     'ws4redis',
@@ -86,7 +84,6 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'core.processors.custom_fields',
                 'core.processors.mailing_list',
-                'absolute.context_processors.absolute',
             ],
             'debug': False
         }
@@ -256,11 +253,6 @@ BOOTSTRAP3 = {
     'horizontal_label_class': 'col-md-2',
     'horizontal_field_class': 'col-md-10'
 }
-
-
-# Sites Framework
-
-SITE_ID = 1
 
 
 # Logging
