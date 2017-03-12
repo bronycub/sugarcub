@@ -1,0 +1,10 @@
+{% load i18n %}{% autoescape off %}
+{% trans 'A event was just registered.' %}
+
+{{ event.author }} {% trans 'created' %} {{ event.title }}
+
+- {{ event.title }}
+- {{ event.description }}
+- {{ event.date_begin }} - {{ event.date_end }}
+- {{ event.address }}
+{% endautoescape %}

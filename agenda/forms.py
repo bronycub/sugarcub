@@ -11,7 +11,6 @@ class EventForm(forms.ModelForm):
         widget = DateTimePicker(
             options = {
                 'format': 'DD/MM/YYYY HH:mm',
-                'inline': True,
             }
         ),
         label = _('Start date and hour')
@@ -20,7 +19,6 @@ class EventForm(forms.ModelForm):
         widget = DateTimePicker(
             options = {
                 'format': 'DD/MM/YYYY HH:mm',
-                'inline': True,
             }
         ),
         label = _('End date and hour')

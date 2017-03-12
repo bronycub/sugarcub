@@ -20,14 +20,13 @@
     "src/",
     "templates/"
   ],
-  "_release": "83c2bf8963",
+  "_release": "0ed62cae7d",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "83c2bf89638873cf3747b17dcf89b0f7172fb668"
+    "commit": "0ed62cae7d1b3053e7519e272b1bc6931ff47fee"
   },
   "_source": "https://github.com/smcllns/css-social-buttons.git",
   "_target": "master",
-  "_originalSource": "smcllns/css-social-buttons",
-  "_direct": true
+  "_originalSource": "smcllns/css-social-buttons"
 }

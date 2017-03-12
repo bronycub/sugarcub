@@ -5,10 +5,10 @@
 <h1>{{ event.author }} {% trans 'created' %} {{ event.title }}</h1>
 <br/>
 <ul>
-    <li>{{ profile.author }}</li>
-    <li>{{ profile.description }}</li>
-    <li>{{ profile.date_begin }} - {{ profile.date_end }}</li>
-    <li>{{ profile.address }}</li>
+    <li>{{ event.title }}</li>
+    <li>{{ event.description }}</li>
+    <li>{{ event.date_begin }} - {{ event.date_end }}</li>
+    <li>{{ event.address }}</li>
 </ul>
 
 {% endautoescape %}

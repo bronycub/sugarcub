@@ -140,6 +140,7 @@ PIPELINE = {
                 'vendor/css-social-buttons/css/zocial.css',
                 'vendor/font-awesome/css/font-awesome.min.css',
                 'vendor/leaflet/dist/leaflet.css',
+                'vendor/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
                 'css/sugarcub.css',
                 'css/sugarcub-admin.css',
                 'css/bronycub.css',
@@ -156,13 +157,12 @@ PIPELINE = {
         'js': {
             'source_filenames': (
                 'vendor/jquery/dist/jquery.min.js',
+                'vendor/moment/min/moment.min.js',
                 'vendor/jquery-expander/jquery.expander.min.js',
-                'vendor/datetimepicker/build/jquery.datetimepicker.full.min.js',
                 'vendor/bootstrap/dist/js/bootstrap.min.js',
-                'vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js',
-                'vendor/bootstrap-datepicker/dist/locale/bootstrap-datepicker.fr.min.js',
                 'vendor/cookieconsent2/build/cookieconsent.min.js',
                 'vendor/leaflet/dist/leaflet.js',
+                'vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
                 'js/dj.js',
                 'js/expander.js',
                 'js/konami.js',

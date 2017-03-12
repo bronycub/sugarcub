@@ -26,6 +26,7 @@ def send_admin_event_notification(event_id):
     event = models.Event.objects.get(pk = event_id)
 
     mail_admins(
-        _('New event'),
+        subject      = _('New event'),
+        message      = render_to_string('agenda/email-admin-notification.txt',  {'event': event}),
         html_message = render_to_string('agenda/email-admin-notification.html', {'event': event})
     )
