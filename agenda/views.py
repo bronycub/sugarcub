@@ -33,7 +33,7 @@ class CreateEventView(CreateView):
         instance = form.save(commit = False)
         instance.author = self.request.user
         instance.save()
-        utils.send_admin_event_notification.delay(instance.id)
+        utils.send_new_event_notification.delay(instance.id)
         return super().form_valid(form)
 
 

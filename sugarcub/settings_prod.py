@@ -36,3 +36,4 @@ EMAIL_USE_SSL        = False
 DEFAULT_FROM_EMAIL   = 'contact@' + ALLOWED_HOSTS[0]
 EMAIL_SUBJECT_PREFIX = '[BronyCUB]'
 ADMINS               = [('Admin BronyCUB', 'bronycub@gmail.com')]
+MANAGERS             = [('BronyCUB Mailing List', DEFAULT_FROM_EMAIL)]

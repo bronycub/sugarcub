@@ -1,6 +1,6 @@
 from   .                        import models
 from   celery                   import shared_task
-from   django.core.mail         import mail_admins
+from   django.core.mail         import mail_managers
 from   django.utils.translation import ugettext as _
 from   django.template.loader   import render_to_string
 import ics
@@ -22,10 +22,10 @@ def export_calendar():
 
 
 @shared_task
-def send_admin_event_notification(event_id):
+def send_new_event_notification(event_id):
     event = models.Event.objects.get(pk = event_id)
 
-    mail_admins(
+    mail_managers(
         subject      = _('New event'),
         message      = render_to_string('agenda/email-admin-notification.txt',  {'event': event}),
         html_message = render_to_string('agenda/email-admin-notification.html', {'event': event})
