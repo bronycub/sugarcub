@@ -1,0 +1,12 @@
+{% load i18n %}{% autoescape off %}
+{% trans 'A new user just registered.' %}
+
+{{ profile.user.username }}
+
+- {{ profile.user.email }}
+- {{ profile.user.first_name }} {{ profile.user.last_name }}
+- {{ profile.bio }}
+- {{ profile.phone }}
+- {{ profile.birthday }}
+- {{ profile.address }} {{ profile.city }} {{ profile.postal_code }}
+{% endautoescape %}
