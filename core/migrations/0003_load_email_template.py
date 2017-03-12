@@ -5,17 +5,11 @@ from django.core.management import call_command
 from django.db              import migrations
 
 
-def load_fixture(apps, schema_editor):
-    call_command('loaddata', 'emailtemplate.json', app_label='helpdesk') 
-
-
 class Migration(migrations.Migration):
 
     dependencies = [
         ('core', '0002_auto_20160514_1601'),
-        ('helpdesk', '0012_queue_default_owner'),
     ]
 
     operations = [
-        migrations.RunPython(load_fixture),
     ]

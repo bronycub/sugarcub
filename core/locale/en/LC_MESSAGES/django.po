@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-11 15:53+0000\n"
+"POT-Creation-Date: 2017-03-12 11:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,7 +53,7 @@ msgstr ""
 msgid "friends"
 msgstr ""
 
-#: core/templates/agenda.html:6 core/templates/base.html:68
+#: core/templates/agenda.html:6 core/templates/base.html:59
 msgid "Agenda"
 msgstr ""
 
@@ -67,72 +67,88 @@ msgid ""
 "site will not be avaible for you"
 msgstr ""
 
-#: core/templates/base.html:67
+#: core/templates/base.html:58
 msgid "Members"
 msgstr ""
 
-#: core/templates/base.html:69 core/templates/hq.html:6
+#: core/templates/base.html:60 core/templates/hq.html:6
 msgid "HQ"
 msgstr ""
 
-#: core/templates/base.html:70
+#: core/templates/base.html:61
 msgid "Medias"
 msgstr ""
 
-#: core/templates/base.html:71 core/templates/map.html:11
+#: core/templates/base.html:62 core/templates/map.html:11
 msgid "Map"
 msgstr ""
 
-#: core/templates/base.html:72 core/templates/friends.html:6
+#: core/templates/base.html:63 core/templates/friends.html:6
 msgid "Friends"
 msgstr ""
 
-#: core/templates/base.html:75
+#: core/templates/base.html:66
 msgid "Tchat"
 msgstr ""
 
-#: core/templates/base.html:76
+#: core/templates/base.html:67
 msgid "Visio"
 msgstr ""
 
-#: core/templates/base.html:77
-msgid "Ticket"
-msgstr ""
-
-#: core/templates/base.html:93
+#: core/templates/base.html:83
 msgid "Profile"
 msgstr ""
 
-#: core/templates/base.html:95
+#: core/templates/base.html:85
 msgid "Admin"
 msgstr ""
 
-#: core/templates/base.html:97
+#: core/templates/base.html:87
 msgid "Logout"
 msgstr ""
 
-#: core/templates/base.html:101
+#: core/templates/base.html:91
 msgid "Login"
 msgstr ""
 
-#: core/templates/base.html:102
+#: core/templates/base.html:92
 msgid "Signup"
 msgstr ""
 
-#: core/templates/base.html:138
+#: core/templates/base.html:128
 msgid "Contact us :"
 msgstr ""
 
-#: core/templates/base.html:143
+#: core/templates/base.html:133
 msgid "Powered by"
+msgstr ""
+
+#: core/templates/errors/bad_request.html:5
+#: core/templates/errors/bad_request.html:6
+msgid "Error 400"
+msgstr ""
+
+#: core/templates/errors/base.html:6 core/templates/home.html:6
+msgid "Home"
+msgstr ""
+
+#: core/templates/errors/page_not_found.html:5
+#: core/templates/errors/page_not_found.html:6
+msgid "Error 404"
+msgstr ""
+
+#: core/templates/errors/permission_denied.html:5
+#: core/templates/errors/permission_denied.html:6
+msgid "Error 403"
+msgstr ""
+
+#: core/templates/errors/server_error.html:5
+#: core/templates/errors/server_error.html:6
+msgid "Error 500"
 msgstr ""
 
 #: core/templates/friends.html:31
 msgid "No friends at the moment..."
-msgstr ""
-
-#: core/templates/home.html:6
-msgid "Home"
 msgstr ""
 
 #: core/templates/home.html:35

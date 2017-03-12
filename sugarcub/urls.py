@@ -11,7 +11,6 @@ urls = [
     url(r'^captcha/', include('captcha.urls')),
     url(_(r'admin/doc/'), include('django.contrib.admindocs.urls')),
     url(_(r'admin/'),     include(admin.site.urls)),
-    url(_(r'support/'),   include('helpdesk.urls')),
 
     url(_(r'bbbff/'),     include('bbbff.urls',  namespace='bbbff')),
     url(_(r'agenda/'),    include('agenda.urls', namespace='agenda')),
@@ -31,3 +30,9 @@ urls = [
 
 urlpatterns = i18n.i18n_patterns(*urls)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+handler400 = 'core.views.bad_request'
+handler403 = 'core.views.permission_denied'
+handler404 = 'core.views.page_not_found'
+handler500 = 'core.views.server_error'

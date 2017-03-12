@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SugarCUB 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-11 15:53+0000\n"
+"POT-Creation-Date: 2017-03-12 11:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Matthias Devlamynck <matthias.devlamynck@mailoo.org>\n"
 "Language: French\n"
@@ -53,7 +53,7 @@ msgstr "ami"
 msgid "friends"
 msgstr "amis"
 
-#: core/templates/agenda.html:6 core/templates/base.html:68
+#: core/templates/agenda.html:6 core/templates/base.html:59
 msgid "Agenda"
 msgstr "Agenda"
 
@@ -69,73 +69,89 @@ msgstr ""
 "Votre profil n'est toujours pas approuvé par un admin. Tant que cela n'est "
 "pas fait, certaines parties du site vous seront innacessibles."
 
-#: core/templates/base.html:67
+#: core/templates/base.html:58
 msgid "Members"
 msgstr "Membres"
 
-#: core/templates/base.html:69 core/templates/hq.html:6
+#: core/templates/base.html:60 core/templates/hq.html:6
 msgid "HQ"
 msgstr "QG"
 
-#: core/templates/base.html:70
+#: core/templates/base.html:61
 msgid "Medias"
 msgstr "Médias"
 
-#: core/templates/base.html:71 core/templates/map.html:11
+#: core/templates/base.html:62 core/templates/map.html:11
 msgid "Map"
 msgstr "Carte"
 
-#: core/templates/base.html:72 core/templates/friends.html:6
+#: core/templates/base.html:63 core/templates/friends.html:6
 msgid "Friends"
 msgstr "Nos amis"
 
-#: core/templates/base.html:75
+#: core/templates/base.html:66
 msgid "Tchat"
 msgstr "Tchat"
 
-#: core/templates/base.html:76
+#: core/templates/base.html:67
 msgid "Visio"
 msgstr "Visio"
 
-#: core/templates/base.html:77
-msgid "Ticket"
-msgstr "Ticket"
-
-#: core/templates/base.html:93
+#: core/templates/base.html:83
 msgid "Profile"
 msgstr "Profil"
 
-#: core/templates/base.html:95
+#: core/templates/base.html:85
 msgid "Admin"
 msgstr "Admin"
 
-#: core/templates/base.html:97
+#: core/templates/base.html:87
 msgid "Logout"
 msgstr "Déconnexion"
 
-#: core/templates/base.html:101
+#: core/templates/base.html:91
 msgid "Login"
 msgstr "Connexion"
 
-#: core/templates/base.html:102
+#: core/templates/base.html:92
 msgid "Signup"
 msgstr "Nous rejoindre ?"
 
-#: core/templates/base.html:138
+#: core/templates/base.html:128
 msgid "Contact us :"
 msgstr "Contactez-nous :"
 
-#: core/templates/base.html:143
+#: core/templates/base.html:133
 msgid "Powered by"
 msgstr ""
+
+#: core/templates/errors/bad_request.html:5
+#: core/templates/errors/bad_request.html:6
+msgid "Error 400"
+msgstr "Erreur 400"
+
+#: core/templates/errors/base.html:6 core/templates/home.html:6
+msgid "Home"
+msgstr "Accueil"
+
+#: core/templates/errors/page_not_found.html:5
+#: core/templates/errors/page_not_found.html:6
+msgid "Error 404 - Page not found"
+msgstr "Erreur 404 - Page non trouvée"
+
+#: core/templates/errors/permission_denied.html:5
+#: core/templates/errors/permission_denied.html:6
+msgid "Error 403 - Access denied"
+msgstr "Erreur 403 - Accès interdit"
+
+#: core/templates/errors/server_error.html:5
+#: core/templates/errors/server_error.html:6
+msgid "Error 500 - Server error"
+msgstr "Erreur 500 - Erreur serveur"
 
 #: core/templates/friends.html:31
 msgid "No friends at the moment..."
 msgstr "Aucun ami pour le moment ..."
-
-#: core/templates/home.html:6
-msgid "Home"
-msgstr "Accueil"
 
 #: core/templates/home.html:35
 msgid "BronyCUB, What is it ?"
@@ -235,3 +251,6 @@ msgstr "^carte$"
 #: core/urls.py:10
 msgid "^friends$"
 msgstr "^amis$"
+
+#~ msgid "Ticket"
+#~ msgstr "Ticket"
