@@ -351,3 +351,9 @@ a {
 	width: 640px;
 	height: 385px;
 }
+
+.pinkie-event {
+	position: absolute;
+	top: 2px;
+	right: 60px;
+}

@@ -14,8 +14,9 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <h1 class="text-center">{% trans 'Add an event' %}</h1>
-            <form enctype="multipart/form-data" class="form-horizontal" method="post">
+            <form enctype="multipart/form-data" class="form well" method="post">
+				<img class="pinkie-event hidden-xs" src="{% static 'img/pinkie_pie_party.gif' %}"/>
+				<h1 class="text-center">{% trans 'Add an event' %}</h1>
                 {% csrf_token %}
                 {{ form.media }}
 
