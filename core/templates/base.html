@@ -66,7 +66,24 @@
                                 <li><a href="https://kiwiirc.com/client?settings=3ebf3eb7a40c2b03f47b918eb2f7087a" target="_blank"><i class="fa fa-comment fa-1x"></i>&nbsp;{% trans 'Tchat' %}</a></li>
                                 <li><a href="https://vroom.im/bronycub" target="_blank"><i class="fa fa-video-camera fa-1x"></i>&nbsp;{% trans 'Visio' %}</a></li>
                                 {% if user.is_authenticated %}
-                                    <li role="presentation" class="dropdown">
+                                    <li class="hidden-lg">
+                                        <a class="text-right username-header-small">
+                                            <img class="img-header-small" alt="avatar" src="
+                                                {% if user.profile.avatar.small %}
+                                                    {{ user.profile.avatar.small.url }}
+                                                {% else %}
+                                                    {% static 'ressources/logo/icon_bronycub.png' %}
+                                                {% endif %}
+                                            "/>
+                                            {{ user.username }}
+                                        </a>
+									</li>
+									<li class="hidden-lg"><a href="{% url 'users:profile' %}" class=""><i class="fa fa-user fa-1x"></i>&nbsp;{% trans 'Profile' %}</a></li>
+									{% if user.is_staff %}
+										<li class="hidden-lg"><a href="{% url 'admin:index' %}" class=""><i class="glyphicon glyphicon-cog"></i>&nbsp;{% trans 'Admin' %}</a></li>
+									{% endif %}
+									<li class="hidden-lg"><a href="{% url 'auth_logout' %}"><i class="fa fa-sign-out fa-1x"></i>&nbsp;{% trans 'Logout' %}</a></li>
+                                    <li role="presentation" class="dropdown visible-lg-block">
                                         <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
                                             <img class="img-header" alt="avatar" src="
                                                 {% if user.profile.avatar.small %}
@@ -77,7 +94,6 @@
                                             "/>
                                             {{ user.username }}
                                             <span class="caret"></span>
-
                                         </a>
                                         <ul class="dropdown-menu" role="menu">
                                             <li><a href="{% url 'users:profile' %}" class=""><i class="fa fa-user fa-1x"></i>&nbsp;{% trans 'Profile' %}</a></li>
