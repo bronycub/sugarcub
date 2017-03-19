@@ -264,7 +264,7 @@ msgid "Profile"
 msgstr ""
 
 #: users/templates/profile.html:22
-msgid "SugarCUB </br>My Profile"
+msgid "My Profile"
 msgstr ""
 
 #: users/templates/profile.html:39

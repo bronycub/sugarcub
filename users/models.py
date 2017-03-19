@@ -7,7 +7,23 @@ from   django.utils.translation   import ugettext_lazy as _
 from   datetime                   import date, timedelta
 from   contextlib                 import suppress
 from   celery                     import shared_task
+from   .                          import fields, validators
 import requests
+
+
+class UrlField(models.CharField):
+    default_validators = [validators.UrlValidator()]
+
+    def __init__(self, verbose_name=None, name=None, **kwargs):
+        kwargs['max_length'] = kwargs.get('max_length', 200)
+        super().__init__(**kwargs)
+
+    def formfield(self, **kwargs):
+        defaults = {
+            'form_class': fields.UrlField,
+        }
+        defaults.update(kwargs)
+        return super(UrlField, self).formfield(**defaults)
 
 
 class ProfileManager(models.Manager):
@@ -150,7 +166,7 @@ class UserUrl(models.Model):
     ''' List of urls in the user's description '''
 
     profile = models.ForeignKey(Profile, verbose_name = _('profil'))
-    url     = models.URLField(_('url'))
+    url     = UrlField(_('url'))
     icon    = models.ForeignKey(Icon, verbose_name = _('icon'))
 
     class Meta:
