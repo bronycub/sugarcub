@@ -51,8 +51,8 @@ msgid ""
 "Explain the event, add as much information you can : time, localisation , if "
 "people need stuff... the more information the better!"
 msgstr ""
-"Expliquer l'évènement, ajouter autant d'information que possible : horraire, "
-"lieu, si les gens on besoin d'affaire... Un maximum d'information est un "
+"Expliquer l'évènement, ajouter autant d'informations que possible : horraire, "
+"lieu, si les gens ont besoin d'affaires ... Un maximum d'informations est un "
 "plus!"
 
 #: agenda/forms.py:55
