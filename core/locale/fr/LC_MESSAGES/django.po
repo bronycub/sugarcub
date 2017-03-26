@@ -67,7 +67,7 @@ msgid ""
 "site will not be avaible for you"
 msgstr ""
 "Votre profil n'est toujours pas approuvé par un admin. Tant que cela n'est "
-"pas fait, certaines parties du site vous seront innacessibles."
+"pas fait, certaines parties du site vous seront inacessibles."
 
 #: core/templates/base.html:58
 msgid "Members"

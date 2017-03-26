@@ -1,0 +1,25 @@
+{% load i18n %}
+{% autoescape off %}
+
+<body>
+<p>
+	{% blocktrans %}You're receiving this email because you created an account on {{ site }}.{% endblocktrans %}
+</p>
+
+<p>
+	{% trans "Please go to the following page to activate your account:" %}
+	{% block reset_link %}
+	<a href="http://{{ site }}{% url 'registration_activate' activation_key=activation_key %}">http://{{ site }}{% url 'registration_activate' activation_key=activation_key %}</a>
+	{% endblock %}
+</p>
+
+<p>
+	{% trans "Thanks for using our site!" %}
+</p>
+
+<p>
+	{% blocktrans %}The {{ site }} team{% endblocktrans %}
+</p>
+</body>
+
+{% endautoescape %}
