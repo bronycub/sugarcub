@@ -134,7 +134,6 @@ class Icon(models.Model):
     ''' List of different icon available '''
 
     name      = models.CharField(_('name'), max_length = 32)
-    file_name = models.CharField(_('file name'), max_length = 32)
 
     class Meta:
         verbose_name        = _('site icon')

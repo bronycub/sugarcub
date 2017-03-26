@@ -3,82 +3,86 @@
 {% load i18n %}
 
 <div id="modal-{{profile.user.username}}" class="modal fade" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        {% if user.is_authenticated and user.profile.enabled %}
-            <div class="container-fluid modal-content modal-lg">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                  <img class="img-rounded img-avatar" alt="avatar" src="
-                                {% if profile.avatar %}
-                                    {{ profile.avatar.avatar.url }}
-                                {% else %}
-                                    {% static 'ressources/logo/icon_bronycub.png' %}
-                                {% endif %}
-                            ">
-                  <strong class="username">{{ profile.user.username }}</strong>
-                </div>
-                <div class="modal-body">
-                  <p class="pre-line">
-                    {{ profile.bio }}
-                  </p>
-                  <hr />
-                  <p>
-                    {% for pony in profile.userpony_set.all %}
-                      <img alt="{% static pony.pony.name %}" src="{% static 'img/ponies/'|add:pony.pony.file_name %}" class="img-thumbnail"/>&nbsp;<span class='label label-info'>{{ pony.message }}</span>
-                    {% endfor %}
-                  </p>
-                  {% if profile.userpony_set.all|length > 0 %}
-                    <hr />
-                  {% endif %}
-                  <div class="list-group col-sm-7">
-                    {% if profile.name_enabled %}
-                      <a href="#" class="list-group-item"><i class="fa fa-user">&nbsp;</i>{{ profile.user.last_name }} {{ profile.user.first_name }}</a>
-                    {% endif %}
-                    {% if profile.birthday_enabled %}
-                      <a href="#" class="list-group-item"><i class="fa fa-birthday-cake">&nbsp;</i>{{ profile.birthday }}</a>
-                    {% endif %}
-                    {% if profile.phone_enabled %}
-                      <a href="#" class="list-group-item"><i class="fa fa-phone">&nbsp;</i>{{ profile.phone }}</a>
-                    {% endif %}
-                    {% if profile.mail_enabled %}
-                      <a href="#" class="list-group-item"><i class="fa fa-envelope">&nbsp;</i>{{ profile.user.email }}</a>
-                    {% endif %}
-                    {% if profile.address_enabled %}
-                      <a href="#" class="list-group-item"><i class="fa fa-map-marker">&nbsp;</i>{{ profile.address }}, {{ profile.postal_code }} {{ profile.city }}</a>
-                      <a href="{% url 'core:map' %}" class="list-group-item"><i class="fa fa-map-marker">&nbsp;</i><button class="btn btn-info btn-xs">Localisation sur la carte</button></a>
-                    {% endif %}
-                  </div>
-                  <div class="panel-body">
-                    <div>
-                          {% for url in profile.userurl_set.all %}
-                              <a href='{{ url.url }}' class='zocial icon {{ url.icon.name | lower }}'></a>
-                          {% endfor %}
-                    </div>
-                  </div>
-                </div>
-            </div>
-        {% elif user.is_authenticated and not user.profile.enabled %}
-            <div class="container-fluid">
-                <div class="alert alert-danger">
-                    <div class="row modal-body">
-                        <p>{% trans 'Your account must be accepted by the admin to see the members informations.' %}</p>
-                    </div>
-                    <div class="row modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
-                    </div>
-                </div>
-            </div>
-        {% else %}
-            <div class="container-fluid">
-                <div class="alert alert-danger">
-                    <div class="row modal-body">
-                        <p>{% trans 'You must be connected to see the members informations.' %}</p>
-                    </div>
-                    <div class="row modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
-                    </div>
-                </div>
-            </div>
-        {% endif %}
-    </div>
+	<div class="modal-dialog modal-lg">
+		{% if user.is_authenticated and user.profile.enabled %}
+		<div class="container-fluid modal-content modal-lg">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<img class="img-rounded img-avatar" alt="avatar" src="
+				{% if profile.avatar %}
+				{{ profile.avatar.avatar.url }}
+				{% else %}
+				{% static 'ressources/logo/icon_bronycub.png' %}
+				{% endif %}
+				">
+				<strong class="username">{{ profile.user.username }}</strong>
+			</div>
+			<div class="modal-body">
+				<p class="pre-line">
+				{{ profile.bio }}
+				</p>
+				<hr />
+				<p>
+				{% for pony in profile.userpony_set.all %}
+				<img alt="{% static pony.pony.name %}" src="{% static 'img/ponies/'|add:pony.pony.file_name %}" class="img-thumbnail"/>&nbsp;<span class='label label-info'>{{ pony.message }}</span>
+				{% endfor %}
+				</p>
+				{% if profile.userpony_set.all|length > 0 %}
+				<hr />
+				{% endif %}
+				<div class="list-group col-sm-7">
+					{% if profile.name_enabled %}
+					<a href="#" class="list-group-item"><i class="fa fa-user">&nbsp;</i>{{ profile.user.last_name }} {{ profile.user.first_name }}</a>
+					{% endif %}
+					{% if profile.birthday_enabled %}
+					<a href="#" class="list-group-item"><i class="fa fa-birthday-cake">&nbsp;</i>{{ profile.birthday }}</a>
+					{% endif %}
+					{% if profile.phone_enabled %}
+					<a href="#" class="list-group-item"><i class="fa fa-phone">&nbsp;</i>{{ profile.phone }}</a>
+					{% endif %}
+					{% if profile.mail_enabled %}
+					<a href="#" class="list-group-item"><i class="fa fa-envelope">&nbsp;</i>{{ profile.user.email }}</a>
+					{% endif %}
+					{% if profile.address_enabled %}
+					<a href="#" class="list-group-item"><i class="fa fa-map-marker">&nbsp;</i>{{ profile.address }}, {{ profile.postal_code }} {{ profile.city }}</a>
+					<a href="{% url 'core:map' %}" class="list-group-item"><i class="fa fa-map-marker">&nbsp;</i><button class="btn btn-info btn-xs">Localisation sur la carte</button></a>
+					{% endif %}
+				</div>
+				<div class="panel-body">
+					<div>
+						{% for url in profile.userurl_set.all %}
+						{% if url.icon.name|lower == 'email' %}
+						<a href='mailto:{{ url.url }}' class='zocial icon {{ url.icon.name | lower }}'></a>
+						{% else %}
+						<a href='{{ url.url }}' class='zocial icon {{ url.icon.name | lower }}'></a>
+						{% endif %}
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+		{% elif user.is_authenticated and not user.profile.enabled %}
+		<div class="container-fluid">
+			<div class="alert alert-danger">
+				<div class="row modal-body">
+					<p>{% trans 'Your account must be accepted by the admin to see the members informations.' %}</p>
+				</div>
+				<div class="row modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
+				</div>
+			</div>
+		</div>
+		{% else %}
+		<div class="container-fluid">
+			<div class="alert alert-danger">
+				<div class="row modal-body">
+					<p>{% trans 'You must be connected to see the members informations.' %}</p>
+				</div>
+				<div class="row modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
+				</div>
+			</div>
+		</div>
+		{% endif %}
+	</div>
 </div>
